@@ -1,0 +1,339 @@
+{
+  "active": false,
+  "connections": {
+    "Gmail Trigger": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Trello1": {
+      "main": [
+        [
+          {
+            "node": "Slack2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Trello2": {
+      "main": [
+        [
+          {
+            "node": "Slack1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Trello": {
+      "main": [
+        [
+          {
+            "node": "Slack",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain1": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Trello",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Trello2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Trello1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-06-14T13:52:04.861Z",
+  "id": "5LsitC4RDaBUXxQp",
+  "isArchived": false,
+  "meta": null,
+  "name": "Distribuidor Inteligente de Suporte",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "filters": {}
+      },
+      "id": "6a4e82a3-df57-49fa-a576-367f345b7f87",
+      "name": "Gmail Trigger",
+      "type": "n8n-nodes-base.gmailTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -1160,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "model": "llama-3.1-70b-versatile",
+        "options": {}
+      },
+      "id": "a51b0469-c246-40da-882e-a5f354ee999f",
+      "name": "Groq Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        -880,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "model": "llama-3.1-70b-versatile",
+        "options": {}
+      },
+      "id": "eaffe380-9f31-4cb6-b261-b794c6eb572c",
+      "name": "Groq Chat Model1",
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        -540,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "C07T9JC2VAB",
+          "mode": "list",
+          "cachedResultName": "comercial"
+        },
+        "text": "={{ $json.desc }}",
+        "otherOptions": {}
+      },
+      "id": "07bb1403-914a-47f8-b7a9-1ba4dda1379b",
+      "name": "Slack",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.2,
+      "position": [
+        240,
+        0
+      ],
+      "webhookId": "371d0852-f7f1-4892-9180-9a5714ec05e8"
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "C07UCUBBMFA",
+          "mode": "list",
+          "cachedResultName": "financeiro"
+        },
+        "text": "={{ $json.desc }}",
+        "otherOptions": {}
+      },
+      "id": "7bbd8551-1119-4d2c-8f2f-a64c4a31a8eb",
+      "name": "Slack1",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.2,
+      "position": [
+        240,
+        160
+      ],
+      "webhookId": "9d8480e2-264f-4d67-a9f2-6f5adc02f3d6"
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "C07U2R07AGH",
+          "mode": "list",
+          "cachedResultName": "tecnico"
+        },
+        "text": "={{ $json.desc }}",
+        "otherOptions": {}
+      },
+      "id": "512ead13-5451-445e-b623-2538f67f59fd",
+      "name": "Slack2",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.2,
+      "position": [
+        240,
+        340
+      ],
+      "webhookId": "a434bbde-6710-4849-b67c-81f4dd99d742"
+    },
+    {
+      "parameters": {
+        "listId": "6720dda46086d0cb03bc9804",
+        "name": "={{ $('Gmail Trigger').item.json.Subject }}",
+        "description": "={{ $json.text }}",
+        "additionalFields": {}
+      },
+      "id": "d38ed2a7-67b7-4f29-aa62-211bfe5c7306",
+      "name": "Trello1",
+      "type": "n8n-nodes-base.trello",
+      "typeVersion": 1,
+      "position": [
+        0,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "listId": "=6720dda43763493ffb5fc780",
+        "name": "={{ $('Gmail Trigger').item.json.Subject }}",
+        "description": "={{ $json.text }}",
+        "additionalFields": {}
+      },
+      "id": "9dec610f-db96-4120-937c-6618c02e8980",
+      "name": "Trello2",
+      "type": "n8n-nodes-base.trello",
+      "typeVersion": 1,
+      "position": [
+        0,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "listId": "6720dda49b964129e94fcefb",
+        "name": "={{ $('Gmail Trigger').item.json.Subject }}",
+        "description": "={{ $json.text }}",
+        "additionalFields": {}
+      },
+      "id": "21bd6262-93f2-468b-b804-16bdb49f262c",
+      "name": "Trello",
+      "type": "n8n-nodes-base.trello",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=<Position>\nYou're a professional called AIberto responsible for summarizing emails. You've been doing this for over 20 years.\n</Position>\n\n<Instructions>\nYou have to present all the information in the email: start by saying who sent it and what the title is. Then give a brief summary (40 tokens) of what the person sent. Finally, display the body of the original email.\n</Instructions>\n\n<Background>\nAll emails are forwarded by someone to Anwar, founder of DascIA, a Data & AI consulting and training company. But you will not report to him, but in the \"{{ $json.text }}\" company's slack channel for the responsibles of the {{ $json.text }} area in DascIA.\n</Context>\n\n<E-mail>\nWho sent it: {{ $('Gmail Trigger').item.json.From }}\nTitle: {{ $('Gmail Trigger').item.json.Subject }}\nEmail body: {{ $('Gmail Trigger').item.json.snippet }}\n</E-mail>\n\n<General rules>\nDon't be long-winded and write in Brazilian Portuguese.\n</General rules>"
+      },
+      "id": "661558c0-03bc-4010-8e24-01b19394ee78",
+      "name": "Basic LLM Chain1",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.4,
+      "position": [
+        -560,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=<Position>\nYou're an expert in email ticket classification. You've been working with classification for over 20 years.\n</Position>\n\n<Instruction>\nClassify incoming email into three possible categories: tecnico, financeiro, comercial.\n</Instruction>\n\n<Categories>\n- tecnico: when the subject is related to the technical side of the company\n- financeiro: when it is a financial matter\n- comercial: when the subject is related to the commercial side of the company\n</Categories>\n\n<E-mail>\nTitle: {{ $json.Subject }}\nEmail text: {{ $json.snippet }}\n</E-mail>\n\n<General Rules>\nReturn ONLY the name of the category. Nothing beyond that. You will be penalized if you return anything other than the category name.\n</General Rules>"
+      },
+      "id": "77082789-8f5f-4ee1-8a61-ff7fae7efb80",
+      "name": "Basic LLM Chain",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.4,
+      "position": [
+        -900,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "expression",
+        "numberOutputs": 3,
+        "output": "={{$('Basic LLM Chain').item.json.text == \"comercial\" ? 0 : $('Basic LLM Chain').item.json.text == \"financeiro\" ? 1 : 2}}"
+      },
+      "id": "a178ff41-0d02-4481-9847-a7515c70db1e",
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -220,
+        160
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-06-14T13:52:04.861Z",
+  "versionId": "686a6a38-6c6d-410d-81da-3ce5878b0472"
+}
