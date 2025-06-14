@@ -1,0 +1,215 @@
+{
+  "active": false,
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "OpenWeatherMap",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenWeatherMap": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain": {
+      "main": [
+        [
+          {
+            "node": "Slack",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-06-14T13:53:16.228Z",
+  "id": "w1FablLJ3oDMp6Ju",
+  "isArchived": false,
+  "meta": null,
+  "name": "O primeiro Bot do Departamento",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 9
+            }
+          ]
+        }
+      },
+      "id": "8a90534c-b9d1-4a84-9033-a53c3a184002",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "cityName": "uberlandia",
+        "language": "pt-BR"
+      },
+      "id": "637bd1e8-e92f-47bf-b7dc-05847c2515f9",
+      "name": "OpenWeatherMap",
+      "type": "n8n-nodes-base.openWeatherMap",
+      "typeVersion": 1,
+      "position": [
+        220,
+        0
+      ],
+      "retryOnFail": false,
+      "alwaysOutputData": false,
+      "executeOnce": false
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "5f083194-4ae3-4955-92bf-48b1ce6bfeaa",
+              "name": "clima",
+              "value": "={{ $json.weather[0].main }}, {{ $json.weather[0].description }}",
+              "type": "string"
+            },
+            {
+              "id": "4d1a9ee7-36e3-4bda-9328-0f10981378a0",
+              "name": "info",
+              "value": "=temperatura: {{ $json.main.temp }}, sensação térmica: {{ $json.main.feels_like }}, min-max: {{ $json.main.temp_min }}-{{ $json.main.temp_max }}, umidade: {{ $json.main.humidity }}",
+              "type": "string"
+            },
+            {
+              "id": "83ea3f69-d4f2-4644-a6a7-fab4a2af5353",
+              "name": "vento",
+              "value": "=velocidade: {{ $json.wind.speed }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e2260b6e-fbf7-4c20-90e4-d4457a667263",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        420,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "https://app.slack.com/client/T08C4LFCJ8J/C08CHBF9465",
+          "mode": "url"
+        },
+        "text": "={{ $json.text }}",
+        "otherOptions": {}
+      },
+      "id": "bc3263be-a40d-4c57-8e10-6491553f2e4f",
+      "name": "Slack",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.2,
+      "position": [
+        1040,
+        0
+      ],
+      "webhookId": "1aa9c031-656e-45e2-b358-47248e3f754a",
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "model": "llama-3.3-70b-versatile",
+        "options": {}
+      },
+      "id": "57e57aba-4ae7-4050-aba9-0b07da852783",
+      "name": "Groq Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        600,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=<Role>\nYou are a climate/weather expert with more than 20 years' experience in the field. Your name is João, and you work for DascIA.\n</Role>\n\n<Instructions>\nYou must provide a detailed weather report to the DascIA Marketing team, stating whether or not it is feasible to hold outdoor events.\n\nYou must provide detailed information on the weather, temperature, wind and justify your answer based on the data.\n</Instructions>\n\n<Data>\nWeather data: {{ $json.clima }}\nGeneral information: {{ $json.info }}\nWind: {{ $json.vento }}\n</Data>\n\nWrite your answer in Portuguese (pt-BR). Use a maximum of 120 tokens."
+      },
+      "id": "4c3cf6f3-34d5-4184-97fa-0d4444915084",
+      "name": "Basic LLM Chain",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.4,
+      "position": [
+        620,
+        0
+      ]
+    }
+  ],
+  "pinData": {
+    "Schedule Trigger": [
+      {
+        "json": {
+          "timestamp": "2025-02-07T07:22:47.936-05:00",
+          "Readable date": "February 7th 2025, 7:22:47 am",
+          "Readable time": "7:22:47 am",
+          "Day of week": "Friday",
+          "Year": "2025",
+          "Month": "February",
+          "Day of month": "07",
+          "Hour": "07",
+          "Minute": "22",
+          "Second": "47",
+          "Timezone": "America/New_York (UTC-05:00)"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-06-14T13:53:16.228Z",
+  "versionId": "bdbef5a4-6d15-4e0e-8944-957079d68e59"
+}
