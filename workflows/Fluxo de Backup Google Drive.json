@@ -1,0 +1,188 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Google Drive",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Google Drive",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Drive": {
+      "main": [
+        [
+          {
+            "node": "n8n",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "n8n": {
+      "main": [
+        [
+          {
+            "node": "Convert to File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File": {
+      "main": [
+        [
+          {
+            "node": "Google Drive1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-06-12T21:55:38.163Z",
+  "id": "23PBUWPJl4RwXVwJ",
+  "isArchived": false,
+  "meta": null,
+  "name": "Fluxo de Backup Google Drive",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "17cb8ce7-87ac-4084-9a87-944ae899c2ce",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 8
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        240
+      ],
+      "id": "2aaa884e-fa78-4abd-a009-95d594190c2c",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "resource": "folder",
+        "name": "={{ $now.format('dd/MM/yyyy HH:mm') }}",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "1bg8cvEIFGgALMMf-yhPLDMwoclMd8RsJ",
+          "mode": "list",
+          "cachedResultName": "Backups N8N",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1bg8cvEIFGgALMMf-yhPLDMwoclMd8RsJ"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        300,
+        100
+      ],
+      "id": "8c477f39-ebb0-4bb7-8fb8-ed84ad5bc39c",
+      "name": "Google Drive"
+    },
+    {
+      "parameters": {
+        "filters": {},
+        "requestOptions": {}
+      },
+      "type": "n8n-nodes-base.n8n",
+      "typeVersion": 1,
+      "position": [
+        560,
+        100
+      ],
+      "id": "b339d6d2-daaa-437c-80cb-6ffd7bb86ded",
+      "name": "n8n"
+    },
+    {
+      "parameters": {
+        "operation": "toJson",
+        "mode": "each",
+        "options": {
+          "fileName": "={{ $json.name }}"
+        }
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        800,
+        100
+      ],
+      "id": "4da76a7f-26b6-4577-8eea-5177ff157b55",
+      "name": "Convert to File"
+    },
+    {
+      "parameters": {
+        "name": "={{ $('n8n').item.json.name }}",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "={{ $('Google Drive').item.json.id }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        1060,
+        100
+      ],
+      "id": "75b12ce5-d9dd-4cb0-8076-2097efa16403",
+      "name": "Google Drive1"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-06-12T21:55:38.163Z",
+  "versionId": "9cb6335f-0dc7-4953-9b89-00a0f3ed6967"
+}
