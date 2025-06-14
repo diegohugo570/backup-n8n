@@ -1,0 +1,334 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "GitHub",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "GitHub",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GitHub": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "n8n",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "n8n": {
+      "main": [
+        [
+          {
+            "node": "Convert to File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "GitHub2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "GitHub1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-06-12T21:56:14.813Z",
+  "id": "ctXBtQlyJCIdUT9T",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Fluxo de Backup GitHub",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -1640,
+        80
+      ],
+      "id": "a5d0086a-e63e-42ab-a1e3-481ad325d195",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 8
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -1640,
+        280
+      ],
+      "id": "ad39489f-8326-476a-809a-3419e6f59fbd",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "operation": "list",
+        "owner": {
+          "__rl": true,
+          "value": "https://github.com/diegohugo570",
+          "mode": "url"
+        },
+        "repository": {
+          "__rl": true,
+          "value": "backup-n8n",
+          "mode": "list",
+          "cachedResultName": "backup-n8n",
+          "cachedResultUrl": "https://github.com/diegohugo570/backup-n8n"
+        }
+      },
+      "type": "n8n-nodes-base.github",
+      "typeVersion": 1.1,
+      "position": [
+        -1340,
+        140
+      ],
+      "id": "2b52a175-42c4-4a5d-80d3-37e4ea2db884",
+      "name": "GitHub",
+      "webhookId": "55915ec1-f690-4dd4-b77e-7d9d41f74887",
+      "credentials": {
+        "githubApi": {
+          "id": "5Vhzmhb0DlXl9y5x",
+          "name": "GitHub account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "name"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        -1120,
+        140
+      ],
+      "id": "35f4fb1e-2ed3-4ba8-92d2-87b8f052e848",
+      "name": "Aggregate"
+    },
+    {
+      "parameters": {
+        "filters": {},
+        "requestOptions": {}
+      },
+      "type": "n8n-nodes-base.n8n",
+      "typeVersion": 1,
+      "position": [
+        -900,
+        140
+      ],
+      "id": "2d5cfc21-bd7f-4c42-b479-264cce6c4972",
+      "name": "n8n",
+      "executeOnce": true,
+      "credentials": {
+        "n8nApi": {
+          "id": "TcexyNIh3ZiaZTis",
+          "name": "n8n account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "toJson",
+        "mode": "each",
+        "options": {
+          "fileName": "={{ $json.name }}"
+        }
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        -680,
+        140
+      ],
+      "id": "d1a90634-51dd-4a0e-8a95-53fc4fea743e",
+      "name": "Convert to File"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "925b7752-93d6-4db4-b2e7-cbbe6055f83b",
+              "leftValue": "={{ $('Aggregate').item.json.name }}",
+              "rightValue": "={{ $('n8n').item.json.name }}",
+              "operator": {
+                "type": "array",
+                "operation": "contains",
+                "rightType": "any"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -460,
+        140
+      ],
+      "id": "6b1b7429-9a74-47bd-bfce-b4461b040be4",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "owner": {
+          "__rl": true,
+          "value": "https://github.com/dascialucas",
+          "mode": "url"
+        },
+        "repository": {
+          "__rl": true,
+          "value": "backup-de-fluxos-n8n",
+          "mode": "list",
+          "cachedResultName": "backup-de-fluxos-n8n",
+          "cachedResultUrl": "https://github.com/dascialucas/backup-de-fluxos-n8n"
+        },
+        "filePath": "={{ $('n8n').item.json.name }}",
+        "binaryData": true,
+        "commitMessage": "=backup-{{ $now.format('dd/MM/yyyy HH:mm') }}"
+      },
+      "type": "n8n-nodes-base.github",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        360
+      ],
+      "id": "89b1c26a-2732-4dcf-9df2-3ca763aff6c2",
+      "name": "GitHub1",
+      "webhookId": "16649738-efe7-43db-9208-1ee8e815632a",
+      "executeOnce": false,
+      "credentials": {
+        "githubApi": {
+          "id": "5Vhzmhb0DlXl9y5x",
+          "name": "GitHub account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "operation": "edit",
+        "owner": {
+          "__rl": true,
+          "value": "https://github.com/dascialucas",
+          "mode": "url"
+        },
+        "repository": {
+          "__rl": true,
+          "value": "backup-de-fluxos-n8n",
+          "mode": "list",
+          "cachedResultName": "backup-de-fluxos-n8n",
+          "cachedResultUrl": "https://github.com/dascialucas/backup-de-fluxos-n8n"
+        },
+        "filePath": "={{ $('n8n').item.json.name }}",
+        "binaryData": true,
+        "commitMessage": "=backup-{{ $now.format('dd/MM/yyyy HH:mm') }}"
+      },
+      "type": "n8n-nodes-base.github",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "edefb360-f20e-4f44-8b4f-b4262e57d288",
+      "name": "GitHub2",
+      "webhookId": "a0d6a21c-e027-4ecc-8fc6-9ee32ee165c6",
+      "credentials": {
+        "githubApi": {
+          "id": "5Vhzmhb0DlXl9y5x",
+          "name": "GitHub account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-06-14T15:13:40.105Z",
+  "versionId": "f5821e5a-c008-4526-b3e2-d338c0825cdb"
+}
