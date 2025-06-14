@@ -1,0 +1,611 @@
+{
+  "active": false,
+  "connections": {
+    "Formata celular": {
+      "main": [
+        [
+          {
+            "node": "Verifica se usuario tem cadastro",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Recebe mensagem usuario": {
+      "main": [
+        [
+          {
+            "node": "Formata celular",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verifica se usuario tem cadastro": {
+      "main": [
+        [
+          {
+            "node": "Valida se usuario esta cadastrado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Valida se usuario esta cadastrado": {
+      "main": [
+        [
+          {
+            "node": "verifica atendimento",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Casastra usuario no banco de dados",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Casastra usuario no banco de dados": {
+      "main": [
+        [
+          {
+            "node": "Verifica se tem thread criada",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verifica se tem thread criada": {
+      "main": [
+        [
+          {
+            "node": "Cria a thread",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Bella AI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cria a thread": {
+      "main": [
+        [
+          {
+            "node": "Salva thread no banco de dados",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Salva thread no banco de dados": {
+      "main": [
+        [
+          {
+            "node": "Bella AI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "verifica atendimento": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Verifica se tem thread criada",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pega mensagens da conversa": {
+      "main": [
+        [
+          {
+            "node": "Concatena mensagens",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Concatena mensagens": {
+      "main": [
+        [
+          {
+            "node": "Analisa Conversas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Analisa Conversas": {
+      "main": [
+        [
+          {
+            "node": "Verifica se vai fechar o atendimento",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verifica se vai fechar o atendimento": {
+      "main": [
+        [
+          {
+            "node": "Fecha atendimento",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-06-14T13:48:02.539Z",
+  "id": "GOL6U01xzqqfs4xv",
+  "isArchived": false,
+  "meta": null,
+  "name": "Assistente Virtual Clínica",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-evolution-api.evolutionApi",
+      "typeVersion": 1,
+      "position": [
+        1140,
+        420
+      ],
+      "id": "6942e64a-c968-4853-8154-243929a5e77d",
+      "name": "Evolution API",
+      "credentials": {}
+    },
+    {
+      "parameters": {
+        "jsCode": "return [{\n  telefone_limpo: $json.body.data.key.remoteJid.replace(\"@s.whatsapp.net\", \"\")\n}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -640,
+        240
+      ],
+      "id": "5eff07fb-c139-4908-b8fd-4770ef09361c",
+      "name": "Formata celular"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "d9f0a46a-504a-4d52-a0a3-a6222fe80509",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -860,
+        240
+      ],
+      "id": "9a3f252e-80fb-4e02-a376-e50c6c054cc5",
+      "name": "Recebe mensagem usuario",
+      "webhookId": "d9f0a46a-504a-4d52-a0a3-a6222fe80509"
+    },
+    {
+      "parameters": {
+        "databaseId": 186413,
+        "tableId": 453287,
+        "additionalOptions": {
+          "filters": {
+            "fields": [
+              {
+                "field": 3526214,
+                "operator": "contains",
+                "value": "={{ $json.telefone_limpo }}"
+              }
+            ]
+          }
+        }
+      },
+      "type": "n8n-nodes-base.baserow",
+      "typeVersion": 1,
+      "position": [
+        -420,
+        240
+      ],
+      "id": "95c0896f-8a2d-4423-a2ca-29387cb3d515",
+      "name": "Verifica se usuario tem cadastro",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.Numero }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notEmpty",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Cadastrado"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "1fb1915e-576b-4729-a204-61718f51a0ce",
+                    "leftValue": "={{ $json.Numero }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "empty",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Sem cadastro"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -200,
+        240
+      ],
+      "id": "d1dbf1b7-887c-46c4-a51c-21fdb9e957af",
+      "name": "Valida se usuario esta cadastrado"
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "databaseId": 186413,
+        "tableId": 453287,
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": 3526205,
+              "fieldValue": "={{ $('Recebe mensagem usuario').item.json.body.data.pushName }}"
+            },
+            {
+              "fieldId": 3526214,
+              "fieldValue": "={{ $('Formata celular').item.json.telefone_limpo }}"
+            },
+            {
+              "fieldId": 3526849,
+              "fieldValue": "Aberto"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.baserow",
+      "typeVersion": 1,
+      "position": [
+        0,
+        480
+      ],
+      "id": "a58d915f-a663-4b8e-be62-d0fa8941abf8",
+      "name": "Casastra usuario no banco de dados"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "e8df05c6-f0d2-46d6-987f-d6ed0f429116",
+              "leftValue": "={{ $json.Thread_id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "empty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        180,
+        260
+      ],
+      "id": "438bb20b-98c9-45f7-b756-04921243a8db",
+      "name": "Verifica se tem thread criada"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/threads",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "openAiApi",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "OpenAI-Beta",
+              "value": "assistants=v2"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        380,
+        20
+      ],
+      "id": "6ed16556-cc71-4db9-b95c-ffd91ddf97f3",
+      "name": "Cria a thread"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "databaseId": 186413,
+        "tableId": 453287,
+        "rowId": "={{ $('Verifica se tem thread criada').item.json.id }}",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": 3526215,
+              "fieldValue": "={{ $json.id }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.baserow",
+      "typeVersion": 1,
+      "position": [
+        640,
+        20
+      ],
+      "id": "33c3f2f0-2c4d-4ac5-90fa-2541247336cb",
+      "name": "Salva thread no banco de dados"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "f1790a98-1cc0-4569-be53-4998defd4d1e",
+              "leftValue": "={{ $('Verifica se usuario tem cadastro').item.json.Atendimento }}",
+              "rightValue": "Fechado",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "8c32040d-191e-48fe-9344-04670cac2ac9",
+      "name": "verifica atendimento"
+    },
+    {
+      "parameters": {
+        "url": "=https://api.openai.com/v1/threads/{{ $('Bella AI').item.json.threadId }}/messages ",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "openAiApi",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "OpenAI-Beta",
+              "value": "assistants=v2"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1360,
+        420
+      ],
+      "id": "601db89f-c12b-4815-8c5b-3a591c5301ca",
+      "name": "Pega mensagens da conversa"
+    },
+    {
+      "parameters": {
+        "jsCode": "const threadData = items[0].json.data;\n\n// Ordenar as mensagens por data de criação (caso não estejam ordenadas)\nthreadData.sort((a, b) => a.created_at - b.created_at);\n\n// Concatenar todas as mensagens\nlet concatenatedMessages = threadData.map(message => {\n    const role = message.role === \"user\" ? \"Usuário\" : \"Assistente\";\n    const textContent = message.content.map(c => c.text.value).join(\"\\n\");\n    return `**${role}:** ${textContent}`;\n}).join(\"\\n\\n\");\n\nreturn [{ json: { concatenatedMessages } }];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1580,
+        420
+      ],
+      "id": "5a7816c8-006e-4b8b-b99c-e7efa3d07c2a",
+      "name": "Concatena mensagens"
+    },
+    {
+      "parameters": {
+        "resource": "assistant",
+        "assistantId": {
+          "__rl": true,
+          "value": "asst_YPtLsfgWO37nmyrnrYxzxsSv",
+          "mode": "list",
+          "cachedResultName": "ASSISTENTE VIRTUAL"
+        },
+        "prompt": "define",
+        "text": "={{ $('Recebe mensagem usuario').item.json.body.data.message.conversation }}",
+        "memory": "threadId",
+        "threadId": "={{ $('Verifica se usuario tem cadastro').item.json.Thread_id }}",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        720,
+        420
+      ],
+      "id": "2c8ae6e6-9443-44b0-b0bd-bc6c6a8b87f5",
+      "name": "Bella AI"
+    },
+    {
+      "parameters": {
+        "resource": "assistant",
+        "assistantId": {
+          "__rl": true,
+          "value": "asst_uo7foJsYABqpzNEweenB7qXA",
+          "mode": "list",
+          "cachedResultName": "ANALISA CONVERSA"
+        },
+        "prompt": "define",
+        "text": "={{ $json.concatenatedMessages }}",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        1820,
+        420
+      ],
+      "id": "0fa12da1-5359-421d-833d-51dab2eeab8f",
+      "name": "Analisa Conversas"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "eea48c98-19fd-41f0-bfcd-b96343937957",
+              "leftValue": "={{ $json.output }}",
+              "rightValue": "fechado",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2180,
+        420
+      ],
+      "id": "69327249-6eac-4f98-b426-019686625e27",
+      "name": "Verifica se vai fechar o atendimento"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "databaseId": 186413,
+        "tableId": 453287,
+        "rowId": "={{ $('Verifica se tem thread criada').item.json.id }}",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": 3526849,
+              "fieldValue": "Fechado"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.baserow",
+      "typeVersion": 1,
+      "position": [
+        2360,
+        160
+      ],
+      "id": "ea7151b9-f0ec-4199-a3cb-da33848d9d82",
+      "name": "Fecha atendimento"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-06-14T13:48:02.539Z",
+  "versionId": "58392ff7-3565-452b-a92f-1221a661c268"
+}
