@@ -1,0 +1,434 @@
+{
+  "active": false,
+  "connections": {
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Date & Time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Aggregate1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate1": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain1": {
+      "main": [
+        [
+          {
+            "node": "Gmail",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain": {
+      "main": [
+        [
+          {
+            "node": "Slack",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-06-14T13:51:13.925Z",
+  "id": "k5ezFkwMt0MbfCuk",
+  "isArchived": false,
+  "meta": null,
+  "name": "Fechamento de Caixa Automático",
+  "nodes": [
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "39384077-3e4a-47e8-8c70-761598b84df4",
+              "leftValue": "={{ $json.Valor }}",
+              "rightValue": 1000,
+              "operator": {
+                "type": "number",
+                "operation": "gte"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "df93366e-bf8c-4334-8768-3e36307b5fd9",
+      "name": "If",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -180,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "model": "llama-3.1-70b-versatile",
+        "options": {}
+      },
+      "id": "8bedea40-6d55-41c8-9d87-1f87edd940be",
+      "name": "Groq Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        400,
+        140
+      ]
+    },
+    {
+      "parameters": {
+        "select": "user",
+        "user": {
+          "__rl": true,
+          "value": "U07TDKJ2QMU",
+          "mode": "list",
+          "cachedResultName": "anwaruche2"
+        },
+        "text": "={{ $json.text }}",
+        "otherOptions": {}
+      },
+      "id": "f201f944-1532-44e1-a937-80157fbe6a9d",
+      "name": "Slack",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.2,
+      "position": [
+        880,
+        0
+      ],
+      "webhookId": "bcd0a907-ff52-4bb4-96c5-b631596ab637"
+    },
+    {
+      "parameters": {
+        "model": "llama-3.1-70b-versatile",
+        "options": {}
+      },
+      "id": "66089468-6a62-40c3-adc4-d44c9c8bc36f",
+      "name": "Groq Chat Model1",
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        400,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "includeTime": false,
+        "outputFieldName": "datetime",
+        "options": {}
+      },
+      "id": "5f99660a-cf82-43b0-a0ab-c24162282a53",
+      "name": "Date & Time",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        -580,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 18,
+              "triggerAtMinute": 30
+            }
+          ]
+        }
+      },
+      "id": "1ecb94d4-41c0-4abf-9568-6862d1495998",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -740,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1rfVxsX1avLPXOddftv9LGVtbaevqhest79wbJGaSVc8",
+          "mode": "list",
+          "cachedResultName": "Projeto 02 | Despesas DascIA",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1rfVxsX1avLPXOddftv9LGVtbaevqhest79wbJGaSVc8/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Despesas 2024",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1rfVxsX1avLPXOddftv9LGVtbaevqhest79wbJGaSVc8/edit#gid=0"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Data",
+              "lookupValue": "={{ $json.datetime }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d4e76bd4-c94c-40ce-a2f0-d76fc38a62d1",
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        -380,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "sendTo": "anwarhermuche2@gmail.com",
+        "subject": "=Fechamento de caixa | {{ $('Date & Time').all().last().json.datetime.slice(0, 10) }}",
+        "message": "={{ $json.text }}",
+        "options": {}
+      },
+      "id": "110cffac-8343-49f1-87ea-5c9d65a694df",
+      "name": "Gmail",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        880,
+        280
+      ],
+      "webhookId": "efa92a4c-c5de-4deb-9835-62a446bf24ec"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "46f35575-7b95-4823-bfb5-dfc3d13ab1dd",
+              "name": "Despesas",
+              "value": "={{ $json['Descrição'] }}: R${{ $json.Valor }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "14ac28ec-9b93-45b7-b9d1-f60208c15503",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "id": "152724d7-97bf-40de-9369-f1cf6de4ba24",
+      "name": "Aggregate",
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        220,
+        0
+      ],
+      "executeOnce": false
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "46f35575-7b95-4823-bfb5-dfc3d13ab1dd",
+              "name": "Despesas",
+              "value": "={{ $json['Descrição'] }}: {{ $json.Valor }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "1a927002-1152-4784-bd4e-e7f33e803187",
+      "name": "Edit Fields1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        0,
+        280
+      ]
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "id": "19bde0c5-18c2-43d4-9b51-84f293956879",
+      "name": "Aggregate1",
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        220,
+        280
+      ],
+      "executeOnce": false
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=<Position>\nYou're an outlier. You are both the CFO of DascIA and have expertise in front-end programming. You have over 20 years' experience with front-end and have been CFO of DascIA for 10 years. Your name is Alberto.\n</Position>\n\n<Instructions>\nYou only report on non-urgent expenses. The format of your response is always HTML, where the expenses are in a table. Above the table is a short text from you talking about the report. Below that, a “Sincerely, Alberto”.\n\nThis is a text that will be sent to the company's managers in an e-mail.\n</Instructions>\n\n<Expenses>\n{{ $json.data.map(item => item.Despesas) }}\n</Expenses>\n\n<General rules>\nDon't be long-winded. Write in pt-BR.\n</General rules>"
+      },
+      "id": "aa2e9879-fea9-4e0e-bad7-e72f46fa8934",
+      "name": "Basic LLM Chain1",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.4,
+      "position": [
+        500,
+        280
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=<Role>\nYou are responsible for making financial reports for DascIA. You are the CFO of this company, with over 30 years' experience in the sector. Your name is Alberto.\n</Role>\n\n<Instructions>\nYou only report on urgent expenses (all expenses that come to you are urgent). You should only report expenses. You should not give any advice.\n</Instructions>\n\n<Expenses>\n{{ $json.data.map(objeto => objeto.Despesas) }}\n</Expenses>\n\n<General rules>\nDon't be long-winded. Just report the expenses and that's all. Write in pt-BR.\n</General rules>"
+      },
+      "id": "f5157c3b-c169-497f-815d-6d8ab658213d",
+      "name": "Basic LLM Chain",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.4,
+      "position": [
+        500,
+        0
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-06-14T13:51:13.925Z",
+  "versionId": "ec6d0a09-5a07-449b-885b-b10c9233174d"
+}
