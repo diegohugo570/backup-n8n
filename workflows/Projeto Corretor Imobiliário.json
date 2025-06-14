@@ -1,0 +1,366 @@
+{
+  "active": false,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Google Calendar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Calendar": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-06-14T13:47:32.475Z",
+  "id": "tPByW1D2JBe42bxx",
+  "isArchived": false,
+  "meta": null,
+  "name": "Projeto Corretor Imobiliário",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "b0051405-a929-4cee-b6a2-86099206e2c5",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "b3a21cd0-5ad6-4856-98d9-652e230dfe31",
+      "name": "Webhook",
+      "webhookId": "b0051405-a929-4cee-b6a2-86099206e2c5"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "3ab1f0bc-c64e-4564-a95f-bca0057ec47b",
+              "name": "nome",
+              "value": "={{ $json.body.nome }}",
+              "type": "string"
+            },
+            {
+              "id": "51f9e0dd-e8c6-49aa-bdf6-f0148132da6c",
+              "name": "email",
+              "value": "={{ $json.body.email }}",
+              "type": "string"
+            },
+            {
+              "id": "5e20c157-8680-464f-9777-b61dc1e7221b",
+              "name": "modalidade",
+              "value": "={{ $json.body.modalidade }}",
+              "type": "string"
+            },
+            {
+              "id": "8036a7ab-9295-4fa7-b7b0-e2e167944901",
+              "name": "tipo_imovel",
+              "value": "={{ $json.body.tipo_imovel }}",
+              "type": "string"
+            },
+            {
+              "id": "bab68427-be2f-4b2b-98ca-6c861f0391e3",
+              "name": "especificacoes",
+              "value": "={{ $json.body.especificacoes }}",
+              "type": "array"
+            },
+            {
+              "id": "76d8199d-422f-467a-82b6-c0d903d5b842",
+              "name": "orcamento",
+              "value": "={{ $json.body.orcamento }}",
+              "type": "string"
+            },
+            {
+              "id": "4ab018d9-c819-492e-bb70-93c4e2df71ab",
+              "name": "datetime",
+              "value": "={{ $json.body.data }} {{ $json.body.horario }}",
+              "type": "string"
+            },
+            {
+              "id": "f05a1973-1749-4522-9b63-2fb2143f67f6",
+              "name": "passo",
+              "value": "={{ $json.body.passo }}",
+              "type": "string"
+            },
+            {
+              "id": "6a13bf06-02f1-489e-9f71-ba70bca6a6ec",
+              "name": "nome_vendedor",
+              "value": "IA",
+              "type": "string"
+            },
+            {
+              "id": "ea8d5693-9428-4a2e-9cdd-25f86825de4d",
+              "name": "id",
+              "value": "={{ $json.body.id }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        220,
+        0
+      ],
+      "id": "29cf4c49-9a67-4d8d-a29d-040623523ad8",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "10cieMBVPkFYa_SCHEBPeru5SjGmBRAKh_xKK2I4rmwY",
+          "mode": "list",
+          "cachedResultName": "Leads - Corretor",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/10cieMBVPkFYa_SCHEBPeru5SjGmBRAKh_xKK2I4rmwY/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Página1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/10cieMBVPkFYa_SCHEBPeru5SjGmBRAKh_xKK2I4rmwY/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id": "={{ $('Edit Fields').item.json.id }}",
+            "nome_vendedor": "={{ $('Edit Fields').item.json.nome_vendedor }}",
+            "nome": "={{ $('Edit Fields').item.json.nome }}",
+            "email": "={{ $('Edit Fields').item.json.email }}",
+            "modalidade": "={{ $('Edit Fields').item.json.modalidade }}",
+            "tipo_imovel": "={{ $('Edit Fields').item.json.tipo_imovel }}",
+            "orcamento": "={{ $('Edit Fields').item.json.orcamento }}",
+            "especificacoes": "={{ $('Edit Fields').item.json.especificacoes }}",
+            "passo": "={{ $('Edit Fields').item.json.passo }}",
+            "agendado": "TRUE",
+            "link": "={{ $json.htmlLink }}"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "nome_vendedor",
+              "displayName": "nome_vendedor",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "nome",
+              "displayName": "nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "modalidade",
+              "displayName": "modalidade",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "tipo_imovel",
+              "displayName": "tipo_imovel",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "orcamento",
+              "displayName": "orcamento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "especificacoes",
+              "displayName": "especificacoes",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "passo",
+              "displayName": "passo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "agendado",
+              "displayName": "agendado",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "link",
+              "displayName": "link",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        720,
+        0
+      ],
+      "id": "461797e2-430c-49a6-b830-50dcd49fa625",
+      "name": "Google Sheets"
+    },
+    {
+      "parameters": {
+        "calendar": {
+          "__rl": true,
+          "value": "anwar@dascia.com.br",
+          "mode": "list",
+          "cachedResultName": "anwar@dascia.com.br"
+        },
+        "start": "={{ $json.datetime.toDateTime().plus(4, \"hour\").format(\"yyyy-MM-dd HH:mm:ss\") }}",
+        "end": "={{ $json.datetime.toDateTime().plus(5, \"hour\").format(\"yyyy-MM-dd HH:mm:ss\") }}",
+        "additionalFields": {
+          "attendees": [
+            "={{ $json.email }}",
+            "jorge@dascia.com.br"
+          ],
+          "description": "Jorge <> Anwar | alphavilee",
+          "summary": "Jorge <> Anwar | alphavilee"
+        }
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.2,
+      "position": [
+        440,
+        0
+      ],
+      "id": "27f26cc4-6cdb-4099-a5a4-0e2ad2818ec5",
+      "name": "Google Calendar"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n.dascia.com.br",
+            "user-agent": "python-httpx/0.27.2",
+            "content-length": "236",
+            "accept": "*/*",
+            "accept-encoding": "gzip, deflate, br, zstd",
+            "baggage": "sentry-trace_id=267e094471c84ca782251f71f2a331c0,sentry-environment=PRODUCTION,sentry-release=dify-0.15.3-ca19bd31d42fb87c83b91541c473ebae85e9d14e,sentry-public_key=c0bcc0e36783694f41e4fb1e6a3efea9,sentry-transaction=console.draftworkflownoderunapi,sentry-sample_rate=0.01,sentry-sampled=false",
+            "content-type": "application/json",
+            "sentry-trace": "267e094471c84ca782251f71f2a331c0-82cd43a7f63839a2-0",
+            "x-forwarded-for": "3.214.24.53",
+            "x-forwarded-host": "n8n.dascia.com.br",
+            "x-forwarded-proto": "https"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "id": "jd73ne8x",
+            "nome": "Anwar",
+            "email": "anwar@dascia.com.br",
+            "modalidade": "aluguel",
+            "tipo_imovel": "casa",
+            "especificacoes": [
+              "5 quartos",
+              "piscina",
+              "3 banheiros"
+            ],
+            "orcamento": "6000",
+            "data": "2025-02-15",
+            "horario": "10:00:00",
+            "passo": "7"
+          },
+          "webhookUrl": "https://n8n.dascia.com.br/webhook-test/b0051405-a929-4cee-b6a2-86099206e2c5",
+          "executionMode": "test"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-06-14T13:47:32.475Z",
+  "versionId": "934a3253-f4ed-434b-944b-f67b6244e061"
+}
