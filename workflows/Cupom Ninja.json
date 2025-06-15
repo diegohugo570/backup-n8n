@@ -1,0 +1,570 @@
+{
+  "active": false,
+  "connections": {
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Update Coupon Sent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Remove Duplicates": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Lead Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Map": {
+      "main": [
+        [
+          {
+            "node": "Supabase",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Message": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Update Coupon Error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Lead Data": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Coupon Sent": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Coupon Error": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Map",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Send Message Refund",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send Message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Message Refund": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Update Coupon Error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "Remove Duplicates",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-06-15T14:49:33.395Z",
+  "id": "aRLfnkunQQnosIAP",
+  "isArchived": false,
+  "meta": null,
+  "name": "Cupom Ninja",
+  "nodes": [
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Map').item.json.instance.server_url }}/message/sendText/{{ $('Map').item.json.instance.name }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "=97FEAC55E9F6-4724-9AFB-6918B3860205"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"number\": \"{{ $json.phone }}\",\n  \"linkPreview\": false,\n  \"text\": \"{{ (() => {\n    const name = $('Loop Over Items').item.json.name?.split(' ')[0] || 'amigo';\n    const product = $('Loop Over Items').item.json.product_name || '';\n    const cupom = 'NINJA10';\n\n    if (product === 'Automação na Prática') {\n      return `🚨 Fala, ${name}!\\\\nVi que você tava a um clique de entrar pro time… então fiz o seguinte:\\\\n\\\\nLiberei um cupom exclusivo que vai expirar nas próximas horas.\\\\n\\\\n🎯 Cupom: ${cupom}\\\\n📉 10% OFF no *Automação na Prática*, o treinamento ideal pra quem quer economizar tempo, escalar processo e parar de fazer tudo na mão:\\\\n\\\\n🔗 https://pay.kiwify.com.br/biqZ72y?coupon=${cupom}&utm_source=coupon\\\\n\\\\n🕒 Quando o tempo acabar, o cupom desaparece.\\\\nSe quiser ativar agora, é só me responder aqui — simples assim.\\\\n\\\\nTe vejo do lado de dentro 💪`;\n    }\n\n    if (product === 'Ninja Academy') {\n      return `🚨 Fala, ${name}!\\\\nVi que você tava a um clique de entrar pro time… então fiz o seguinte:\\\\n\\\\nLiberei um cupom exclusivo que vai expirar nas próximas horas.\\\\n\\\\n🎯 Cupom: ${cupom}\\\\n📉 10% OFF no *Ninja Academy*, pra quem quer aprender a vender no digital com estratégia e consistência:\\\\n\\\\n🔗 https://pay.kiwify.com.br/bFzjvtu?coupon=${cupom}&utm_source=coupon\\\\n\\\\n🕒 Quando o tempo acabar, o cupom desaparece.\\\\nSe quiser ativar agora, é só me responder aqui — simples assim.\\\\n\\\\nTe vejo do lado de dentro 💪`;\n    }\n\n    return `🚨 Fala, ${name}!\\\\nVi que você tava a um clique de entrar pro time… então fiz o seguinte:\\\\n\\\\nLiberei um cupom exclusivo que vai expirar nas próximas horas.\\\\n\\\\n🎯 Cupom: ${cupom}\\\\n📉 10% OFF em dois treinamentos que vão acelerar teu jogo em automação e marketing:\\\\n\\\\n👉 Automação na Prática:\\\\nhttps://pay.kiwify.com.br/biqZ72y?coupon=${cupom}&utm_source=coupon\\\\n\\\\n👉 Ninja Academy:\\\\nhttps://pay.kiwify.com.br/bFzjvtu?coupon=${cupom}&utm_source=coupon\\\\n\\\\n🕒 Quando o tempo acabar, o cupom desaparece.\\\\nSe quiser ativar agora, é só me responder aqui — simples assim.\\\\n\\\\nTe vejo do lado de dentro 💪`;\n  })() }}\"\n}\n",
+        "options": {}
+      },
+      "id": "712aab45-3d15-4279-a725-6bfb6789dd08",
+      "name": "Send Message",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        20,
+        360
+      ],
+      "continueOnFail": true,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "amount": "={{ Math.floor(Math.random() * (60 - 5 + 1)) + 10 }}"
+      },
+      "id": "b24e5b06-e87d-4849-a943-20a2b3efe4b1",
+      "name": "Wait",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        600,
+        100
+      ],
+      "webhookId": "43cdffe9-3d09-4f22-83b5-ce7f9b55d140"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "tableId": "leads",
+        "returnAll": true,
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "coupon",
+              "condition": "eq",
+              "keyValue": "false"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -1700,
+        140
+      ],
+      "id": "c84291b2-c888-414d-a2e2-0365bd245235",
+      "name": "Supabase"
+    },
+    {
+      "parameters": {
+        "compare": "selectedFields",
+        "fieldsToCompare": "phone",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.removeDuplicates",
+      "typeVersion": 2,
+      "position": [
+        -1260,
+        140
+      ],
+      "id": "8f39bf8e-93d9-4923-89a1-b42c9ff9218e",
+      "name": "Remove Duplicates"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        -940,
+        80
+      ],
+      "id": "0374f8bb-2005-4563-8c31-75ddeaf30353",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b2f1f6b5-292f-4695-9e41-be200c6d7053",
+              "name": "instance.name",
+              "value": "=Ninja",
+              "type": "string"
+            },
+            {
+              "id": "572fcce5-8a26-4e8f-a48a-ef0bee569dcd",
+              "name": "instance.apikey",
+              "value": "=4B7813F2E9A1-4A19-8F24-F1ECC0D12018",
+              "type": "string"
+            },
+            {
+              "id": "e90043db-657b-461c-b040-2d6089abfbdb",
+              "name": "instance.server_url",
+              "value": "=https://api.ninjadasautomacoes.com",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "912708b5-3945-4719-ac06-a794e5e20d50",
+      "name": "Map",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1900,
+        140
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "8d6866cf-e013-403e-b8a7-cb8ae08394b0",
+              "name": "phone",
+              "value": "={{ (() => {\n  const raw = $json.phone?.toString().replace(/\\D/g, '');\n  if (!raw) return null;\n\n  // Se já começa com 55 e tem 13 dígitos (55 + DDD + 9 dígitos)\n  if (raw.startsWith('55') && raw.length === 13) return `+${raw}`;\n\n  // Se já começa com 55 e tem só 12 dígitos (DDD + 8 dígitos), assume que falta o 9\n  if (raw.startsWith('55') && raw.length === 12) {\n    return `+55${raw.slice(2, 4)}9${raw.slice(4)}`;\n  }\n\n  // Se tem 11 dígitos (DDD + 9 dígitos), adiciona +55\n  if (raw.length === 11) return `+55${raw}`;\n\n  // Se tem 10 dígitos (DDD + 8 dígitos), adiciona o 9 no início do número e +55\n  if (raw.length === 10) {\n    return `+55${raw.slice(0, 2)}9${raw.slice(2)}`;\n  }\n\n  return null;\n})() }}",
+              "type": "string"
+            },
+            {
+              "id": "a2d19e59-d92d-4390-a78d-53aab3a9934d",
+              "name": "status",
+              "value": "={{ $json.status }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -620,
+        80
+      ],
+      "id": "7c7d87ad-c8a3-4b63-95d6-dd2bcacecbc4",
+      "name": "Lead Data"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "leads",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "id",
+              "condition": "eq",
+              "keyValue": "={{ $('Supabase').item.json.id }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "coupon",
+              "fieldValue": "=TRUE"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        980,
+        100
+      ],
+      "id": "a361f7d1-90ec-4b57-884c-9aef24f1e316",
+      "name": "Update Coupon Sent"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "leads",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "id",
+              "condition": "eq",
+              "keyValue": "={{ $('Supabase').item.json.id }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "coupon",
+              "fieldValue": "=FALSE"
+            },
+            {
+              "fieldId": "status",
+              "fieldValue": "coupon_error"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        640,
+        420
+      ],
+      "id": "f5cf29db-c6a9-4f46-88cf-c1a9224e0978",
+      "name": "Update Coupon Error"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -2100,
+        140
+      ],
+      "id": "07425d4a-ee4a-4eaa-820b-182e78eafa84",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "9e1b7e21-2c83-4ef5-af8b-616821ea8429",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "refund",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -380,
+        120
+      ],
+      "id": "1ca44f37-d614-42a0-abf1-301f0f955cba",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Map').item.json.instance.server_url }}/message/sendText/{{ $('Map').item.json.instance.name }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "=97FEAC55E9F6-4724-9AFB-6918B3860205"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"number\": \"{{ $json.phone }}\",\n  \"linkPreview\": false,\n  \"text\": \"Fala, {{ $('Loop Over Items').item.json.name.split(' ')[0] }}!\\n\\nVi que você acabou pedindo reembolso, e tá tudo certo com isso — às vezes é só uma questão de momento.\\n\\nMas se quiser retomar quando estiver pronto, liberei um **cupom exclusivo** pra você usar nas próximas horas:\\n\\nCUPOM: NINJA10\\n\\n10% OFF no Automação na Prática ou no Ninja Academy 👇\\n\\nAutomação Na Prática:\\nhttps://pay.kiwify.com.br/biqZ72y?coupon=NINJA10\\n\\nNinja Academy:\\nhttps://pay.kiwify.com.br/bFzjvtu?coupon=NINJA10\\n\\nO cupom expira em breve, mas se quiser aproveitar é só me responder aqui. Tamo junto!\"\n}\n",
+        "options": {}
+      },
+      "id": "22bb1a4b-3df3-4608-b016-f22356d197b2",
+      "name": "Send Message Refund",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        0,
+        0
+      ],
+      "continueOnFail": true,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "46c7cb59-6585-4c5c-887b-fff4595e6c38",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "abandoned",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            },
+            {
+              "id": "ff0eed67-a282-48d9-842d-2bad2ed438cb",
+              "leftValue": "={{ $json.created_at }}",
+              "rightValue": "={{ (new Date(Date.now() - 1 * 60 * 60 * 1000)).toISOString() }}\n",
+              "operator": {
+                "type": "dateTime",
+                "operation": "before"
+              }
+            },
+            {
+              "id": "463aff5d-71d6-4ea8-bc8f-32c73e0b4f72",
+              "leftValue": "={{ $json.product_name }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        -1480,
+        140
+      ],
+      "id": "74190cb0-ec76-4d1c-a0d0-bf46f0c132ab",
+      "name": "Filter"
+    }
+  ],
+  "pinData": {
+    "Schedule Trigger": [
+      {
+        "json": {
+          "timestamp": "2025-04-04T09:00:52.109-03:00",
+          "Readable date": "April 4th 2025, 9:00:52 am",
+          "Readable time": "9:00:52 am",
+          "Day of week": "Friday",
+          "Year": "2025",
+          "Month": "April",
+          "Day of month": "04",
+          "Hour": "09",
+          "Minute": "00",
+          "Second": "52",
+          "Timezone": "America/Sao_Paulo (UTC-03:00)"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-06-14T14:35:30.743Z",
+      "updatedAt": "2025-06-14T14:35:30.743Z",
+      "id": "f7Ttu7FQN3EvRKX9",
+      "name": "🥷🏼 Ninja Automações"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-06-15T14:49:33.395Z",
+  "versionId": "b425b26e-fcbe-4837-a2da-ad1b5b41a52e"
+}
