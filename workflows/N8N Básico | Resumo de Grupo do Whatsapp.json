@@ -1,0 +1,740 @@
+{
+  "active": false,
+  "connections": {
+    "Map Dados": {
+      "main": [
+        [
+          {
+            "node": "Agregar Todas Mensagens",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Agregar Todas Mensagens": {
+      "main": [
+        [
+          {
+            "node": "Resumir Mensagens",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formatar Texto": {
+      "main": [
+        [
+          {
+            "node": "Enviar Resumo Grupo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Token Splitter": {
+      "ai_textSplitter": [
+        [
+          {
+            "node": "Resumir Mensagens",
+            "type": "ai_textSplitter",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Somente Texto",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Somente Texto": {
+      "main": [
+        [
+          {
+            "node": "Map Dados",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Resumir Mensagens": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Groups": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Message": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Map Infos Iniciais": {
+      "main": [
+        [
+          {
+            "node": "Get Message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Resumir Mensagens",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Formatar Texto",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model3": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "1x Dia as 10": {
+      "main": [
+        [
+          {
+            "node": "Map Infos Iniciais",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-06-15T14:56:05.503Z",
+  "id": "oIq8lmNiCHOnYtQH",
+  "isArchived": false,
+  "meta": null,
+  "name": "N8N Básico | Resumo de Grupo do Whatsapp",
+  "nodes": [
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "981090d0-5b8b-4456-ba68-1ad19b0f83b3",
+              "name": "Mensagem.name_user",
+              "value": "={{ $json.pushName }}",
+              "type": "string"
+            },
+            {
+              "id": "3d479bb6-76d1-46c3-b9e4-ba4905759c8e",
+              "name": "Mensagem.text",
+              "value": "={{ $json.message.conversation }}",
+              "type": "string"
+            },
+            {
+              "id": "ccf8d881-ed90-4e4c-bd84-580579e78542",
+              "name": "Mensagem.Data",
+              "value": "={{ $json.messageTimestamp.toDateTime('s').format('yyyy-MM-dd TT') }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "fbfe87ca-93ae-465d-8395-ed8b73d5c403",
+      "name": "Map Dados",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        1180,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "id": "2df970ee-0c8e-4495-a818-d5038a8fc585",
+      "name": "Agregar Todas Mensagens",
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        1340,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "// Pega o texto da variável de entrada\nlet inputText = $json[\"output\"];\n\n// Substitui todos os casos de **texto** para *texto*\nlet outputText = inputText.replace(/\\*\\*(.*?)\\*\\*/g, '*$1*');\n\n// Substitui todas as ocorrências de \\n para \\n\\n\noutputText = outputText.replace(/([^\\n]|^)\\n([^\\n]|$)/g, '$1\\n\\n$2');\n\n// Retorna o resultado\nreturn {\n  json: {\n    outputText: outputText\n  }\n};\n"
+      },
+      "id": "a105bda8-806c-43e1-bbcf-f4993cb84af0",
+      "name": "Formatar Texto",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2360,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "chunkSize": 500
+      },
+      "id": "2cd9fc55-604d-4deb-a8c9-e0050eb3852e",
+      "name": "Token Splitter",
+      "type": "@n8n/n8n-nodes-langchain.textSplitterTokenSplitter",
+      "typeVersion": 1,
+      "position": [
+        1760,
+        800
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://{{ $('Map Infos Iniciais').item.json.url_evolution }}/message/sendText/{{ $('Map Infos Iniciais').item.json.nome_instancia_evolution }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "={{ $('Map Infos Iniciais').item.json.token_apikey }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $('Map Infos Iniciais').item.json.id_grupo }}"
+            },
+            {
+              "name": "text",
+              "value": "={{ $json.outputText }}"
+            },
+            {
+              "name": "linkPreview",
+              "value": "={{ false }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d505a78b-2e77-4616-9ee4-bf3802198e9e",
+      "name": "Enviar Resumo Grupo",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2540,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "messages.records",
+        "options": {}
+      },
+      "id": "f09c1a37-6cb8-4fcb-8397-62707d3709b7",
+      "name": "Split Out",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        740,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "39ddb48d-5356-4c1c-8c63-a3eb86f99247",
+              "leftValue": "={{ $json.messageType }}",
+              "rightValue": "=conversation",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            },
+            {
+              "id": "2e4f45c6-39bf-414e-b6fa-43df913186bf",
+              "leftValue": "={{ $json.messageTimestamp.toDateTime('s') }}",
+              "rightValue": "={{ $('Map Infos Iniciais').item.json.ontem }}",
+              "operator": {
+                "type": "dateTime",
+                "operation": "after"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "14299ea0-91f0-4dfe-809b-c5ce690ffa4c",
+      "name": "Somente Texto",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        940,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "002700a8-0d29-4f8d-8215-cf490e36b11c",
+              "leftValue": "={{ $('Map Infos Iniciais').item.json['nome do grupo'] }}",
+              "rightValue": "={{ $json.subject }}",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "3aa47086-be49-49c6-a3a7-8acddaffc11f",
+      "name": "Filter",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        340,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "chunkingMode": "advanced",
+        "options": {
+          "summarizationMethodAndPrompts": {
+            "values": {
+              "combineMapPrompt": "=Você é um assistente virtual especializado em analisar mensagens de texto de grupos do WhatsApp. Seu trabalho é examinar um chunk (bloco de mensagens) e fornecer um resumo \"cru\" e objetivo do que foi discutido.\n\nInstruções:\nLeia o conteúdo fornecido no chunk de dados.\nIdentifique os tópicos abordados e organize as mensagens de forma temática ou cronológica.\nResuma o conteúdo em frases curtas e claras, sem interpretar ou adicionar emoção. Apenas relate os fatos.\nMantenha o tom neutro e objetivo, sem emojis ou estilo descontraído.\n\nIgnore mensagens que começem com \"📝 Resumo do Dia no Grupo\".\n\nMensagens:\n\n\n\"{text}\"\n\nResumo:",
+              "prompt": "ocê é um assistente virtual que cria resumos objetivos e detalhados de conversas inteiras baseadas em análises de chunks de dados. Seu trabalho é juntar as informações fornecidas em chunks e consolidá-las em um único resumo, claro e organizado.\n\nInstruções:\nLeia os resumos dos chunks analisados previamente.\nCombine as informações, agrupando-as por tópicos similares e mantendo uma ordem cronológica ou temática.\nMantenha o tom neutro e objetivo, sem interpretações ou adição de emoção.\nNão deixe passar nenhuma informação importante.\nIgnore mensagens que começem com \"📝 Resumo do Dia no Grupo\".\n\nFormato esperado para o resumo final:\n<resumo_final>\n\nTópico 1: {{Resumo consolidado do primeiro tópico com base nos chunks}}\nTópico 2: {{Resumo consolidado do segundo tópico com base nos chunks}}\nOutros pontos: {{Quaisquer outros detalhes relevantes ou tópicos menores}}\n</resumo_final>\n\n\nNão existe limite de tópicos, adicione tudo que possa ser importante.\n\nMensagens:\n\n\n\"{text}\"\n\n\nCONCISE SUMMARY:"
+            }
+          }
+        }
+      },
+      "id": "af9dd43a-2131-4fd3-b50d-b6bc210402c8",
+      "name": "Resumir Mensagens",
+      "type": "@n8n/n8n-nodes-langchain.chainSummarization",
+      "typeVersion": 2,
+      "position": [
+        1600,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Preencher Infos\n- url_evolution\n- nome_instancia_evolution\n- id_grupo (vem do fluxo acima)\n- nome do grupo\n- token_apikey",
+        "height": 373,
+        "width": 262
+      },
+      "id": "36e27205-f139-42a0-b7fb-a3bcb145f16f",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        180,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "6bb13d8e-1084-41c0-bdcf-a0d15eb705aa",
+              "name": "url_evolution",
+              "value": "",
+              "type": "string"
+            },
+            {
+              "id": "f0da0569-3145-4c8a-812e-49079a7c3ccf",
+              "name": "nome_instancia_evolution",
+              "value": "",
+              "type": "string"
+            },
+            {
+              "id": "3c6d353d-7da8-4641-a522-0f4a4ece306f",
+              "name": "id_grupo",
+              "value": "",
+              "type": "string"
+            },
+            {
+              "id": "5af64764-6139-4140-9176-ad3a1f9e7e8c",
+              "name": "nome do grupo",
+              "value": "",
+              "type": "string"
+            },
+            {
+              "id": "3907640d-791f-438b-b420-a34020b97753",
+              "name": "=token_apikey",
+              "value": "",
+              "type": "string"
+            },
+            {
+              "id": "6abbec89-4a39-4502-b03f-96f6adbbface",
+              "name": "ontem",
+              "value": "={{(() => {\n  const date = new Date();\n  date.setDate(date.getDate() - 1); // Subtract one day\n  return date.toISOString().split('.')[0]; // 's' format = seconds precision, no milliseconds\n})()}}\n",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "0873efdb-20cc-4fed-b3f3-3b5c61e6aa60",
+      "name": "Map Infos Iniciais",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        260,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Pegar ID Grupo\n- todos os dados ja vem do nó \"Map Infos Iniciais\"\n- Pegar Id no nó \"Filter\"",
+        "height": 333,
+        "width": 593,
+        "color": 6
+      },
+      "id": "8d6c50b3-fd4e-4550-a907-ce3692bdfb2e",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://{{ $('Map Infos Iniciais').item.json.url_evolution }}/group/fetchAllGroups/{{ $('Map Infos Iniciais').item.json.nome_instancia_evolution }}?getParticipants=false ",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "={{ $('Map Infos Iniciais').item.json.token_apikey }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9b3b8962-f9ed-4331-8758-c2722aaac923",
+      "name": "Get Groups",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        120,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://{{ $json.url_evolution }}/chat/findMessages/{{ $json.nome_instancia_evolution }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "={{ $json.token_apikey }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "where.key.remoteJid",
+              "value": "={{ $json.id_grupo }}"
+            }
+          ]
+        },
+        "options": {
+          "pagination": {
+            "pagination": {
+              "parameters": {
+                "parameters": [
+                  {
+                    "type": "body",
+                    "name": "page",
+                    "value": "={{ $response.body.messages.currentPage + 1 }}"
+                  }
+                ]
+              },
+              "limitPagesFetched": true,
+              "maxRequests": 10
+            }
+          }
+        }
+      },
+      "id": "77187740-ab58-4896-bc79-e29a4634c849",
+      "name": "Get Message",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        520,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        1640,
+        800
+      ],
+      "id": "10cb3381-17c9-408b-be01-d5ac61f4cf92",
+      "name": "OpenAI Chat Model1"
+    },
+    {
+      "parameters": {
+        "agent": "conversationalAgent",
+        "promptType": "define",
+        "text": "=Nome do Grupo ou Identificação:{{ $('Map Infos Iniciais').item.json['nome do grupo'] }}\nData/Hora Agora: {{ $now.format('yyyy-MM-dd TT') }}\n\nResumo: {{ $json.response.text }}",
+        "options": {
+          "systemMessage": "=Você é um assistente virtual especializado em fazer resumos de conversas em grupos de WhatsApp. Seu estilo é descontraído, engraçado e um pouco irreverente, mas sempre claro, objetivo e sucinto. Seu objetivo é transformar o caos das mensagens em resumos organizados e fáceis de entender. \n\nContexto: O grupo em questão é de um ginásio de Cheerleading chamado Arkhaios All-Stars\n\nPara cada resumo:\n\nDestaque os momentos mais importantes da conversa, dando prioridade ao que for relevante ou engraçado.\nUse emojis estrategicamente para dar um toque visual divertido e ilustrar os tópicos.\nOrganize o conteúdo em tópicos claros e estruturados por ordem cronológica ou temática.\nConclua com um resumo geral bem conciso, destacando o clima geral do papo.\nFormato esperado do resumo:\n\n📝 Resumo do Dia no Grupo {{ $('Map Infos Iniciais').item.json['nome do grupo'] }}\n\n📌 Tópico 1: TÍTULO_CURTO\nResumo: Resumo do que rolou neste tópico, com detalhes importantes e emojis\n\n⭐ Tópico 2: TÍTULO_CURTO\nResumo: Outro tópico explicado, com uma pegada descontraída e engraçada\n\n🎉 Resumo Final\nUm parágrafo curto sobre o clima geral da conversa, incluindo piadas internas ou momentos marcantes.\n\nNão existe limite de tópicos, adicione tudo que possa ser importante.\nLembre-se: seja irreverente, mas não ofensivo. Seu papel é transformar as mensagens em algo que todos no grupo curtam ler, seja informativo ou divertido!"
+        }
+      },
+      "id": "3b88aee5-64e7-4fc7-84c4-896d44a27b94",
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        1980,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        2080,
+        800
+      ],
+      "id": "aee3289b-2ea6-46bb-85c5-41e017ce802f",
+      "name": "OpenAI Chat Model3"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 10
+            }
+          ]
+        }
+      },
+      "id": "9255e729-6bcb-4c10-ac8b-0185bc5c2ad6",
+      "name": "1x Dia as 10",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        40,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "content": "```\n███▄▄▄▄    ▄█  ███▄▄▄▄        ▄█    ▄████████ \n███▀▀▀██▄ ███  ███▀▀▀██▄     ███   ███    ███ \n███   ███ ███▌ ███   ███     ███   ███    ███ \n███   ███ ███▌ ███   ███     ███   ███    ███ \n███   ███ ███▌ ███   ███     ███ ▀███████████ \n███   ███ ███  ███   ███     ███   ███    ███ \n███   ███ ███  ███   ███     ███   ███    ███ \n ▀█   █▀  █▀    ▀█   █▀  █▄ ▄███   ███    █▀  \n                         ▀▀▀▀▀▀               \n```",
+        "height": 200,
+        "width": 520,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        640,
+        160
+      ],
+      "id": "dd920ac6-806c-4ac6-996b-8fd9c05a5940",
+      "name": "Sticky Note5"
+    },
+    {
+      "parameters": {
+        "content": "### Retorna todas as mensagens do grupo",
+        "height": 280,
+        "width": 220,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        460,
+        460
+      ],
+      "id": "173b81a2-705d-4bfe-a508-d630785e14c3",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "### Filtra mensagens \n- Apenas Texto\n- Apenas mensagens enviadas nas ultimas 24 horas",
+        "height": 280,
+        "width": 400,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        700,
+        460
+      ],
+      "id": "2a8d5a85-e50d-4701-ae0f-b6fdb2e12d33",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "content": "### Agrega mensagens em um mesmo JSON",
+        "height": 240,
+        "width": 400,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1120,
+        500
+      ],
+      "id": "7464c82b-fbc6-489a-9a9a-f8ec39ac2e9e",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "content": "### Resumo inicial das mensagens",
+        "height": 240,
+        "width": 360,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1540,
+        500
+      ],
+      "id": "177969d5-3196-45a2-b59d-5f30dc6defb3",
+      "name": "Sticky Note6"
+    },
+    {
+      "parameters": {
+        "content": "### Agente de IA interpreta resumo",
+        "height": 240,
+        "width": 360,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1920,
+        500
+      ],
+      "id": "f9512d4d-3dd8-4a45-a092-7746118896c7",
+      "name": "Sticky Note7"
+    },
+    {
+      "parameters": {
+        "content": "### Formata e envia resumo no grupo",
+        "height": 240,
+        "width": 360,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2300,
+        500
+      ],
+      "id": "94b6e802-458c-4095-86ba-0ca33ef8c409",
+      "name": "Sticky Note8"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-06-14T14:35:30.743Z",
+      "updatedAt": "2025-06-14T14:35:30.743Z",
+      "id": "f7Ttu7FQN3EvRKX9",
+      "name": "🥷🏼 Ninja Automações"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-06-15T14:56:05.503Z",
+  "versionId": "0ed6a251-9fbf-4a30-aa30-148ead4c10fa"
+}
