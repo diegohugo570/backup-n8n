@@ -1,0 +1,1312 @@
+{
+  "active": false,
+  "connections": {
+    "Responder comentário": {
+      "main": [
+        [
+          {
+            "node": "Enviar Copy com botões na DM2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook - Challenge": {
+      "main": [
+        [
+          {
+            "node": "Resposta - Challenge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Variáveis": {
+      "main": [
+        [
+          {
+            "node": "Execution Data1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook - Follow-Up": {
+      "main": [
+        [
+          {
+            "node": "Variáveis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filtro Mensagem": {
+      "main": [
+        [
+          {
+            "node": "Filtro - FollowUp",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Remover From Me",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filtro - FollowUp": {
+      "main": [
+        [
+          {
+            "node": "Filtro Feed or AD",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filtro Feed or AD": {
+      "main": [
+        [
+          {
+            "node": "Responder comentário",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Remover From Me": {
+      "main": [
+        [
+          {
+            "node": "Get Last AI Messages",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Filtra ADS",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "Execution Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Set Last AI Message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Enviar DM": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "Enviar DM",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis Chat Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "OpenAI",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execution Data": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Buffer": {
+      "main": [
+        [
+          {
+            "node": "Wait2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Buffer Messages": {
+      "main": [
+        [
+          {
+            "node": "If no new messages",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If no new messages": {
+      "main": [
+        [
+          {
+            "node": "Clear Buffer",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait2": {
+      "main": [
+        [
+          {
+            "node": "Get Buffer Messages",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Clear Buffer": {
+      "main": [
+        [
+          {
+            "node": "OpenAI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filtra ADS": {
+      "main": [
+        [
+          {
+            "node": "Get Block Chat Id",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Deduplica ADS",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Deduplica ADS": {
+      "main": [
+        [
+          {
+            "node": "Get Block Chat Id",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Block Chat Id": {
+      "main": [
+        [
+          {
+            "node": "Switch Block",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If Last Message =/= AI Message": {
+      "main": [
+        [
+          {
+            "node": "Block AI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Block AI": {
+      "main": [
+        [
+          {
+            "node": "Clear AI Messages",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch Block": {
+      "main": [
+        [
+          {
+            "node": "Buffer",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execution Data1": {
+      "main": [
+        [
+          {
+            "node": "Filtro Mensagem",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Last AI Message": {
+      "main": [
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Last AI Messages": {
+      "main": [
+        [
+          {
+            "node": "If Last Message =/= AI Message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-06-15T14:46:37.131Z",
+  "id": "Kp0zPkeJR044RRRP",
+  "isArchived": false,
+  "meta": null,
+  "name": "SDR Instagram",
+  "nodes": [
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ $json.query['hub.challenge'] }}",
+        "options": {}
+      },
+      "id": "8839b3c9-8144-4756-8dad-01fcab46dda9",
+      "name": "Resposta - Challenge",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        220,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://graph.instagram.com/v21.0/{{ $('Webhook - Follow-Up').item.json.body.entry[0].changes[0].value.id }}/replies",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Variáveis').item.json['Token de acesso'] }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "message",
+              "value": "=🥷🏼🔥 Código recebido {{ $('Webhook - Follow-Up').item.json.body.entry[0].changes[0].value.from.username }}! o ninja já te entregou a missão no direct. 🥷⚡"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5ba68ceb-5c71-46d4-bf6c-27c405ebd2c4",
+      "name": "Responder comentário",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1740,
+        180
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "path": "ninja-follow-up",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "42566ff9-03a2-46ee-a66b-8fc5a2b5c899",
+      "name": "Webhook - Challenge",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "6761f957-d6b3-4b12-88fc-8619b26eea03"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "15163d06-085b-4775-b8e5-514bc20162cb",
+              "name": "Token de acesso",
+              "value": "",
+              "type": "string"
+            },
+            {
+              "id": "a40337ff-20f8-4057-aa4a-626d09c6046f",
+              "name": "Id do Instagram",
+              "value": "",
+              "type": "string"
+            },
+            {
+              "id": "22f6820c-81c2-4cb4-8160-3bc4bbf1f466",
+              "name": "baseUrl",
+              "value": "",
+              "type": "string"
+            },
+            {
+              "id": "f609d7fb-a996-431a-acc7-a0e90cf23b07",
+              "name": "apikey",
+              "value": "",
+              "type": "string"
+            },
+            {
+              "id": "5c56ace6-a6ed-4534-9984-58f7ca54bec3",
+              "name": "message",
+              "value": "={{ $('Webhook - Follow-Up').item.json.body.entry[0].messaging[0].message?.text || $('Webhook - Follow-Up').item.json.body.entry[0].messaging[0].postback?.payload || \"auto\"}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "1aa16811-8d20-4c8a-b889-f6289740a473",
+      "name": "Variáveis",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        240,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "ninja-follow-up",
+        "options": {}
+      },
+      "id": "2a1ae821-1ac9-46fa-a451-afb46ed5dbb1",
+      "name": "Webhook - Follow-Up",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -40,
+        240
+      ],
+      "webhookId": "6761f957-d6b3-4b12-88fc-8619b26eea03"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": false,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "80c2244b-aa39-44f8-b4a0-e4c603988ae0",
+              "leftValue": "={{ $('Webhook - Follow-Up').item.json.body.entry[0].changes[0].field }}",
+              "rightValue": "comments",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {
+          "ignoreCase": true
+        }
+      },
+      "id": "05b8ffe1-7c16-44c9-a2fc-75e135e693a6",
+      "name": "Filtro Mensagem",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        740,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": false,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "2bb98bd6-d96e-434f-8352-b1aedc2b08d4",
+              "leftValue": "={{ $('Webhook - Follow-Up').item.json.body.entry[0].changes[0].value.from.id }}",
+              "rightValue": "17841429168809278",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {
+          "ignoreCase": true
+        }
+      },
+      "id": "cab4abc3-2e42-4069-91e6-cdcae9cdc4ea",
+      "name": "Filtro - FollowUp",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1120,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "2c19fe5e-ea9f-456b-97fe-4be582ead4f0",
+              "leftValue": "={{ $('Webhook - Follow-Up').item.json.body.entry[0].changes[0].value.media.media_product_type }}",
+              "rightValue": "FEED",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            },
+            {
+              "id": "161bba8f-e682-4ba9-8b0a-27bda76df1eb",
+              "leftValue": "={{ $('Webhook - Follow-Up').item.json.body.entry[0].changes[0].value.media.media_product_type }}",
+              "rightValue": "AD",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1420,
+        200
+      ],
+      "id": "69b36aff-728f-4785-9766-5ec608ac76bb",
+      "name": "Filtro Feed or AD"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://graph.instagram.com/v22.0/{{ $('Webhook - Follow-Up').item.json.body.entry[0].id }}/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Variáveis').item.json['Token de acesso'] }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"recipient\": {\n    \"id\": \"{{ $('Webhook - Follow-Up').item.json.body.entry[0].messaging[0].sender.id }}\"\n  },\n  \"message\": {\"text\": \"{{ $json.sentence }}\"}}\n",
+        "options": {}
+      },
+      "id": "dc01e519-d3d9-4a79-af04-038dfa27f6a6",
+      "name": "Enviar DM",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4800,
+        880
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "7883d2e9-3b4d-4fad-a1b9-0a7fb3187911",
+              "leftValue": "={{ $('Webhook - Follow-Up').item.json.body.entry[0].messaging[0].message.is_echo }}",
+              "rightValue": "=true",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        740,
+        500
+      ],
+      "id": "014f99a5-c0b5-4435-8145-e169de81f454",
+      "name": "Remover From Me"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Retrieve text input from the previous node\nconst text = $input.first().json.output;\n\n// Check if text exists and is a string\nif (!text || typeof text !== 'string') {\n  throw new Error(\"Invalid input: Expected a string in $input.first().json.output\");\n}\n\n// Clean text: Remove quotes but keep structure intact\nlet cleanedText = text.replace(/[\"']/g, '');\n\n// Replace all occurrences of **text** with *text*\ncleanedText = cleanedText.replace(/\\*\\*(.*?)\\*\\*/g, '*$1*');\n\n// Split strictly on newlines (\\n or \\r\\n)\nconst sentences = cleanedText.split(/\\r?\\n/).map(line => line.trim()).filter(line => line);\n\n// Format the output as an array of objects\nreturn sentences.map(sentence => ({ sentence }));\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3500,
+        860
+      ],
+      "id": "ad7f01eb-2e10-41e7-9035-a9509a3db6be",
+      "name": "Code1",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        4100,
+        860
+      ],
+      "id": "200a338f-0b3e-45ee-a09f-4d8fb08af641",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "amount": "={{ Math.floor(Math.random() * 3) + 1 }}"
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        4580,
+        880
+      ],
+      "id": "c1fb2919-5292-4c0d-bae3-a5bd1f4bbe70",
+      "name": "Wait1",
+      "webhookId": "8499bde8-9bd0-4c2b-8cae-692ffee6eaa2"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://graph.instagram.com/v21.0/{{ $('Webhook - Follow-Up').item.json.body.entry[0].id }}/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Variáveis').item.json['Token de acesso'] }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"recipient\": {\n    \"comment_id\": \"{{ $('Webhook - Follow-Up').item.json.body.entry[0].changes[0].value.id }}\"\n  },\n  \"message\": {\n    \"attachment\": {\n      \"type\": \"template\",\n      \"payload\": {\n        \"template_type\": \"button\",\n         \"text\": \"🥷 Missão recebida. Agora é com você.\\n\\nO caminho do ninja é simples:\\n\\nVocê aprende hoje, configura e começa a vender no piloto automático em poucos dias.\\n\\nSem equipe. Sem ferramentas caras. Sem complicação.\",\n        \"buttons\": [\n          {\n            \"type\": \"web_url\",\n            \"url\": \"https://pay.cakto.com.br/946b5ss\",\n            \"title\": \"🔥 Quero acessar agora!\"\n          },\n          {\n            \"type\": \"postback\",\n            \"title\": \"🧐 Quero saber mais.\",\n            \"payload\": \"Olá, gostaria de saber mais sobre o curso.\"\n          }\n        ]\n      }\n    }\n  }\n}\n",
+        "options": {}
+      },
+      "id": "98d6f14b-e80c-4145-a9d2-08fcd14f9bdb",
+      "name": "Enviar Copy com botões na DM2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2040,
+        180
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "assistant",
+        "assistantId": {
+          "__rl": true,
+          "value": "asst_uZPN0LWTGmivVO51cEhuAHUa",
+          "mode": "list",
+          "cachedResultName": "NinjaBot"
+        },
+        "prompt": "define",
+        "text": "={{ $('Variáveis').item.json.message }}",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        3060,
+        860
+      ],
+      "id": "ea633468-0960-4d54-9a21-1d6a03d8bba6",
+      "name": "OpenAI"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('Webhook - Follow-Up').item.json.body.entry[0].messaging[0].sender.id }}_dm_v3",
+        "contextWindowLength": 500
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
+      "typeVersion": 1.4,
+      "position": [
+        3240,
+        1060
+      ],
+      "id": "4965566c-e6eb-43f5-a32d-81928307c167",
+      "name": "Redis Chat Memory"
+    },
+    {
+      "parameters": {
+        "dataToSave": {
+          "values": [
+            {
+              "key": "type",
+              "value": "Message"
+            },
+            {
+              "key": "sender",
+              "value": "={{ $('Webhook - Follow-Up').item.json.body.entry[0].messaging[0].sender.id }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executionData",
+      "typeVersion": 1,
+      "position": [
+        3820,
+        860
+      ],
+      "id": "5b4d5a30-bf96-4938-902e-50240385fe6b",
+      "name": "Execution Data"
+    },
+    {
+      "parameters": {
+        "operation": "push",
+        "list": "={{ $('Webhook - Follow-Up').item.json.body.entry[0].messaging[0].sender.id }}_debounce",
+        "messageData": "={{ $('Variáveis').item.json.message }}",
+        "tail": true
+      },
+      "id": "ea690b25-88f8-4ca2-a03b-ae9cffac8568",
+      "name": "Buffer",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1860,
+        920
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "mensagem",
+        "key": "={{ $('Webhook - Follow-Up').item.json.body.entry[0].messaging[0].sender.id }}_debounce",
+        "options": {}
+      },
+      "id": "493d00a5-44b8-4620-869e-31334a4d2ec8",
+      "name": "Get Buffer Messages",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        2260,
+        920
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "9e9b4155-e399-4936-a5db-2d79c8cb871f",
+              "leftValue": "={{ $json.mensagem.last() }}",
+              "rightValue": "={{ $('Webhook - Follow-Up').item.json.body.entry[0].messaging[0].message?.text || $('Webhook - Follow-Up').item.json.body.entry[0].messaging[0].postback?.payload || \"auto\"}}",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "fd54ab35-2206-495c-bcb2-f1ce7db59625",
+      "name": "If no new messages",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        2480,
+        920
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "={{ $('Webhook - Follow-Up').item.json.body.entry[0].messaging[0].sender.id }}_debounce"
+      },
+      "id": "92b39336-81f2-43bb-a654-556873eedc69",
+      "name": "Clear Buffer",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        2760,
+        900
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 3
+      },
+      "id": "a9e64126-d892-4a21-a36f-be0ec6bd099f",
+      "name": "Wait2",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2060,
+        920
+      ],
+      "webhookId": "750464c1-5a4c-4c90-8c9d-2142a312a177"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "961c14ec-ffce-4524-b909-ceb67099e20f",
+              "leftValue": "={{ $('Webhook - Follow-Up').item.json.body.entry[0].messaging[0].message.referral.source }}",
+              "rightValue": "ADS",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            },
+            {
+              "id": "ae056e3d-ace2-4ff8-8db1-9936a5858d47",
+              "leftValue": "={{ $('Webhook - Follow-Up').item.json.body.entry[0].messaging[0].message.attachments[0].type }}",
+              "rightValue": "=share",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        740,
+        760
+      ],
+      "id": "c2a3f496-b766-404c-8cc8-95a573de7e5c",
+      "name": "Filtra ADS"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "f92174e8-fd35-4c9e-95c7-378618226cf4",
+              "leftValue": "={{ $('Webhook - Follow-Up').item.json.body.entry[0].messaging[0].message.referral.type }}",
+              "rightValue": "OPEN_THREAD",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            },
+            {
+              "id": "725b5961-5f9a-466f-ad23-8ddac4706d39",
+              "leftValue": "={{ $('Webhook - Follow-Up').item.json.body.entry[0].messaging[0].message.text }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        740,
+        1000
+      ],
+      "id": "b4244d4d-70f4-419d-980c-7de3d2d889a8",
+      "name": "Deduplica ADS"
+    },
+    {
+      "parameters": {
+        "content": "## Debounce\nConcatena mensagens quebradas",
+        "height": 380,
+        "width": 1120,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1820,
+        780
+      ],
+      "id": "9767dc4e-6319-4891-88bb-410cc40958cc",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "## Responde Comentário + Follow-up na DM\n",
+        "height": 320,
+        "width": 1340,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1020,
+        80
+      ],
+      "id": "f1f60adf-165a-4219-96c5-8fed07ecc11c",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "# Split\n### Quebra mensagem em mensagens menores\n",
+        "height": 340,
+        "width": 220,
+        "color": 2
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        3440,
+        680
+      ],
+      "id": "8305d5ad-33ac-453d-87db-68ffc74b4e9d",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "# Loop\n### Entrega as mensagens em ordem, com um intervalo aleatório entre elas.\n",
+        "height": 400,
+        "width": 1040
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        4000,
+        720
+      ],
+      "id": "04cfccbe-7cf0-47a5-b258-3eb676abccff",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "content": "# Tags\n### Cria tags para pesquisa na aba Executions",
+        "height": 340,
+        "width": 220,
+        "color": 2
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        3760,
+        700
+      ],
+      "id": "4567f5d6-0657-4676-98f7-a13474b9c31d",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "content": "# SDR Ninja\n### Quebra Objeções e vende o produto",
+        "height": 520,
+        "width": 400,
+        "color": 2
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2980,
+        660
+      ],
+      "id": "c86310a6-4963-4c74-a342-27e1f112aaad",
+      "name": "Sticky Note5"
+    },
+    {
+      "parameters": {
+        "content": "# Filtros\n## Remove duplicatas e mensagens do próprio robô\n",
+        "height": 1120,
+        "width": 280,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        660,
+        60
+      ],
+      "id": "b5a8bab2-a21b-419f-a664-e3665196e5c5",
+      "name": "Sticky Note6"
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "={{ $('Webhook - Follow-Up').item.json.body.entry[0].messaging[0].recipient.id }}_block",
+        "value": "true",
+        "keyType": "string",
+        "expire": true,
+        "ttl": 900
+      },
+      "id": "008fff57-165e-4610-b09a-fa031de079c8",
+      "name": "Block AI",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1520,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "block",
+        "key": "={{ $('Webhook - Follow-Up').item.json.body.entry[0].messaging[0].sender.id }}_block",
+        "options": {}
+      },
+      "id": "9fa4ae2e-5e72-4799-bb49-37ea63cc753e",
+      "name": "Get Block Chat Id",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1140,
+        880
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.block }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "empty",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "IA PODE RESPONDER"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "3ef0e01c-cc14-4663-bb4d-2905b350c3ab",
+                    "leftValue": "={{ $json.block }}",
+                    "rightValue": "true",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "IA NAO PODE RESPONDER"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "cd6a21bb-1af7-4450-86da-5b957377f4c3",
+      "name": "Switch Block",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        1400,
+        880
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# Intervenção Humana \n### Se a mensagem for manual, bloqueia mensagens da automação por TTL \nTTL = Segundos\n60 = 1 Min\n900 = 15 Min",
+        "height": 720,
+        "width": 779
+      },
+      "id": "77436802-b932-45e8-8569-10556b37d9d1",
+      "name": "Sticky Note7",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1020,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "d63f6463-8e67-41ef-85f7-7f87f5917d1e",
+              "leftValue": "= {{ $json.output }}",
+              "rightValue": "={{ $('Webhook - Follow-Up').item.json.body.entry[0].messaging[0].message?.text || $('Webhook - Follow-Up').item.json.body.entry[0].messaging[0].postback?.payload || \"auto\"}}",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1320,
+        680
+      ],
+      "id": "33393364-7074-44ce-ad79-aded6b388b7d",
+      "name": "If Last Message =/= AI Message"
+    },
+    {
+      "parameters": {
+        "dataToSave": {
+          "values": [
+            {
+              "key": "fonte",
+              "value": "={{ $json.body?.entry?.[0]?.changes?.[0]?.value?.media?.media_product_type || \"DM\" }}"
+            },
+            {
+              "key": "message",
+              "value": "={{ $json.message }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executionData",
+      "typeVersion": 1,
+      "position": [
+        440,
+        240
+      ],
+      "id": "da5ffcfd-27d0-4d7b-8838-9013435e0e00",
+      "name": "Execution Data1"
+    },
+    {
+      "parameters": {
+        "operation": "push",
+        "list": "={{ $('Webhook - Follow-Up').item.json.body.entry[0].messaging[0].sender.id }}_ai_messages_v2",
+        "messageData": "={{ $json.sentence }}"
+      },
+      "id": "3061ea14-90d0-4fc2-8afd-b123744d705f",
+      "name": "Set Last AI Message",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        4380,
+        880
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "output",
+        "key": "={{ $('Webhook - Follow-Up').item.json.body.entry[0].messaging[0].recipient.id }}_ai_messages_v2",
+        "options": {}
+      },
+      "id": "e864c415-2be6-45dc-80d9-2ec3f3ced05d",
+      "name": "Get Last AI Messages",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1080,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "={{ $('Webhook - Follow-Up').item.json.body.entry[0].messaging[0].recipient.id }}_ai_messages_v2"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1680,
+        560
+      ],
+      "id": "0385b63b-fe85-4726-a545-e3fb4ce87e19",
+      "name": "Clear AI Messages"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-06-14T14:35:30.743Z",
+      "updatedAt": "2025-06-14T14:35:30.743Z",
+      "id": "f7Ttu7FQN3EvRKX9",
+      "name": "🥷🏼 Ninja Automações"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-06-15T14:46:37.131Z",
+  "versionId": "97c8441a-f164-4a0b-add2-07816861294b"
+}
