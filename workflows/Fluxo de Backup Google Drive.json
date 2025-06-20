@@ -60,7 +60,9 @@
   "createdAt": "2025-06-12T21:55:38.163Z",
   "id": "23PBUWPJl4RwXVwJ",
   "isArchived": false,
-  "meta": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
   "name": "Fluxo de Backup Google Drive",
   "nodes": [
     {
@@ -99,15 +101,15 @@
         "name": "={{ $now.format('dd/MM/yyyy HH:mm') }}",
         "driveId": {
           "__rl": true,
+          "value": "My Drive",
           "mode": "list",
-          "value": "My Drive"
+          "cachedResultName": "My Drive",
+          "cachedResultUrl": "https://drive.google.com/drive/my-drive"
         },
         "folderId": {
           "__rl": true,
-          "value": "1bg8cvEIFGgALMMf-yhPLDMwoclMd8RsJ",
-          "mode": "list",
-          "cachedResultName": "Backups N8N",
-          "cachedResultUrl": "https://drive.google.com/drive/folders/1bg8cvEIFGgALMMf-yhPLDMwoclMd8RsJ"
+          "value": "https://drive.google.com/drive/folders/1TgAJoFKHIbn7tw8-R2NYNnTIsnsXRj7g",
+          "mode": "url"
         },
         "options": {}
       },
@@ -118,7 +120,14 @@
         100
       ],
       "id": "8c477f39-ebb0-4bb7-8fb8-ed84ad5bc39c",
-      "name": "Google Drive"
+      "name": "Google Drive",
+      "executeOnce": false,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "6KD5I6pcyhCwphz7",
+          "name": "Google Drive account"
+        }
+      }
     },
     {
       "parameters": {
@@ -132,7 +141,13 @@
         100
       ],
       "id": "b339d6d2-daaa-437c-80cb-6ffd7bb86ded",
-      "name": "n8n"
+      "name": "n8n",
+      "credentials": {
+        "n8nApi": {
+          "id": "TcexyNIh3ZiaZTis",
+          "name": "n8n account"
+        }
+      }
     },
     {
       "parameters": {
@@ -173,7 +188,13 @@
         100
       ],
       "id": "75b12ce5-d9dd-4cb0-8076-2097efa16403",
-      "name": "Google Drive1"
+      "name": "Google Drive1",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "6KD5I6pcyhCwphz7",
+          "name": "Google Drive account"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -183,6 +204,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-06-12T21:55:38.163Z",
-  "versionId": "9cb6335f-0dc7-4953-9b89-00a0f3ed6967"
+  "updatedAt": "2025-06-20T15:34:00.248Z",
+  "versionId": "a9c87a31-08d6-45a5-8f32-52d4998b05cd"
 }
