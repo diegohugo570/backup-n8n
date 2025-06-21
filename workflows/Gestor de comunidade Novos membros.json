@@ -1,0 +1,294 @@
+{
+  "active": false,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "Supabase",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Boas vindas",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "excluir membro",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-06-21T13:34:35.826Z",
+  "id": "TNNP5UlQTW2U8YqK",
+  "isArchived": false,
+  "meta": null,
+  "name": "Gestor de comunidade Novos membros",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "11f2a152-1e0a-40ad-9942-7fea95126f1e/group-participants-update",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -1140,
+        120
+      ],
+      "id": "186b4eff-d2d4-4b84-9fe8-bcb3a8457357",
+      "name": "Webhook",
+      "webhookId": "11f2a152-1e0a-40ad-9942-7fea95126f1e"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "7d7acd2a-f87d-4623-8aa9-bdbd8b4484f4",
+              "leftValue": "={{ $json.body.data.action }}",
+              "rightValue": "add",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            },
+            {
+              "id": "edfd21f4-ee4c-4b8f-bd7c-c5b54434c534",
+              "leftValue": "={{ $json.body.data.id }}",
+              "rightValue": "120363399514150691@g.us",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        -860,
+        120
+      ],
+      "id": "7691974f-81c4-4658-b350-af3470c6000a",
+      "name": "Filter"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "membros",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "numero",
+              "keyValue": "={{ $json.body.data.participants[0].split('@')[0] }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -520,
+        120
+      ],
+      "id": "21a8040e-c6d5-47f0-b0ba-7537cf9121f9",
+      "name": "Supabase",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "7b0e9f17-674c-49ed-af36-4cf1c2a9073b",
+              "leftValue": "={{ $json.id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -260,
+        120
+      ],
+      "id": "1f333a69-636b-42d7-8170-89aca0849afb",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://evolutionapi.dominio.com/group/updateParticipant/nome instancia/?groupJid={{ $('Webhook').item.json.body.data.id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "chave api"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"action\": \"remove\",\n  \"participants\": [\n    \"{{ $('Webhook').item.json.body.data.participants[0].split('@')[0] }}\"\n  ]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        0,
+        240
+      ],
+      "id": "6a8c66ed-e2d8-4da7-89ae-3bfafa12c4c1",
+      "name": "excluir membro"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://evolutionapi.dominio.com/message/sendText/instancia",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "chave api"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $('Webhook').item.json.body.data.participants[0].split('@')[0] }}"
+            },
+            {
+              "name": "text",
+              "value": "=Olá! Seja muito bem vindo à comunidade da Dascia Academy.\n\nFique a vontade para enviar suas dúvidas e interagir com os membros.\nMensagens teste da aula ao vivo."
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "850c3847-2aec-4a49-b3f5-784746a9e656",
+      "name": "Boas vindas"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8neditor.lucasevange.com",
+            "user-agent": "axios/1.7.9",
+            "content-length": "448",
+            "accept-encoding": "gzip, compress, deflate, br",
+            "content-type": "application/json",
+            "x-forwarded-for": "172.18.0.1",
+            "x-forwarded-host": "n8neditor.lucasevange.com",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "a264875bb76b",
+            "x-real-ip": "172.18.0.1"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "event": "group-participants.update",
+            "instance": "lucas",
+            "data": {
+              "id": "120363399514150691@g.us",
+              "author": "",
+              "participants": [
+                "556792041029@s.whatsapp.net"
+              ],
+              "action": "add"
+            },
+            "destination": "https://n8neditor.lucasevange.com/webhook-test/11f2a152-1e0a-40ad-9942-7fea95126f1e",
+            "date_time": "2025-06-14T09:37:54.288Z",
+            "sender": "5511980203775@s.whatsapp.net",
+            "server_url": "https://evolution.firstservidor.shop",
+            "apikey": "283ADC8AC21C-4507-BC79-C5BE0984BEC4"
+          },
+          "webhookUrl": "https://n8nwebhook.lucasevange.com/webhook-test/11f2a152-1e0a-40ad-9942-7fea95126f1e/group-participants-update",
+          "executionMode": "test"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-06-21T13:34:35.826Z",
+  "versionId": "804ca483-f908-4cf5-992b-efa41a588264"
+}
