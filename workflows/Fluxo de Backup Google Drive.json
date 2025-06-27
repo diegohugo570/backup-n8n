@@ -5,7 +5,7 @@
       "main": [
         [
           {
-            "node": "Google Drive",
+            "node": "Create folder",
             "type": "main",
             "index": 0
           }
@@ -16,18 +16,7 @@
       "main": [
         [
           {
-            "node": "Google Drive",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Google Drive": {
-      "main": [
-        [
-          {
-            "node": "n8n",
+            "node": "Create folder",
             "type": "main",
             "index": 0
           }
@@ -50,6 +39,17 @@
         [
           {
             "node": "Google Drive1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create folder": {
+      "main": [
+        [
+          {
+            "node": "n8n",
             "type": "main",
             "index": 0
           }
@@ -94,40 +94,6 @@
       ],
       "id": "2aaa884e-fa78-4abd-a009-95d594190c2c",
       "name": "Schedule Trigger"
-    },
-    {
-      "parameters": {
-        "resource": "folder",
-        "name": "={{ $now.format('dd/MM/yyyy HH:mm') }}",
-        "driveId": {
-          "__rl": true,
-          "value": "My Drive",
-          "mode": "list",
-          "cachedResultName": "My Drive",
-          "cachedResultUrl": "https://drive.google.com/drive/my-drive"
-        },
-        "folderId": {
-          "__rl": true,
-          "value": "https://drive.google.com/drive/folders/1TgAJoFKHIbn7tw8-R2NYNnTIsnsXRj7g",
-          "mode": "url"
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.googleDrive",
-      "typeVersion": 3,
-      "position": [
-        300,
-        100
-      ],
-      "id": "8c477f39-ebb0-4bb7-8fb8-ed84ad5bc39c",
-      "name": "Google Drive",
-      "executeOnce": false,
-      "credentials": {
-        "googleDriveOAuth2Api": {
-          "id": "6KD5I6pcyhCwphz7",
-          "name": "Google Drive account"
-        }
-      }
     },
     {
       "parameters": {
@@ -176,7 +142,7 @@
         },
         "folderId": {
           "__rl": true,
-          "value": "={{ $('Google Drive').item.json.id }}",
+          "value": "={{ $('Create folder').item.json.id }}",
           "mode": "id"
         },
         "options": {}
@@ -195,6 +161,40 @@
           "name": "Google Drive account"
         }
       }
+    },
+    {
+      "parameters": {
+        "resource": "folder",
+        "name": "={{ $now.format('dd/MM/yyyy HH:mm') }}",
+        "driveId": {
+          "__rl": true,
+          "value": "My Drive",
+          "mode": "list",
+          "cachedResultName": "My Drive",
+          "cachedResultUrl": "https://drive.google.com/drive/my-drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "https://drive.google.com/drive/folders/1TgAJoFKHIbn7tw8-R2NYNnTIsnsXRj7g",
+          "mode": "url"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        300,
+        100
+      ],
+      "id": "8c477f39-ebb0-4bb7-8fb8-ed84ad5bc39c",
+      "name": "Create folder",
+      "executeOnce": false,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "6KD5I6pcyhCwphz7",
+          "name": "Google Drive account"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -204,6 +204,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-06-20T15:34:00.248Z",
-  "versionId": "a9c87a31-08d6-45a5-8f32-52d4998b05cd"
+  "updatedAt": "2025-06-27T12:53:37.179Z",
+  "versionId": "391b360e-7b47-4b6d-8a75-c0aa6fd9b94e"
 }
