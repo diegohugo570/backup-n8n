@@ -449,8 +449,8 @@
     },
     {
       "parameters": {
-        "databaseId": 230120,
-        "tableId": 547940,
+        "databaseId": 249851,
+        "tableId": 592265,
         "returnAll": true,
         "additionalOptions": {
           "filters": {
@@ -471,7 +471,13 @@
       ],
       "id": "899f9050-4010-4650-a4c6-8316399db40c",
       "name": "ConsultaCliente",
-      "alwaysOutputData": true
+      "alwaysOutputData": true,
+      "credentials": {
+        "baserowApi": {
+          "id": "5pptIKr5IorTFdpK",
+          "name": "Baserow account"
+        }
+      }
     },
     {
       "parameters": {
@@ -510,8 +516,8 @@
     {
       "parameters": {
         "operation": "create",
-        "databaseId": 230120,
-        "tableId": 547940,
+        "databaseId": 249851,
+        "tableId": 592265,
         "fieldsUi": {
           "fieldValues": [
             {
@@ -540,7 +546,13 @@
         240
       ],
       "id": "3e7de3f7-4286-40d5-a4f8-65438f6c355f",
-      "name": "CriaCliente"
+      "name": "CriaCliente",
+      "credentials": {
+        "baserowApi": {
+          "id": "5pptIKr5IorTFdpK",
+          "name": "Baserow account"
+        }
+      }
     },
     {
       "parameters": {
@@ -670,7 +682,13 @@
       "alwaysOutputData": false,
       "executeOnce": false,
       "retryOnFail": false,
-      "notesInFlow": false
+      "notesInFlow": false,
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "ks8wd3wgPtRtGBlJ",
+          "name": "Header Auth account"
+        }
+      }
     },
     {
       "parameters": {
@@ -694,7 +712,13 @@
       "alwaysOutputData": false,
       "executeOnce": false,
       "retryOnFail": false,
-      "notesInFlow": false
+      "notesInFlow": false,
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "ks8wd3wgPtRtGBlJ",
+          "name": "Header Auth account"
+        }
+      }
     },
     {
       "parameters": {
@@ -805,7 +829,13 @@
         120
       ],
       "id": "f2255854-1a66-48ad-9c9e-ad2bbd325d24",
-      "name": "ResgistraMsgFila"
+      "name": "ResgistraMsgFila",
+      "credentials": {
+        "redis": {
+          "id": "5HEvdXU1EKCkt8VU",
+          "name": "Redis account"
+        }
+      }
     },
     {
       "parameters": {
@@ -820,7 +850,13 @@
         120
       ],
       "id": "7996b4b1-1137-4748-bfff-59a225a6892c",
-      "name": "BuscaMensagem"
+      "name": "BuscaMensagem",
+      "credentials": {
+        "redis": {
+          "id": "5HEvdXU1EKCkt8VU",
+          "name": "Redis account"
+        }
+      }
     },
     {
       "parameters": {},
@@ -1139,6 +1175,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-06-29T13:40:28.572Z",
-  "versionId": "e7aa8d11-34d2-4df3-9b98-5e909abd4168"
+  "updatedAt": "2025-07-01T18:09:15.003Z",
+  "versionId": "6983d8cf-6550-41b0-be52-b897ede6ae06"
 }
