@@ -38,7 +38,7 @@
       "main": [
         [
           {
-            "node": "Google Drive1",
+            "node": "Upload file",
             "type": "main",
             "index": 0
           }
@@ -134,36 +134,6 @@
     },
     {
       "parameters": {
-        "name": "={{ $('n8n').item.json.name }}",
-        "driveId": {
-          "__rl": true,
-          "mode": "list",
-          "value": "My Drive"
-        },
-        "folderId": {
-          "__rl": true,
-          "value": "={{ $('Create folder').item.json.id }}",
-          "mode": "id"
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.googleDrive",
-      "typeVersion": 3,
-      "position": [
-        1060,
-        100
-      ],
-      "id": "75b12ce5-d9dd-4cb0-8076-2097efa16403",
-      "name": "Google Drive1",
-      "credentials": {
-        "googleDriveOAuth2Api": {
-          "id": "6KD5I6pcyhCwphz7",
-          "name": "Google Drive account"
-        }
-      }
-    },
-    {
-      "parameters": {
         "resource": "folder",
         "name": "={{ $now.format('dd/MM/yyyy HH:mm') }}",
         "driveId": {
@@ -195,6 +165,36 @@
           "name": "Google Drive account"
         }
       }
+    },
+    {
+      "parameters": {
+        "name": "={{ $('n8n').item.json.name }}",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "={{ $('Create folder').item.json.id }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        1060,
+        100
+      ],
+      "id": "75b12ce5-d9dd-4cb0-8076-2097efa16403",
+      "name": "Upload file",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "6KD5I6pcyhCwphz7",
+          "name": "Google Drive account"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -204,6 +204,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-06-27T12:53:37.179Z",
-  "versionId": "391b360e-7b47-4b6d-8a75-c0aa6fd9b94e"
+  "updatedAt": "2025-07-02T19:21:44.025Z",
+  "versionId": "4428bc84-068f-4a5a-ab4a-513f6e4edefe"
 }
