@@ -389,7 +389,7 @@
     },
     {
       "parameters": {
-        "content": "## BLOG POST - Agente gerador de conteúdo para BLOG - by Ric Neves",
+        "content": "## BLOG POST - Agente gerador de conteúdo para BLOG",
         "height": 860,
         "width": 2840
       },
@@ -410,6 +410,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-06-25T20:07:36.973Z",
-  "versionId": "ec2d73f7-5452-4b98-93dd-eb58acf59fd5"
+  "updatedAt": "2025-07-02T13:47:42.039Z",
+  "versionId": "5a702335-717b-4c23-87b1-3364fa6396b0"
 }
