@@ -1,0 +1,1369 @@
+{
+  "active": false,
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Text Classifier",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory1": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Text Classifier": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "AI Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent2",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory2": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent2",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI2": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Supabase Vector Store2",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model4": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent3",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory3": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent3",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "gera embeddings1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model5": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate2": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain1": {
+      "main": [
+        [
+          {
+            "node": "gera embeddings",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Auto-fixing Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Basic LLM Chain1",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Auto-fixing Output Parser",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model6": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain1",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "Auto-fixing Output Parser",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain2": {
+      "main": [
+        [
+          {
+            "node": "gera embeddings 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Auto-fixing Output Parser1": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Basic LLM Chain2",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser1": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Auto-fixing Output Parser1",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model7": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain2",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "Auto-fixing Output Parser1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model8": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Text Classifier",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase Vector Store2": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent2",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "gera embeddings": {
+      "main": [
+        [
+          {
+            "node": "busca no RAG",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "busca no RAG": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "gera embeddings 2": {
+      "main": [
+        [
+          {
+            "node": "Busca no RAG",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Busca no RAG": {
+      "main": [
+        [
+          {
+            "node": "Aggregate1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "gera embeddings1": {
+      "main": [
+        [
+          {
+            "node": "busca no RAG1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "busca no RAG1": {
+      "main": [
+        [
+          {
+            "node": "Aggregate2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "cars_infos": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent3",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-07-02T19:17:42.265Z",
+  "id": "PTVLeKvE07YMQJSW",
+  "isArchived": false,
+  "meta": null,
+  "name": "Aplicação de Self-Querying RAG no N8N",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        120,
+        3140
+      ],
+      "id": "963b345b-9008-4c7f-b5ea-b43f525c0de7",
+      "name": "When chat message received",
+      "webhookId": "7a632344-0a2d-424f-8533-3222fd10d5c3"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('When chat message received').item.json.chatInput }}",
+        "options": {
+          "systemMessage": "=You are a helpful assistant\n\n{{ $json.contexto }}"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.9,
+      "position": [
+        1500,
+        1900
+      ],
+      "id": "2d24777d-2530-4e03-9917-1026a7c43c71",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        1400,
+        2120
+      ],
+      "id": "364e472f-fce8-4eaa-8a4c-bb053ef613a7",
+      "name": "OpenAI Chat Model"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('When chat message received').item.json.sessionId }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        1580,
+        2120
+      ],
+      "id": "5c1bf7d5-5566-4184-8cb3-fcdf4c729ce2",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        1900
+      ],
+      "id": "57999cd7-8ec8-453c-bd22-323359678a35",
+      "name": "Aggregate"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "48e7dd48-d50c-4936-9c62-956135902bd8",
+              "name": "contexto",
+              "value": "=Filtros de ar disponiveis:\n{{ $json.data[0].content }}\n\n{{ $json.data[1].content }}\n\n{{ $json.data[2].content }}\n\n{{ $json.data[3].content }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1260,
+        1900
+      ],
+      "id": "d1751ece-6061-4ae4-8f1e-a87b8d382dc2",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('When chat message received').item.json.chatInput }}",
+        "options": {
+          "systemMessage": "=You are a helpful assistant\n\n{{ $json.contexto }}"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.9,
+      "position": [
+        2340,
+        3160
+      ],
+      "id": "8efbf244-4035-47cc-b403-ba36e0a3ae83",
+      "name": "AI Agent1"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        2240,
+        3360
+      ],
+      "id": "77cba12b-41c1-4400-9798-8a88cfbae7a8",
+      "name": "OpenAI Chat Model1"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('When chat message received').item.json.sessionId }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        2380,
+        3380
+      ],
+      "id": "ddd3d244-2c76-473b-a41f-5fce12913c03",
+      "name": "Simple Memory1"
+    },
+    {
+      "parameters": {
+        "inputText": "=Você é um assistente de autopeças. Seu trabalho é classificar a mensagem do usuário como TRUE ou FALSE para a pergunta:\n\n\"A mensagem contém informações suficientes para buscar no banco de dados RAG?\"\n\nConsidere que SÓ É NECESSÁRIO conter ao menos uma das seguintes informações:\n1. Qualquer nome de modelo de carro, mesmo que sem ano ou versão (exemplo: Civic, Corolla, Palio, Gol)\n2. O nome de qualquer marca de carro (exemplo: Honda, Toyota, Chevrolet)\n3. Litragem do carro (exemplo: 1.0, 2.0, 1.4)\n\n**Se a mensagem tiver qualquer uma dessas, retorne TRUE. Se não tiver, retorne FALSE.**\n\n### Exemplos:\n\nMensagem: \"Tem Civic Disponivel?\"  \nResposta: TRUE\n\nMensagem: \"Tem Civic?\"  \nResposta: TRUE\n\nMensagem: \"Quero um carro Honda.\"  \nResposta: TRUE\n\nMensagem: \"Tem carro 1.0 aí?\"  \nResposta: TRUE\n\nMensagem: \"Quais carros estão na promoção?\"  \nResposta: FALSE\n\nMensagem: \"Tem carro azul?\"  \nResposta: FALSE\n\nMensagem do usuário: {{ $json.chatInput }}\n",
+        "categories": {
+          "categories": [
+            {
+              "category": "true",
+              "description": "possui informações relevantes que permitam a busca no RAG"
+            },
+            {
+              "category": "false",
+              "description": "NÃO possui informações relevantes que permitam a busca no RAG"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.textClassifier",
+      "typeVersion": 1,
+      "position": [
+        340,
+        3140
+      ],
+      "id": "712553ab-bff0-4374-9d38-ccbcaba8fe74",
+      "name": "Text Classifier"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "You are a helpful assistant\n\nAlways use Supabase Vector Store2 for respond questions about cars and car parts"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.9,
+      "position": [
+        800,
+        140
+      ],
+      "id": "888f38dc-5a50-47f0-a2d6-64b170231a9d",
+      "name": "AI Agent2"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        480,
+        340
+      ],
+      "id": "063dd200-b605-4d89-9f82-c315496f7190",
+      "name": "OpenAI Chat Model2"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        660,
+        360
+      ],
+      "id": "74d33a89-fa6e-4cc8-8b7e-f0b4a7c2f5a1",
+      "name": "Simple Memory2"
+    },
+    {
+      "parameters": {
+        "mode": "retrieve-as-tool",
+        "toolName": "cars",
+        "toolDescription": "Use this tool for respond cars and car parts questions",
+        "tableName": {
+          "__rl": true,
+          "value": "documents",
+          "mode": "list",
+          "cachedResultName": "documents"
+        },
+        "options": {
+          "metadata": {
+            "metadataValues": [
+              {
+                "name": "categoria",
+                "value": "duvidas_produtos"
+              }
+            ]
+          }
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
+      "typeVersion": 1.1,
+      "position": [
+        860,
+        380
+      ],
+      "id": "90472ee9-68df-494f-8573-262727b8cfc8",
+      "name": "Supabase Vector Store2"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        760,
+        560
+      ],
+      "id": "fa9b6f82-8063-4e17-b569-80a2b7bb2973",
+      "name": "Embeddings OpenAI2"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "You are a helpful assistant\n\nAlways use cars_infos for respond questions about cars"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.9,
+      "position": [
+        360,
+        1000
+      ],
+      "id": "f8396b58-ea28-4195-ad95-464c0e22e2ff",
+      "name": "AI Agent3"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        240,
+        1160
+      ],
+      "id": "c2fad1a3-812f-4b1a-a2a9-4d2f70c5e247",
+      "name": "OpenAI Chat Model4"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        420,
+        1180
+      ],
+      "id": "6b35c300-ac8a-4512-8214-67efd0eda6f6",
+      "name": "Simple Memory3"
+    },
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "query"
+            },
+            {
+              "name": "modelo"
+            },
+            {
+              "name": "marca"
+            },
+            {
+              "name": "litragem",
+              "type": "any"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        840,
+        1000
+      ],
+      "id": "69f2251e-dfb6-40ca-8649-0b28264dfb9c",
+      "name": "When Executed by Another Workflow"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        1280,
+        1500
+      ],
+      "id": "6939c1cc-d179-4af2-9afc-033c96324c61",
+      "name": "OpenAI Chat Model5"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        840,
+        1300
+      ],
+      "id": "22e6c234-9ff5-42b3-b718-7592c0aca347",
+      "name": "Aggregate2"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "48e7dd48-d50c-4936-9c62-956135902bd8",
+              "name": "contexto",
+              "value": "=Responda a pergunta do usuário usando essas informações como contexto:\n\n{{ $json.data[0].document.pageContent }}\n-----\n{{ $json.data[1].document.pageContent }}\n-----\n{{ $json.data[2].document.pageContent }}\n-----\n{{ $json.data[3].document.pageContent }}\n",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1060,
+        1300
+      ],
+      "id": "2d7e46d9-3b67-4567-836f-045f1699789a",
+      "name": "Edit Fields2"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.contexto }}\n\nPergunta: {{ $('When Executed by Another Workflow').item.json.query }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.6,
+      "position": [
+        1280,
+        1300
+      ],
+      "id": "1dff70ac-5f64-42c8-a33b-814045520577",
+      "name": "Basic LLM Chain"
+    },
+    {
+      "parameters": {
+        "hasOutputParser": true,
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=Você é um assistente especialista em RAG, sua função é receber uma query do usuário e extrair dela os possiveis metadados para filtrar os chunks.\n\nOs possiveis filtros são:\nmarca (marca do carro)\nmodelo (modelo do carro)\nlitragem (2.0, 1.0, 1.6)\n\nNunca invente informações, se não tiver a informação para o filtro, retorne nulo. Você deve extrair apenas o que for possível da query do usuário, se ele não citar marca, modelo ou litragem, retorne vazio.\n\n# Exemplos de saída:\n\n\"Quero um Civic 1.0\"\n\n{\n\t\"marca\": \"Honda\",\n\t\"modelo\": \"Civic\",\n  \t\"litragem\": \"1.0\",\n}\n\n\"Quero um carro 2.0\"\n\n{\n\t\"marca\": \"\",\n\t\"modelo\": \"\",\n  \t\"litragem\": \"1.0\",\n}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.6,
+      "position": [
+        180,
+        1900
+      ],
+      "id": "b0083675-971c-40fd-a2a8-17bb20f7b724",
+      "name": "Basic LLM Chain1"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserAutofixing",
+      "typeVersion": 1,
+      "position": [
+        220,
+        2100
+      ],
+      "id": "fcd2c339-7b54-4261-90c2-a2ff8f756e20",
+      "name": "Auto-fixing Output Parser"
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n\t\"marca\": \"Honda\",\n\t\"modelo\": \"Civic\",\n  \t\"litragem\": \"1.0\"\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.2,
+      "position": [
+        260,
+        2280
+      ],
+      "id": "31a58532-2054-4bb2-b063-055522336e9a",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        100,
+        2180
+      ],
+      "id": "93b416f4-12c9-46e1-af79-6931a32874bf",
+      "name": "OpenAI Chat Model6"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        1820,
+        2780
+      ],
+      "id": "cf34064b-3d41-4150-80ff-901fc24505cc",
+      "name": "Aggregate1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "48e7dd48-d50c-4936-9c62-956135902bd8",
+              "name": "contexto",
+              "value": "=Filtros de ar disponiveis:\n{{ $json.data[0].content }}\n\n{{ $json.data[1].content }}\n\n{{ $json.data[2].content }}\n\n{{ $json.data[3].content }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2040,
+        2780
+      ],
+      "id": "52862d6e-2cf0-47ac-9cd1-97a11aa0f736",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "hasOutputParser": true,
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=Você é um assistente especialista em RAG, sua função é receber uma query do usuário e extrair dela os possiveis metadados para filtrar os chunks.\n\nOs possiveis filtros são:\nmarca (marca do carro)\nmodelo (modelo do carro)\nlitragem (2.0, 1.0, 1.6)\n\nNunca invente informações, se não tiver a informação para o filtro, retorne nulo. Você deve extrair apenas o que for possível da query do usuário, se ele não citar marca, modelo ou litragem, retorne vazio.\n\n# Exemplos de saída:\n\n\"Quero um Civic 1.0\"\n\n{\n\t\"marca\": \"Honda\",\n\t\"modelo\": \"Civic\",\n  \t\"litragem\": \"1.0\",\n}\n\n\"Quero um carro 2.0\"\n\n{\n\t\"marca\": \"\",\n\t\"modelo\": \"\",\n  \t\"litragem\": \"1.0\",\n}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.6,
+      "position": [
+        880,
+        2780
+      ],
+      "id": "3acd661d-17ef-4578-a2d4-e3a4e279e158",
+      "name": "Basic LLM Chain2"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserAutofixing",
+      "typeVersion": 1,
+      "position": [
+        1000,
+        2980
+      ],
+      "id": "e5a06541-562a-43f8-bf26-e45923f9384d",
+      "name": "Auto-fixing Output Parser1"
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n\t\"marca\": \"Honda\",\n\t\"modelo\": \"Civic\",\n  \t\"litragem\": \"1.0\"\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.2,
+      "position": [
+        1020,
+        3160
+      ],
+      "id": "bc48b09d-d81e-452b-ab02-2b0330a24222",
+      "name": "Structured Output Parser1"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        800,
+        3020
+      ],
+      "id": "2a034549-977b-44cb-b2c3-24b90ad17530",
+      "name": "OpenAI Chat Model7"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        240,
+        3320
+      ],
+      "id": "ace4e215-5107-46f5-8c6d-45c5d5076cd8",
+      "name": "OpenAI Chat Model8"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/embeddings",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer sua chave api"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "model",
+              "value": "text-embedding-3-small"
+            },
+            {
+              "name": "input",
+              "value": "={{ $('When chat message received').item.json.chatInput }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        560,
+        1900
+      ],
+      "id": "4ea12bb7-d395-4d44-b42c-d59c23336828",
+      "name": "gera embeddings"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://shgrozexmhmudptfrxrt.supabase.co/rest/v1/rpc/match_documents",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "sua chave api"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer sua chave api"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={ \n  \"match_count\": {{ 4 }},\n{{\n  (() => {\n    const marca = $('Basic LLM Chain1').item.json.output.marca;\n    const modelo = $('Basic LLM Chain1').item.json.output.modelo;\n    const litragem = $('Basic LLM Chain1').item.json.output.litragem;\n    const obj = {};\n    if (marca) obj.marca = marca;\n    if (modelo) obj.modelo = modelo;\n    if (litragem) obj.litragem = litragem;\n    // Só retorna se houver pelo menos um campo\n    if (Object.keys(obj).length === 0) return '';\n    return `\"filter\": ${JSON.stringify(obj)},`;\n  })()\n}}\n  \"query_embedding\": [{{ $json.data[0].embedding }}]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        800,
+        1900
+      ],
+      "id": "aac823b5-fbaa-446f-8096-57c34a39fc93",
+      "name": "busca no RAG"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/embeddings",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearersua chave api"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "model",
+              "value": "text-embedding-3-small"
+            },
+            {
+              "name": "input",
+              "value": "={{ $('When chat message received').item.json.chatInput }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1280,
+        2780
+      ],
+      "id": "1a5a6d99-d3ed-4bb3-b7f9-6ce1d2b81fda",
+      "name": "gera embeddings 2"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://shgrozexmhmudptfrxrt.supabase.co/rest/v1/rpc/match_documents",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "sua chave api"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer sua chave api"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={ \n  \"match_count\": {{ 4 }},\n{{\n  (() => {\n    const marca = $('Basic LLM Chain2').item.json.output.marca;\n    const modelo = $('Basic LLM Chain2').item.json.output.modelo;\n    const litragem = $('Basic LLM Chain2').item.json.output.litragem;\n    const obj = {};\n    if (marca) obj.marca = marca;\n    if (modelo) obj.modelo = modelo;\n    if (litragem) obj.litragem = litragem;\n    // Só retorna se houver pelo menos um campo\n    if (Object.keys(obj).length === 0) return '';\n    return `\"filter\": ${JSON.stringify(obj)},`;\n  })()\n}}\n  \"query_embedding\": [{{ $json.data[0].embedding }}]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1580,
+        2780
+      ],
+      "id": "e15489ce-b911-4149-8bdb-291f56f1127b",
+      "name": "Busca no RAG",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/embeddings",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer sua chave API"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "model",
+              "value": "text-embedding-3-small"
+            },
+            {
+              "name": "input",
+              "value": "={{ $json.query }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1080,
+        1000
+      ],
+      "id": "78ce5ae4-ef2d-4460-956d-d6bb20720800",
+      "name": "gera embeddings1"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://seu id do projeto.supabase.co/rest/v1/rpc/match_documents",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "sua chave api"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer sua chave api"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={ \n  \"match_count\": {{ 4 }},\n{{\n  (() => {\n    const marca = $('When Executed by Another Workflow').item.json.marca;\n    const modelo = $('When Executed by Another Workflow').item.json.modelo;\n    const litragem = $('When Executed by Another Workflow').item.json.litragem;\n    const obj = {};\n    if (marca) obj.marca = marca;\n    if (modelo) obj.modelo = modelo;\n    if (litragem) obj.litragem = litragem;\n    // Só retorna se houver pelo menos um campo\n    if (Object.keys(obj).length === 0) return '';\n    return `\"filter\": ${JSON.stringify(obj)},`;\n  })()\n}}\n  \"query_embedding\": [{{ $json.data[0].embedding }}]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1380,
+        1000
+      ],
+      "id": "899ff4d1-6b85-4ad8-8913-8ed4b0aad040",
+      "name": "busca no RAG1"
+    },
+    {
+      "parameters": {
+        "description": "Use this tool for respond cars",
+        "workflowId": {
+          "__rl": true,
+          "value": "H1A3NUHwnJxJ96jl",
+          "mode": "id"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "query": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('query', `pergunta a ser feita no RAG`, 'string') }}",
+            "modelo": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('modelo', `O modelo do carro que o usuário procura, se não tiver essa informação, deixe nula`, 'string') }}",
+            "marca": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('marca', `A marca do carro que o usuário procura, se não tiver essa informação, deixe nula`, 'string') }}",
+            "litragem": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('litragem', `A litragem do carro que o usuário procura, se não tiver essa informação, deixe nula. Retorne como um texto. Exemplo: 2.0, 1.0, 1.6...`, 'string') }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "query",
+              "displayName": "query",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "modelo",
+              "displayName": "modelo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "marca",
+              "displayName": "marca",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "litragem",
+              "displayName": "litragem",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        580,
+        1180
+      ],
+      "id": "0c328157-ae0a-4e20-ba5a-7f59365cddc1",
+      "name": "cars_infos"
+    },
+    {
+      "parameters": {
+        "content": "# Self Query RAG básico\nAplicado diretamente em uma tool do agente",
+        "height": 740,
+        "width": 1860,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        0,
+        0
+      ],
+      "typeVersion": 1,
+      "id": "6979e6ed-7997-4c32-84a9-f7ce641b1951",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "# Self Query RAG com Tool que chama um fluxo\n",
+        "height": 940,
+        "width": 1860,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        0,
+        740
+      ],
+      "typeVersion": 1,
+      "id": "2ebfe0f0-eb06-4325-938f-fd89b36094ee",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "# Self Query RAG com recuperação no fluxo\nEntregando os chunks como contexto para o agente\n",
+        "height": 940,
+        "width": 1860,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        0,
+        1680
+      ],
+      "typeVersion": 1,
+      "id": "0c91cc33-d8f8-438a-8804-e77a0583b032",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "# Self Query RAG com recuperação no fluxo com Routing\nEntregando os chunks como contexto para o agente\n",
+        "height": 940,
+        "width": 2780,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        0,
+        2620
+      ],
+      "typeVersion": 1,
+      "id": "8c553814-127b-4cc8-b7f5-a2ef41877772",
+      "name": "Sticky Note3"
+    }
+  ],
+  "pinData": {
+    "When Executed by Another Workflow": [
+      {
+        "json": {
+          "query": "Civic",
+          "modelo": "",
+          "marca": "",
+          "litragem": "2.0"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-07-02T19:17:42.265Z",
+  "versionId": "3d32d874-2562-40e8-aba0-388f4f8644e6"
+}
