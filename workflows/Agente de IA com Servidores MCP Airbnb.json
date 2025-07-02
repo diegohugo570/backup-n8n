@@ -187,7 +187,13 @@
         540
       ],
       "id": "fc4d2f63-bc65-4d75-a9ff-cd2bd5fd4866",
-      "name": "OpenAI Chat Model"
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "58nXg6cOh7QVFFh8",
+          "name": "OpenAi account"
+        }
+      }
     },
     {
       "parameters": {
@@ -506,7 +512,13 @@
         260
       ],
       "id": "02b7b1cb-b54e-41de-9f87-cae84c9af1d6",
-      "name": "Transcrição do áudio"
+      "name": "Transcrição do áudio",
+      "credentials": {
+        "openAiApi": {
+          "id": "58nXg6cOh7QVFFh8",
+          "name": "OpenAi account"
+        }
+      }
     },
     {
       "parameters": {
@@ -529,7 +541,13 @@
         440
       ],
       "id": "8416451a-4d0e-45a6-b30e-8d8f9e87cdee",
-      "name": "Analisador de Imagens"
+      "name": "Analisador de Imagens",
+      "credentials": {
+        "openAiApi": {
+          "id": "58nXg6cOh7QVFFh8",
+          "name": "OpenAi account"
+        }
+      }
     },
     {
       "parameters": {
@@ -608,6 +626,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-07-01T18:41:14.408Z",
-  "versionId": "3b1587b1-fee4-4706-a0fb-9a4ff7834a34"
+  "updatedAt": "2025-07-02T13:46:14.763Z",
+  "versionId": "a1f6854d-f459-4d56-b484-48da34fb068a"
 }
