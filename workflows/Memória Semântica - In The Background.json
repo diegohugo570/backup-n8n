@@ -1,0 +1,910 @@
+{
+  "active": false,
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Supabase",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres Chat Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Cria Usuário",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Supabase4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cria Usuário": {
+      "main": [
+        [
+          {
+            "node": "Obtém Informações",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Obtém Informações": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Obtém Linhas Histórico",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Obtém Linhas Histórico": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Supabase5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Supabase1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase1": {
+      "main": [
+        [
+          {
+            "node": "Aggregate1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Supabase3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain": {
+      "main": [
+        [
+          {
+            "node": "Supabase2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "Auto-fixing Output Parser",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Auto-fixing Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Auto-fixing Output Parser",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase2": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase3": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase5": {
+      "main": [
+        [
+          {
+            "node": "Aggregate2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase4": {
+      "main": [
+        [
+          {
+            "node": "Obtém Informações",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate2": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-07-07T14:35:10.185Z",
+  "id": "ISDZyXUcBHtImfR3",
+  "isArchived": false,
+  "meta": null,
+  "name": "Memória Semântica - In The Background",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -1100,
+        160
+      ],
+      "id": "8b50c767-fb73-41f3-80ba-5a753effae93",
+      "name": "When chat message received",
+      "webhookId": "342b787a-7dad-4b4e-96bf-ed1c82b6c255"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('When chat message received').item.json.chatInput }}",
+        "options": {
+          "systemMessage": "=<cargo>\nVocê é um assistente pessoal que deve ser amigável e se comportar como uma namorada do usuário.\n</cargo>\n\n<instruções>\nVocê deve conversar com o usuário naturalmente e, primeiramente, deve perguntar sobre as <informações do usuário> que possuem os valores ainda desconhecidos.\n</instruções>\n\n<informações do usuário>\nNome: {{ $if($json.nome, $json.nome, \"Valor desconhecido\") }}\nIdade: {{ $if($json.idade, $json.idade, \"Valor desconhecido\") }}\nAmigos: {{ $if($json.amigos, $json.amigos, \"Valor desconhecido\") }}\nComida favorita: {{ $if($json.comida_favorita, $json.comida_favorita, \"Valor desconhecido\") }}\n</informações do usuário>"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.9,
+      "position": [
+        620,
+        180
+      ],
+      "id": "99280af7-eeda-43e8-9b14-3340b165abb7",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4.1-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4.1-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        580,
+        360
+      ],
+      "id": "a39f162a-acea-4125-a85c-de4d604030e9",
+      "name": "OpenAI Chat Model"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('When chat message received').item.json.sessionId }}",
+        "tableName": "n8n_chat_trim"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
+      "typeVersion": 1.3,
+      "position": [
+        720,
+        360
+      ],
+      "id": "f55dca31-d2ac-4d5f-97a8-0799e6a23a78",
+      "name": "Postgres Chat Memory"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "users",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "remoteJid",
+              "keyValue": "={{ $json.sessionId }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -860,
+        160
+      ],
+      "id": "d7a56c70-dbfd-4402-9ce2-e26ba670320d",
+      "name": "Supabase",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "176485fb-7fb8-4b14-b4c0-21bd2bd85166",
+              "leftValue": "={{ $json.isEmpty() }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -280,
+        160
+      ],
+      "id": "35b078cf-9cf0-4f1d-bc2d-3e9c7849b644",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "tableId": "users",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "remoteJid",
+              "fieldValue": "={{ $('When chat message received').item.json.sessionId }}"
+            },
+            {
+              "fieldId": "nova_mensagem",
+              "fieldValue": "true"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "edbf9468-6426-4975-b94c-b2fb983017e9",
+      "name": "Cria Usuário"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "users",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "remoteJid",
+              "keyValue": "={{ $('When chat message received').first().json.sessionId }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        280,
+        180
+      ],
+      "id": "8a530fb0-4f9e-4639-b63a-e239546fc82a",
+      "name": "Obtém Informações"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 1
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -1120,
+        720
+      ],
+      "id": "6d9d07c7-daed-4a09-ad5c-62c9c9a7ba06",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "tableId": "n8n_chat_trim",
+        "returnAll": true
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -940,
+        720
+      ],
+      "id": "b733f70b-6f2a-49d8-8dfe-9ba5ef8f70cd",
+      "name": "Obtém Linhas Histórico",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "session_id",
+              "renameField": true,
+              "outputFieldName": "remoteJids"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        -740,
+        720
+      ],
+      "id": "8e3bf43d-eb1c-4be4-bd52-9a6c96229610",
+      "name": "Aggregate"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "bd3036ff-0d5c-4485-a28a-958b5ce6534f",
+              "name": "remoteJids",
+              "value": "={{ $('Aggregate').item.json.remoteJids.unique() }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -540,
+        720
+      ],
+      "id": "4e43b6df-5152-432c-bf0d-07cb546fd4dc",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        580,
+        720
+      ],
+      "id": "45f567d2-f8bd-4bff-b856-97e6fe629a9a",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "n8n_chat_trim",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "session_id",
+              "keyValue": "={{ $json.remoteJid }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        800,
+        820
+      ],
+      "id": "a5d0a26a-573e-4b92-964f-fe842f49b721",
+      "name": "Supabase1"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "remoteJid",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        320,
+        720
+      ],
+      "id": "8d06d4d2-f7b5-4f4b-8edd-8e8fd9e42179",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "2bdfa7f1-8877-4bc5-90d0-f99d6d9a3b81",
+              "name": "historico",
+              "value": "={{ $json.message.map(m => `${m.type === \"human\" ? \"Usuário\" : \"Você\"}: ${m.content}`).join(\"\\n\") }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1420,
+        820
+      ],
+      "id": "416d5f4c-7ebe-412a-b7f7-8d70bccac8fe",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "message"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        1240,
+        820
+      ],
+      "id": "b79b779d-7684-48e1-808e-8884144b363a",
+      "name": "Aggregate1"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $if($json.nome.isEmpty(), \"\", \"# Informações atuais: \\n\" + $json.keys().map((k, i) => k + \": \" + $json.values()[i]).join(\"\\n\") + \"\\n\\n# Histórico novo:\"\n)}}\n{{ $('Edit Fields1').item.json.historico }}",
+        "hasOutputParser": true,
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=<cargo>\nEspecialista em análise de conversas para extração de informações pessoais estruturadas.\n</cargo>\n\n<contexto>\nVocê recebe como input o histórico completo de uma conversa entre um usuário e uma IA. A conversa pode ter perguntas e respostas sobre informações pessoais, interações espontâneas ou relatos diretos. Os dados podem estar explícitos ou implícitos ao longo do texto.\n</contexto>\n\n<instruções>\n- Leia todo o histórico da conversa e identifique, de forma precisa, o nome do usuário, sua idade (como número inteiro), a lista de amigos (nomes próprios capitalizados, separados por vírgula) e a comida favorita (nome exato mencionado).\n- Se algum dado não for mencionado explicitamente, não invente: retorne um valor nulo para o campo correspondente.\n- Sempre capitalize corretamente todos os nomes (primeira letra maiúscula).\n- A resposta deve ser um JSON rigorosamente no formato abaixo, sem nenhuma explicação ou texto extra:\n{\n\"nome\": \"nome do usuário capitalized\",\n\"idade\": idade do usuário (inteiro),\n\"amigos\": \"nome, dos, amigos, capitalized, separado, por, virgula\",\n\"comida_favorita\": \"nome da comida favorita\"\n}\n- Nunca inclua comentários ou qualquer explicação junto ao JSON.\n</instruções>\n\n<tom>\nDireto, objetivo, sem rodeios ou justificativas.\n</tom>\n\n<exemplo>\nUsuário: Oi, meu nome é Lucas. Tenho 21 anos. Meus amigos são João, Ana e Pedro. Amo pizza.\nRetorno:\n{\n\"nome\": \"Lucas\",\n\"idade\": 21,\n\"amigos\": \"João, Ana, Pedro\",\n\"comida_favorita\": \"pizza\"\n}\n</exemplo>\n\n<lembre-se>\nSeu output será validado como JSON. Nunca escreva nada além do JSON pedido.\n</lembre-se>\n"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.6,
+      "position": [
+        820,
+        1000
+      ],
+      "id": "e405672c-6410-4503-bce9-5b84896ed4c0",
+      "name": "Basic LLM Chain"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4.1-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4.1-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        760,
+        1260
+      ],
+      "id": "3ea96b67-1bf1-4f0c-adce-78a6dd7c56ed",
+      "name": "OpenAI Chat Model1"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserAutofixing",
+      "typeVersion": 1,
+      "position": [
+        960,
+        1220
+      ],
+      "id": "42240e6e-70fd-4a38-979a-fc98cae60be9",
+      "name": "Auto-fixing Output Parser"
+    },
+    {
+      "parameters": {
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"nome\": {\n      \"type\": \"string\",\n      \"description\": \"Nome do usuário, capitalizado corretamente\"\n    },\n    \"idade\": {\n      \"type\": \"integer\",\n      \"description\": \"Idade do usuário\"\n    },\n    \"amigos\": {\n      \"type\": \"string\",\n      \"description\": \"Nomes dos amigos, capitalizados, separados por vírgula\"\n    },\n    \"comida_favorita\": {\n      \"type\": \"string\",\n      \"description\": \"Nome da comida favorita\"\n    }\n  },\n  \"required\": [\"nome\", \"idade\", \"amigos\", \"comida_favorita\"]\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.2,
+      "position": [
+        1100,
+        1440
+      ],
+      "id": "b424ca68-2448-4103-bdd7-ca6bfb638a87",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "users",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "remoteJid",
+              "condition": "eq",
+              "keyValue": "={{ $('Loop Over Items').item.json.remoteJid }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "nome",
+              "fieldValue": "={{ $json.output.nome }}"
+            },
+            {
+              "fieldId": "idade",
+              "fieldValue": "={{ $json.output.idade }}"
+            },
+            {
+              "fieldId": "amigos",
+              "fieldValue": "={{ $json.output.amigos }}"
+            },
+            {
+              "fieldId": "comida favorita",
+              "fieldValue": "={{ $json.output.comida_favorita }}"
+            },
+            {
+              "fieldId": "nova_mensagem",
+              "fieldValue": "false"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        1180,
+        1000
+      ],
+      "id": "1ed4dd06-a9a6-4607-91ee-3f83d96c00ea",
+      "name": "Supabase2"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        800,
+        620
+      ],
+      "id": "995a5780-2788-4156-9304-6bffbf2e927f",
+      "name": "No Operation, do nothing"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "users",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "remoteJid",
+              "keyValue": "={{ $('Loop Over Items').item.json.remoteJid }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        1640,
+        820
+      ],
+      "id": "cb76039b-b062-445b-ae07-b82491efba93",
+      "name": "Supabase3",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "tableId": "users",
+        "returnAll": true
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -300,
+        720
+      ],
+      "id": "88782432-ce0b-4bd1-b6c5-58a355e7ec0c",
+      "name": "Supabase5",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "users",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "remoteJid",
+              "condition": "eq",
+              "keyValue": "={{ $('When chat message received').item.json.sessionId }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "nova_mensagem",
+              "fieldValue": "true"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -20,
+        200
+      ],
+      "id": "b2d96efe-9e2b-4a97-a326-d9fca8a7440a",
+      "name": "Supabase4"
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "remoteJid"
+            },
+            {
+              "fieldToAggregate": "nova_mensagem"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        -80,
+        720
+      ],
+      "id": "18fe23c7-fd93-4052-b985-147661a4b718",
+      "name": "Aggregate2"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "cd774150-a8e6-4188-ad7e-ff4394bb52d3",
+              "name": "remoteJid",
+              "value": "={{ $('Edit Fields').item.json.remoteJids.filter(jid => $json.nova_mensagem[$json.remoteJid.indexOf(jid)] === true) }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        140,
+        720
+      ],
+      "id": "d5011395-2493-4da7-85d9-038876e7b827",
+      "name": "Edit Fields2"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-07-07T14:35:10.185Z",
+  "versionId": "045f6c88-5cef-40dc-b97a-c7f2389010ef"
+}
