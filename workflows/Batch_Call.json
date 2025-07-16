@@ -1,0 +1,951 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Encontra Currículos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Encontra Currículos": {
+      "main": [
+        [
+          {
+            "node": "Baixa Arquivos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Baixa Arquivos": {
+      "main": [
+        [
+          {
+            "node": "Converte para Texto",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extrai Informações": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Converte para Texto": {
+      "main": [
+        [
+          {
+            "node": "System Prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "System Prompt": {
+      "main": [
+        [
+          {
+            "node": "jsonl",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "jsonl": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Upload JSONL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload JSONL": {
+      "main": [
+        [
+          {
+            "node": "Cria o Batch Object",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cria o Batch Object": {
+      "main": [
+        [
+          {
+            "node": "Checa Status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Checa Status": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Obtendo os resultados",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Stop and Error",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Checa Status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Obtendo os resultados": {
+      "main": [
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Extrai Informações",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-07-16T11:48:10.669Z",
+  "id": "B3cXH5eTGR5gUGnX",
+  "isArchived": false,
+  "meta": null,
+  "name": "Batch_Call",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "d1afd6ac-94c5-4f9a-aaba-deab0a926aaf",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        48,
+        112
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "fileFolder",
+        "queryString": "Currículo",
+        "returnAll": true,
+        "filter": {
+          "folderId": {
+            "__rl": true,
+            "value": "1SweEgBGOWH-j7VWz9RyWM1k1UWbmtxBF",
+            "mode": "list",
+            "cachedResultName": "Currículos",
+            "cachedResultUrl": "https://drive.google.com/drive/folders/1SweEgBGOWH-j7VWz9RyWM1k1UWbmtxBF"
+          }
+        },
+        "options": {}
+      },
+      "id": "e2f6b187-ef81-46ea-89e5-dc2000112faf",
+      "name": "Encontra Currículos",
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        272,
+        112
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "download",
+        "fileId": {
+          "__rl": true,
+          "value": "={{ $json.id }}",
+          "mode": "id"
+        },
+        "options": {
+          "googleFileConversion": {
+            "conversion": {
+              "docsToFormat": "text/plain"
+            }
+          }
+        }
+      },
+      "id": "0da276ad-98e5-40e0-a5d5-bed8fae29d6a",
+      "name": "Baixa Arquivos",
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        512,
+        112
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Obtenção de Currículos",
+        "height": 258.0964713064308,
+        "width": 903.9029040203084
+      },
+      "id": "58ad9962-7a69-4ceb-a260-d27b8a774767",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "70a257de-d64a-4995-9e67-a3d460aeee16",
+              "name": "nota",
+              "value": "={{ $json.output.match(/Nota final:\\s*(\\d+)/)[1] }}",
+              "type": "number"
+            },
+            {
+              "id": "3751665a-74bb-4d9d-83b3-44338bff66e3",
+              "name": "analise",
+              "value": "={{ $json.output }}",
+              "type": "string"
+            },
+            {
+              "id": "dcb005d5-ed73-45b7-b632-17a72aec8bc5",
+              "name": "nome",
+              "value": "={{ $json.output.match(/Nome do candidato:\\s*(.+)\\n/)[1].trim() }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "2400263e-42dc-48db-9871-fbc7e1a53917",
+      "name": "Extrai Informações",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        768,
+        368
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Analisa Currículo",
+        "height": 249,
+        "width": 909,
+        "color": 4
+      },
+      "id": "110f4eac-dfa7-4cd2-b3f9-cee87b0851bd",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        0,
+        288
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Adiciona no Sheets",
+        "height": 250,
+        "width": 263,
+        "color": 6
+      },
+      "id": "687609ee-0422-4984-89c3-3ce711787108",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        944,
+        288
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "text",
+        "options": {}
+      },
+      "id": "42f083a5-fb5f-437f-be22-1f3523bf4256",
+      "name": "Converte para Texto",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        720,
+        112
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c045de77-6c0c-42b4-9681-30f3b1b7e06c",
+              "name": "system_prompt",
+              "value": "<role> Você é uma profissional de RH experiente com mais de 20 anos de atuação na área especializada em analisar currículos para a posição de Assistente Administrativo em um escritório de advocacia. Sua função é avaliar detalhadamente os currículos recebidos e atribuir uma nota final entre 0 e 100. </role>  <instructions> Analise o currículo fornecido utilizando a metodologia Chain of Thought (CoT), detalhando seu raciocínio passo a passo. No começo da análise, coloque o nome do candidato: \"Nome do candidato: N\", substituindo N pelo nome completo do candiato. Ao final da análise, apresente o texto: \"Nota final: X\", substituindo X pela nota atribuída. Utilize os critérios de avaliação definidos para orientar sua análise. </instructions>  <context> A vaga disponível é para Assistente Administrativo em um escritório de advocacia renomado. O candidato ideal deve possuir habilidades administrativas sólidas, conhecimento em rotinas de escritório, familiaridade com o setor jurídico e excelente comunicação. </context>  <evaluation_criteria> - Formação Acadêmica (até 20 pontos): Nível de escolaridade relevante para a função. - Experiência Profissional (até 30 pontos): Tempo e relevância da experiência na área administrativa. - Conhecimentos Específicos (até 20 pontos): Domínio de ferramentas administrativas e rotinas de escritório. - Experiência no Setor Jurídico (até 15 pontos): Vivência ou conhecimento específico em escritórios de advocacia ou áreas correlatas. - Habilidades Complementares (até 10 pontos): Idiomas, cursos extracurriculares, certificações relevantes. - Apresentação do Currículo (até 5 pontos): Clareza, organização e profissionalismo do documento. </evaluation_criteria>  <general_rules> - Mantenha a objetividade e a clareza em sua análise. - Utilize linguagem formal e profissional. - Não revele os critérios de pontuação ao candidato. - Respeite a confidencialidade das informações apresentadas. - Evite comentários pessoais, preconceituosos ou discriminatórios. </general_rules>",
+              "type": "string"
+            },
+            {
+              "id": "f17992af-6588-4ead-bc5d-392e74828d24",
+              "name": "user_prompt",
+              "value": "={{ $json.data }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1520,
+        320
+      ],
+      "id": "30c41c20-e795-4a01-8a9f-69fa890356b6",
+      "name": "System Prompt"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d0fba8d6-1a29-4227-81b1-82ff6ca77714",
+              "name": "custom_id",
+              "value": "={{ $itemIndex }}",
+              "type": "string"
+            },
+            {
+              "id": "7b96703e-9449-46d2-a666-c10587ed5f7f",
+              "name": "method",
+              "value": "POST",
+              "type": "string"
+            },
+            {
+              "id": "6ec7443b-4ecb-45d5-98f8-7b5ee92605cd",
+              "name": "url",
+              "value": "/v1/chat/completions",
+              "type": "string"
+            },
+            {
+              "id": "5495d6d6-21a8-4c1c-8b9b-b11e3ddb3328",
+              "name": "body",
+              "value": "={\n  model: \"gpt-4.1-mini\",\n  messages: [\n    {\n      role: \"system\",\n      content: {{JSON.stringify($json.system_prompt)}}\n    },\n    {\n      role: \"user\",\n      content: {{JSON.stringify($json.user_prompt)}}\n    }\n  ]\n}",
+              "type": "object"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1344,
+        320
+      ],
+      "id": "ff3b90df-db5d-4f4c-9270-de15834ccf6c",
+      "name": "jsonl"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        -1648,
+        544
+      ],
+      "id": "2f7a08cf-069e-4bf4-b596-459b18734c0b",
+      "name": "Aggregate"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "28dbf6fc-3c85-4588-bcd4-1c9c3cf09f54",
+              "name": "jsonlString",
+              "value": "={{ $json.data\n     .map(d => JSON.stringify({\n         custom_id: d.custom_id,\n         method  : d.method,\n         url     : d.url,\n         body    : d.body\n     }))\n     .join('\\n')\n}}\n",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1440,
+        544
+      ],
+      "id": "5b562efe-d90e-4704-a197-cd6f10fbfe8c",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "jsCode": "// @ts-nocheck      <- silencia o linter do n8n\nreturn $input.all().map(item => {\n  const jsonl = item.json.jsonlString;          // campo vindo do Edit Fields\n  const base64 = Buffer.from(jsonl, 'utf8').toString('base64');\n\n  return {\n    binary: {\n      data: {\n        data: base64,                        \n        mimeType: 'application/jsonl', \n        fileExtension: 'jsonl',\n        fileName: 'payload.jsonl',           \n      },\n    },\n  };\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1216,
+        544
+      ],
+      "id": "02a13a93-5558-450d-8fc5-f8b184e03465",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/files",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "openAiApi",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {}
+          ]
+        },
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "purpose",
+              "value": "batch"
+            },
+            {
+              "parameterType": "formBinaryData",
+              "name": "file",
+              "inputDataFieldName": "data"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -960,
+        384
+      ],
+      "id": "e99746fc-7f34-4bc5-975c-d1d93bdea3da",
+      "name": "Upload JSONL"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/batches",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "openAiApi",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {}
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "input_file_id",
+              "value": "={{ $json.id }}"
+            },
+            {
+              "name": "endpoint",
+              "value": "={{ $('jsonl').last().json.url }}"
+            },
+            {
+              "name": "completion_window",
+              "value": "24h"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -736,
+        384
+      ],
+      "id": "47df5fa9-3033-4042-82f7-e76b365c9667",
+      "name": "Cria o Batch Object"
+    },
+    {
+      "parameters": {
+        "url": "=https://api.openai.com/v1/batches/{{ $json.id }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "openAiApi",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -496,
+        384
+      ],
+      "id": "5a01f601-6050-46ac-a093-56b912d51bae",
+      "name": "Checa Status"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "a1764862-99a4-41ad-8426-514509db8429",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "completed",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -336,
+        384
+      ],
+      "id": "e9ab8977-7953-480f-9190-2f4fbb9eb221",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "content": "| **Status**   | **Descrição**                                                              |\n|--------------|---------------------------------------------------------------------------|\n| validating    | /o arquivo de entrada está sendo validado antes que o lote possa começar   |\n\n| failed        | /o arquivo de entrada falhou no processo de validação                      |\n\n| in_progress   | /o arquivo foi validado com sucesso e o lote está em execução              |\n\n| finalizing    | o lote foi concluído e os resultados estão sendo preparados               |\n\n| completed     | /o lote foi concluído e os resultados estão prontos                        |\n\n| expired       | /o lote não pôde ser concluído dentro da janela de 24 horas                |\n\n| cancelling    | /o lote está sendo cancelado (pode levar até 10 minutos)                   |\n\n| cancelled     | /o lote foi cancelado                                                      |\n",
+        "height": 280,
+        "width": 700,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -880,
+        784
+      ],
+      "id": "45ef2383-4f14-4a70-99e4-1a6e7b794b2d",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "47faedf0-67b1-4afa-9da5-3606de240cd2",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "failed",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -240,
+        544
+      ],
+      "id": "120d1085-4683-49b6-9d5a-c18656aa92b5",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "errorMessage": "=Falha no processamento do batch: {{ $json.errors.data[0].message }}"
+      },
+      "type": "n8n-nodes-base.stopAndError",
+      "typeVersion": 1,
+      "position": [
+        32,
+        592
+      ],
+      "id": "ebf73d1a-2a54-4dc5-8264-0673fcfbaf62",
+      "name": "Stop and Error"
+    },
+    {
+      "parameters": {
+        "amount": 2,
+        "unit": "minutes"
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -720,
+        544
+      ],
+      "id": "3752cc33-71d5-414f-887c-0e49681d2004",
+      "name": "Wait",
+      "webhookId": "46d2ccf5-26ff-4819-9b01-6bdd186eda02"
+    },
+    {
+      "parameters": {
+        "url": "=https://api.openai.com/v1/files/{{ $json.output_file_id }}/content",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "openAiApi",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        64,
+        368
+      ],
+      "id": "e8df22c8-e18a-4baa-8e00-e2787bfdc70c",
+      "name": "Obtendo os resultados"
+    },
+    {
+      "parameters": {
+        "operation": "text",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        224,
+        368
+      ],
+      "id": "b31d3816-2347-4efd-9362-fe48fd445e18",
+      "name": "Extract from File"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "280919c1-1a82-4dcc-ab1b-7242a435b86f",
+              "name": "output",
+              "value": "={{ $json.data\n     .trim()\n     .split(/\\r?\\n/)\n     .filter(Boolean)\n     .map(l => JSON.parse(l).response.body.choices[0].message.content) }}",
+              "type": "array"
+            },
+            {
+              "id": "b55befce-4c77-4816-9ac7-4c12a76603d0",
+              "name": "tokens_input",
+              "value": "={{ $json.data\n     .trim()\n     .split(/\\r?\\n/)\n     .filter(Boolean)\n     .map(l => JSON.parse(l).response.body.usage.prompt_tokens) }}",
+              "type": "array"
+            },
+            {
+              "id": "17de62f0-69e7-429c-81bd-3e9ed18cc928",
+              "name": "tokens_output",
+              "value": "={{ $json.data      .trim()      .split(/\\r?\\n/)      .filter(Boolean)      .map(l => JSON.parse(l).response.body.usage.completion_tokens) }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        384,
+        368
+      ],
+      "id": "aa615b86-1b4a-4511-988d-05df38bc7231",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "output, tokens_input, tokens_output",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        560,
+        368
+      ],
+      "id": "492dd997-bc2d-4aa7-b420-44e04f731dea",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "1e9BmVD_jI9Jf2WNzdWCe0aaC49RDNkgYJygJk-DdK5s",
+          "mode": "list",
+          "cachedResultName": "Custos Currículo",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1e9BmVD_jI9Jf2WNzdWCe0aaC49RDNkgYJygJk-DdK5s/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Página1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1e9BmVD_jI9Jf2WNzdWCe0aaC49RDNkgYJygJk-DdK5s/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "ID": "={{ Math.random().toString().slice(2, 12) }}",
+            "NAME": "={{ $json.nome }}",
+            "ANALYSIS": "={{ $json.analise }}",
+            "TOTAL_TOKENS": "={{ $('Split Out').item.json.tokens_input + $('Split Out').item.json.tokens_output}}",
+            "PRICE": "={{Number.parseFloat(($('Split Out').item.json.tokens_input*0.2/(1000000) + $('Split Out').item.json.tokens_output*0.8/(1000000))*6).toFixed(6).replace(\".\", \",\")}}",
+            "GRADE": "={{ $json.nota }}"
+          },
+          "matchingColumns": [
+            "ID"
+          ],
+          "schema": [
+            {
+              "id": "ID",
+              "displayName": "ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "NAME",
+              "displayName": "NAME",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "GRADE",
+              "displayName": "GRADE",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "ANALYSIS",
+              "displayName": "ANALYSIS",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "TOTAL_TOKENS",
+              "displayName": "TOTAL_TOKENS",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "PRICE",
+              "displayName": "PRICE",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        1024,
+        368
+      ],
+      "id": "79fd9043-8336-4ef5-920e-509ae2f7c9b9",
+      "name": "Google Sheets"
+    },
+    {
+      "parameters": {
+        "content": "## Criando o JSONL",
+        "height": 520,
+        "width": 640,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -1696,
+        224
+      ],
+      "id": "45bfe741-fd0b-4db3-a784-dda62dbbfdc2",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "content": "## Manipulando o Batch",
+        "height": 460,
+        "width": 1020,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -1040,
+        288
+      ],
+      "id": "6effd64d-77c8-4860-b4c7-70cc17ebd11c",
+      "name": "Sticky Note5"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-07-16T11:48:10.669Z",
+  "versionId": "a5c206bf-66a8-4757-9705-cb971f33912e"
+}
