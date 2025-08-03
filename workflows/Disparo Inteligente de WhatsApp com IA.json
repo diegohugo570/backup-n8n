@@ -110,9 +110,9 @@
       "parameters": {
         "model": {
           "__rl": true,
-          "value": "gpt-4.1",
+          "value": "gpt-4.1-mini-2025-04-14",
           "mode": "list",
-          "cachedResultName": "gpt-4.1"
+          "cachedResultName": "gpt-4.1-mini-2025-04-14"
         },
         "options": {}
       },
@@ -150,6 +150,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-08-01T13:40:27.052Z",
-  "versionId": "5e2edb48-6fe8-4cee-b6bc-ce4211f4610f"
+  "updatedAt": "2025-08-01T17:52:47.300Z",
+  "versionId": "b4bac4bd-1eda-4ecc-993b-55756b7669a5"
 }
