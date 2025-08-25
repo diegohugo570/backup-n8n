@@ -104,7 +104,7 @@
       "typeVersion": 1,
       "position": [
         560,
-        100
+        112
       ],
       "id": "b339d6d2-daaa-437c-80cb-6ffd7bb86ded",
       "name": "n8n",
@@ -127,7 +127,7 @@
       "typeVersion": 1.1,
       "position": [
         800,
-        100
+        112
       ],
       "id": "4da76a7f-26b6-4577-8eea-5177ff157b55",
       "name": "Convert to File"
@@ -153,8 +153,8 @@
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
       "position": [
-        300,
-        100
+        304,
+        112
       ],
       "id": "8c477f39-ebb0-4bb7-8fb8-ed84ad5bc39c",
       "name": "Create folder",
@@ -184,8 +184,8 @@
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
       "position": [
-        1060,
-        100
+        1072,
+        112
       ],
       "id": "75b12ce5-d9dd-4cb0-8076-2097efa16403",
       "name": "Upload file",
@@ -201,9 +201,18 @@
   "settings": {
     "executionOrder": "v1"
   },
+  "shared": [
+    {
+      "createdAt": "2025-06-12T21:55:38.163Z",
+      "updatedAt": "2025-06-12T21:55:38.163Z",
+      "role": "workflow:owner",
+      "workflowId": "23PBUWPJl4RwXVwJ",
+      "projectId": "o60HadikmqrvYZ9Z"
+    }
+  ],
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-07-02T19:21:44.025Z",
-  "versionId": "4428bc84-068f-4a5a-ab4a-513f6e4edefe"
+  "updatedAt": "2025-08-25T16:26:42.690Z",
+  "versionId": "0e65c37a-077f-43ca-b55b-421214b8d7dc"
 }
