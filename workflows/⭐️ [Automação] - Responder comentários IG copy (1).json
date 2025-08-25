@@ -1,0 +1,1465 @@
+{
+  "active": false,
+  "connections": {
+    "Webhook1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "cometario1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "cometario",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "cometario": {
+      "main": [
+        [
+          {
+            "node": "responde comentario8",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "responde comentario9",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "responde comentario10",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "responde comentario11",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "responde comentario8": {
+      "main": [
+        [
+          {
+            "node": "Envia mensagens direct9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Buscar se é seguidor": {
+      "main": [
+        [
+          {
+            "node": "Me segue?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Me segue?": {
+      "main": [
+        [
+          {
+            "node": "cometario2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Envia mensagens direct10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "cometario1": {
+      "main": [
+        [
+          {
+            "node": "Buscar se é seguidor",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Buscar se é seguidor",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Buscar se é seguidor",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Buscar se é seguidor",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "cometario2": {
+      "main": [
+        [
+          {
+            "node": "Envia mensagens direct11",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Envia mensagens direct21",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Envia mensagens direct23",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Envia mensagens direct24",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "responde comentario9": {
+      "main": [
+        [
+          {
+            "node": "Envia mensagens direct20",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "responde comentario10": {
+      "main": [
+        [
+          {
+            "node": "Envia mensagens direct22",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "responde comentario11": {
+      "main": [
+        [
+          {
+            "node": "Envia mensagens direct25",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-08-25T16:36:51.680Z",
+  "id": "V1ZFCRsgllcTtwlQ",
+  "isArchived": false,
+  "meta": null,
+  "name": "⭐️ [Automação] - Responder comentários IG copy (1)",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "a1506a5b-0ef2-4608-9a8b-e44ac5829d96",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -2592,
+        1088
+      ],
+      "id": "bb8cf24a-5cc8-4fa0-8332-bfb43d6edf49",
+      "name": "Webhook1",
+      "webhookId": "a1506a5b-0ef2-4608-9a8b-e44ac5829d96"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "3a1be705-ce35-4f59-b391-685e49000bb5",
+              "name": "meu_id",
+              "value": "={{ $json.body.entry[0].id }}",
+              "type": "string"
+            },
+            {
+              "id": "f6ca6723-390c-476c-a0b5-26377b1fdbc3",
+              "name": "from_id",
+              "value": "={{ $json.body.entry[0].changes[0].value.from.id }}",
+              "type": "string"
+            },
+            {
+              "id": "bd389f94-bebd-4cec-a101-f3a60bd70edc",
+              "name": "from_username",
+              "value": "={{ $json.body.entry[0].changes[0].value.from.username }}",
+              "type": "string"
+            },
+            {
+              "id": "158d4902-a8e6-4a24-861b-77de4c67c9ca",
+              "name": "media_id",
+              "value": "={{ $json.body.entry[0].changes[0].value.media.id }}",
+              "type": "string"
+            },
+            {
+              "id": "7753f5f9-b624-4caa-ba7c-282067b30831",
+              "name": "comment_id",
+              "value": "={{ $json.body.entry[0].changes[0].value.id }}",
+              "type": "string"
+            },
+            {
+              "id": "4b8fdf3a-6e5a-4f81-8f6e-829818f73486",
+              "name": "comment",
+              "value": "={{ $json.body.entry[0].changes[0].value.text }}",
+              "type": "string"
+            },
+            {
+              "id": "b0d36b26-faa8-48e6-a07c-28f6627c60a8",
+              "name": "field",
+              "value": "={{ $json.body.entry[0].changes[0].field }}",
+              "type": "string"
+            },
+            {
+              "id": "974cdabe-7dfc-426c-a797-5fef1af5e8fe",
+              "name": "id_usuario",
+              "value": "={{ $json.body.entry[0].messaging[0].sender.id }}",
+              "type": "string"
+            },
+            {
+              "id": "f1135b75-5af1-4016-abac-6b2bb5c2b545",
+              "name": "mensagem_direct",
+              "value": "={{ $json.body.entry[0].messaging[0].message.text }}",
+              "type": "string"
+            },
+            {
+              "id": "0f69bee2-5a16-476a-88e1-c1d4023bd04f",
+              "name": "token",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -2368,
+        1088
+      ],
+      "id": "3e8085e3-70db-4da5-a4ec-25c673d8fd88",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.field }}",
+                    "rightValue": "comments",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "7955fc91-bbc7-48f8-a01c-001aa3363a3c"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "comments"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "211a3035-7a38-454f-adea-f0e1ea8f80f2",
+                    "leftValue": "={{ $json.id_usuario }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notEmpty",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -2144,
+        1088
+      ],
+      "id": "dd5d17f1-1a94-4669-86bc-5c3f18a58864",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "2621d1b8-d27f-4e55-9faa-7556ec422c59",
+              "leftValue": "={{ $json.from_id }}",
+              "rightValue": "={{ $json.meu_id }}",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        -1456,
+        1072
+      ],
+      "id": "897673b0-4474-4ca7-a2e3-4af145cf0545",
+      "name": "Filter"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "f12ff927-7db8-4239-a183-ec352f3a810a",
+                    "leftValue": "={{ $json.comment }}",
+                    "rightValue": "^[Ff]1$",
+                    "operator": {
+                      "type": "string",
+                      "operation": "regex"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Reels F1"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "122f9017-1029-4f0b-a9f8-e54e33427925",
+                    "leftValue": "={{ $json.comment }}",
+                    "rightValue": "^[Tt]emplate$",
+                    "operator": {
+                      "type": "string",
+                      "operation": "regex"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Template"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "9988e051-745f-4ea8-977a-f9786d50f8da",
+                    "leftValue": "={{ $json.comment }}",
+                    "rightValue": "^[Ii]magem$",
+                    "operator": {
+                      "type": "string",
+                      "operation": "regex"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Imagem"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "983a5126-78ab-42ac-b8b7-866add30b58c",
+                    "leftValue": "={{ $json.comment }}",
+                    "rightValue": "^[Ii]nstagram$",
+                    "operator": {
+                      "type": "string",
+                      "operation": "regex"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Instagram"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -624,
+        432
+      ],
+      "id": "8d65421b-9bc7-4006-af7c-3fc4bf927184",
+      "name": "cometario"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://graph.instagram.com/v23.0/{{ $json.comment_id }}/replies",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Edit Fields1').item.json.token }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "message",
+              "value": "Enviado no seu direct 👀🥂"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        96,
+        176
+      ],
+      "id": "cad672d8-5520-4b3b-8c89-81fb0c8cca9c",
+      "name": "responde comentario8"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://graph.instagram.com/v23.0/me/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Edit Fields1').item.json.token }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"recipient\":{\n    \"id\": \"{{ $('Edit Fields1').item.json.id_usuario }}\"\n  },\n  \"message\": {\n    \"attachment\": {\n      \"type\": \"template\",\n      \"payload\": {\n        \"template_type\": \"button\",\n        \"text\": \"Primeiro precisa me seguir para receber o material 👀. Depois que seguir, digite novamente a palavra que enviou acima 👇\",\n        \"buttons\": [\n          {\n            \"type\": \"web_url\",\n            \"url\": \"https://instagram.com/euleonardovianna\",\n            \"title\": \"Seguir no Instagram\"\n          }\n        ]\n      }\n    }\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -960,
+        1408
+      ],
+      "id": "63957b2a-1648-4c10-a084-4127502b7256",
+      "name": "Envia mensagens direct10"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://graph.instagram.com/v23.0/me/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Edit Fields1').item.json.token }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"message\":{\n    \"attachment\":{\n      \"type\":\"template\",\n      \"payload\":{\n        \"text\":\"Clique no botão para receber o Prompt 👇\",\n        \"buttons\":[\n          {\n            \"url\":\"COLOQUE-SEU-LINK-AQUI\",\n            \"type\":\"web_url\",\n            \"title\":\"ACESSAR PROMPT\"\n          }\n        ],\n        \"template_type\":\"button\"\n      }\n    }\n  },\n  \"recipient\":{\n    \"id\":\"{{ $('Edit Fields1').item.json.id_usuario }}\"\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -256,
+        1840
+      ],
+      "id": "42e7724d-1ae0-4715-aa86-354ccd83c3fc",
+      "name": "Envia mensagens direct11"
+    },
+    {
+      "parameters": {
+        "url": "=https://graph.instagram.com/{{ $json.id_usuario }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Edit Fields1').item.json.token }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -1440,
+        1392
+      ],
+      "id": "791d83b0-9d63-46f0-b8c9-4eb3426fdd9a",
+      "name": "Buscar se é seguidor"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "7e4bed71-64df-4f20-ba6b-10049a7db678",
+              "leftValue": "={{ $json.is_user_follow_business }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -1216,
+        1392
+      ],
+      "id": "32cc2418-936d-49d6-ac63-da7fbea9ffee",
+      "name": "Me segue?"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "f12ff927-7db8-4239-a183-ec352f3a810a",
+                    "leftValue": "={{ $json.mensagem_direct }}",
+                    "rightValue": "^[Ff]1$",
+                    "operator": {
+                      "type": "string",
+                      "operation": "regex"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Reels F1"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "9c42408d-0a75-403d-a1ad-fd523e0ed646",
+                    "leftValue": "={{ $json.mensagem_direct }}",
+                    "rightValue": "^[Tt]emplate$",
+                    "operator": {
+                      "type": "string",
+                      "operation": "regex"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Template"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "f3f5d753-15b1-484d-b25f-9cfd2d84e3a6",
+                    "leftValue": "={{ $json.mensagem_direct }}",
+                    "rightValue": "^[Ii]magem$",
+                    "operator": {
+                      "type": "string",
+                      "operation": "regex"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Imagem"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "f6a926eb-2bcc-4149-ac0e-c56fffebd8b8",
+                    "leftValue": "={{ $json.mensagem_direct }}",
+                    "rightValue": "^[Ii]nstagram$",
+                    "operator": {
+                      "type": "string",
+                      "operation": "regex"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Instagram"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -1776,
+        1360
+      ],
+      "id": "d522a926-2099-485c-96ee-1b0f34ca7ca8",
+      "name": "cometario1"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "f12ff927-7db8-4239-a183-ec352f3a810a",
+                    "leftValue": "={{ $('Edit Fields1').item.json.mensagem_direct }}",
+                    "rightValue": "^[Ff]1$",
+                    "operator": {
+                      "type": "string",
+                      "operation": "regex"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Reels F1"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "c6ead903-228a-4ad5-9b2a-5a0f11c205d9",
+                    "leftValue": "={{ $('Edit Fields1').item.json.mensagem_direct }}",
+                    "rightValue": "^[Tt]emplate$",
+                    "operator": {
+                      "type": "string",
+                      "operation": "regex"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Template"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "212dedcf-ffff-44e9-a94d-98ac5904b1bc",
+                    "leftValue": "={{ $('Edit Fields1').item.json.mensagem_direct }}",
+                    "rightValue": "^[Ii]magem$",
+                    "operator": {
+                      "type": "string",
+                      "operation": "regex"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Imagem"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "8891eecd-90d3-492f-90c0-0c1dea5d4744",
+                    "leftValue": "={{ $('Edit Fields1').item.json.mensagem_direct }}",
+                    "rightValue": "^[Ii]nstagram$",
+                    "operator": {
+                      "type": "string",
+                      "operation": "regex"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Instagram"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -960,
+        2032
+      ],
+      "id": "98222ce1-35d9-435f-8ad6-b66dd38dca45",
+      "name": "cometario2"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://graph.instagram.com/v23.0/me/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Edit Fields1').item.json.token }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"recipient\": {\n    \"comment_id\": \"{{ $('Edit Fields1').item.json.comment_id }}\"\n  },\n  \"message\": {\n    \"text\": \"Digite 'F1' aqui em baixo para liberar ✅👇\"\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        336,
+        176
+      ],
+      "id": "e136a9b7-64c5-4f18-8aaf-df1392ea2863",
+      "name": "Envia mensagens direct9"
+    },
+    {
+      "parameters": {
+        "content": "## HTTP\nAqui você altera os links e textos que serão enviados no direct",
+        "height": 956,
+        "width": 568,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -368,
+        1712
+      ],
+      "id": "965f239c-ea4c-4fe1-aef5-e22973b5ce8a",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://graph.instagram.com/v23.0/{{ $json.comment_id }}/replies",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Edit Fields1').item.json.token }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "message",
+              "value": "Instruções enviadas no seu direct 👀🥂"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        96,
+        336
+      ],
+      "id": "ed85f546-da61-486e-b237-98c86dae70c5",
+      "name": "responde comentario9"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://graph.instagram.com/v23.0/me/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Edit Fields1').item.json.token }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n    \"recipient\": {\n        \"comment_id\": \"{{ $('Edit Fields1').item.json.comment_id }}\"\n    },\n    \"message\": {\n        \"text\": \"Digite 'Template' aqui em baixo para liberar sobre O Fluxo ✅👇\"\n    }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        336,
+        336
+      ],
+      "id": "2b0c011c-cec0-4fc4-ac2a-655fa26e07e1",
+      "name": "Envia mensagens direct20"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://graph.instagram.com/v23.0/me/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Edit Fields1').item.json.token }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"message\":{\n    \"attachment\":{\n      \"type\":\"template\",\n      \"payload\":{\n        \"text\":\"Clique para saber tudo sobre O Fluxo com API Oficial do instagram 👇\",\n        \"buttons\":[\n          {\n            \"url\":\"COLOQUE-SEU-LINK-AQUI\",\n            \"type\":\"web_url\",\n            \"title\":\"CLIQUE PARA ACESSAR\"\n          }\n        ],\n        \"template_type\":\"button\"\n      }\n    }\n  },\n  \"recipient\":{\n    \"id\":\"{{ $('Edit Fields1').item.json.id_usuario }}\"\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -256,
+        2032
+      ],
+      "id": "a6efc555-628e-4a5d-85fb-b6898ebeba5e",
+      "name": "Envia mensagens direct21"
+    },
+    {
+      "parameters": {
+        "tableId": "followup_clientes",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "nome",
+              "fieldValue": "={{ $('Buscar se é seguidor').item.json.name }}"
+            },
+            {
+              "fieldId": "remoteid",
+              "fieldValue": "={{ $('Buscar se é seguidor').item.json.username }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -32,
+        2032
+      ],
+      "id": "4bcc1191-9716-46d6-8274-815ae08eb3ee",
+      "name": "Supabase"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://graph.instagram.com/v23.0/{{ $json.comment_id }}/replies",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Edit Fields1').item.json.token }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "message",
+              "value": "Acesso ao Template enviado no seu direct 🥂"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        96,
+        512
+      ],
+      "id": "a6d8cd52-c8a7-4f00-a64d-dcb17ede3353",
+      "name": "responde comentario10"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://graph.instagram.com/v23.0/me/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Edit Fields1').item.json.token }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n    \"recipient\": {\n        \"comment_id\": \"{{ $('Edit Fields1').item.json.comment_id }}\"\n    },\n    \"message\": {\n        \"text\": \"Digite 'Imagem' aqui em baixo para liberar o acesso ao Template completo 👇\"\n    }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        336,
+        512
+      ],
+      "id": "d6f536bb-4ed3-4725-be8a-583153f7d571",
+      "name": "Envia mensagens direct22"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://graph.instagram.com/v23.0/me/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Edit Fields1').item.json.token }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"message\":{\n    \"attachment\":{\n      \"type\":\"template\",\n      \"payload\":{\n        \"text\":\"Acesso liberado! ✅. Você irá encontrar o template na descrição do grupo. Clique no botão abaixo para entrar 👇\",\n        \"buttons\":[\n          {\n            \"url\":\"COLOQUE-SEU-LINK-AQUI\",\n            \"type\":\"web_url\",\n            \"title\":\"CLIQUE PARA ACESSAR\"\n          }\n        ],\n        \"template_type\":\"button\"\n      }\n    }\n  },\n  \"recipient\":{\n    \"id\":\"{{ $('Edit Fields1').item.json.id_usuario }}\"\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -256,
+        2208
+      ],
+      "id": "fe064fc0-0932-4c6e-879b-e979cbcec795",
+      "name": "Envia mensagens direct23"
+    },
+    {
+      "parameters": {
+        "tableId": "followup_clientes",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "nome",
+              "fieldValue": "={{ $('Buscar se é seguidor').item.json.name }}"
+            },
+            {
+              "fieldId": "remoteid",
+              "fieldValue": "={{ $('Buscar se é seguidor').item.json.username }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -32,
+        2208
+      ],
+      "id": "e3c43b20-09f3-481c-9602-943d02a55a00",
+      "name": "Supabase2"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://graph.instagram.com/v23.0/me/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Edit Fields1').item.json.token }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"message\":{\n    \"attachment\":{\n      \"type\":\"template\",\n      \"payload\":{\n        \"text\":\"Acesso liberado! ✅. Vídeo completo. Clique no botão abaixo para entrar 👇\",\n        \"buttons\":[\n          {\n            \"url\":\"COLOQUE-SEU-LINK-AQUI\",\n            \"type\":\"web_url\",\n            \"title\":\"CLIQUE PARA ASSISTIR\"\n          }\n        ],\n        \"template_type\":\"button\"\n      }\n    }\n  },\n  \"recipient\":{\n    \"id\":\"{{ $('Edit Fields1').item.json.id_usuario }}\"\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -256,
+        2400
+      ],
+      "id": "6144fd1d-2953-4f2a-bac5-11e65093deb3",
+      "name": "Envia mensagens direct24"
+    },
+    {
+      "parameters": {
+        "tableId": "followup_clientes",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "nome",
+              "fieldValue": "={{ $('Buscar se é seguidor').item.json.name }}"
+            },
+            {
+              "fieldId": "remoteid",
+              "fieldValue": "={{ $('Buscar se é seguidor').item.json.username }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -32,
+        2400
+      ],
+      "id": "c99f9b0a-a944-4ce2-8c9e-edd9db613f4c",
+      "name": "Supabase3"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://graph.instagram.com/v23.0/{{ $json.comment_id }}/replies",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Edit Fields1').item.json.token }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "message",
+              "value": "Acesso ao vídeo enviado no seu direct 🥂"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        96,
+        720
+      ],
+      "id": "dbc344f4-7aff-4f0b-baf2-42df3aa40eb9",
+      "name": "responde comentario11"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://graph.instagram.com/v23.0/me/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Edit Fields1').item.json.token }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n    \"recipient\": {\n        \"comment_id\": \"{{ $('Edit Fields1').item.json.comment_id }}\"\n    },\n    \"message\": {\n        \"text\": \"Digite 'Instagram' aqui em baixo para liberar o acesso ao Vídeo completo 👇\"\n    }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        336,
+        720
+      ],
+      "id": "1b9ed78f-b175-4c97-99e7-b054c3f6a747",
+      "name": "Envia mensagens direct25"
+    },
+    {
+      "parameters": {
+        "tableId": "followup_clientes",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "nome",
+              "fieldValue": "={{ $('Buscar se é seguidor').item.json.name }}"
+            },
+            {
+              "fieldId": "remoteid",
+              "fieldValue": "={{ $('Buscar se é seguidor').item.json.username }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -32,
+        1840
+      ],
+      "id": "a460ffae-2f5f-45d4-969c-f0cb36254cd7",
+      "name": "Supabase1"
+    },
+    {
+      "parameters": {
+        "content": "## Supabase\nEsse nó serve para pegar os leads qualificados e guardar no banco de dados. Se você usa o Supabase, basta conectar ele ao nó HTTP Request\n",
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        224,
+        2096
+      ],
+      "typeVersion": 1,
+      "id": "61464694-2616-433e-b47d-6125660ccc76",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "content": "## Responde comentário e Mensagem direct\nAqui você altera altera como preferir como cada comentário vai ser respondido e qual mensagem vai chegar no direct quando usuário comentar uma palavra específica.",
+        "height": 956,
+        "width": 568,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "42790b40-ad09-4e08-ab4b-7fa6059d6821",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "## Adicionar palavra chave\nAqui você adiciona as palavras chaves que pretendo usar.\n\nIMPORTANTE: DEVE SEGUIR MESMO PADRÃO EM TODOS OS OUTROS SWITCH.",
+        "height": 412,
+        "width": 360
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -736,
+        256
+      ],
+      "id": "c675f757-c49d-4de1-a142-9017e1efb0dd",
+      "name": "Sticky Note5"
+    },
+    {
+      "parameters": {
+        "content": "## Adicionar palavra chave\nAqui você adiciona as palavras chaves que pretendo usar.\n\nIMPORTANTE: DEVE SEGUIR MESMO PADRÃO EM TODOS OS OUTROS SWITCH.",
+        "height": 412,
+        "width": 360
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -1888,
+        1184
+      ],
+      "id": "958aee00-5025-4ba8-83eb-b8ab7b8b9e5c",
+      "name": "Sticky Note6"
+    },
+    {
+      "parameters": {
+        "content": "## Adicionar palavra chave\nAqui você adiciona as palavras chaves que pretendo usar.\n\nIMPORTANTE: DEVE SEGUIR MESMO PADRÃO EM TODOS OS OUTROS SWITCH.",
+        "height": 412,
+        "width": 360
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -1088,
+        1856
+      ],
+      "id": "92796834-4d6d-4643-9314-cc9ddf38b765",
+      "name": "Sticky Note7"
+    },
+    {
+      "parameters": {
+        "content": "## Recebe requisições + Tratamento de dados + Entende se é comentário ou direct\n",
+        "height": 332,
+        "width": 680,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -2656,
+        960
+      ],
+      "id": "e8e02194-c1bb-49b2-85af-bde9230273d1",
+      "name": "Sticky Note8"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-08-25T16:36:51.680Z",
+      "updatedAt": "2025-08-25T16:36:51.680Z",
+      "role": "workflow:owner",
+      "workflowId": "V1ZFCRsgllcTtwlQ",
+      "projectId": "o60HadikmqrvYZ9Z"
+    }
+  ],
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-08-25T16:36:47.362Z",
+      "updatedAt": "2025-08-25T16:36:47.362Z",
+      "id": "cOwCepF9WxEXQRKZ",
+      "name": "Pessoal"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-08-25T16:36:51.680Z",
+  "versionId": "4807c46f-de9f-45ca-8003-8ccdc7aa9b48"
+}
