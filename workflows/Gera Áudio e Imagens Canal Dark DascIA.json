@@ -1,0 +1,1561 @@
+{
+  "active": false,
+  "connections": {
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Basic LLM Chain1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Stop and Error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "Basic LLM Chain1",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "Basic LLM Chain2",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase": {
+      "main": [
+        [
+          {
+            "node": "Pasta do Projeto",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_outputParser",
+            "index": 0
+          },
+          {
+            "node": "Basic LLM Chain1",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [
+          {
+            "node": "Postgres",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Supabase1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase1": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain2": {
+      "main": [
+        [
+          {
+            "node": "Gera Imagem",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Supabase",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Obtém Imagem",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Obtém Imagem": {
+      "main": [
+        [
+          {
+            "node": "Supabase3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gera Imagem": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase3": {
+      "main": [
+        [
+          {
+            "node": "Supabase2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase2": {
+      "main": [
+        [
+          {
+            "node": "Baixa Imagem",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres": {
+      "main": [
+        [
+          {
+            "node": "Supabase4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase4": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items1": {
+      "main": [
+        [
+          {
+            "node": "Execute Workflow",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Gera áudio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gera áudio": {
+      "main": [
+        [
+          {
+            "node": "Google Drive",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Drive": {
+      "main": [
+        [
+          {
+            "node": "Google Drive1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Drive1": {
+      "main": [
+        [
+          {
+            "node": "Supabase5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pasta do Projeto": {
+      "main": [
+        [
+          {
+            "node": "Pasta das imagens",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pasta das imagens": {
+      "main": [
+        [
+          {
+            "node": "Pasta dos áudios",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pasta dos áudios": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Baixa Imagem": {
+      "main": [
+        [
+          {
+            "node": "Faz upload da imagem",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Faz upload da imagem": {
+      "main": [
+        [
+          {
+            "node": "Deixa imagem compartilhável",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Deixa imagem compartilhável": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase5": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-08-27T18:35:49.888Z",
+  "id": "73LU0eU4FOsZHHGJ",
+  "isArchived": false,
+  "meta": null,
+  "name": "Gera Áudio e Imagens Canal Dark DascIA",
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "Gerador de vídeos curtos",
+        "formDescription": "Gera automaticamente vídeos curtos que contam histórias usando inteligência artificial.",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Ideia central",
+              "placeholder": "Um vídeo contando a história de Napoleão...",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Roteiro",
+              "placeholder": "Deixe em branco se quiser que a IA gere o roteiro"
+            },
+            {
+              "fieldLabel": "Estilo",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "Realista"
+                  },
+                  {
+                    "option": "Desenho animado"
+                  },
+                  {
+                    "option": "Anime"
+                  }
+                ]
+              },
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "11labs API Key",
+              "fieldType": "password",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "11labs Voice ID",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "JSON2Video API Key",
+              "fieldType": "password",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Leonardo API Key",
+              "fieldType": "password",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Legendas?",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "Sim"
+                  },
+                  {
+                    "option": "Não"
+                  }
+                ]
+              },
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "CTA",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "Curtir"
+                  },
+                  {
+                    "option": "Compartilhar (no story ou com amigos, o que fizer mais sentido de acordo com o contexto da história)"
+                  },
+                  {
+                    "option": "Comentar opinião"
+                  }
+                ]
+              },
+              "multiselect": true,
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Idioma do áudio",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "pt-BR"
+                  },
+                  {
+                    "option": "en"
+                  }
+                ]
+              },
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.2,
+      "position": [
+        -1120,
+        208
+      ],
+      "id": "dbd7c351-c71f-45f8-944c-b41c595f3079",
+      "name": "On form submission",
+      "webhookId": "bd3092d3-055d-4ba4-a5ba-097c13e5b0f0"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('Supabase').item.json.script }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "empty",
+                      "singleValue": true
+                    },
+                    "id": "a18e89ce-6925-4188-8f06-60737459a77b"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Sem roteiro"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "d9283b83-56a3-4aae-af99-94d5b19cc966",
+                    "leftValue": "={{ $('Supabase').item.json.script.length }}",
+                    "rightValue": 700,
+                    "operator": {
+                      "type": "number",
+                      "operation": "lte"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Roteiro OK"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "9de2650d-d123-4333-8ddb-cf0da0d870fe",
+                    "leftValue": "={{ $('Supabase').item.json.script.length }}",
+                    "rightValue": 700,
+                    "operator": {
+                      "type": "number",
+                      "operation": "gt"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Roteiro longo demais"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -240,
+        336
+      ],
+      "id": "37c0aff8-04e1-4ca4-84a5-d8b45ef5a4cc",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Ideia central:\n{{ $('Supabase').item.json.central_idea }}\n\nIdioma do texto gerado:\n{{ $('Supabase').item.json.language }}\n\nCTA Final:\n{{ $('Supabase').item.json.CTAs.join(\", \") }}\n\n\n# Importante\nRetorne APENAS o roteiro. Nada além disso. Nenhum comentário adicional.",
+        "hasOutputParser": true,
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=<Role>  \nVocê é um roteirista e diretor de arte especializado em storytelling para vídeos curtos (Reels, TikTok e Shorts), capaz de condensar a Jornada do Herói em até 120 palavras e descrever cada cena de forma ultra detalhada para que um editor consiga visualizar e criar exatamente o que foi narrado. Seu trabalho é gerar uma narrativa com impacto e imagens que prendam o espectador até o fim.  \n</Role>  \n\n<Context>  \nO vídeo será narrado sobre imagens ou clipes, sem o narrador aparecer.  \nA estrutura segue a Jornada do Herói condensada:  \n1. **Início (Partida)** — Apresentar o protagonista, o mundo comum e o chamado para a aventura. O PRIMEIRO TRECHO e a PRIMEIRA IMAGEM devem ser os mais impactantes de todos, tanto visualmente quanto narrativamente.  \n2. **Meio (Iniciação)** — Mostrar o desafio, obstáculos e a superação.  \n3. **Fim (Retorno)** — Entregar a transformação, recompensa ou lição.  \n4. **CTA com propósito** — Contextualizado com a história.  \n\nA saída final deve ser um JSON com:  \n{\n  \"trechos\": [\"trecho1\", \"trecho2\", \"trecho3\", \"etc\"],  \n  \"descricao_imagens\": [\"descricao_imagem_1\", \"descricao_imagem_2\", \"descricao_imagem_3\", \"etc\"]  \n}  \nOnde cada elemento em \"descricao_imagens\" corresponde ao trecho da mesma posição em \"trechos\".  \n</Context>  \n\n<Instrução>  \n1. Receba a **ideia central** e o **tipo de CTA** (compartilhar, curtir, comentar etc.).  \n2. Escreva **mínimo de 6 trechos**, cada um com no máximo 20 palavras, formando uma narrativa de até 120 palavras no total.  \n3. No último trecho, insira o CTA com propósito relacionado à história.  \n4. Para cada trecho, crie uma descrição de imagem **ultra detalhada**, incluindo:  \n   - Cenário e ambiente  \n   - Iluminação (tipo, intensidade, direção)  \n   - Ângulo e movimento de câmera  \n   - Personagens (expressões faciais, postura, roupas, idade, características físicas)  \n   - Cores predominantes  \n   - Elementos de composição (objetos, fundo, profundidade)  \n   - Clima e atmosfera (chuva, sol, neblina, vento etc.)  \n   - Sensação emocional que a imagem deve transmitir  \n5. Garantir que a **primeira descrição de imagem seja a mais visualmente impactante**, capaz de segurar atenção imediata.  \n6. Retorne SOMENTE o JSON final no formato especificado.  \n</Instrução>  \n\n<CommunicationTone>  \nNarrativo, imersivo e visual.  \nO texto narrativo deve gerar conexão emocional, e a descrição de imagem deve permitir que um artista ou editor recrie a cena com precisão cinematográfica.  \n</CommunicationTone>  \n\n<Example>  \nIDEIA: \"Um bombeiro salva um cachorro em um incêndio\" | CTA: compartilhar  \nSAÍDA:  \n{\n  \"trechos\": [\n    \"Explosão de chamas ilumina a noite enquanto Marcos corre em direção à casa em chamas.\",\n    \"A porta range ao abrir e a fumaça invade seu rosto.\",\n    \"Ele escuta um latido fraco vindo da sala destruída.\",\n    \"O cachorro está preso sob uma viga caída, chorando de medo.\",\n    \"Marcos o segura firme e corre para a saída enquanto o teto desaba.\",\n    \"Compartilhe esse vídeo para que mais pessoas se inspirem a agir quando vidas estiverem em risco.\"\n  ],\n  \"descricao_imagens\": [\n    \"Plano geral de uma casa envolta em chamas intensas; câmera em leve contra-plongée captando Marcos correndo, capacete refletindo o fogo; faíscas voam; céu noturno alaranjado pela luz; sensação de urgência máxima.\",\n    \"Plano médio de Marcos abrindo a porta com força; fumaça densa saindo e iluminada por luz laranja; expressão determinada; suor visível; câmera em close parcial captando tensão no olhar.\",\n    \"Plano subjetivo através dos olhos de Marcos; corredores queimados, móveis carbonizados; som abafado; foco no latido ao fundo; iluminação intermitente das chamas projetando sombras dramáticas.\",\n    \"Close-up do cachorro, marrom claro, deitado e com pata presa sob viga fumegante; olhos arregalados; ambiente cheio de cinzas suspensas; iluminação baixa com pontos de luz quentes.\",\n    \"Plano sequência mostrando Marcos carregando o cachorro contra o peito; câmera tremida simulando corrida; vigas caem ao fundo; contraste entre luz quente interna e luz fria externa.\",\n    \"Plano final suave: Marcos e o cachorro sentados no meio-fio; fumaça ao fundo; amanhecer dourado; expressão de alívio; legenda sobreposta para CTA.\"\n  ]\n}  \n</Example>  \n\n<Remember>  \n- Mínimo de 6 trechos obrigatórios.  \n- Primeira cena e primeiro trecho devem ser extremamente impactantes.  \n- Descrições de imagem devem ser cinematográficas, ultra detalhadas e visualmente precisas.  \n- CTA sempre com propósito conectado à história.  \n</Remember>  "
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.6,
+      "position": [
+        0,
+        0
+      ],
+      "id": "9a86a502-b0c8-41e3-9d5e-019003df6de5",
+      "name": "Basic LLM Chain"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4.1-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4.1-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        160,
+        176
+      ],
+      "id": "62af2b08-037e-4862-87b7-749a66362d69",
+      "name": "OpenAI Chat Model"
+    },
+    {
+      "parameters": {
+        "tableId": "projects",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "central_idea",
+              "fieldValue": "={{ $('On form submission').item.json['Ideia central'] }}"
+            },
+            {
+              "fieldId": "script",
+              "fieldValue": "={{ $('On form submission').item.json.Roteiro }}"
+            },
+            {
+              "fieldId": "style",
+              "fieldValue": "={{ $('On form submission').item.json.Estilo }}"
+            },
+            {
+              "fieldId": "elevenlabs_voice_id",
+              "fieldValue": "={{ $('On form submission').item.json['11labs Voice ID'] }}"
+            },
+            {
+              "fieldId": "subtitles",
+              "fieldValue": "={{ $json['Legendas?'] == 'Sim' }}"
+            },
+            {
+              "fieldId": "CTAs",
+              "fieldValue": "={{ $('On form submission').item.json.CTA }}"
+            },
+            {
+              "fieldId": "language",
+              "fieldValue": "={{ $('On form submission').item.json['Idioma do áudio'] }}"
+            },
+            {
+              "fieldId": "created_at",
+              "fieldValue": "={{ $('On form submission').item.json.submittedAt }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -608,
+        208
+      ],
+      "id": "e9d4130c-33da-4c82-9d03-3c0db98d56f6",
+      "name": "Supabase"
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n\t\"trechos\": [\"trecho1\", \"trecho2\", \"trecho3\", \"etc\"],\n  \"descricao_imagens\": [\"descricao_imagem_1\", \"descricao_imagem_2\", \"descricao_imagem_3\", \"etc\"]\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.2,
+      "position": [
+        -16,
+        176
+      ],
+      "id": "569c31cd-a138-4276-89a1-8a5c774a955d",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "errorMessage": "Roteiro muito longo. Máximo de 700 caracteres."
+      },
+      "type": "n8n-nodes-base.stopAndError",
+      "typeVersion": 1,
+      "position": [
+        -32,
+        656
+      ],
+      "id": "abcd8cf1-4764-4733-883c-02eb101b2e07",
+      "name": "Stop and Error"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Roteiro:\n{{ $json['script'] }}\n\nIdioma do roteiro:\n{{ $json['language'] }}\n\nCTA Final:\n{{ $json.CTAs.join(\", \") }}\n\n\n# Importante\nRetorne APENAS o roteiro. Nada além disso. Nenhum comentário adicional.\n\nRetorne o roteiro EXATAMENTE como está aqui. Apenas divida-o em trechos, mas todas as palavras daqui devem estar na saída.",
+        "hasOutputParser": true,
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=<Role>  \nVocê é um roteirista e diretor de arte especializado em produção audiovisual, capaz de interpretar roteiros prontos e dividi-los em cenas claras e visualmente representáveis. Seu trabalho é identificar pontos lógicos do roteiro e transformá-los em trechos narrativos curtos, associando a cada um deles uma descrição de imagem cinematográfica ultra detalhada para orientar a produção.  \n</Role>  \n\n<Context>  \nVocê receberá um roteiro já escrito pelo usuário.  \nSua tarefa será:  \n1. Dividir o roteiro em **mínimo de 6 trechos** narrativos curtos, cada um com no máximo 20 palavras.  \n2. Garantir que cada trecho tenha sentido próprio e possa ser traduzido visualmente.  \n3. Criar para cada trecho uma **descrição ultra detalhada** da cena correspondente, incluindo:  \n   - Cenário e ambiente  \n   - Iluminação (tipo, intensidade, direção)  \n   - Ângulo e movimento de câmera  \n   - Personagens (expressões, postura, roupas, idade, características físicas)  \n   - Cores predominantes  \n   - Elementos de composição (objetos, fundo, profundidade)  \n   - Clima e atmosfera (chuva, sol, neblina, vento etc.)  \n   - Sensação emocional que a imagem deve transmitir  \n4. Retornar o resultado no formato JSON:  \n{\n  \"trechos\": [\"trecho1\", \"trecho2\", \"trecho3\", \"etc\"],  \n  \"descricao_imagens\": [\"descricao_imagem_1\", \"descricao_imagem_2\", \"descricao_imagem_3\", \"etc\"]  \n}  \nCada item de `\"descricao_imagens\"` deve corresponder exatamente à posição do trecho relacionado em `\"trechos\"`.  \n</Context>  \n\n<Instrução>  \n1. Leia o roteiro fornecido.  \n2. Divida-o em pelo menos 6 trechos narrativos lógicos, cada um com até 20 palavras.  \n3. Para cada trecho, crie uma descrição cinematográfica ultra detalhada.  \n4. O primeiro trecho e a primeira descrição devem ser **impactantes**, para prender a atenção do espectador logo no início.  \n5. Mantenha a narrativa visual coerente com o roteiro original.  \n6. Retorne apenas o JSON no formato especificado, sem explicações adicionais.  \n</Instrução>  \n\n<CommunicationTone>  \nVisual, preciso e cinematográfico.  \nAs descrições devem permitir que qualquer pessoa visualize claramente a cena, com riqueza de detalhes sensoriais e emoção.  \n</CommunicationTone>  \n\n<Example>  \nROTEIRO FORNECIDO: \"Marcos acordou cedo para treinar, mas ao sair de casa viu um vizinho idoso caído. Ele correu para ajudar...\"  \nSAÍDA:  \n{\n  \"trechos\": [\n    \"O sol nasce e ilumina a rua enquanto Marcos amarra o tênis.\",\n    \"Ele abre a porta e respira o ar frio da manhã.\",\n    \"Um vulto no chão chama sua atenção do outro lado da rua.\",\n    \"O vizinho idoso está caído, apoiado no braço, com expressão de dor.\",\n    \"Marcos corre e se ajoelha ao lado dele, oferecendo ajuda.\",\n    \"Ele ajuda o vizinho a se levantar, ambos sorrindo aliviados.\"\n  ],\n  \"descricao_imagens\": [\n    \"Plano geral da rua ao amanhecer; luz dourada; Marcos em primeiro plano amarrando tênis; câmera em leve contra-plongée; atmosfera de expectativa e energia.\",\n    \"Plano médio de Marcos abrindo a porta; vapor da respiração visível no ar frio; iluminação suave e natural; expressão de determinação.\",\n    \"Plano americano mostrando um vulto desfocado no chão ao fundo; câmera foca lentamente; atmosfera de mistério e tensão.\",\n    \"Close-up do idoso no asfalto; roupas amarrotadas; mão apoiada no cotovelo; expressão de dor; luz lateral suave; fundo desfocado.\",\n    \"Plano sequência em câmera de mão; Marcos corre e se ajoelha; enquadramento dinâmico; foco alternando entre os dois personagens.\",\n    \"Plano final com Marcos e o idoso de pé; luz quente do sol; ambos sorrindo; sensação de alívio e solidariedade.\"\n  ]\n}  \n</Example>  \n\n<Remember>  \n- Sempre criar no mínimo 6 trechos.  \n- O primeiro trecho e a primeira imagem devem ser visualmente impactantes.  \n- A divisão deve respeitar a ordem e o sentido do roteiro original.  \n- As descrições devem ser ultra detalhadas e cinematográficas.  \n</Remember>  "
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.6,
+      "position": [
+        0,
+        336
+      ],
+      "id": "f41597ef-273c-49ec-ab38-41e45c0f1574",
+      "name": "Basic LLM Chain1"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.1,
+      "position": [
+        384,
+        160
+      ],
+      "id": "4e946840-f98d-46da-be02-2e4c20204b17",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "output.descricao_imagens, output.trechos",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        576,
+        160
+      ],
+      "id": "270641ab-5b1f-4fa6-8f91-6e57e15cdd45",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=# Descrição da imagem\n{{ $('Loop Over Items').item.json.output.descricao_imagens }}\n\nEstilo: {{ $('Supabase').item.json.style }}\n\nAspect Ratio: 9:16 (vertical)\n\n\nRetorne APENAS o prompt final. Nada além disso. Nenhum comentário adicional.\n\n# Último prompt usado (baseie-se para manter a consistência visual)\n\n{{ $if($json.prompt.length == 0, 'Não há histórico.', $json.prompt.last()) }}",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=<Role>\nVocê é **Straight**, um arquiteto visual especializado em criar prompts fotográficos hiper-realistas ou estilizados para geradores de imagem (DALL·E, Midjourney, Stable Diffusion, Leonardo AI).  \nSua missão é transformar a descrição visual fornecida pelo usuário, junto com o aspect ratio e o estilo escolhido, em um **prompt cinematográfico extremamente detalhado e 100% seguro para moderação**, sem qualquer referência a seres humanos, partes do corpo, pele, roupas, idade ou gênero.  \nVocê deve:\n- Escolher automaticamente todos os outros elementos visuais (framing, iluminação, ângulo de câmera, textura, efeitos, cores) com base na descrição e no estilo.\n- Manter consistência visual absoluta entre as imagens, como se fossem diferentes enquadramentos da mesma cena.\n- Garantir que a descrição seja composta apenas por paisagens, arquitetura, objetos, ambientes ou animais.\n- Sempre descrever a cena como se fosse capturada por uma câmera real, com riqueza de detalhes técnicos e sensoriais.\n</Role>\n\n<Context>\nO usuário fornecerá:\n1. **Descrição visual** (ex: “um farol à beira de um penhasco ao entardecer”)\n2. **Aspect ratio** (ex: “16:9”)\n3. **Estilo** (ex: “realista”, “anime”, “cyberpunk”, “vintage”)\n\nA partir disso, você deve:\n- Escolher automaticamente o framing mais adequado (vertical, horizontal, square, ultra-wide etc.).\n- Selecionar iluminação coerente com o estilo e a cena.\n- Definir o ângulo e o ponto de vista da câmera.\n- Determinar o equipamento fotográfico (modelo, lente e abertura).\n- Incluir texturas, materiais e efeitos visuais compatíveis.\n- Criar uma paleta de cores consistente com o estilo.\n- Produzir uma sequência de prompts em que cada imagem seja parte da mesma narrativa visual.\n- Não incluir nenhum termo ou referência a corpo humano, pele, nudez, exposição ou contexto sensível.\n</Context>\n\n<Instrução>\n1. Leia a descrição visual, o aspect ratio e o estilo.\n2. Defina todos os elementos visuais baseados no estilo.\n3. Escolha:\n   - Framing\n   - Iluminação (intensidade, direção, temperatura de cor)\n   - Ângulo e POV\n   - Configuração de câmera (modelo, lente, abertura)\n   - Texturas e materiais\n   - Elementos de cenário (fundo e contexto)\n   - Efeitos visuais (no máximo 3)\n   - Paleta de cores\n4. Estruture o prompt seguindo 11 frases fixas:\n   1. Tipo & orientação da tomada (usar “scene capture” ou “frame”)\n   2. Descrição da iluminação\n   3. Configuração da câmera\n   4. Descrição do ponto de vista\n   5. Elemento principal (apenas objetos, paisagens, arquitetura ou animais)\n   6. Descrição de texturas\n   7. Detalhes do fundo/cenário\n   8. Efeitos visuais\n   9. Atmosfera\n   10. Mantra: `same style, same lighting, same mood.`\n   11. Encerramento com assinatura do estilo\n5. Retorne apenas os prompts, um por linha, sem explicações adicionais.\n</Instrução>\n\n<CommunicationTone>\nDireto, técnico e inspirador.  \nUse terminologia fotográfica, cinematográfica e de design visual segura para moderação.  \nNunca use palavras relacionadas a corpo humano, nudez, exposição, pele ou roupas.  \nTransmita a cena com riqueza de microdetalhes.\n</CommunicationTone>\n\n<Example>\nINPUT:\nDescrição visual: “Um farol à beira de um penhasco ao entardecer”\nAspect ratio: “16:9”\nEstilo: “realista”\n\nOUTPUT:\nUltra-wide horizontal cinematic frame, warm sunset casting golden glow over steep coastal cliffs.  \nSoft diffused evening light reflecting off calm ocean waves.  \nCaptured using Sony A7R IV, 35mm f/2.0 lens for balanced depth of field.  \nViewpoint from elevated path, framing lighthouse silhouette against colorful horizon.  \nHistoric stone lighthouse with weathered texture, beacon softly illuminated.  \nDetailed rock textures, moss patches and subtle sea spray.  \nBackground of distant shoreline fading into atmospheric haze.  \nLight mist drifting above ocean, gentle breeze swaying coastal grass.  \nPeaceful and inspiring atmosphere.  \nsame style, same lighting, same mood.  \nPhotorealistic coastal landscape cinematic style.\n</Example>\n\n<Remember>\n- Nunca incluir qualquer referência a seres humanos, partes do corpo, pele, roupas, idade ou gênero.\n- Não usar termos sensíveis para moderação.\n- O estilo é a âncora: tudo parte dele.\n- Mantenha consistência total em imagens da mesma série.\n</Remember>"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.6,
+      "position": [
+        1776,
+        336
+      ],
+      "id": "f2ae3438-14d1-4278-84d2-2b7438dbfddc",
+      "name": "Basic LLM Chain2"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1072,
+        160
+      ],
+      "id": "d8fa3437-a30e-495e-bc08-b03364a18176",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "tableId": "image_consistency_temp",
+        "returnAll": true
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        1392,
+        336
+      ],
+      "id": "b5932d66-4da2-4e9e-9d10-cd4761460473",
+      "name": "Supabase1",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "operation": "deleteTable",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "image_consistency_temp",
+          "mode": "list",
+          "cachedResultName": "image_consistency_temp"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        1392,
+        16
+      ],
+      "id": "bfbdaa1b-6315-484f-ad6c-a88c7b2cb59e",
+      "name": "Postgres",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "prompt"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        1600,
+        336
+      ],
+      "id": "7136573a-b1bf-4ef4-a8f1-a7d2cd6208d8",
+      "name": "Aggregate"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "eacece2c-ed37-4cb7-a7d4-136dd3d57456",
+              "name": "model_id",
+              "value": "={{ \n({\n\"Realista\": \"e316348f-7773-490e-adcd-46757c738eb7\",\n\"Desenho animado\": \"458ecfff-f76c-402c-8b85-f09f6fb198de\",\n\"Anime\": \"e71a1c2f-4f80-4800-934f-2c68979d8cc8\"\n})[$json.Estilo]\n}}",
+              "type": "string"
+            },
+            {
+              "id": "4bbfba55-3679-4e4a-8f91-702b172db5cd",
+              "name": "negative_prompt",
+              "value": "={{ \n({\n\"Realista\": \"overexposed, underexposed, harsh lighting, blurry, deformed hands, extra fingers, text, watermark, cartoonish, oversaturated, unrealistic proportions, plastic texture\",\n\"Desenho animado\": \"photorealistic, noise, muddy colors, low contrast, text, watermark, pixelated, blurry, poorly drawn hands, distorted anatomy\",\n\"Anime\": \"photorealistic, extra limbs, deformed hands, text, watermark, messy lineart, low-res, blurry, distorted proportions, poorly drawn face\"\n})[$json.Estilo]\n}}",
+              "type": "string"
+            },
+            {
+              "id": "d8452823-80d2-4708-b19b-90c3fbf1efda",
+              "name": "presetStyle",
+              "value": "={{ \n({\n\"Realista\": \"PHOTOGRAPHY\",\n\"Desenho animado\": \"ILLUSTRATION\",\n\"Anime\": \"ANIME\"\n})[$json.Estilo]\n}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -848,
+        208
+      ],
+      "id": "fa9cf528-0d45-4632-bdbb-a78bd1dd14d9",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "amount": 40
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1600,
+        576
+      ],
+      "id": "a9033fbb-c3cd-4a13-bc5d-6476bf62bff8",
+      "name": "Wait",
+      "webhookId": "9cbf6dbd-6cf6-4c66-939b-acbcfbf8b3ce"
+    },
+    {
+      "parameters": {
+        "tableId": "media",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "project_id",
+              "fieldValue": "={{ $('Supabase').item.json.id }}"
+            },
+            {
+              "fieldId": "original_description",
+              "fieldValue": "={{ $('Loop Over Items').item.json.output.descricao_imagens }}"
+            },
+            {
+              "fieldId": "new_description",
+              "fieldValue": "={{ $('Basic LLM Chain2').item.json.text }}"
+            },
+            {
+              "fieldId": "image_url",
+              "fieldValue": "={{ $('Obtém Imagem').item.json.generations_by_pk.generated_images[0].url }}"
+            },
+            {
+              "fieldId": "script_excerpt",
+              "fieldValue": "={{ $('Loop Over Items').item.json.output.trechos }}"
+            },
+            {
+              "fieldId": "order_index",
+              "fieldValue": "={{ $('Loop Over Items').item.json.file_name.split(\"_\").last().toNumber() }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        2192,
+        576
+      ],
+      "id": "38151e38-ec3e-4d66-8182-622c0338d212",
+      "name": "Supabase2"
+    },
+    {
+      "parameters": {
+        "url": "=https://cloud.leonardo.ai/api/rest/v1/generations/{{ $json.sdGenerationJob.generationId }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "authorization",
+              "value": "=Bearer {{ $('On form submission').item.json['Leonardo API Key'] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1808,
+        576
+      ],
+      "id": "f1286b8d-82cc-45aa-bc72-529d0f82ec90",
+      "name": "Obtém Imagem"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://cloud.leonardo.ai/api/rest/v1/generations",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "authorization",
+              "value": "=Bearer {{ $('On form submission').item.json['Leonardo API Key'] }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ (\n{\n    \"alchemy\": true,\n    \"modelId\": $('Edit Fields').item.json.model_id,\n    \"width\": 864,\n    \"height\": 1536,\n    \"num_images\": 1,\n    \"guidance_scale\": 7,\n    \"num_inference_steps\": 28,\n    \"presetStyle\": $('Edit Fields').item.json.presetStyle,\n    \"promptMagic\": true,\n    \"promptMagicVersion\": \"v3\",\n    \"promptMagicStrength\": 0.65,\n    \"prompt\": $json.text.replaceAll(\"\\n\", \"\").replaceAll('\"', \"'\"),\n    \"negative_prompt\": $('Edit Fields').item.json.negative_prompt\n  }\n) }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1392,
+        576
+      ],
+      "id": "fe234bdf-e5ef-44c9-9df9-05e539f956fd",
+      "name": "Gera Imagem"
+    },
+    {
+      "parameters": {
+        "tableId": "image_consistency_temp",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "prompt",
+              "fieldValue": "={{ $('Basic LLM Chain2').item.json.text }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        2000,
+        576
+      ],
+      "id": "9de26b6d-0876-4e91-afd0-148e09be25b4",
+      "name": "Supabase3"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "tableId": "media",
+        "returnAll": true,
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "project_id",
+              "condition": "eq",
+              "keyValue": "={{ $('Supabase').item.json.id }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        1600,
+        16
+      ],
+      "id": "2cb6b312-b90a-43a8-b48b-aa969e348562",
+      "name": "Supabase4",
+      "alwaysOutputData": false,
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1072,
+        1312
+      ],
+      "id": "694b8083-a198-4a83-9f30-b2617a3ca224",
+      "name": "Loop Over Items1"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://api.elevenlabs.io/v1/text-to-speech/{{ $('On form submission').item.json['11labs Voice ID'] }}",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "output_format",
+              "value": "mp3_44100_128"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "xi-api-key",
+              "value": "={{ $('On form submission').item.json['11labs API Key'] }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "text",
+              "value": "={{ $json.script_excerpt }}"
+            },
+            {
+              "name": "model_id",
+              "value": "eleven_multilingual_v2"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1472,
+        1472
+      ],
+      "id": "f987fbd6-492f-4e83-a8f8-19efa6c203b5",
+      "name": "Gera áudio",
+      "notesInFlow": false
+    },
+    {
+      "parameters": {
+        "name": "={{ $('Loop Over Items1').item.json.audio_name }}",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "={{ $('Pasta dos áudios').item.json.id }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        1696,
+        1472
+      ],
+      "id": "6d7bd5d0-80ae-4e01-81a7-9f7de60ec281",
+      "name": "Google Drive",
+      "notesInFlow": false
+    },
+    {
+      "parameters": {
+        "operation": "share",
+        "fileId": {
+          "__rl": true,
+          "value": "={{ $json.id }}",
+          "mode": "id"
+        },
+        "permissionsUi": {
+          "permissionsValues": {
+            "role": "reader",
+            "type": "anyone",
+            "allowFileDiscovery": true
+          }
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        1920,
+        1472
+      ],
+      "id": "4105d740-af83-4f79-b39e-888508dbbd61",
+      "name": "Google Drive1"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "media",
+        "matchType": "allFilters",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "order_index",
+              "condition": "eq",
+              "keyValue": "={{ $('Loop Over Items1').item.json.audio_name.split(\"_\").last().toNumber() }}"
+            },
+            {
+              "keyName": "project_id",
+              "condition": "eq",
+              "keyValue": "={{ $('Supabase').first().json.id }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "audio_url",
+              "fieldValue": "={{ $('Google Drive').item.json.webContentLink }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        2160,
+        1472
+      ],
+      "id": "70a5fb52-5adf-4da4-a67d-16ad255f3a2b",
+      "name": "Supabase5"
+    },
+    {
+      "parameters": {
+        "resource": "folder",
+        "name": "=project_{{ $json.id }}",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "=16a0lHoMa7R625tgEUgTu4JARqgXx_Lmv",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        -1072,
+        464
+      ],
+      "id": "3f8767ee-8bac-425f-8234-6dfdbfa14ae7",
+      "name": "Pasta do Projeto",
+      "alwaysOutputData": false,
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "resource": "folder",
+        "name": "=images",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "={{ $json.id }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        -832,
+        464
+      ],
+      "id": "85d525c3-f9e4-4322-ae81-bf2217108627",
+      "name": "Pasta das imagens",
+      "alwaysOutputData": false,
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "resource": "folder",
+        "name": "=audios",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "={{ $('Pasta do Projeto').item.json.id }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        -592,
+        464
+      ],
+      "id": "e0a6c6c3-c8fc-49c9-90c9-e7b9695d4602",
+      "name": "Pasta dos áudios",
+      "alwaysOutputData": false,
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.image_url }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1392,
+        784
+      ],
+      "id": "9c943e2b-dd39-4742-af57-3a2a3f7ffb26",
+      "name": "Baixa Imagem"
+    },
+    {
+      "parameters": {
+        "name": "={{ $('Loop Over Items').item.json['file_name'] }}",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "={{ $('Pasta das imagens').item.json.id }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        1600,
+        784
+      ],
+      "id": "557b171a-b1d0-4ebf-ab74-9e933804334e",
+      "name": "Faz upload da imagem"
+    },
+    {
+      "parameters": {
+        "operation": "share",
+        "fileId": {
+          "__rl": true,
+          "value": "={{ $json.id }}",
+          "mode": "id"
+        },
+        "permissionsUi": {
+          "permissionsValues": {
+            "role": "reader",
+            "type": "anyone",
+            "allowFileDiscovery": true
+          }
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        1808,
+        784
+      ],
+      "id": "99a2eb9d-4a4f-4c16-8c44-feb3f519ef29",
+      "name": "Deixa imagem compartilhável"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "8e51b2ee-29f6-486c-8290-ac07604e17ed",
+              "name": "output.descricao_imagens",
+              "value": "={{ $json['output.descricao_imagens'] }}",
+              "type": "string"
+            },
+            {
+              "id": "fef743c1-0a4d-4211-adf2-3e30b68c8862",
+              "name": "output.trechos",
+              "value": "={{ $json['output.trechos'] }}",
+              "type": "string"
+            },
+            {
+              "id": "dd7d4987-7e7f-4a68-b9be-afb4528e5ded",
+              "name": "file_name",
+              "value": "=image_{{($itemIndex+1).toString()}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        816,
+        160
+      ],
+      "id": "c832d26e-4e1a-49ad-8094-8aa17be44b67",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "8a939664-1dda-4d4a-8e9d-0e08301f886f",
+              "name": "script_excerpt",
+              "value": "={{ $json.script_excerpt }}",
+              "type": "string"
+            },
+            {
+              "id": "11dc9228-2874-4557-84f3-fcf9e17fcb4b",
+              "name": "audio_name",
+              "value": "=audio_{{ ($itemIndex+1).toString() }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1888,
+        16
+      ],
+      "id": "1ae11678-3b21-44e2-9370-55ae44ab19d4",
+      "name": "Edit Fields2"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "z3zGHienwGeeIsRn",
+          "mode": "id"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "folder_id": "={{ $('Pasta do Projeto').first().json.id }}",
+            "project_id": "={{ $('Supabase').first().json.id }}",
+            "json2video_apikey": "={{ $('On form submission').first().json['JSON2Video API Key'] }}",
+            "language": "={{ $('On form submission').first().json['Idioma do áudio'] }}"
+          },
+          "matchingColumns": [
+            "folder_id"
+          ],
+          "schema": [
+            {
+              "id": "folder_id",
+              "displayName": "folder_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "project_id",
+              "displayName": "project_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "json2video_apikey",
+              "displayName": "json2video_apikey",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "language",
+              "displayName": "language",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {
+          "waitForSubWorkflow": true
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        1296,
+        1216
+      ],
+      "id": "6ff9ca27-af30-42ae-a9d8-da1b22d5146d",
+      "name": "Execute Workflow",
+      "executeOnce": true
+    }
+  ],
+  "pinData": {
+    "On form submission": [
+      {
+        "json": {
+          "Ideia central": "um gol 1990 ganhando na corrida de uma porsche, história de superação",
+          "Roteiro": "",
+          "Estilo": "Anime",
+          "11labs API Key": "sk_7d6c847071a8835bbab03455640229726808b1e7b030ffd7",
+          "11labs Voice ID": "hwnuNyWkl9DjdTFykrN6",
+          "JSON2Video API Key": "D4a6fLF2EEKlfb9GGXx7uyD2DC88xHwCIBUGCoGh",
+          "Leonardo API Key": "61ad5018-95de-4d5c-82f2-d94df24a6161",
+          "Legendas?": "Sim",
+          "CTA": [
+            "Comentar opinião"
+          ],
+          "Idioma do áudio": "pt-BR",
+          "submittedAt": "2025-08-08T21:57:03.917-03:00",
+          "formMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-08-27T18:35:49.888Z",
+      "updatedAt": "2025-08-27T18:35:49.888Z",
+      "role": "workflow:owner",
+      "workflowId": "73LU0eU4FOsZHHGJ",
+      "projectId": "o60HadikmqrvYZ9Z"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-08-27T18:35:49.888Z",
+  "versionId": "5c11ae5d-be10-48ee-be9b-882d7fe28656"
+}
