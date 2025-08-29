@@ -1,0 +1,245 @@
+{
+  "active": false,
+  "connections": {
+    "Diário as 9am": {
+      "main": [
+        [
+          {
+            "node": "Busca Ultimas noticias N8N",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Splita o conteúdo": {
+      "main": [
+        [
+          {
+            "node": "Converte o MARKDOWN em HTML",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Agente Gerador de Novidades",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Converte o MARKDOWN em HTML": {
+      "main": [
+        [
+          {
+            "node": "Agente Gerador de Novidades",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Agente Gerador de Novidades": {
+      "main": [
+        [
+          {
+            "node": "Enviar msg no Zap",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Busca Ultimas noticias N8N": {
+      "main": [
+        [
+          {
+            "node": "Splita o conteúdo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-08-29T20:25:23.627Z",
+  "id": "Pn5LbwXBPrgjccz5",
+  "isArchived": false,
+  "meta": null,
+  "name": "[Formação Agentes de IA com N8N] - Gerador de Updates de Releases N8N - By RicNeves",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 9
+            }
+          ]
+        }
+      },
+      "id": "0b32a00c-ec29-41c7-89d4-97c9e4e21618",
+      "name": "Diário as 9am",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "position": [
+        688,
+        256
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "body",
+        "options": {}
+      },
+      "id": "bb95648b-4219-4b68-a574-a40fd2f60610",
+      "name": "Splita o conteúdo",
+      "type": "n8n-nodes-base.splitOut",
+      "position": [
+        1136,
+        256
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "model": "anthropic/claude-sonnet-4",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        1520,
+        464
+      ],
+      "id": "5f7966ea-0462-4376-a44e-6009da063956",
+      "name": "OpenRouter Chat Model"
+    },
+    {
+      "parameters": {
+        "mode": "markdownToHtml",
+        "markdown": "={{ $json.body }}",
+        "destinationKey": "html",
+        "options": {}
+      },
+      "id": "091a4fa7-3119-4c39-9a7e-71f0e60f2180",
+      "name": "Converte o MARKDOWN em HTML",
+      "type": "n8n-nodes-base.markdown",
+      "position": [
+        1360,
+        256
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.body }}",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=Você é um agente especialista em interpretar a última versão do GITHUB do N8N e resumir todas as novidades num formato explicativo e simples. \n\nRetorne em um formato para enviar no WhatsApp com Emojis"
+            }
+          ]
+        },
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.7,
+      "position": [
+        1552,
+        256
+      ],
+      "id": "57e1a14d-cd41-4fb0-98e2-3777a7dd1393",
+      "name": "Agente Gerador de Novidades"
+    },
+    {
+      "parameters": {
+        "url": "https://api.github.com/repos/n8n-io/n8n/releases/latest",
+        "options": {}
+      },
+      "id": "d33eeb2f-74ae-4ca3-8491-646619efaafe",
+      "name": "Busca Ultimas noticias N8N",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        912,
+        256
+      ],
+      "typeVersion": 4.2
+    },
+    {
+      "parameters": {
+        "resource": "messages-api",
+        "instanceName": "SUA INSTANCIA EVO",
+        "remoteJid": "SEU TELEFONE",
+        "messageText": "={{ $json.text }}",
+        "options_message": {
+          "linkPreview": false
+        }
+      },
+      "type": "n8n-nodes-evolution-api.evolutionApi",
+      "typeVersion": 1,
+      "position": [
+        1968,
+        256
+      ],
+      "id": "b3ed26e2-70a9-4f57-b3eb-7f86c29f72d3",
+      "name": "Enviar msg no Zap"
+    },
+    {
+      "parameters": {
+        "content": "",
+        "height": 608,
+        "width": 1616,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        608,
+        48
+      ],
+      "id": "2d1defed-54e9-4eb6-81b0-a0824e58db28",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "▔▇▇▇▔▇▇▇▇▔▇▇▇▔▔▔▇▇▔▔▇▇▇▔▔▔▇▇▔▔▇▇▇▔▔▔▇▇▇▔▔▇▇▇▇▔▔▇▔▔▇▔▇▇▇▔▔▇▇▇▔▔▔▇▇▔▔▇▇▇▇▇▔▇▇▇▇▔▔▇▇▇▔▔▇▇▇▇▔▔▇▇▇▔▔▇▇▇▇▔▇▔▔▔▔▇▇▇▇▔▔▇▇▔▔▔▇▇▇▔▇▇▇▇▔▔▇▇▇▔▔▇▔▔▇▔▇▇▇▔▇▔▔▇▔▔▔▔▔▔▔▇▇▇▔▔▇▔▔▔▇▔▔▇▇▇▔▔▇▔▔▇▇▇▔▔▇▔▔▇▔▇▇▇▇▔▇▔▔▇▔▇▇▇▇▔▔▇▇▇\n▇▔▔▔▔▇▔▔▔▔▇▔▔▇▔▇▔▔▇▔▇▔▔▇▔▇▔▔▇▔▇▔▔▇▔▔▇▔▔▇▔▇▔▔▔▔▔▇▔▔▇▔▇▔▔▇▔▇▔▔▇▔▇▔▔▇▔▔▔▇▔▔▔▇▔▔▔▔▔▇▔▔▇▔▇▔▔▔▔▔▇▔▔▇▔▇▔▔▔▔▇▔▔▔▔▇▔▔▔▔▇▔▔▇▔▇▔▔▔▔▇▔▔▔▔▇▔▔▔▔▔▇▇▔▇▔▇▔▇▔▇▇▔▇▔▔▔▔▔▔▔▇▔▔▇▔▇▔▔▔▇▔▔▇▔▔▇▔▇▔▇▔▔▔▔▔▇▇▔▇▔▇▔▔▔▔▇▔▔▇▔▇▔▔▔▔▇▔▔▔\n▇▔▇▇▔▇▇▇▔▔▇▇▇▔▔▇▇▇▇▔▇▔▔▇▔▇▔▔▇▔▇▇▇▔▔▔▇▔▔▇▔▇▇▇▔▔▔▇▔▔▇▔▇▇▇▔▔▇▔▔▇▔▇▇▇▇▔▔▔▇▔▔▔▇▇▇▔▔▔▇▔▔▇▔▇▇▇▔▔▔▇▇▇▔▔▇▇▇▔▔▇▔▔▔▔▇▇▇▔▔▇▇▇▇▔▔▇▇▔▔▇▇▇▔▔▔▇▇▔▔▔▇▔▇▇▔▇▇▇▔▇▔▇▇▔▔▇▇▇▔▔▇▇▇▔▔▔▇▔▇▔▔▔▇▇▇▔▔▇▔▇▔▔▔▔▔▇▔▇▇▔▇▇▇▔▔▇▔▔▇▔▇▇▇▔▔▔▇▇▔\n▇▔▔▇▔▇▔▔▔▔▇▔▔▇▔▇▔▔▇▔▇▔▔▇▔▇▔▔▇▔▇▔▔▇▔▔▇▔▔▇▔▇▔▔▔▔▔▇▔▔▇▔▇▔▔▔▔▇▔▔▇▔▇▔▔▇▔▔▔▇▔▔▔▇▔▔▔▔▔▇▔▔▇▔▇▔▔▔▔▔▇▔▔▇▔▇▔▔▔▔▇▔▔▔▔▇▔▔▔▔▇▔▔▇▔▔▔▔▇▔▇▔▔▔▔▔▔▔▇▔▔▇▔▔▇▔▇▔▇▔▇▔▔▇▔▔▔▔▔▔▔▇▔▔▇▔▔▔▇▔▔▔▔▇▔▔▇▔▇▔▇▔▔▔▔▔▇▔▔▇▔▇▔▔▔▔▔▇▔▇▔▇▔▔▔▔▔▔▔▇\n▔▇▇▔▔▇▇▇▇▔▇▔▔▇▔▇▔▔▇▔▇▇▇▔▔▔▇▇▔▔▇▔▔▇▔▔▇▇▇▔▔▇▇▇▇▔▔▔▇▇▔▔▇▔▔▔▔▇▇▇▔▔▇▔▔▇▔▔▔▇▔▔▔▇▇▇▇▔▔▇▇▇▔▔▇▇▇▇▔▔▇▔▔▇▔▇▇▇▇▔▇▇▇▇▔▇▇▇▇▔▇▔▔▇▔▇▇▇▔▔▇▇▇▇▔▇▇▇▔▔▔▇▔▔▇▔▇▇▇▔▇▔▔▇▔▔▔▔▔▔▔▇▇▇▔▔▔▔▇▔▔▔▔▇▔▔▇▔▇▔▔▇▇▇▔▔▇▔▔▇▔▇▇▇▇▔▔▔▇▔▔▇▇▇▇▔▇▇▇▔\n▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔",
+        "height": 128,
+        "width": 2848
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "6f4a5f07-a4a6-4434-8585-a924a60a452f",
+      "name": "Sticky Note1"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-08-29T20:25:23.627Z",
+      "updatedAt": "2025-08-29T20:25:23.627Z",
+      "role": "workflow:owner",
+      "workflowId": "Pn5LbwXBPrgjccz5",
+      "projectId": "o60HadikmqrvYZ9Z"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-08-29T20:25:23.627Z",
+  "versionId": "6c0d7278-fbde-474e-b59e-ff833c499752"
+}
