@@ -77,7 +77,9 @@
   "createdAt": "2025-07-14T18:00:58.260Z",
   "id": "6Pt5ALCerHWrqLgP",
   "isArchived": false,
-  "meta": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
   "name": "FLUXO_BUSCA_LEADS_LINKEDIN",
   "nodes": [
     {
@@ -85,8 +87,8 @@
         "operation": "appendOrUpdate",
         "documentId": {
           "__rl": true,
-          "value": "1GCHFkQNW7KZBYZZga_y-cTcX79blwBaixFPSjZRRN3M",
-          "mode": "id"
+          "mode": "id",
+          "value": "1GCHFkQNW7KZBYZZga_y-cTcX79blwBaixFPSjZRRN3M"
         },
         "sheetName": {
           "__rl": true,
@@ -157,7 +159,13 @@
       "position": [
         944,
         320
-      ]
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "LOJgWrBsYdHTsczQ",
+          "name": "Google Sheets account"
+        }
+      }
     },
     {
       "parameters": {
@@ -255,7 +263,7 @@
             {
               "id": "dffe3218-7f15-4f2b-a4a3-14a54227c71b",
               "name": "Api_Key_SerpAPI",
-              "value": "a83bad4ecab3dc35301e5234fa252dfa11ecbf4f5de5babab9077e651113c7a6",
+              "value": "17243d94931946614c2535929c368ff2d5d490c8b5eeea2684df19b77e92b7d9",
               "type": "string"
             },
             {
@@ -367,6 +375,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-07-14T18:00:58.260Z",
-  "versionId": "1b5a1a05-db48-439d-89ca-80643864381d"
+  "updatedAt": "2025-10-13T19:47:53.154Z",
+  "versionId": "390ed44b-0001-44b7-a674-05bce3f59631"
 }
