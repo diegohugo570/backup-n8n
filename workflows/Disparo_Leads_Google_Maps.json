@@ -356,7 +356,7 @@
   },
   "createdAt": "2025-07-14T18:00:22.255Z",
   "id": "xozv2yQscuWKNc5M",
-  "isArchived": false,
+  "isArchived": true,
   "meta": null,
   "name": "Disparo_Leads_Google_Maps",
   "nodes": [
@@ -1194,7 +1194,13 @@
       "position": [
         1504,
         320
-      ]
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "LOJgWrBsYdHTsczQ",
+          "name": "Google Sheets account"
+        }
+      }
     },
     {
       "parameters": {
@@ -1242,7 +1248,7 @@
           "conditions": [
             {
               "id": "37399678-c62b-43dc-83a5-6842c08c1ea5",
-              "leftValue": "={{ $json.exists }}",
+              "leftValue": "={{ $json.remote_jid_12 }}",
               "rightValue": "false",
               "operator": {
                 "type": "boolean",
@@ -1353,13 +1359,13 @@
             {
               "id": "32de923e-44ed-4807-a252-b3ce0d2c8b28",
               "name": "Busca",
-              "value": "clinicas de estética no rio grande do sul",
+              "value": "clínicas de estética em são paulo",
               "type": "string"
             },
             {
               "id": "dffe3218-7f15-4f2b-a4a3-14a54227c71b",
               "name": "Api_Key_SerpAPI",
-              "value": "",
+              "value": "17243d94931946614c2535929c368ff2d5d490c8b5eeea2684df19b77e92b7d9",
               "type": "string"
             },
             {
@@ -1518,6 +1524,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-07-14T18:00:22.255Z",
-  "versionId": "9ea03405-2e46-438a-9ebd-95d7bf43272d"
+  "updatedAt": "2025-10-13T20:23:20.939Z",
+  "versionId": "ccd51b47-8806-4ba4-9a37-43b4f1809c04"
 }
