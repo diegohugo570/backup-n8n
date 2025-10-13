@@ -1,0 +1,1476 @@
+{
+  "active": false,
+  "connections": {
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "Dados_Evolution",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [
+          {
+            "node": "Remove Duplicates",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Jina AI - Scraper",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "OpenAI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Jina AI - Scraper": {
+      "main": [
+        [
+          {
+            "node": "OpenAI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items1": {
+      "main": [
+        [
+          {
+            "node": "Atualiza planilha para sim",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Envia MSG Texto",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Envia MSG Texto": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Remove Duplicates": {
+      "main": [
+        [
+          {
+            "node": "Contador",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Contador": {
+      "main": [
+        [
+          {
+            "node": "Avisa quantos disparos foi feito",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI": {
+      "main": [
+        [
+          {
+            "node": "PegaMensagem",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Dados_Evolution": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PegaMensagem": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Checar Wpp 12": {
+      "main": [
+        [
+          {
+            "node": "Verifica numero com 12",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over Items2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Checar Wpp 13": {
+      "main": [
+        [
+          {
+            "node": "Verifica numero com 13",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over Items2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Inclui no Sheets": {
+      "main": [
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verifica numero com 13": {
+      "main": [
+        [
+          {
+            "node": "Verifica numero com 12",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over Items2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verifica numero com 12": {
+      "main": [
+        [
+          {
+            "node": "Inclui no Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Checar Wpp 13",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extrai dados": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items2": {
+      "main": [
+        [],
+        [
+          {
+            "node": "MontaNumeros",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Dados",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Busca na SerpAPI": {
+      "main": [
+        [
+          {
+            "node": "Extrai dados",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Dados": {
+      "main": [
+        [
+          {
+            "node": "Busca na SerpAPI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MontaNumeros": {
+      "main": [
+        [
+          {
+            "node": "Checar Wpp 12",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-10-13T20:22:52.988Z",
+  "id": "OL4bcFJ2Xu4XxGxP",
+  "isArchived": false,
+  "meta": null,
+  "name": "Disparo Leads Google Maps",
+  "nodes": [
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "de08f3a9-dde8-42c0-bdd4-182a3029f81e",
+              "leftValue": "={{ $json.mensagem }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "empty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "a5192af7-e37c-4cba-93df-71cdd57f24f7",
+      "name": "Filter",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        -800,
+        1712
+      ]
+    },
+    {
+      "parameters": {
+        "options": {
+          "reset": "={{ $node[\"Loop Over Items\"].context[\"done\"]}}"
+        }
+      },
+      "id": "19ec2699-d204-44e8-8202-437a46187e79",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        -160,
+        1680
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "1cba9986-342d-4bdf-b4af-94b56de82b6b",
+              "leftValue": "={{ $json.website }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "2c1e833d-b3a1-47fb-9c43-9635ddb17d90",
+              "leftValue": "={{ $json.website }}",
+              "rightValue": "www.instagram.com",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            },
+            {
+              "id": "57a4c36c-ce81-449f-bae2-1c0244739a89",
+              "leftValue": "={{ $json.website }}",
+              "rightValue": "https://wa.me/",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "53ff0f0e-f242-44de-92e2-120658411d97",
+      "name": "If",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        112,
+        1728
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://r.jina.ai/{{ $node[\"Loop Over Items\"].json[\"website\"] }}",
+        "options": {}
+      },
+      "id": "1749e744-d4cc-4e1f-9d7d-581f3012ef70",
+      "name": "Jina AI - Scraper",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        320,
+        1584
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $item(\"0\").$node[\"Dados_Evolution\"].json[\"server_url\"] }}/message/sendText/{{ $item(\"0\").$node[\"Dados_Evolution\"].json[\"instancia\"] }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "={{ $item(\"0\").$node[\"Dados_Evolution\"].json[\"api_key\"] }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "="
+            },
+            {
+              "name": "text",
+              "value": "={{ $item(\"0\").$node[\"Loop Over Items1\"].json[\"message\"] }}"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "521c2649-16e0-463f-b1cd-ed54b4135fcb",
+      "name": "Envia MSG Texto",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1552,
+        1712
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "content",
+        "options": {}
+      },
+      "id": "0240c173-f348-45f7-8302-eb9cc4556285",
+      "name": "Split Out",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        1088,
+        1712
+      ]
+    },
+    {
+      "parameters": {
+        "batchSize": "=1",
+        "options": {
+          "reset": "={{ $node[\"Loop Over Items1\"].context[\"done\"]}}"
+        }
+      },
+      "id": "0471e49b-c469-494c-b2bd-a389414b5f6c",
+      "name": "Loop Over Items1",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1328,
+        1712
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 3
+      },
+      "id": "7419bff3-beba-4a78-bbcf-dd6dd07d27e7",
+      "name": "Wait",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1728,
+        1712
+      ],
+      "webhookId": "843f8be1-0fd3-4fcd-9d9f-813e2756a4bf"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "13f411b5-d414-413d-9169-f51f8a0270c1",
+      "name": "Remove Duplicates",
+      "type": "n8n-nodes-base.removeDuplicates",
+      "typeVersion": 2,
+      "position": [
+        144,
+        1232
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return [{\n  json: {\n    total: `${$input.all().length} disparos realizados`\n  }\n}];\n"
+      },
+      "id": "b06ef1f8-252e-4881-9dca-aa948dcbe459",
+      "name": "Contador",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        320,
+        1232
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $item(\"0\").$node[\"Dados_Evolution\"].json[\"server_url\"] }}/message/sendText/{{ $item(\"0\").$node[\"Dados_Evolution\"].json[\"instancia\"] }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "={{ $item(\"0\").$node[\"Dados_Evolution\"].json[\"api_key\"] }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "=555591626042"
+            },
+            {
+              "name": "text",
+              "value": "={{ $item(\"0\").$node[\"Contador\"].json[\"total\"] }}"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "554739c0-fba1-49fe-8ab1-7c67e4a81e5a",
+      "name": "Avisa quantos disparos foi feito",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        528,
+        1232
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "chooseBranch",
+        "useDataOfInput": 2
+      },
+      "id": "72508b4c-91b3-4962-b8fe-902b0d527d51",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        -368,
+        1680
+      ]
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini-2024-07-18",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI-2024-07-18"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=<quem_voce_e>\nVocê é um copywriter sênior especializado em marketing conversacional e vendas consultivas, com 10+ anos de experiência em comunicação persuasiva. Sua personalidade combina expertise técnica com abordagem humanizada - você é estratégico como um consultor de negócios, empático como um psicólogo e persuasivo como um vendedor top performer. Você entende profundamente como despertar curiosidade genuína e construir conexões através de mensagens personalizadas.\n</quem_voce_e>\n<seu_objetivo>\nCriar sequências de mensagens WhatsApp altamente personalizadas que:\n\nEstabeleçam conexão imediata com prospects qualificados\nDespertem curiosidade sobre soluções de automação e IA\nGerem alta taxa de resposta através de personalização estratégica\nPosicionem automação como evolução natural do negócio\nIniciem conversas consultivas, não vendas agressivas\n</seu_objetivo>\n\n<instrucoes>\nProcesso de Criação\n\nAnálise dos dados fornecidos: Identifique elementos únicos sobre a empresa-alvo\nAdaptação ao segmento: Ajuste linguagem e abordagem conforme o nicho\nAplicação da fórmula PAS:\n\nProblem: Identifique desafio relevante do setor\nAgitation: Conecte com consequências reais\nSolution: Apresente automação como solução natural\n\n\n\nEstrutura Obrigatória (3 Mensagens)\nMensagem 1 - Conexão + Credibilidade (40-70 tokens)\n\nCumprimento personalizado com nome da empresa\nMenção específica a elemento único do negócio\nReconhecimento de reputação ou oportunidade sutil\n\nMensagem 2 - Problema + Contexto (40-70 tokens)\n\nApresentar desafio setorial de forma empática\nConectar com possível perda de oportunidades\nIntroduzir automação como solução moderna\n\nMensagem 3 - Benefício + Engajamento (40-70 tokens)\n\nDestacar benefício principal da automação\nPergunta aberta consultiva\nTom de parceria, não de venda\n\nDiretrizes de Copywriting\n\nTom: Consultivo, profissional, genuinamente interessado\nLinguagem: Clara, direta, sem jargões técnicos\nPersonalização: Demonstre conhecimento real sobre a empresa\nEmojis: 2-3 estrategicamente posicionados (nunca iniciando frases)\nAbordagem: Focada em valor agregado, não em venda\n\nCritérios de Rating\n\nRating ≥ 4.0: Elogie as avaliações positivas como diferencial\nRating < 4.0: Sugira sutilmente melhoria através do serviço\n\nAdaptações por Segmento\n\nComércio/Varejo: Foco em conversão e experiência do cliente\nServiços Profissionais: Ênfase em qualificação de leads\nRestaurantes/Food: Destaque atendimento e pedidos automatizados\nSaúde/Bem-estar: Agendamentos e comunicação humanizada\n\n</instrucoes>\n<restricoes>\nLimitações Técnicas\n\nMáximo 200 tokens para toda a sequência\nFormato JSON obrigatório conforme estrutura especificada\n3 mensagens exatas, nem mais nem menos\nCada mensagem independente mas conectada logicamente\n\nProibições de Conteúdo\n\n❌ Táticas de pressão ou urgência artificial\n❌ Promessas irrealistas ou exageradas\n❌ Linguagem robótica ou templates genéricos\n❌ Múltiplas perguntas na mesma mensagem\n❌ Jargões técnicos desnecessários\n❌ Abordagem de vendas agressivas\n❌ Emojis no início de frases ou em excesso\n\nLimitações de Comportamento\n\nNão invente dados sobre a empresa\nNão use informações não fornecidas nos dados de entrada\nNão prometa resultados específicos sem conhecer o negócio\nNão utilize linguagem que possa parecer spam\n\n</restricoes>\n<importante>\nDados de Entrada Obrigatórios\nVocê DEVE receber no campo 'user':\n\nNome da empresa\nSegmento/nicho de atuação\nRating/avaliações (quando disponível)\nInformações específicas do site coletadas\nDados únicos identificados no scraping\n\nFormato de Resposta Obrigatório\njson[\n  {\n    \"part\": 1,\n    \"message\": \"Primeira mensagem: 40-70 tokens\"\n  },\n  {\n    \"part\": 2,\n    \"message\": \"Segunda mensagem: 40-70 tokens\"  \n  },\n  {\n    \"part\": 3,\n    \"message\": \"Terceira mensagem: 40-70 tokens\"\n  }\n]\nCritérios de Qualidade (Prioridade Máxima)\n✅ Deve soar como consultor experiente, não vendedor\n✅ Demonstrar conhecimento real sobre a empresa\n✅ Despertar curiosidade sem ser invasivo\n✅ Linguagem natural e conversacional\n✅ Pergunta final que incentive resposta\nSinais de Falha\nSe a mensagem parecer:\n\nAutomatizada ou genérica\nAgressiva ou insistente\nTécnica demais ou confusa\nDesconectada da realidade da empresa\nComo spam ou template\n\nREPROCESSE imediatamente aplicando as diretrizes.\nMeta de Performance\nObjetivo: Taxa de resposta superior a 40% através de personalização genuína e abordagem consultiva.\n</importante>",
+              "role": "system"
+            },
+            {
+              "content": "=Nome da empresa: {{ $item(\"0\").$node[\"Loop Over Items\"].json[\"nome_empresa\"] }}\nScraper do site da empresa: {{ $json.data }}\nRating no Google:{{ $item(\"0\").$node[\"Loop Over Items\"].json[\"rating\"] }}\nReviews no google:  {{ $item(\"0\").$node[\"Loop Over Items\"].json[\"reviews\"] }}\nEspecialidades: {{ $item(\"0\").$node[\"Loop Over Items\"].json[\"especialidades\"] }}"
+            }
+          ]
+        },
+        "jsonOutput": true,
+        "options": {}
+      },
+      "id": "47dee661-3e42-4072-8fb9-8f10ba0116cf",
+      "name": "OpenAI",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.6,
+      "position": [
+        544,
+        1712
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "bc2a1451-2a6d-450e-8adf-b4fc1fd342d7",
+              "name": "server_url",
+              "value": "URL EVOLUTION API",
+              "type": "string"
+            },
+            {
+              "id": "31ef30af-2137-4896-b7ca-99e154646676",
+              "name": "instancia",
+              "value": "NOME INSTANCIA EVOLUTION API",
+              "type": "string"
+            },
+            {
+              "id": "3bf78965-9d9f-4710-8822-42b592d1533d",
+              "name": "api_key",
+              "value": "API KEY EVOLUTION API",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e31415e2-cac5-49f4-9917-d8251c9a109f",
+      "name": "Dados_Evolution",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -608,
+        1520
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "6d1d590b-c9a3-480c-bc1f-705278d96300",
+              "name": "content",
+              "value": "={{ $json.message.content.messages }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "2aa3dbe0-0ee5-4139-9b99-9c288f96f5b5",
+      "name": "PegaMensagem",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        880,
+        1712
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# DISPARO PARA LEADS GOOGLE MAPS",
+        "height": 80,
+        "width": 680,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        32,
+        960
+      ],
+      "typeVersion": 1,
+      "id": "bccf1242-e0de-48bd-8a82-9c965fc816e3",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "content": "# Filtra e junta os dados",
+        "height": 540,
+        "width": 620
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -848,
+        1328
+      ],
+      "typeVersion": 1,
+      "id": "52a3fac8-8d97-4036-9189-3c11345bd337",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "## Alterar aqui",
+        "height": 260,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -656,
+        1424
+      ],
+      "typeVersion": 1,
+      "id": "b54b0836-0b07-45c7-b6b2-b15bad9711e7",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "# Avisa os disparos efetuados",
+        "height": 280,
+        "width": 700,
+        "color": 2
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        64,
+        1120
+      ],
+      "typeVersion": 1,
+      "id": "e7f66c53-eb2b-4746-b812-129fd6aea5a6",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "# Busca informações no site e prepara uma mensagem",
+        "height": 460,
+        "width": 1160,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        64,
+        1440
+      ],
+      "typeVersion": 1,
+      "id": "0d0d7716-adc0-46ca-8942-c6afd05af109",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "content": "# Dispara mensagens uma a uma",
+        "height": 540,
+        "width": 680,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1248,
+        1360
+      ],
+      "typeVersion": 1,
+      "id": "97d2c4ca-a34b-4f25-b6a7-555831988a86",
+      "name": "Sticky Note5"
+    },
+    {
+      "parameters": {
+        "content": "## Alterar aqui",
+        "height": 340,
+        "width": 560,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        288,
+        1520
+      ],
+      "typeVersion": 1,
+      "id": "c645dc9c-786b-4342-b30c-e5c5d65a2de9",
+      "name": "Sticky Note6"
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "1mBrXD8ticJ-29IBsIGpYfkpOAjvhXwIqr0dxc2x8gPM",
+          "mode": "list",
+          "cachedResultName": "[LEADS GOOGLE MAPS]",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1mBrXD8ticJ-29IBsIGpYfkpOAjvhXwIqr0dxc2x8gPM/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Página1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1XBQ4KgQW_KC5cYkahds0mkQtgR7mUcQUMxJ95NvKpb4/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "telefone": "={{ $item(\"0\").$node[\"Loop Over Items\"].json[\"telefone\"] }}",
+            "mensagem": "={{ $item(\"0\").$node[\"OpenAI\"].json[\"message\"][\"content\"][\"messages\"].map(m => m.message).join(\" \") }}",
+            "disparo": "sim"
+          },
+          "matchingColumns": [
+            "telefone"
+          ],
+          "schema": [
+            {
+              "id": "nome_empresa",
+              "displayName": "nome_empresa",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "telefone",
+              "displayName": "telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "endereco",
+              "displayName": "endereco",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "website",
+              "displayName": "website",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "rating",
+              "displayName": "rating",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "reviews",
+              "displayName": "reviews",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "especialidades",
+              "displayName": "especialidades",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "mensagem",
+              "displayName": "mensagem",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "disparo",
+              "displayName": "disparo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "1a5bbeae-835b-45a9-8c0a-ff687d639c54",
+      "name": "Atualiza planilha para sim",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        1488,
+        1488
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $item(\"0\").$node[\"Dados\"].json[\"URL_EvolutionAPI\"] }}/chat/whatsappNumbers/{{ $item(\"0\").$node[\"Dados\"].json[\"Nome_Instancia_EvolutionAPI\"] }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "={{ $item(\"0\").$node[\"Dados\"].json[\"Api_Key_EvolutionAPI\"] }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"numbers\": [\n    \"{{ $json.remote_jid_12 }}\"\n  ]\n}",
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "bbb9b7ed-0b5c-483e-8cfe-e0cc8855479d",
+      "name": "Checar Wpp 12",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        480,
+        464
+      ],
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $item(\"0\").$node[\"Dados\"].json[\"URL_EvolutionAPI\"] }}/chat/whatsappNumbers/{{ $item(\"0\").$node[\"Dados\"].json[\"Nome_Instancia_EvolutionAPI\"] }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "={{ $item(\"0\").$node[\"Dados\"].json[\"Api_Key_EvolutionAPI\"] }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"numbers\": [\n    \"{{ $('MontaNumeros').item.json.remote_jid_13 }}\"\n  ]\n}",
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "ea290d51-d62c-49cb-b4cb-ba85a00c7233",
+      "name": "Checar Wpp 13",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1008,
+        512
+      ],
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "1mBrXD8ticJ-29IBsIGpYfkpOAjvhXwIqr0dxc2x8gPM",
+          "mode": "list",
+          "cachedResultName": "[LEADS GOOGLE MAPS]",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1mBrXD8ticJ-29IBsIGpYfkpOAjvhXwIqr0dxc2x8gPM/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Página1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1mBrXD8ticJ-29IBsIGpYfkpOAjvhXwIqr0dxc2x8gPM/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "nome_empresa": "={{ $('Extrai dados').item.json.name }}",
+            "telefone": "={{ $json.number }}",
+            "endereco": "={{ $('Extrai dados').item.json.endereco }}",
+            "website": "={{ $('Extrai dados').item.json.website }}",
+            "rating": "={{ $('Extrai dados').item.json.rating }}",
+            "reviews": "={{ $('Extrai dados').item.json.reviews }}",
+            "especialidades": "={{ $('Extrai dados').item.json.types }}"
+          },
+          "matchingColumns": [
+            "telefone"
+          ],
+          "schema": [
+            {
+              "id": "nome_empresa",
+              "displayName": "nome_empresa",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "telefone",
+              "displayName": "telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "endereco",
+              "displayName": "endereco",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "website",
+              "displayName": "website",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "rating",
+              "displayName": "rating",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "reviews",
+              "displayName": "reviews",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "especialidades",
+              "displayName": "especialidades",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "mensagem",
+              "displayName": "mensagem",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "disparo",
+              "displayName": "disparo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "id": "68816220-4653-441f-8fde-a737b219af05",
+      "name": "Inclui no Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        1504,
+        320
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "LOJgWrBsYdHTsczQ",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "37399678-c62b-43dc-83a5-6842c08c1ea5",
+              "leftValue": "={{ $json.exists }}",
+              "rightValue": "false",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "id": "81de766b-5053-4c32-8c5b-0114304c3228",
+      "name": "Verifica numero com 13",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1248,
+        672
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "37399678-c62b-43dc-83a5-6842c08c1ea5",
+              "leftValue": "={{ $json.exists }}",
+              "rightValue": "false",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "id": "79c6cb8d-737d-4d48-ba1c-35bfd1510f99",
+      "name": "Verifica numero com 12",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        784,
+        336
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Este código extrai dados de clínicas de estética de um JSON fornecido pelo SerpAPI\n// e retorna um array de objetos no formato esperado pelo N8N\n\n// Código para n8n deve retornar itens usando a variável items\n// Função que será executada a cada item que entra no nó\nfunction processData(item) {\n  try {\n    // Obter os dados do JSON diretamente do item\n    const jsonData = item.json;\n    \n    // Verificar se temos a estrutura necessária\n    if (!jsonData || !jsonData.local_results || !Array.isArray(jsonData.local_results)) {\n      // Se não encontrar local_results, verificar se é um array\n      if (Array.isArray(jsonData) && jsonData[0] && jsonData[0].local_results) {\n        // Caso seja um array com o primeiro elemento contendo local_results\n        return extractClinicData(jsonData[0].local_results);\n      } else {\n        // Tentar encontrar os dados em outras estruturas possíveis\n        const possibleData = findLocalResults(jsonData);\n        if (possibleData) {\n          return extractClinicData(possibleData);\n        }\n        \n        // Se nada funcionar, retornar um erro como item\n        return [{\n          error: true,\n          message: 'Estrutura de dados inválida: local_results não encontrado',\n          originalData: jsonData\n        }];\n      }\n    }\n    \n    // Se chegou aqui, encontrou local_results diretamente\n    return extractClinicData(jsonData.local_results);\n    \n  } catch (error) {\n    // Em caso de erro, retornar um item com informações do erro\n    return [{\n      error: true,\n      message: `Erro ao processar dados: ${error.message}`,\n      stack: error.stack\n    }];\n  }\n}\n\n// Função para encontrar local_results em diferentes níveis da estrutura\nfunction findLocalResults(data) {\n  // Se for um objeto, verificar suas propriedades\n  if (data && typeof data === 'object' && !Array.isArray(data)) {\n    // Verificar se tem local_results\n    if (data.local_results && Array.isArray(data.local_results)) {\n      return data.local_results;\n    }\n    \n    // Verificar em cada propriedade\n    for (const key in data) {\n      const result = findLocalResults(data[key]);\n      if (result) return result;\n    }\n  }\n  \n  // Se for um array, verificar cada elemento\n  if (Array.isArray(data)) {\n    for (const item of data) {\n      const result = findLocalResults(item);\n      if (result) return result;\n    }\n  }\n  \n  return null;\n}\n\n// Função para extrair e formatar os dados das clínicas\nfunction extractClinicData(localResults) {\n  return localResults.map(clinica => ({\n    name: clinica.title || '',\n    endereco: clinica.address || '',\n    telefone: clinica.phone || '',\n    rating: clinica.rating || '',\n    reviews: clinica.reviews || '', \n    website: clinica.website || '',\n    // Adicionar o campo types como uma string separada por vírgulas\n    types: Array.isArray(clinica.types) ? clinica.types.join(', ') : ''\n  }));\n}\n\n// Processar todos os itens de entrada\n// Esta é a forma que o N8N espera receber os resultados\nreturn items.map(processData).flat();"
+      },
+      "id": "f963ac97-62d9-43fd-bfdf-6fa689f1450b",
+      "name": "Extrai dados",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -384,
+        448
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "6340daad-2622-4944-b650-769a009d7945",
+      "name": "Loop Over Items2",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        -160,
+        448
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "8590a9b1-e62b-47d3-b784-82b330d292ff",
+      "name": "Wait1",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1664,
+        688
+      ],
+      "webhookId": "4e7374d3-38de-4bf8-9c0f-01b2a750ba7d"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -1088,
+        448
+      ],
+      "id": "6fa5fa6d-279f-49e0-b717-c8acac448a14",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "url": "https://serpapi.com/search",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "engine",
+              "value": "google_maps"
+            },
+            {
+              "name": "q",
+              "value": "={{ $json.Busca }}"
+            },
+            {
+              "name": "api_key",
+              "value": "={{ $json.Nome_Instancia_EvolutionAPI }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "69a1d49d-9342-44d7-bd4b-2565e62bb939",
+      "name": "Busca na SerpAPI",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -608,
+        448
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "32de923e-44ed-4807-a252-b3ce0d2c8b28",
+              "name": "Busca",
+              "value": "clinicas de estética em são paulo",
+              "type": "string"
+            },
+            {
+              "id": "c55477ec-89e4-4104-bed2-c979aea96fb0",
+              "name": "URL_EvolutionAPI",
+              "value": "https://.outoflow.online",
+              "type": "string"
+            },
+            {
+              "id": "590c0178-b5a5-4355-9b44-37b57ba8672a",
+              "name": "Nome_Instancia_EvolutionAPI",
+              "value": "17243d94931946614c2535929c368ff2d5d490c8b5eeea2684df19b77e92b7d9",
+              "type": "string"
+            },
+            {
+              "id": "f68f1419-c32e-42c4-a7ff-275cc14a3a47",
+              "name": "Api_Key_EvolutionAPI",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -864,
+        448
+      ],
+      "id": "3f1a7cd4-a400-4a2a-bab5-16ab2eb7a2b0",
+      "name": "Dados"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "7ddf0372-d2dc-4566-aee9-9ee9b2b95d37",
+              "name": "remote_jid_12",
+              "value": "={{ $item(\"0\").$node[\"Loop Over Items2\"].json[\"telefone\"].replace(/\\D/g, '').length == 12 ? $item(\"0\").$node[\"Loop Over Items2\"].json[\"telefone\"].replace(/\\D/g, '') : $item(\"0\").$node[\"Loop Over Items2\"].json[\"telefone\"].replace(/\\D/g, '').slice(0,4) + $item(\"0\").$node[\"Loop Over Items2\"].json[\"telefone\"].replace(/\\D/g, '').slice(5,13)}}@s.whatsapp.net",
+              "type": "string"
+            },
+            {
+              "id": "f7822651-52ac-4acc-a7bb-d402dc4914ac",
+              "name": "remote_jid_13",
+              "value": "={{ $item(\"0\").$node[\"Loop Over Items2\"].json[\"telefone\"].replace(/\\D/g, '').length == 13 ? $item(\"0\").$node[\"Loop Over Items2\"].json[\"telefone\"].replace(/\\D/g, '') : $item(\"0\").$node[\"Loop Over Items2\"].json[\"telefone\"].replace(/\\D/g, '').slice(0,4) + '9' + $item(\"0\").$node[\"Loop Over Items2\"].json[\"telefone\"].replace(/\\D/g, '').slice(4)}}@s.whatsapp.net",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "7268c55a-45b8-4d9c-81ae-d223513ac704",
+      "name": "MontaNumeros",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        208,
+        464
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# Validação do Numero de Telefone",
+        "height": 666,
+        "width": 1272,
+        "color": 4
+      },
+      "id": "78deb352-4439-41a4-822e-1ce1c2c487b5",
+      "name": "Sticky Note7",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        144,
+        224
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Alterar aqui",
+        "height": 380,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -928,
+        320
+      ],
+      "typeVersion": 1,
+      "id": "37ce4f37-869e-4e92-9f8a-0c28df9952cf",
+      "name": "Sticky Note8"
+    },
+    {
+      "parameters": {
+        "content": "## Efetua a Busca no Google",
+        "height": 380,
+        "width": 420,
+        "color": 2
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -656,
+        320
+      ],
+      "typeVersion": 1,
+      "id": "0f80c918-1185-445e-9bbb-505bdced555e",
+      "name": "Sticky Note9"
+    },
+    {
+      "parameters": {
+        "content": "# FLUXO BUSCA LEADS GOOGLE MAPS",
+        "height": 80,
+        "width": 680,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        0,
+        0
+      ],
+      "typeVersion": 1,
+      "id": "f89bef60-5f73-4e3f-9599-135d4c28d458",
+      "name": "Sticky Note10"
+    },
+    {
+      "parameters": {
+        "content": "## Salva Lead Planilha",
+        "height": 660,
+        "width": 380,
+        "color": 2
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1472,
+        224
+      ],
+      "typeVersion": 1,
+      "id": "1cd2a9df-3d8d-4f93-8ddf-bde5e407c16c",
+      "name": "Sticky Note11"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-10-13T20:22:52.988Z",
+      "updatedAt": "2025-10-13T20:22:52.988Z",
+      "role": "workflow:owner",
+      "workflowId": "OL4bcFJ2Xu4XxGxP",
+      "projectId": "o60HadikmqrvYZ9Z"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-10-13T20:32:44.596Z",
+  "versionId": "6aeb2ef6-59d9-4c4b-895d-443475d29be6"
+}
