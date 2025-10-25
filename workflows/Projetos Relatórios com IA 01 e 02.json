@@ -1,0 +1,438 @@
+{
+  "active": false,
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Obter data filtragem",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Obter data filtragem": {
+      "main": [
+        [
+          {
+            "node": "Obter dados",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Obter dados": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "Agregar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Análise IA",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "Resumo IA",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Análise IA": {
+      "main": [
+        [
+          {
+            "node": "Resumo IA",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Resumo IA": {
+      "main": [
+        [
+          {
+            "node": "Conversão HTML",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Conversão HTML": {
+      "main": [
+        [
+          {
+            "node": "Criar documento",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Criar documento": {
+      "main": [
+        [
+          {
+            "node": "Adicionar ao documento",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Adicionar ao documento": {
+      "main": [
+        [
+          {
+            "node": "Enviar email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Agregar": {
+      "main": [
+        [
+          {
+            "node": "Análise IA",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-10-25T13:11:45.216Z",
+  "id": "PuTGlhtaSWMFnEMB",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Projetos Relatórios com IA 01 e 02",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "months",
+              "triggerAtHour": 7
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "4b65e315-2ac3-4a9d-a793-cd3d3d15e78d",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "cb2467e2-e87b-421a-b742-01e5c6632b25",
+              "name": "data_inicio",
+              "value": "={{ $today.minus({month:1}).startOf('month').toFormat('yyyy-MM-dd') }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        208,
+        -240
+      ],
+      "id": "e4d5f7fb-0da0-492b-b1f2-951320beae0c",
+      "name": "Data dinâmica - Início mês anterior",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "6f9bae39-3700-4f87-b04e-55058bfcbdaf",
+              "name": "data_início",
+              "value": "={{ DateTime.fromObject({year:2025, month: 8, day:1}).toFormat('yyyy-MM-dd') }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        208,
+        0
+      ],
+      "id": "dfc2bae3-c13a-42fd-b918-56cb5de08542",
+      "name": "Obter data filtragem"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        }
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        432,
+        0
+      ],
+      "id": "f84314d8-98b0-483b-955b-05c307d935aa",
+      "name": "Obter dados",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "LOJgWrBsYdHTsczQ",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "f26968d0-d27f-4d5e-b376-df0edfc98d60",
+              "leftValue": "",
+              "rightValue": "",
+              "operator": {
+                "type": "dateTime",
+                "operation": "after"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        640,
+        0
+      ],
+      "id": "c89d4478-7a39-4a44-9081-01668c62341f",
+      "name": "Filter"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Aja como um analista estratégico que prepara relatórios executivos para a diretoria. Hoje é dia primeiro do mês, analise a lista de atividades da empresa do mês passado e extraia insights.\n\n- Retorne o texto sem formatação (ex: em negrito usando *), apenas com quebra de linhas e parágrafos.\n\n- Inicie apenas com uma frase de introdução, sem outras informações.\n\n- Faça um resumo das atividades de cada departamento, destacando primeiro as de maior prioridade.\n\n- Identifique tarefas que estão atrasadas ou em revisão e explique os riscos potenciais.\n\n- Aponte quais áreas tiveram mais entregas concluídas e quais ainda têm maior volume de pendências.\n\n- Finalize com recomendações práticas para a diretoria priorizar recursos no próximo trimestre.\n\n- Não adicione mensagens de encerramento ao final do texto.\n\nOs dados (em formato JSON) são esses:\n\n{{ JSON.stringify($json, null, 2) }}",
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.7,
+      "position": [
+        1056,
+        0
+      ],
+      "id": "6a7e0bf7-565f-48aa-bec7-a04c8995dcbb",
+      "name": "Análise IA"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        1280,
+        224
+      ],
+      "id": "4ff06c74-b5b7-4deb-a765-424fc5c3c5a0",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "Q7CBkXMMZRTOoyA5",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Faça um resumo executivo do relatório abaixo, pronto para ser enviado por email.\n- Destaque apenas os pontos mais relevantes e críticos, agrupando informações semelhantes.\n- Use markdown para organizar o texto em parágrafos claros e listas com marcadores quando \nnecessário.\n- Retorne direto o resumo, sem introduções como \"aqui está\" ou mensagens adicionais.\n- Finalize o emailsem saudações ou assinaturas.\n\nRelatório: {{ $json.text }}",
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.7,
+      "position": [
+        1408,
+        0
+      ],
+      "id": "b0804cca-e1f3-42f4-967f-46e18d004159",
+      "name": "Resumo IA"
+    },
+    {
+      "parameters": {
+        "folderId": "default",
+        "title": "=Relatório - {{ $now.format('dd/MM/yyyy H:mm:ss') }}"
+      },
+      "type": "n8n-nodes-base.googleDocs",
+      "typeVersion": 2,
+      "position": [
+        1968,
+        0
+      ],
+      "id": "b689892b-b4b0-4063-b1a5-0df0e1cd83f1",
+      "name": "Criar documento",
+      "credentials": {
+        "googleDocsOAuth2Api": {
+          "id": "1mId7aQHAO68xko4",
+          "name": "Google Docs account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "markdownToHtml",
+        "markdown": "={{ $json.text }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.markdown",
+      "typeVersion": 1,
+      "position": [
+        1760,
+        0
+      ],
+      "id": "a12e54b6-c031-4c41-b6e5-29d72490880d",
+      "name": "Conversão HTML"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentURL": "={{ $json.id }}",
+        "actionsUi": {
+          "actionFields": [
+            {
+              "action": "insert",
+              "text": "={{ $('Análise' ).item.json.text }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.googleDocs",
+      "typeVersion": 2,
+      "position": [
+        2176,
+        0
+      ],
+      "id": "22902f00-3a87-48e7-b2bb-904be97905aa",
+      "name": "Adicionar ao documento",
+      "credentials": {
+        "googleDocsOAuth2Api": {
+          "id": "1mId7aQHAO68xko4",
+          "name": "Google Docs account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "diegohugo570@gmail.com",
+        "subject": "Relatório de atividades do mês anterior",
+        "message": "={{ $('Conversão HTML').item.json.data }} <br><br><a  href='https://docs.google.com/document/d/{{ $('Criar documento').item.json.id  }}'>Confira o relatório detalhado no Google Docs</a>",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        2384,
+        0
+      ],
+      "id": "a6c61812-3b21-4218-ba21-c6b4b8427cdc",
+      "name": "Enviar email",
+      "webhookId": "d74bb087-b9b0-4f7f-9f2c-d10d5ea8f345",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "jamCcogKZmfUAdpZ",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "destinationFieldName": "dados",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        848,
+        0
+      ],
+      "id": "82de10dc-5c34-4c78-8782-71b4fe8a1278",
+      "name": "Agregar"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-10-25T13:11:45.216Z",
+      "updatedAt": "2025-10-25T13:11:45.216Z",
+      "role": "workflow:owner",
+      "workflowId": "PuTGlhtaSWMFnEMB",
+      "projectId": "o60HadikmqrvYZ9Z"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-10-25T14:58:03.911Z",
+  "versionId": "1081b04c-a2c2-43fe-a5a5-2a5323c7f953"
+}
