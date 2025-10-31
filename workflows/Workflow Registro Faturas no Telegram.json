@@ -1,0 +1,283 @@
+{
+  "active": false,
+  "connections": {
+    "Telegram Trigger": {
+      "main": [
+        [
+          {
+            "node": "Download do Arquivo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download do Arquivo": {
+      "main": [
+        [
+          {
+            "node": "Análise da Fatura",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Análise da Fatura": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Atualizando Google Planilha",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Atualizando Google Planilha": {
+      "main": [
+        [
+          {
+            "node": "Download 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download 2": {
+      "main": [
+        [
+          {
+            "node": "Upload file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-10-31T20:57:06.439Z",
+  "id": "DrpZHOXRhrvv9uDC",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Workflow Registro Faturas no Telegram",
+  "nodes": [
+    {
+      "parameters": {
+        "updates": [
+          "message"
+        ],
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "bac88e57-5e8d-49bd-acc8-4f9d266a76ac",
+      "name": "Telegram Trigger",
+      "webhookId": "ee0a3799-d2a0-41e7-9d39-2b5b4bf6b7e5",
+      "credentials": {
+        "telegramApi": {
+          "id": "8FM4WkHXoltVj4Wk",
+          "name": "Credencial de Faturas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        208,
+        0
+      ],
+      "id": "3a506d26-b1b9-46fb-b1e4-24c6616413bc",
+      "name": "Download do Arquivo",
+      "webhookId": "65345610-7d24-4543-9eb8-7169a92bcddb",
+      "credentials": {
+        "telegramApi": {
+          "id": "8FM4WkHXoltVj4Wk",
+          "name": "Credencial de Faturas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "parameterType": "formBinaryData",
+              "name": "file",
+              "inputDataFieldName": "data"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        416,
+        0
+      ],
+      "id": "e14d85b6-cf4c-49ac-bd77-a04f79232346",
+      "name": "Análise da Fatura"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field called 'myNewField' to the JSON of each one\nfor (const item of $input.all()) {\n  item.json.myNewField = 1;\n}\n\nreturn $input.all();"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        0,
+        208
+      ],
+      "id": "39ae1b66-844c-4829-a3d8-d8e7dc613e47",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        }
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        208,
+        208
+      ],
+      "id": "c1c4b4ab-102d-4753-8d3b-e8407d2c6b4e",
+      "name": "Atualizando Google Planilha",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "LOJgWrBsYdHTsczQ",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        416,
+        208
+      ],
+      "id": "e98976df-0b59-440f-a79f-2022f3d81ef3",
+      "name": "Download 2",
+      "webhookId": "dbdd10ce-f032-41cf-ac9f-ade60a4d5592",
+      "credentials": {
+        "telegramApi": {
+          "id": "8FM4WkHXoltVj4Wk",
+          "name": "Credencial de Faturas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "root",
+          "cachedResultName": "/ (Root folder)"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        624,
+        208
+      ],
+      "id": "211d2aa4-39f0-44b3-b1b7-2209a2eb4ecd",
+      "name": "Upload file",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "6KD5I6pcyhCwphz7",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Registro de Faturas",
+        "height": 480,
+        "width": 944
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -112,
+        -64
+      ],
+      "typeVersion": 1,
+      "id": "f43bdcda-f618-4a71-b16c-41279300e37d",
+      "name": "Sticky Note"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-10-31T20:57:06.439Z",
+      "updatedAt": "2025-10-31T20:57:06.439Z",
+      "role": "workflow:owner",
+      "workflowId": "DrpZHOXRhrvv9uDC",
+      "projectId": "o60HadikmqrvYZ9Z"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-10-31T21:28:04.065Z",
+  "versionId": "2b18c672-c241-4fdb-af45-38386675a058"
+}
