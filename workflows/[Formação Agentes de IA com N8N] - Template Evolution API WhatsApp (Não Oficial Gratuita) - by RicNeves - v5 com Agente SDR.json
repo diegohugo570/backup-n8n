@@ -7383,16 +7383,10 @@
   "staticData": null,
   "tags": [
     {
-      "createdAt": "2025-06-25T12:16:21.520Z",
-      "updatedAt": "2025-06-25T12:16:21.520Z",
-      "id": "fbnh2AFfrHU2ZznN",
-      "name": "formacao-agentes-n8n"
-    },
-    {
-      "createdAt": "2025-06-25T12:16:21.530Z",
-      "updatedAt": "2025-06-25T12:16:21.530Z",
-      "id": "Ch0QO7kMAbdnPRda",
-      "name": "ai-agent"
+      "createdAt": "2025-08-29T20:23:12.328Z",
+      "updatedAt": "2025-08-29T20:23:12.328Z",
+      "id": "aed61lYZzEC2qigZ",
+      "name": "rag"
     },
     {
       "createdAt": "2025-08-29T20:23:12.328Z",
@@ -7401,10 +7395,16 @@
       "name": "whatsapp"
     },
     {
-      "createdAt": "2025-08-29T20:23:12.328Z",
-      "updatedAt": "2025-08-29T20:23:12.328Z",
-      "id": "aed61lYZzEC2qigZ",
-      "name": "rag"
+      "createdAt": "2025-06-25T12:16:21.530Z",
+      "updatedAt": "2025-06-25T12:16:21.530Z",
+      "id": "Ch0QO7kMAbdnPRda",
+      "name": "ai-agent"
+    },
+    {
+      "createdAt": "2025-06-25T12:16:21.520Z",
+      "updatedAt": "2025-06-25T12:16:21.520Z",
+      "id": "fbnh2AFfrHU2ZznN",
+      "name": "formacao-agentes-n8n"
     }
   ],
   "triggerCount": 0,
