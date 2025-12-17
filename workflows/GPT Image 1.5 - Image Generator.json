@@ -1,0 +1,222 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Set Prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF Image OK": {
+      "main": [
+        [
+          {
+            "node": "Webhook Response Success",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Webhook Response Error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Prompt": {
+      "main": [
+        [
+          {
+            "node": "Generate an image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate an image": {
+      "main": [
+        [
+          {
+            "node": "IF Image OK",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-12-17T12:19:16.028Z",
+  "id": "fqOEprqtF3SV7fxV",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "GPT Image 1.5 - Image Generator",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "gpt-image-generator",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "57e2237e-76aa-4d1b-b404-d7da52c6d8e6",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -880,
+        112
+      ],
+      "webhookId": "auto-generated-webhook-id"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "prompt-001",
+              "name": "prompt_base",
+              "value": "Crie uma imagem profissional sobre {{$json.body.produto}} voltada para {{$json.body.canal}}. Estilo corporativo moderno, minimalista, visual premium.",
+              "type": "string"
+            },
+            {
+              "id": "cta-001",
+              "name": "cta",
+              "value": "={{$json.body.cta}}",
+              "type": "string"
+            },
+            {
+              "id": "versao-001",
+              "name": "versao",
+              "value": "={{$json.body.versao}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "1dda6aa3-1e07-4bae-bd31-20d74591937f",
+      "name": "Set Prompt",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        -656,
+        112
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "condition-001",
+              "leftValue": "={{$json.data[0].url}}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "a278118d-0f93-4e54-8188-5b87139803db",
+      "name": "IF Image OK",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.1,
+      "position": [
+        -224,
+        112
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={\n  \"status\": \"success\",\n  \"image_url\": \"{{$json.data[0].url}}\",\n  \"versao\": \"{{$('Set Prompt').item.json.versao}}\",\n  \"produto\": \"{{$('Webhook').item.json.body.produto}}\",\n  \"canal\": \"{{$('Webhook').item.json.body.canal}}\"\n}",
+        "options": {}
+      },
+      "id": "6db08e98-4380-4f28-a234-3f7c38914da8",
+      "name": "Webhook Response Success",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        -32
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={\n  \"status\": \"error\",\n  \"message\": \"Erro ao gerar imagem\",\n  \"details\": \"Nenhuma URL de imagem retornada pela API\"\n}",
+        "options": {
+          "responseCode": 500
+        }
+      },
+      "id": "667975f5-22ea-47b2-8f09-61f968b42895",
+      "name": "Webhook Response Error",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        256
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.1,
+      "position": [
+        -448,
+        112
+      ],
+      "id": "f0fdb970-6a37-48f4-bc9b-053b91bd84e4",
+      "name": "Generate an image",
+      "credentials": {
+        "openAiApi": {
+          "id": "58nXg6cOh7QVFFh8",
+          "name": "OpenAi account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-12-17T12:19:16.028Z",
+      "createdAt": "2025-12-17T12:19:16.028Z",
+      "role": "workflow:owner",
+      "workflowId": "fqOEprqtF3SV7fxV",
+      "projectId": "o60HadikmqrvYZ9Z"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-12-17T12:20:04.686Z",
+  "versionId": "136ce36e-7b89-43dc-8d79-8dca88c07da5"
+}
