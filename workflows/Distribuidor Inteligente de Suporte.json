@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "Gmail Trigger": {
       "main": [
@@ -333,8 +335,8 @@
   },
   "shared": [
     {
-      "createdAt": "2025-06-14T13:52:04.861Z",
       "updatedAt": "2025-06-14T13:52:04.861Z",
+      "createdAt": "2025-06-14T13:52:04.861Z",
       "role": "workflow:owner",
       "workflowId": "5LsitC4RDaBUXxQp",
       "projectId": "o60HadikmqrvYZ9Z"
