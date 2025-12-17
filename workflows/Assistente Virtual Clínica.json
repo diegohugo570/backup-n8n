@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "Formata celular": {
       "main": [
@@ -605,8 +607,8 @@
   },
   "shared": [
     {
-      "createdAt": "2025-06-14T13:48:02.539Z",
       "updatedAt": "2025-06-14T13:48:02.539Z",
+      "createdAt": "2025-06-14T13:48:02.539Z",
       "role": "workflow:owner",
       "workflowId": "GOL6U01xzqqfs4xv",
       "projectId": "o60HadikmqrvYZ9Z"
