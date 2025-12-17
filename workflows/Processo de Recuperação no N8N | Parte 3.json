@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "Embeddings OpenAI": {
       "ai_embedding": [
@@ -1060,8 +1062,8 @@
   },
   "shared": [
     {
-      "createdAt": "2025-07-02T19:15:35.562Z",
       "updatedAt": "2025-07-02T19:15:35.562Z",
+      "createdAt": "2025-07-02T19:15:35.562Z",
       "role": "workflow:owner",
       "workflowId": "rKVu1XAbEpgVKorp",
       "projectId": "o60HadikmqrvYZ9Z"
