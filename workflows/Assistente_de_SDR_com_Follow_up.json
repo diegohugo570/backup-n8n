@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "Recebe Mensagem": {
       "main": [
@@ -1354,8 +1356,8 @@
   },
   "shared": [
     {
-      "createdAt": "2025-06-29T15:17:31.425Z",
       "updatedAt": "2025-06-29T15:17:31.425Z",
+      "createdAt": "2025-06-29T15:17:31.425Z",
       "role": "workflow:owner",
       "workflowId": "U27JmOcilQkoSxv8",
       "projectId": "o60HadikmqrvYZ9Z"
