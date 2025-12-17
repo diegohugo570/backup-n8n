@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "Supabase2": {
       "main": [
@@ -1671,8 +1673,8 @@
   },
   "shared": [
     {
-      "createdAt": "2025-07-08T18:58:17.498Z",
       "updatedAt": "2025-07-08T18:58:17.498Z",
+      "createdAt": "2025-07-08T18:58:17.498Z",
       "role": "workflow:owner",
       "workflowId": "211Lk8Gn9ArkFxFK",
       "projectId": "o60HadikmqrvYZ9Z"
