@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "Diário as 9am": {
       "main": [
@@ -230,8 +232,8 @@
   },
   "shared": [
     {
-      "createdAt": "2025-08-29T20:25:23.627Z",
       "updatedAt": "2025-08-29T20:25:23.627Z",
+      "createdAt": "2025-08-29T20:25:23.627Z",
       "role": "workflow:owner",
       "workflowId": "Pn5LbwXBPrgjccz5",
       "projectId": "o60HadikmqrvYZ9Z"
