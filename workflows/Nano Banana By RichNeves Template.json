@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "Request via Open Router": {
       "main": [
@@ -223,8 +225,8 @@
   },
   "shared": [
     {
-      "createdAt": "2025-08-29T20:19:22.874Z",
       "updatedAt": "2025-08-29T20:19:22.874Z",
+      "createdAt": "2025-08-29T20:19:22.874Z",
       "role": "workflow:owner",
       "workflowId": "1Pv7FH8XPtSTGX4N",
       "projectId": "o60HadikmqrvYZ9Z"
