@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "Filter": {
       "main": [
@@ -346,7 +348,9 @@
   "createdAt": "2025-10-13T20:22:52.988Z",
   "id": "OL4bcFJ2Xu4XxGxP",
   "isArchived": false,
-  "meta": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
   "name": "Disparo Leads Google Maps",
   "nodes": [
     {
@@ -659,7 +663,13 @@
       "position": [
         544,
         1712
-      ]
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "58nXg6cOh7QVFFh8",
+          "name": "OpenAi account"
+        }
+      }
     },
     {
       "parameters": {
@@ -956,7 +966,13 @@
       "position": [
         1488,
         1488
-      ]
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "LOJgWrBsYdHTsczQ",
+          "name": "Google Sheets account"
+        }
+      }
     },
     {
       "parameters": {
@@ -1312,7 +1328,7 @@
             {
               "id": "32de923e-44ed-4807-a252-b3ce0d2c8b28",
               "name": "Busca",
-              "value": "clinicas de estética em são paulo",
+              "value": "dentistas  em são paulo",
               "type": "string"
             },
             {
@@ -1330,7 +1346,7 @@
             {
               "id": "f68f1419-c32e-42c4-a7ff-275cc14a3a47",
               "name": "Api_Key_EvolutionAPI",
-              "value": "",
+              "value": "103983F83C21-46C1-AAE9-43D4DB14135D",
               "type": "string"
             }
           ]
@@ -1461,8 +1477,8 @@
   },
   "shared": [
     {
-      "createdAt": "2025-10-13T20:22:52.988Z",
       "updatedAt": "2025-10-13T20:22:52.988Z",
+      "createdAt": "2025-10-13T20:22:52.988Z",
       "role": "workflow:owner",
       "workflowId": "OL4bcFJ2Xu4XxGxP",
       "projectId": "o60HadikmqrvYZ9Z"
@@ -1471,6 +1487,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-10-13T20:32:44.596Z",
-  "versionId": "6aeb2ef6-59d9-4c4b-895d-443475d29be6"
+  "updatedAt": "2025-11-03T20:51:04.804Z",
+  "versionId": "4f2fbb2b-ba62-45e4-9814-a79e00d29eb5"
 }
