@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "When clicking ‘Execute workflow’": {
       "main": [
@@ -71,14 +73,32 @@
           "assignments": [
             {
               "id": "4edd8a3e-068e-42f7-97bc-78663049641f",
-              "name": "localização",
+              "name": "nome",
               "value": "São Paulo",
               "type": "string"
             },
             {
               "id": "86fe2c75-a675-4634-b5ad-e4af9f56d69d",
-              "name": "assunto",
+              "name": "empresa",
+              "value": "",
+              "type": "string"
+            },
+            {
+              "id": "31389b2f-9c91-4fe0-bd88-fe5e3dd3774e",
+              "name": "setor",
               "value": "hospital",
+              "type": "string"
+            },
+            {
+              "id": "49ef137f-7ae3-4673-837e-7a6a5c437609",
+              "name": "tópico",
+              "value": "",
+              "type": "string"
+            },
+            {
+              "id": "2a19fbc6-1d15-435d-a3d5-ee4a2ec7438b",
+              "name": "whatsapp",
+              "value": "",
               "type": "string"
             }
           ]
@@ -96,7 +116,7 @@
     },
     {
       "parameters": {
-        "url": "https://api.apify.com/v2/acts/lukaskrivka~google-maps-with-contact-details/runs?token=apify_api_TDMHUWHc8iSH2gKFCY33L6PjIBt0ga3CtKhe",
+        "url": "https://api.apify.com/v2/acts?token=apify_api_TDMHUWHc8iSH2gKFCY33L6PjIBt0ga3CtKhe",
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "{\n    \"categoryFilterWords\": [\n        \"bank\",\n        \"beautician\",\n        \"barrister\"\n    ],\n    \"language\": \"pt-BR\",\n    \"locationQuery\": \"São Paulo, SP\",\n    \"maxCrawledPlacesPerSearch\": 10,\n    \"searchStringsArray\": [\n        \"restaurant\",\n        \"escola\",\n        \"hospital\"\n    ],\n    \"skipClosedPlaces\": false\n}",
@@ -131,68 +151,16 @@
         "operation": "append",
         "documentId": {
           "__rl": true,
-          "value": "1Un9E4SWTKGEnJW6pPUErNgIjcouprw6bYW4xeY56ZJY",
-          "mode": "list",
-          "cachedResultName": "Leads Webscraping Google Maps",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Un9E4SWTKGEnJW6pPUErNgIjcouprw6bYW4xeY56ZJY/edit?usp=drivesdk"
+          "mode": "url",
+          "value": "https://docs.google.com/spreadsheets/d/1Un9E4SWTKGEnJW6pPUErNgIjcouprw6bYW4xeY56ZJY/edit?usp=drivesdk",
+          "__regex": "https:\\/\\/(?:drive|docs)\\.google\\.com(?:\\/.*|)\\/d\\/([0-9a-zA-Z\\-_]+)(?:\\/.*|)"
         },
         "sheetName": {
           "__rl": true,
-          "value": "gid=0",
-          "mode": "list",
-          "cachedResultName": "Página1",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Un9E4SWTKGEnJW6pPUErNgIjcouprw6bYW4xeY56ZJY/edit#gid=0"
-        },
-        "columns": {
-          "mappingMode": "defineBelow",
-          "value": {},
-          "matchingColumns": [],
-          "schema": [
-            {
-              "id": "Nome",
-              "displayName": "Nome",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true,
-              "removed": false
-            },
-            {
-              "id": "Endereço",
-              "displayName": "Endereço",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true,
-              "removed": false
-            },
-            {
-              "id": "Telefone",
-              "displayName": "Telefone",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true,
-              "removed": false
-            },
-            {
-              "id": "Termo de Busca",
-              "displayName": "Termo de Busca",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true,
-              "removed": false
-            }
-          ],
-          "attemptToConvertTypes": false,
-          "convertFieldsToString": false
-        },
-        "options": {}
+          "mode": "url",
+          "value": "",
+          "__regex": "https:\\/\\/docs\\.google\\.com\\/spreadsheets\\/d\\/[0-9a-zA-Z\\-_]+.*\\#gid=([0-9]+)"
+        }
       },
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
@@ -248,8 +216,8 @@
   },
   "shared": [
     {
-      "createdAt": "2025-10-17T14:20:55.777Z",
       "updatedAt": "2025-10-17T14:20:55.777Z",
+      "createdAt": "2025-10-17T14:20:55.777Z",
       "role": "workflow:owner",
       "workflowId": "Nth6Ys8WLR6v8eaG",
       "projectId": "o60HadikmqrvYZ9Z"
@@ -258,6 +226,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-10-17T14:56:06.762Z",
-  "versionId": "fae6c552-8dba-4e79-8a36-7ff9b5c19830"
+  "updatedAt": "2025-11-03T20:36:08.897Z",
+  "versionId": "5751bd01-e33b-4fce-9297-592b2814d05f"
 }
