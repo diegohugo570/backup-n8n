@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "Edit Fields": {
       "main": [
@@ -742,8 +744,8 @@
   },
   "shared": [
     {
-      "createdAt": "2025-06-14T13:52:39.708Z",
       "updatedAt": "2025-06-14T13:52:39.708Z",
+      "createdAt": "2025-06-14T13:52:39.708Z",
       "role": "workflow:owner",
       "workflowId": "yDhoxsryKfp5xaPp",
       "projectId": "o60HadikmqrvYZ9Z"
