@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "Filtra Os Dados": {
       "main": [
@@ -1627,8 +1629,8 @@
   },
   "shared": [
     {
-      "createdAt": "2025-07-08T18:59:41.984Z",
       "updatedAt": "2025-07-08T18:59:41.984Z",
+      "createdAt": "2025-07-08T18:59:41.984Z",
       "role": "workflow:owner",
       "workflowId": "jYQpeoarbEVHmOVF",
       "projectId": "o60HadikmqrvYZ9Z"
@@ -1637,8 +1639,8 @@
   "staticData": null,
   "tags": [
     {
-      "createdAt": "2025-07-08T18:59:36.172Z",
       "updatedAt": "2025-07-08T18:59:36.172Z",
+      "createdAt": "2025-07-08T18:59:36.172Z",
       "id": "uRo9zPyOtJUC7rm5",
       "name": "dominandoautomacoes"
     }
