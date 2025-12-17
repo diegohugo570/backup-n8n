@@ -1,0 +1,1444 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Switch1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Supabase buscar usuário",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch1": {
+      "main": [
+        [
+          {
+            "node": "Supabase ativar agente",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Supabase pausar agente",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "simplificação de dados1": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mensagem Audio": {
+      "main": [
+        [
+          {
+            "node": "Convert to File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File": {
+      "main": [
+        [
+          {
+            "node": "OpenAI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch3": {
+      "main": [
+        [
+          {
+            "node": "Mensagem Texto",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Mensagem Texto",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Mensagem Audio",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Evolution API",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Redis2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mensagem Texto": {
+      "main": [
+        [
+          {
+            "node": "Redis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis": {
+      "main": [
+        [
+          {
+            "node": "Get mensagens 1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Get mensagens 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get mensagens 2": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis1": {
+      "main": [
+        [
+          {
+            "node": "mensagens juntadas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get mensagens 1": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Redis1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase buscar usuário": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Supabase",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "mensagens juntadas": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis2": {
+      "main": [
+        [
+          {
+            "node": "Get mensagens 1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "If pausado ou não",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If pausado ou não": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Switch3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Auto-fixing Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Auto-fixing Output Parser",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Auto-fixing Output Parser",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Evolution API1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Evolution API1": {
+      "main": [
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "simplificação de dados1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-12-17T12:28:12.176Z",
+  "id": "Uii2kVjP7RZgMThn",
+  "isArchived": false,
+  "meta": null,
+  "name": "Fluxo Mestre EVOLUTION - Potto Flow",
+  "nodes": [
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('Webhook').item.json.body.data.key.fromMe }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "boolean",
+                      "operation": "true",
+                      "singleValue": true
+                    },
+                    "id": "be3867e5-e5e5-4ef5-9712-1bba33b5b458"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "From me true"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "bedf1f16-8b99-4bad-bffe-60520b8c2f74",
+                    "leftValue": "={{ $('Webhook').item.json.body.data.key.fromMe }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "boolean",
+                      "operation": "false",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "From me false"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -640,
+        320
+      ],
+      "id": "8c9f0d12-4fd6-4c68-aeb4-27b317273719",
+      "name": "Switch",
+      "notes": "Desenvolvido por Potto Flow"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('simplificação de dados1').item.json.content }}",
+                    "rightValue": "#ativar",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    },
+                    "id": "750aae36-f630-4c7c-a82a-73c147037fc6"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Ativar"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "5f586e88-c7f1-4943-bbbf-fcc30d9ad753",
+                    "leftValue": "={{ $('simplificação de dados1').item.json.content }}",
+                    "rightValue": "#pausar",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Pausar"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -256,
+        112
+      ],
+      "id": "90646a57-f0a3-4dac-8df8-501d114fb916",
+      "name": "Switch1",
+      "notes": "Desenvolvido por Potto Flow"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "Atendimento pausado ou ativado",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "whatsapp",
+              "condition": "eq",
+              "keyValue": "={{ $('simplificação de dados1').item.json.whatsapp }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "pausado",
+              "fieldValue": "no"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "deb30b85-372d-4491-b27e-fccbbf7d770e",
+      "name": "Supabase ativar agente"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "Atendimento pausado ou ativado",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "whatsapp",
+              "condition": "eq",
+              "keyValue": "={{ $('simplificação de dados1').item.json.whatsapp }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "pausado",
+              "fieldValue": "yes"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        32,
+        240
+      ],
+      "id": "bf3eca62-f075-48a2-8061-b6c5b39731b7",
+      "name": "Supabase pausar agente"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d7e2c114-f0f5-4eb3-a477-e6970069b4b1",
+              "name": "whatsapp",
+              "value": "={{ $json.body.data.key.remoteJid }}",
+              "type": "string"
+            },
+            {
+              "id": "9d557888-79cc-405f-a515-d80b5726567c",
+              "name": "message_id",
+              "value": "={{ $json.body.data.key.id }}",
+              "type": "string"
+            },
+            {
+              "id": "82f5aa67-a563-42ba-8d52-7f5207efcf73",
+              "name": "nome",
+              "value": "={{ $json.body.data.pushName }}",
+              "type": "string"
+            },
+            {
+              "id": "5ad29b35-db4d-4c70-bc7e-71a0c694deee",
+              "name": "content",
+              "value": "={{ $json.body.data.message.conversation }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -896,
+        320
+      ],
+      "id": "8c2a6919-9de2-41b2-8590-acb4316bbe90",
+      "name": "simplificação de dados1",
+      "notes": "Desenvolvido por Potto Flow"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c1ce011b-bd95-468e-863e-f2076f644cf9",
+              "name": "message.text",
+              "value": "={{ $('simplificação de dados1').item.json.content }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1600,
+        320
+      ],
+      "id": "d9866a18-1b5f-4edd-86ff-36ff6f820a49",
+      "name": "Mensagem Texto"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "5efc6961-1ff7-4ef2-a772-7e9761592a3e",
+              "name": "Audio",
+              "value": "={{ $('Webhook').item.json.body.data.message.base64 }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1584,
+        544
+      ],
+      "id": "ce2bb91c-7fdd-4db6-be3e-5e23320bac17",
+      "name": "Mensagem Audio"
+    },
+    {
+      "parameters": {
+        "resource": "audio",
+        "operation": "transcribe",
+        "options": {
+          "language": "pt"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        1984,
+        544
+      ],
+      "id": "132db2a9-4a63-49b5-b51b-30ce16189601",
+      "name": "OpenAI"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "0ef3cc0c-78ff-42c0-ad2a-934618b7c8ae",
+              "name": "message",
+              "value": "={{ $json.text }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2160,
+        544
+      ],
+      "id": "db013a3e-8a4e-4504-ae48-4fc01aa7b649",
+      "name": "Edit Fields",
+      "notes": "Desenvolvido por Potto Flow"
+    },
+    {
+      "parameters": {
+        "operation": "toBinary",
+        "sourceProperty": "Audio",
+        "options": {
+          "mimeType": "audio/mp4"
+        }
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        1808,
+        544
+      ],
+      "id": "204efb7e-4675-4624-b33d-b3930bbe331d",
+      "name": "Convert to File"
+    },
+    {
+      "parameters": {
+        "resource": "messages-api",
+        "instanceName": "potto-evo",
+        "remoteJid": "={{ $('simplificação de dados1').item.json.message.whatsapp }}",
+        "messageText": "=Olá, não recebemos esse tipo de formato. Envie somente texto ou áudio. ",
+        "options_message": {}
+      },
+      "type": "n8n-nodes-evolution-api.evolutionApi",
+      "typeVersion": 1,
+      "position": [
+        1584,
+        768
+      ],
+      "id": "9f08905a-3daa-45a1-b8c9-942293a160dd",
+      "name": "Evolution API"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "bc64f125-d93c-4d1d-97ae-65c0adb08b79",
+                    "leftValue": "={{ $('Webhook').item.json.body.data.messageType }}",
+                    "rightValue": "conversation",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "texto"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "137aec3f-e95e-4d59-b9ba-1140f9fc4fb4",
+                    "leftValue": "={{ $('Webhook').item.json.body.data.messageType }}",
+                    "rightValue": "extendedTextMessage",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "texto"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "137aec3f-e95e-4d59-b9ba-1140f9fc4fb4",
+                    "leftValue": "={{ $('Webhook').item.json.body.data.messageType }}",
+                    "rightValue": "audioMessage",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "audio"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra",
+          "renameFallbackOutput": "Outro"
+        }
+      },
+      "id": "88e6931a-441b-4a2e-b32c-bf4a5d51cda3",
+      "name": "Switch3",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.1,
+      "position": [
+        1120,
+        528
+      ],
+      "notesInFlow": false,
+      "notes": "Desenvolvido por Potto Flow"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('mensagens juntadas').item.json.message }}",
+        "options": {
+          "systemMessage": "Você é um vendedor de banana. Sempre tente vender 2 bananas. Seja educado"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.9,
+      "position": [
+        4384,
+        464
+      ],
+      "id": "254219f2-8df8-473a-889e-c661074516b0",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        4384,
+        752
+      ],
+      "id": "30d29492-ab73-4cb1-8a11-c67cea24ce5f",
+      "name": "OpenAI Chat Model"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('simplificação de dados1').item.json.whatsapp }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        4560,
+        752
+      ],
+      "id": "78997699-4881-4ed2-a131-06c4871912e5",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "resource": "messages-api",
+        "instanceName": "potto-evo",
+        "remoteJid": "={{ $('simplificação de dados1').item.json.whatsapp }}",
+        "messageText": "={{ $json['output.mensagens'] }}",
+        "options_message": {}
+      },
+      "type": "n8n-nodes-evolution-api.evolutionApi",
+      "typeVersion": 1,
+      "position": [
+        5744,
+        608
+      ],
+      "id": "42b29e35-ab56-4896-a758-64c94245af98",
+      "name": "Evolution API1"
+    },
+    {
+      "parameters": {
+        "operation": "push",
+        "list": "={{ $('simplificação de dados1').item.json.whatsapp }}_buffer",
+        "messageData": "={{ $('simplificação de dados1').item.json.content }}",
+        "tail": true
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        2080,
+        320
+      ],
+      "id": "8677e9e7-f3de-4ac9-83de-bf3d36bf20a0",
+      "name": "Redis",
+      "notes": "Desenvolvido por Potto Flow"
+    },
+    {
+      "parameters": {
+        "amount": 10
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        3040,
+        480
+      ],
+      "id": "38c79ca5-7aaa-44f1-871c-731a4605209e",
+      "name": "Wait",
+      "webhookId": "cfe04f57-41d1-41ca-bcfa-338bd07ebf18"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "mensagens",
+        "key": "={{ $('simplificação de dados1').item.json.whatsapp }}_buffer",
+        "keyType": "list",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        3248,
+        480
+      ],
+      "id": "8a5738e8-2c78-4d14-8783-0ecdc3899e6c",
+      "name": "Get mensagens 2",
+      "notes": "Desenvolvido por Potto Flow"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        3808,
+        704
+      ],
+      "id": "879ee99f-f6a0-4eb5-8459-56e220dadb9e",
+      "name": "No Operation, do nothing"
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "={{ $('simplificação de dados1').item.json.whatsapp }}_buffer"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        3840,
+        352
+      ],
+      "id": "e8d99d3d-b67f-4701-89a1-b81bd889dcd5",
+      "name": "Redis1"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "mensagens",
+        "key": "={{ $('simplificação de dados1').item.json.whatsapp }}_buffer",
+        "keyType": "list",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        2800,
+        480
+      ],
+      "id": "3f52b038-ef9b-4364-8174-99337b0cae8b",
+      "name": "Get mensagens 1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "8895630a-6a5c-411a-93fe-6f4d2130a05b",
+              "name": "message",
+              "value": "={{ $json.mensagens.join('\\n') }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4064,
+        464
+      ],
+      "id": "3313d190-16c8-4c02-8a4a-da396b8468a5",
+      "name": "mensagens juntadas"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "64dc6fbf-498a-42cb-84df-bbbbb0d9e13e",
+              "leftValue": "={{ $('Get mensagens 1').item.json.mensagens.last() }}",
+              "rightValue": "={{ $json.mensagens.last() }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3584,
+        480
+      ],
+      "id": "7d05670c-5fac-4bbc-8d12-ed9ca49af89a",
+      "name": "If1",
+      "notes": "Desenvolvido por Potto Flow"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "Atendimento pausado ou ativado",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "whatsapp",
+              "keyValue": "={{ $('simplificação de dados1').item.json.whatsapp }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -288,
+        480
+      ],
+      "id": "2085d6f5-7a2a-478a-a925-3998a350f3c4",
+      "name": "Supabase buscar usuário",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "f4852340-3cc6-4576-9f66-801dab2c8978",
+              "leftValue": "={{ $json.whatsapp }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -48,
+        480
+      ],
+      "id": "0bb696f9-74ef-495f-a9d1-bd8a2637e51e",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "tableId": "Atendimento pausado ou ativado",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "whatsapp",
+              "fieldValue": "={{ $('Webhook').item.json.body.data.key.remoteJid }}"
+            },
+            {
+              "fieldId": "pausado",
+              "fieldValue": "no"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        160,
+        688
+      ],
+      "id": "48e5d11b-e07c-4b97-8199-02784ece3368",
+      "name": "Supabase",
+      "notes": "Desenvolvido por Potto Flow"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.1,
+      "position": [
+        432,
+        480
+      ],
+      "id": "3a72f439-0b65-44b6-8bb1-9c5fbd15da5d",
+      "name": "Merge",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "operation": "push",
+        "list": "={{ $('simplificação de dados1').item.json.whatsapp }}_buffer",
+        "messageData": "={{ $json.message }}",
+        "tail": true
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        2448,
+        544
+      ],
+      "id": "1b73054a-51f8-44bd-8950-3ea45cba765a",
+      "name": "Redis2",
+      "notes": "Desenvolvido por Potto Flow"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "eb07467e-cfa0-4f35-989f-3e1127eef5eb",
+              "leftValue": "={{ $json.pausado }}",
+              "rightValue": "yes",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        704,
+        480
+      ],
+      "id": "e63f83c1-558d-4676-965d-770656b42896",
+      "name": "If pausado ou não",
+      "notes": "Desenvolvido por Potto Flow"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1152,
+        192
+      ],
+      "id": "369a82bd-670c-425e-8460-34f0554ca547",
+      "name": "No Operation, do nothing1"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserAutofixing",
+      "typeVersion": 1,
+      "position": [
+        4960,
+        688
+      ],
+      "id": "e30087bc-c4ea-467d-9eee-c11c8f4bbf02",
+      "name": "Auto-fixing Output Parser"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        4848,
+        848
+      ],
+      "id": "480ff3f4-5aa6-466b-a990-836cbddfdb6e",
+      "name": "OpenAI Chat Model1"
+    },
+    {
+      "parameters": {
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"mensagens\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"string\"\n      }\n    }\n  },\n  \"required\": [\"mensagens\"]\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.2,
+      "position": [
+        5120,
+        848
+      ],
+      "id": "dc29c9c0-84d7-4080-a6ef-c14fcfd50c19",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=<mensagem_do_usuario>\n{{ $json.output }}\n</mensagem_do_usuario>",
+        "hasOutputParser": true,
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=Apenas estruture a <mensagem_do_usuario> no formato JSON solicitado no output parser e seguindo as instruções de formatação abaixo. Não altere nada mais na mensagem\n\n# Formatação\n- Divida as mensagens para que fiquem naturais e humanizadas;\n- Divida as mensagens conforme estrutura do output parser para que não fiquem muito longas (maiores que 100 caractéres);\n- Não separe mensagens vazias;\n- Use quebras de linhas (\\n\\n) após pontos finais;\n- Não quebre as linhas na virgula\n\n\nExemplo de formato JSON:\n{\n\"mensagens\": [\"Mensagem 0\", \"Mensagem 1\", \"Mensagem 2\"]\n}\n\n"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.6,
+      "position": [
+        4848,
+        464
+      ],
+      "id": "87d70595-9880-4b41-8691-66ddc8121c57",
+      "name": "Basic LLM Chain",
+      "notes": "Desenvolvido por Potto Flow"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "output.mensagens",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        5248,
+        464
+      ],
+      "id": "3d7077bc-fa0f-429b-bdca-bb7881b71c3b",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        5472,
+        464
+      ],
+      "id": "069cb8ed-4aff-46b3-990a-2697cce23c9f",
+      "name": "Loop Over Items",
+      "notes": "Desenvolvido por Potto Flow"
+    },
+    {
+      "parameters": {
+        "amount": 2
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        5920,
+        608
+      ],
+      "id": "9cedd5aa-c94e-42f3-8704-8a3e5f8784b2",
+      "name": "Wait1",
+      "webhookId": "e7102edd-d30e-4b8c-9569-a4077be487de"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        5744,
+        368
+      ],
+      "id": "556ed42b-74b9-445d-92f2-02e6dd656751",
+      "name": "No Operation, do nothing2"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "8c8e6e9f-1694-467b-9035-ad84d995d658",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -1136,
+        320
+      ],
+      "id": "9b51d112-618a-458a-9c35-be8b4be365a0",
+      "name": "Webhook",
+      "webhookId": "8c8e6e9f-1694-467b-9035-ad84d995d658"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-12-17T12:28:12.176Z",
+      "createdAt": "2025-12-17T12:28:12.176Z",
+      "role": "workflow:owner",
+      "workflowId": "Uii2kVjP7RZgMThn",
+      "projectId": "o60HadikmqrvYZ9Z"
+    }
+  ],
+  "staticData": null,
+  "tags": [
+    {
+      "updatedAt": "2025-12-11T21:49:57.103Z",
+      "createdAt": "2025-12-11T21:49:57.103Z",
+      "id": "jVJBpv1Zg5iwH5ja",
+      "name": "Potto Flow - Aula"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-12-17T12:28:12.176Z",
+  "versionId": "1a1882f9-95ef-47fe-9f71-92e5d88866e2"
+}
