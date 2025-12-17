@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "Schedule Trigger": {
       "main": [
@@ -257,8 +259,8 @@
   },
   "shared": [
     {
-      "createdAt": "2025-06-21T13:32:48.263Z",
       "updatedAt": "2025-06-21T13:32:48.263Z",
+      "createdAt": "2025-06-21T13:32:48.263Z",
       "role": "workflow:owner",
       "workflowId": "QmE3pjyIZrqfioOS",
       "projectId": "o60HadikmqrvYZ9Z"
