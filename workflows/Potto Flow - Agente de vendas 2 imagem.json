@@ -1,0 +1,314 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "Loop Over Items": {
+      "main": [
+        [
+          {
+            "node": "modelos",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit": {
+      "main": [
+        [
+          {
+            "node": "Resposta para o Agente",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "modelos": {
+      "main": [
+        [
+          {
+            "node": "Limit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GetModelos": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Evolution API",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Simplificação de dados",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Evolution API": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simplificação de dados": {
+      "main": [
+        [
+          {
+            "node": "GetModelos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-12-17T12:25:07.624Z",
+  "id": "JXv7jgnKvZiUqJtt",
+  "isArchived": false,
+  "meta": null,
+  "name": "Potto Flow - Agente de vendas 2 imagem",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "21ff7677-96ec-4430-8205-e2b4eacadd3c",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        -544,
+        112
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "3dc02012-f137-4975-8086-cd2606f3885e",
+      "name": "Limit",
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        208,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 2
+      },
+      "id": "c1e8a4b4-afdf-458a-a921-8871b9e91736",
+      "name": "Wait",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -224,
+        208
+      ],
+      "webhookId": "49348908-92d3-4fe7-8a8f-b01ca287e9db"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c8fe0a2a-65e7-4542-add3-ae4a31f67fc9",
+              "name": "Modelos",
+              "value": "={{ (() => { \n    const data = $('GetModelos').item.json; \n    return { modelo: data.modelo, preço: data.preço }; \n})() }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c9ef82fd-68be-4e72-8293-5362fdd64988",
+      "name": "modelos",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "817f12c4-7d2a-45bd-8c12-74ab0c196308",
+              "name": "response",
+              "value": "=As imagens e os modelos já foram enviados com sucesso! Pergunte agora, somente qual o modelo enviado que o usuário mais gostou. ",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a8dce186-b46b-4d25-b21b-138cc1155e2b",
+      "name": "Resposta para o Agente",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        432,
+        0
+      ],
+      "notes": "Desenvolvido por Potto Flow"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "tableId": "Produtos",
+        "filterType": "none"
+      },
+      "id": "8212f215-5089-485f-b4c7-ce0a0c92aaa9",
+      "name": "GetModelos",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -880,
+        112
+      ],
+      "notes": "Desenvolvido por Potto Flow"
+    },
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "nome"
+            },
+            {
+              "name": "message"
+            },
+            {
+              "name": "whatsapp"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -1328,
+        112
+      ],
+      "id": "5a1c423e-40b2-409f-8f60-1e56bd983b8f",
+      "name": "When Executed by Another Workflow"
+    },
+    {
+      "parameters": {
+        "resource": "messages-api",
+        "operation": "send-image",
+        "instanceName": "potto-flow",
+        "remoteJid": "={{ $('Simplificação de dados').item.json.whatsapp }}",
+        "media": "={{ $json.imagem }}",
+        "caption": "={{ $json.produto }} {{ $json['preço'] }}",
+        "options_message": {}
+      },
+      "type": "n8n-nodes-evolution-api.evolutionApi",
+      "typeVersion": 1,
+      "position": [
+        48,
+        288
+      ],
+      "id": "46fc39bb-3a94-4667-ab3c-29a7f869d757",
+      "name": "Evolution API"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "2b028bb9-de07-4197-98bc-d69adc91f065",
+              "name": "whatsapp",
+              "value": "={{ $json.whatsapp }}",
+              "type": "string"
+            },
+            {
+              "id": "83a8097c-75fc-49c1-b277-c87b0825a785",
+              "name": "nome",
+              "value": "={{ $json.nome }}",
+              "type": "string"
+            },
+            {
+              "id": "53ede75d-b658-4036-9e9a-2c5774a44738",
+              "name": "message",
+              "value": "={{ $json.message }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "fd521524-7dea-49a1-8ff6-d01ab2b0b131",
+      "name": "Simplificação de dados",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1104,
+        112
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-12-17T12:25:07.624Z",
+      "createdAt": "2025-12-17T12:25:07.624Z",
+      "role": "workflow:owner",
+      "workflowId": "JXv7jgnKvZiUqJtt",
+      "projectId": "o60HadikmqrvYZ9Z"
+    }
+  ],
+  "staticData": null,
+  "tags": [
+    {
+      "updatedAt": "2025-12-11T21:49:57.103Z",
+      "createdAt": "2025-12-11T21:49:57.103Z",
+      "id": "jVJBpv1Zg5iwH5ja",
+      "name": "Potto Flow - Aula"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-12-17T12:25:07.624Z",
+  "versionId": "f28f504b-7194-4fdc-a3f2-d7e01706b84c"
+}
