@@ -1,0 +1,429 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "Loop Over Items": {
+      "main": [
+        [
+          {
+            "node": "modelos",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Evolution API": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Simplificação de dados",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "procurar_url": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Evolution API",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "modelos": {
+      "main": [
+        [
+          {
+            "node": "Limit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit": {
+      "main": [
+        [
+          {
+            "node": "Resposta para o Agente",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simplificação de dados": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-12-17T12:25:25.615Z",
+  "id": "GxUn1iRmNuOeCpOp",
+  "isArchived": false,
+  "meta": null,
+  "name": "Potto Flow - Agente de vendas 3 url site",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "a62b1ada-ef60-4b29-9a81-dd483f485f78",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        -256,
+        128
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 1.2
+      },
+      "id": "e74b2a4c-83c4-40f7-87d2-8da85f2eb435",
+      "name": "Wait",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -48,
+        224
+      ],
+      "webhookId": "f2eebee2-40d1-48ae-b71b-bec59f948b16"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "817f12c4-7d2a-45bd-8c12-74ab0c196308",
+              "name": "response",
+              "value": "=O link do site já foi enviado com sucesso! ",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "547c8287-0821-414a-a891-99a9bf9b2ecb",
+      "name": "Resposta para o Agente",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        384,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "messages-api",
+        "instanceName": "potto-flow",
+        "remoteJid": "={{ $('Simplificação de dados').item.json.whatsapp }}",
+        "messageText": "={{ $json.message }}",
+        "options_message": {}
+      },
+      "type": "n8n-nodes-evolution-api.evolutionApi",
+      "typeVersion": 1,
+      "position": [
+        400,
+        288
+      ],
+      "id": "f530b782-72a2-4519-bc9a-50fdc4c502cc",
+      "name": "Evolution API"
+    },
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "nome"
+            },
+            {
+              "name": "message"
+            },
+            {
+              "name": "whatsapp"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -1184,
+        128
+      ],
+      "id": "4aec5b95-c47c-46be-bcae-a4ed4711c95c",
+      "name": "When Executed by Another Workflow"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.message }}",
+        "options": {
+          "systemMessage": "=<função>\n\nPegue a URL do produto correspondente na coluna de URL. Enviar somente o link sem nenhuma outra informação.\n\n</função>\n\n<exemplo>\n\nAqui está o link de pagamento para o [nome do produto]:\n\nLink do produto\n\nSe precisar de mais alguma coisa, é só avisar!\n\n</exemplo>\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.9,
+      "position": [
+        -704,
+        128
+      ],
+      "id": "5ab84904-2969-40d6-b1fd-a947884a173e",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -848,
+        368
+      ],
+      "id": "fb02c427-cfb5-49b0-8870-08228bd2b587",
+      "name": "OpenAI Chat Model"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $json.whatsapp }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        -704,
+        368
+      ],
+      "id": "3271b65a-ddee-40ee-a207-6c70f644a495",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "ativar essa tool para pegar a URL do item que está sendo solicitado",
+        "operation": "getAll",
+        "tableId": "Produtos"
+      },
+      "type": "n8n-nodes-base.supabaseTool",
+      "typeVersion": 1,
+      "position": [
+        -480,
+        352
+      ],
+      "id": "cba50b6c-b510-439b-9ec3-9f8070468e26",
+      "name": "procurar_url",
+      "notes": "Desenvolvido por Potto Flow"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "41afdc2e-b502-4d09-a50a-f00ee6598aa5",
+              "name": "message",
+              "value": "={{ $json.output }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        192,
+        224
+      ],
+      "id": "50f28dcf-28a9-4240-814e-020d512244d0",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {},
+      "id": "4da54abb-a347-41ca-b9ad-42f44ad95717",
+      "name": "Limit",
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        192,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c8fe0a2a-65e7-4542-add3-ae4a31f67fc9",
+              "name": "Modelos",
+              "value": "={{ (() => { \n    const data = $('AI Agent').item.json; \n    return { link }; \n})() }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "45578d38-c553-4edf-8802-56907fd868af",
+      "name": "modelos",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "2b028bb9-de07-4197-98bc-d69adc91f065",
+              "name": "whatsapp",
+              "value": "={{ $json.whatsapp }}",
+              "type": "string"
+            },
+            {
+              "id": "83a8097c-75fc-49c1-b277-c87b0825a785",
+              "name": "nome",
+              "value": "={{ $json.nome }}",
+              "type": "string"
+            },
+            {
+              "id": "53ede75d-b658-4036-9e9a-2c5774a44738",
+              "name": "message",
+              "value": "={{ $json.message }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "4b608643-93bb-425a-9830-fa95465a6138",
+      "name": "Simplificação de dados",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -928,
+        128
+      ],
+      "notes": "Desenvolvido por Potto Flow"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-12-17T12:25:25.615Z",
+      "createdAt": "2025-12-17T12:25:25.615Z",
+      "role": "workflow:owner",
+      "workflowId": "GxUn1iRmNuOeCpOp",
+      "projectId": "o60HadikmqrvYZ9Z"
+    }
+  ],
+  "staticData": null,
+  "tags": [
+    {
+      "updatedAt": "2025-12-11T21:49:57.103Z",
+      "createdAt": "2025-12-11T21:49:57.103Z",
+      "id": "jVJBpv1Zg5iwH5ja",
+      "name": "Potto Flow - Aula"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-12-17T12:25:25.615Z",
+  "versionId": "2f15351d-750b-4bd0-a6de-63f0ccbd1c45"
+}
