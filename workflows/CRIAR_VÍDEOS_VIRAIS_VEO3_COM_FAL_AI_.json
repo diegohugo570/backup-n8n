@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "Create Video": {
       "main": [
@@ -517,8 +519,8 @@
   },
   "shared": [
     {
-      "createdAt": "2025-08-29T20:48:54.195Z",
       "updatedAt": "2025-08-29T20:48:54.195Z",
+      "createdAt": "2025-08-29T20:48:54.195Z",
       "role": "workflow:owner",
       "workflowId": "QhS19xBLq1RYEE6Y",
       "projectId": "o60HadikmqrvYZ9Z"
