@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "Webhook": {
       "main": [
@@ -1519,8 +1521,8 @@
   },
   "shared": [
     {
-      "createdAt": "2025-07-08T19:01:12.193Z",
       "updatedAt": "2025-07-08T19:01:12.193Z",
+      "createdAt": "2025-07-08T19:01:12.193Z",
       "role": "workflow:owner",
       "workflowId": "u1XIZB742VFmHP8r",
       "projectId": "o60HadikmqrvYZ9Z"
@@ -1529,8 +1531,8 @@
   "staticData": null,
   "tags": [
     {
-      "createdAt": "2025-07-08T18:59:36.172Z",
       "updatedAt": "2025-07-08T18:59:36.172Z",
+      "createdAt": "2025-07-08T18:59:36.172Z",
       "id": "uRo9zPyOtJUC7rm5",
       "name": "dominandoautomacoes"
     }
