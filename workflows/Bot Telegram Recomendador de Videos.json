@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "Telegram Trigger": {
       "main": [
@@ -182,8 +184,8 @@
   },
   "shared": [
     {
-      "createdAt": "2025-11-01T14:01:15.973Z",
       "updatedAt": "2025-11-01T14:01:15.973Z",
+      "createdAt": "2025-11-01T14:01:15.973Z",
       "role": "workflow:owner",
       "workflowId": "4FZs0bXYV9EO2n8F",
       "projectId": "o60HadikmqrvYZ9Z"
