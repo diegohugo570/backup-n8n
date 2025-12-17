@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "Notion Trigger": {
       "main": [
@@ -104,8 +106,8 @@
   },
   "shared": [
     {
-      "createdAt": "2025-11-01T14:00:37.224Z",
       "updatedAt": "2025-11-01T14:00:37.224Z",
+      "createdAt": "2025-11-01T14:00:37.224Z",
       "role": "workflow:owner",
       "workflowId": "rjtPJ3H24cdsqHgT",
       "projectId": "o60HadikmqrvYZ9Z"
