@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "loop": {
       "main": [
@@ -409,8 +411,8 @@
   },
   "shared": [
     {
-      "createdAt": "2025-06-25T20:07:36.973Z",
       "updatedAt": "2025-06-25T20:07:36.973Z",
+      "createdAt": "2025-06-25T20:07:36.973Z",
       "role": "workflow:owner",
       "workflowId": "zjpSr4QcrR6kRUCJ",
       "projectId": "o60HadikmqrvYZ9Z"
