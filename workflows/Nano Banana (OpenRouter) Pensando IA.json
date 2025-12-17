@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "Nano Banana": {
       "main": [
@@ -130,8 +132,8 @@
   },
   "shared": [
     {
-      "createdAt": "2025-08-29T20:20:08.275Z",
       "updatedAt": "2025-08-29T20:20:08.275Z",
+      "createdAt": "2025-08-29T20:20:08.275Z",
       "role": "workflow:owner",
       "workflowId": "UCAeuRzX0oqdZUYn",
       "projectId": "o60HadikmqrvYZ9Z"
