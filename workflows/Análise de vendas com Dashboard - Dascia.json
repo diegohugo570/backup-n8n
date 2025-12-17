@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "Obtendo Arquivo": {
       "main": [
@@ -623,8 +625,8 @@
   },
   "shared": [
     {
-      "createdAt": "2025-07-01T18:42:40.861Z",
       "updatedAt": "2025-07-01T18:42:40.861Z",
+      "createdAt": "2025-07-01T18:42:40.861Z",
       "role": "workflow:owner",
       "workflowId": "Xctf6atC2LVXsCrU",
       "projectId": "o60HadikmqrvYZ9Z"
