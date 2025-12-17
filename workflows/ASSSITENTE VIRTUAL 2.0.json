@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "Recebe mensagem usuario": {
       "main": [
@@ -1205,8 +1207,8 @@
   },
   "shared": [
     {
-      "createdAt": "2025-06-14T13:49:02.232Z",
       "updatedAt": "2025-06-14T13:49:02.232Z",
+      "createdAt": "2025-06-14T13:49:02.232Z",
       "role": "workflow:owner",
       "workflowId": "57L8LyTV8NALnSqi",
       "projectId": "o60HadikmqrvYZ9Z"
