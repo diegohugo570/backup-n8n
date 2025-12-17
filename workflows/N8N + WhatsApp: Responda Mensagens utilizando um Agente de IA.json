@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "Webhook": {
       "main": [
@@ -355,8 +357,8 @@
   },
   "shared": [
     {
-      "createdAt": "2025-06-22T12:52:14.460Z",
       "updatedAt": "2025-06-22T12:52:14.460Z",
+      "createdAt": "2025-06-22T12:52:14.460Z",
       "role": "workflow:owner",
       "workflowId": "T1T2WYKIOJ5rFbgB",
       "projectId": "o60HadikmqrvYZ9Z"
