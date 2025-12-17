@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "Lista de Nomes": {
       "main": [
@@ -331,8 +333,8 @@
   },
   "shared": [
     {
-      "createdAt": "2025-06-15T14:57:08.134Z",
       "updatedAt": "2025-06-15T14:57:08.134Z",
+      "createdAt": "2025-06-15T14:57:08.134Z",
       "role": "workflow:owner",
       "workflowId": "shLVttXRTFrnhBMN",
       "projectId": "o60HadikmqrvYZ9Z"
@@ -341,8 +343,8 @@
   "staticData": null,
   "tags": [
     {
-      "createdAt": "2025-06-14T14:35:30.743Z",
       "updatedAt": "2025-06-14T14:35:30.743Z",
+      "createdAt": "2025-06-14T14:35:30.743Z",
       "id": "f7Ttu7FQN3EvRKX9",
       "name": "🥷🏼 Ninja Automações"
     }
