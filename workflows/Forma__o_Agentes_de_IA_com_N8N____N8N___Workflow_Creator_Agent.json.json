@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "Simple Memory": {
       "ai_memory": [
@@ -186,8 +188,8 @@
   },
   "shared": [
     {
-      "createdAt": "2025-08-29T20:32:45.546Z",
       "updatedAt": "2025-08-29T20:32:45.546Z",
+      "createdAt": "2025-08-29T20:32:45.546Z",
       "role": "workflow:owner",
       "workflowId": "jc4nPvpdUWFSVJ3q",
       "projectId": "o60HadikmqrvYZ9Z"
@@ -196,22 +198,22 @@
   "staticData": null,
   "tags": [
     {
-      "createdAt": "2025-06-25T12:16:21.512Z",
-      "updatedAt": "2025-06-25T12:16:21.512Z",
-      "id": "HGjaXtx8ENj2ce7D",
-      "name": "ricneves"
+      "updatedAt": "2025-06-25T12:16:21.530Z",
+      "createdAt": "2025-06-25T12:16:21.530Z",
+      "id": "Ch0QO7kMAbdnPRda",
+      "name": "ai-agent"
     },
     {
-      "createdAt": "2025-06-25T12:16:21.520Z",
       "updatedAt": "2025-06-25T12:16:21.520Z",
+      "createdAt": "2025-06-25T12:16:21.520Z",
       "id": "fbnh2AFfrHU2ZznN",
       "name": "formacao-agentes-n8n"
     },
     {
-      "createdAt": "2025-06-25T12:16:21.530Z",
-      "updatedAt": "2025-06-25T12:16:21.530Z",
-      "id": "Ch0QO7kMAbdnPRda",
-      "name": "ai-agent"
+      "updatedAt": "2025-06-25T12:16:21.512Z",
+      "createdAt": "2025-06-25T12:16:21.512Z",
+      "id": "HGjaXtx8ENj2ce7D",
+      "name": "ricneves"
     }
   ],
   "triggerCount": 0,
