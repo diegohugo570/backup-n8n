@@ -1,7 +1,113 @@
 {
-  "active": false,
-  "activeVersion": null,
-  "activeVersionId": null,
+  "active": true,
+  "activeVersion": {
+    "updatedAt": "2025-12-11T22:04:59.725Z",
+    "createdAt": "2025-12-11T22:04:59.725Z",
+    "versionId": "090ede8a-6842-4b4f-b237-b9f718cdc502",
+    "workflowId": "JYdbN8I7nmRyvlhh",
+    "nodes": [
+      {
+        "parameters": {},
+        "type": "n8n-nodes-base.errorTrigger",
+        "typeVersion": 1,
+        "position": [
+          0,
+          0
+        ],
+        "id": "61b6c06c-2428-4a92-8355-095116ca5265",
+        "name": "Error Trigger"
+      },
+      {
+        "parameters": {
+          "method": "POST",
+          "url": "=https://[domínio da sua instância aqui]/message/sendText/[nome da sua instância aqui]",
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "apikey",
+                "value": "chave api da sua instância aqui"
+              }
+            ]
+          },
+          "sendBody": true,
+          "bodyParameters": {
+            "parameters": [
+              {
+                "name": "number",
+                "value": "=seu número aqui"
+              },
+              {
+                "name": "text",
+                "value": "={{ $json.mensagem }}"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          560,
+          0
+        ],
+        "id": "28097191-1a29-40e7-8e2d-47628aa70197",
+        "name": "envia mensagem"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "dd46a5a5-2757-4870-857b-4eaee46dd423",
+                "name": "mensagem",
+                "value": "=*Notificação de ERRO no fluxo:* {{ $json.workflow.name }}\n\nURL da execução: https://[seu domínio aqui]/workflow/{{ $json.workflow.id }}/executions/{{ $json.execution.id }}\n\n*ERRO:*\nNome: {{ $json.execution.error.name }}\nStatus: {{ $json.execution.mode }}\nNó onde aconteceu o erro: {{ $json.execution.lastNodeExecuted }}\n\n*RAZÃO:*\nMensagem: {{ $json.execution.error.message }}\n\n*Workflow ERRO:*\nNome do Workflow: {{ $json.workflow.name }}\nlink: https://[seu domínio aqui]/workflow/{{ $json.workflow.id }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          280,
+          0
+        ],
+        "id": "23295781-4a11-4a37-bba8-bffdbd577627",
+        "name": "Edit Fields1"
+      }
+    ],
+    "connections": {
+      "Error Trigger": {
+        "main": [
+          [
+            {
+              "node": "Edit Fields1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Edit Fields1": {
+        "main": [
+          [
+            {
+              "node": "envia mensagem",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "authors": "system migration",
+    "name": null,
+    "description": null,
+    "autosaved": false
+  },
+  "activeVersionId": "090ede8a-6842-4b4f-b237-b9f718cdc502",
   "connections": {
     "Error Trigger": {
       "main": [
