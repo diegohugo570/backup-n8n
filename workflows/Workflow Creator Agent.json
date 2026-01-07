@@ -204,10 +204,10 @@
   "staticData": null,
   "tags": [
     {
-      "updatedAt": "2025-06-25T12:16:21.530Z",
-      "createdAt": "2025-06-25T12:16:21.530Z",
-      "id": "Ch0QO7kMAbdnPRda",
-      "name": "ai-agent"
+      "updatedAt": "2025-06-25T12:16:21.520Z",
+      "createdAt": "2025-06-25T12:16:21.520Z",
+      "id": "fbnh2AFfrHU2ZznN",
+      "name": "formacao-agentes-n8n"
     },
     {
       "updatedAt": "2025-06-25T12:16:21.512Z",
@@ -216,10 +216,10 @@
       "name": "ricneves"
     },
     {
-      "updatedAt": "2025-06-25T12:16:21.520Z",
-      "createdAt": "2025-06-25T12:16:21.520Z",
-      "id": "fbnh2AFfrHU2ZznN",
-      "name": "formacao-agentes-n8n"
+      "updatedAt": "2025-06-25T12:16:21.530Z",
+      "createdAt": "2025-06-25T12:16:21.530Z",
+      "id": "Ch0QO7kMAbdnPRda",
+      "name": "ai-agent"
     }
   ],
   "triggerCount": 0,
