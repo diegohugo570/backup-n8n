@@ -101,7 +101,7 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        -1640,
+        -1648,
         80
       ],
       "id": "a5d0086a-e63e-42ab-a1e3-481ad325d195",
@@ -120,8 +120,8 @@
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.2,
       "position": [
-        -1640,
-        280
+        -1648,
+        288
       ],
       "id": "ad39489f-8326-476a-809a-3419e6f59fbd",
       "name": "Schedule Trigger"
@@ -146,8 +146,8 @@
       "type": "n8n-nodes-base.github",
       "typeVersion": 1.1,
       "position": [
-        -1340,
-        140
+        -1344,
+        144
       ],
       "id": "2b52a175-42c4-4a5d-80d3-37e4ea2db884",
       "name": "GitHub",
@@ -174,7 +174,7 @@
       "typeVersion": 1,
       "position": [
         -1120,
-        140
+        144
       ],
       "id": "35f4fb1e-2ed3-4ba8-92d2-87b8f052e848",
       "name": "Aggregate"
@@ -187,8 +187,8 @@
       "type": "n8n-nodes-base.n8n",
       "typeVersion": 1,
       "position": [
-        -900,
-        140
+        -896,
+        144
       ],
       "id": "2d5cfc21-bd7f-4c42-b479-264cce6c4972",
       "name": "n8n",
@@ -211,8 +211,8 @@
       "type": "n8n-nodes-base.convertToFile",
       "typeVersion": 1.1,
       "position": [
-        -680,
-        140
+        -688,
+        144
       ],
       "id": "d1a90634-51dd-4a0e-8a95-53fc4fea743e",
       "name": "Convert to File"
@@ -245,8 +245,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -460,
-        140
+        -464,
+        144
       ],
       "id": "6b1b7429-9a74-47bd-bfce-b4461b040be4",
       "name": "If"
@@ -256,15 +256,15 @@
         "resource": "file",
         "owner": {
           "__rl": true,
-          "value": "https://github.com/dascialucas",
+          "value": "https://github.com/diegohugo570",
           "mode": "url"
         },
         "repository": {
           "__rl": true,
-          "value": "backup-de-fluxos-n8n",
+          "value": "backup-n8n",
           "mode": "list",
-          "cachedResultName": "backup-de-fluxos-n8n",
-          "cachedResultUrl": "https://github.com/dascialucas/backup-de-fluxos-n8n"
+          "cachedResultName": "backup-n8n",
+          "cachedResultUrl": "https://github.com/diegohugo570/backup-n8n"
         },
         "filePath": "={{ $('n8n').item.json.name }}",
         "binaryData": true,
@@ -274,7 +274,7 @@
       "typeVersion": 1.1,
       "position": [
         0,
-        360
+        368
       ],
       "id": "89b1c26a-2732-4dcf-9df2-3ca763aff6c2",
       "name": "GitHub1",
@@ -293,15 +293,15 @@
         "operation": "edit",
         "owner": {
           "__rl": true,
-          "value": "https://github.com/dascialucas",
+          "value": "https://github.com/diegohugo570",
           "mode": "url"
         },
         "repository": {
           "__rl": true,
-          "value": "backup-de-fluxos-n8n",
+          "value": "backup-n8n",
           "mode": "list",
-          "cachedResultName": "backup-de-fluxos-n8n",
-          "cachedResultUrl": "https://github.com/dascialucas/backup-de-fluxos-n8n"
+          "cachedResultName": "backup-n8n",
+          "cachedResultUrl": "https://github.com/diegohugo570/backup-n8n"
         },
         "filePath": "={{ $('n8n').item.json.name }}",
         "binaryData": true,
@@ -340,6 +340,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-06-14T15:13:40.105Z",
-  "versionId": "f5821e5a-c008-4526-b3e2-d338c0825cdb"
+  "updatedAt": "2026-01-02T21:29:35.260Z",
+  "versionId": "fe9d760a-84b1-46c7-ae71-efdee1cf4108"
 }
