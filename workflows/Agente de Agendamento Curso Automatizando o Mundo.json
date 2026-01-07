@@ -1,7 +1,312 @@
 {
-  "active": false,
-  "activeVersion": null,
-  "activeVersionId": null,
+  "active": true,
+  "activeVersion": {
+    "updatedAt": "2025-12-11T22:04:59.725Z",
+    "createdAt": "2025-12-11T22:04:59.725Z",
+    "versionId": "67cf3400-c39b-41f2-8d56-500c3108291f",
+    "workflowId": "gkbLj65MHNCU67eB",
+    "nodes": [
+      {
+        "parameters": {
+          "content": "# Agente de Agendamento",
+          "height": 660,
+          "width": 1040
+        },
+        "type": "n8n-nodes-base.stickyNote",
+        "position": [
+          0,
+          0
+        ],
+        "typeVersion": 1,
+        "id": "397dae5a-5b7a-4440-872b-96066b8c9a3d",
+        "name": "Sticky Note"
+      },
+      {
+        "parameters": {
+          "promptType": "define",
+          "text": "={{ $json.query }}",
+          "options": {
+            "systemMessage": "=Seguindo o padrão brasileiro de data e hora (DD/MM/AAAA e HH), opere no fuso horário \"America/Sao_Paulo\". hora atual: {{ $now.toString() }}\n\nREGRA PRINCIPAL:\n\nVOCÊ É O AGENTE DE AGENDAMENTO. Recebe dados do agente principal orquestrador e executa operações específicas no Google Calendar.\n\n# Role\nVocê é o agente especializado em operações de calendário do Consultório OralClean. Sua função é executar agendamentos, cancelamentos e remarcações com base nos dados fornecidos pelo agente principal.\n\n## Regras para operações de calendário\n- Receba dados completos do agente principal antes de qualquer operação\n- Caso o horário solicitado já esteja marcado, busque o **mais próximo disponível** antes ou depois\n- Nunca sugira horários ocupados\n- **SEMPRE confirme dados antes de executar qualquer operação**\n\n## Regras de interação com agente principal\n- Processe dados recebidos do agente orquestrador\n- Execute operações no calendário conforme solicitado\n- Retorne status de sucesso/erro para o agente principal\n- Seja objetivo nas respostas\n\n## IDs de calendário\n\n**MUITO IMPORTANTE!! SE O ID DA AGENDA INCLUI O \"@group.calendar.google.com\". NÃO OMITA AO UTILIZAR AS FERRAMENTAS**\n\n- Dr. Julios Lopes - Médico - Dentista (c_aecd3f2ac0727a515c2f41e61bdc91928d5c00452052d8ab9775261eb9eb13ba@group.calendar.google.com)\n- Dra. Rose Lopes - Médica - Dentista (c_3bdd29918bcec8361ab30ba5c4d2ed318eaf15190fa4a8c65b8f35e710f0d6d2@group.calendar.google.com)\n\n## FERRAMENTAS\n\n### Google Calendar\n\n- \"Criar_evento\": Para novos agendamentos. Sempre inclua:\n  - Nome completo no título\n  - Telefone no formato: (XX) XXXXX-XXXX\n  - CPF\n  - Informações adicionais fornecidas pelo agente principal\n\n- \"Atualizar_evento\": Para remarcações de consultas\n\n- \"Buscar_evento\": Buscar dados sobre evento específico por ID\n\n- \"Buscar_todos_os_eventos\": Listar eventos de um dia específico. Use APENAS para períodos de um dia\n\n- \"Deletar_evento\": Para cancelamentos de consultas\n\n-----------------------\n\n## FLUXOS DE OPERAÇÃO\n\n### 1. NOVO AGENDAMENTO\nDados recebidos do agente principal:\n- Nome completo\n- CPF\n- Telefone (formato: (XX) XXXXX-XXXX)\n- Data/hora preferida\n- Especialidade\n- Informações adicionais\n\nProcesso:\n1. Verifique disponibilidade na data/hora solicitada\n2. Se ocupado, busque horários próximos disponíveis\n3. Retorne opções para o agente principal\n4. Após confirmação, execute \"Criar_evento\"\n5. Confirme sucesso da operação\n\n### 2. REMARCAÇÃO\nDados recebidos:\n- Nome do paciente\n- Telefone para identificação\n- Data da consulta atual\n- Nova data/hora preferida\n\nProcesso:\n1. Busque consulta existente com \"Buscar_todos_os_eventos\"\n2. Verifique disponibilidade da nova data/hora\n3. Retorne opções para o agente principal\n4. Após confirmação, execute \"Atualizar_evento\"\n5. Confirme sucesso da operação\n\n### 3. CANCELAMENTO\nDados recebidos:\n- Nome do paciente\n- Telefone para identificação\n- Data da consulta\n\nProcesso:\n1. Busque consulta com \"Buscar_todos_os_eventos\"\n2. Confirme identificação pelo telefone\n3. Após confirmação do agente principal, execute \"Deletar_evento\"\n4. Confirme sucesso do cancelamento\n\n### BUSCA DE EVENTOS\n\nPara operações que envolvem eventos existentes:\n1. Use \"Buscar_todos_os_eventos\" com data específica\n2. Identifique evento correto pelo telefone do paciente\n3. Execute operação solicitada\n\n## FORMATO DE RESPOSTA\n\nPara o agente principal, sempre retorne:\n- Status da operação (sucesso/erro)\n- Detalhes da consulta (data, hora, médico)\n- Opções alternativas (se aplicável)\n- Mensagem para confirmação com paciente\n\n## LEMBRE-SE:\n\n- Processe APENAS dados fornecidos pelo agente principal\n- Execute operações conforme solicitado\n- Retorne status claro para o agente principal\n- Mantenha formato consistente de telefone: (XX) XXXXX-XXXX\n- Nunca marque consultas no passado: {{ $now.toString() }}\n- Use ID correto da agenda para cada médico\n- Confirme sucesso antes de retornar ao agente principal\n\n\n"
+          }
+        },
+        "type": "@n8n/n8n-nodes-langchain.agent",
+        "typeVersion": 2,
+        "position": [
+          432,
+          160
+        ],
+        "id": "5427c7a2-f122-4bcc-9a2c-6f0499541c1e",
+        "name": "AI Agent"
+      },
+      {
+        "parameters": {
+          "model": {
+            "__rl": true,
+            "mode": "list",
+            "value": "gpt-4o-mini"
+          },
+          "options": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+        "typeVersion": 1.2,
+        "position": [
+          48,
+          432
+        ],
+        "id": "8fbd319a-1564-4426-8570-e019b4474639",
+        "name": "OpenAI Chat Model",
+        "credentials": {
+          "openAiApi": {
+            "id": "58nXg6cOh7QVFFh8",
+            "name": "OpenAi account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "get",
+          "calendar": {
+            "__rl": true,
+            "mode": "id",
+            "value": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Calendar', ``, 'string') }}",
+            "__regex": "(^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*)"
+          },
+          "eventId": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Event_ID', ``, 'string') }}",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.googleCalendarTool",
+        "typeVersion": 1.3,
+        "position": [
+          448,
+          512
+        ],
+        "id": "9f4847d1-f944-4647-9f1f-0df0b555264f",
+        "name": "Buscar evento",
+        "credentials": {
+          "googleCalendarOAuth2Api": {
+            "id": "qGnCIDRbSkGEuPxk",
+            "name": "Google Calendar account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "calendar": {
+            "__rl": true,
+            "mode": "id",
+            "value": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Calendar', ``, 'string') }}",
+            "__regex": "(^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*)"
+          },
+          "start": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Start', ``, 'string') }}",
+          "end": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('End', ``, 'string') }}",
+          "additionalFields": {
+            "description": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Description', ``, 'string') }}",
+            "summary": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Summary', ``, 'string') }}"
+          }
+        },
+        "type": "n8n-nodes-base.googleCalendarTool",
+        "typeVersion": 1.3,
+        "position": [
+          304,
+          512
+        ],
+        "id": "7f9ab93c-1e18-427c-a336-69a2f0673b9a",
+        "name": "Criar evento",
+        "credentials": {
+          "googleCalendarOAuth2Api": {
+            "id": "qGnCIDRbSkGEuPxk",
+            "name": "Google Calendar account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "update",
+          "calendar": {
+            "__rl": true,
+            "mode": "id",
+            "value": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Calendar', ``, 'string') }}",
+            "__regex": "(^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*)"
+          },
+          "eventId": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Event_ID', ``, 'string') }}",
+          "updateFields": {
+            "description": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Description', ``, 'string') }}",
+            "end": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('End', ``, 'string') }}",
+            "start": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Start', ``, 'string') }}",
+            "summary": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Summary', ``, 'string') }}"
+          }
+        },
+        "type": "n8n-nodes-base.googleCalendarTool",
+        "typeVersion": 1.3,
+        "position": [
+          608,
+          512
+        ],
+        "id": "6fb30c22-fc03-468b-bcec-6cb4b448beda",
+        "name": "Atualizar evento",
+        "credentials": {
+          "googleCalendarOAuth2Api": {
+            "id": "qGnCIDRbSkGEuPxk",
+            "name": "Google Calendar account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "delete",
+          "calendar": {
+            "__rl": true,
+            "mode": "id",
+            "value": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Calendar', ``, 'string') }}",
+            "__regex": "(^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*)"
+          },
+          "eventId": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Event_ID', ``, 'string') }}",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.googleCalendarTool",
+        "typeVersion": 1.3,
+        "position": [
+          768,
+          512
+        ],
+        "id": "e3b8d1b7-a77a-4240-8eec-b8ca0dd097d6",
+        "name": "Deletar evento",
+        "credentials": {
+          "googleCalendarOAuth2Api": {
+            "id": "qGnCIDRbSkGEuPxk",
+            "name": "Google Calendar account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "getAll",
+          "calendar": {
+            "__rl": true,
+            "value": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Calendar', ``, 'string') }}",
+            "mode": "id",
+            "__regex": "(^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*)"
+          },
+          "returnAll": true,
+          "timeMin": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('After', ``, 'string') }}",
+          "timeMax": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Before', ``, 'string') }}",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.googleCalendarTool",
+        "typeVersion": 1.3,
+        "position": [
+          928,
+          512
+        ],
+        "id": "af14d040-13ec-4912-b202-3ad931ff881f",
+        "name": "Buscar todos os eventos",
+        "alwaysOutputData": true,
+        "credentials": {
+          "googleCalendarOAuth2Api": {
+            "id": "qGnCIDRbSkGEuPxk",
+            "name": "Google Calendar account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "inputSource": "passthrough"
+        },
+        "type": "n8n-nodes-base.executeWorkflowTrigger",
+        "typeVersion": 1.1,
+        "position": [
+          48,
+          160
+        ],
+        "id": "3326945f-709d-42ef-ae0e-60572cb63027",
+        "name": "When Executed by Another Workflow"
+      }
+    ],
+    "connections": {
+      "OpenAI Chat Model": {
+        "ai_languageModel": [
+          [
+            {
+              "node": "AI Agent",
+              "type": "ai_languageModel",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Buscar evento": {
+        "ai_tool": [
+          [
+            {
+              "node": "AI Agent",
+              "type": "ai_tool",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Criar evento": {
+        "ai_tool": [
+          [
+            {
+              "node": "AI Agent",
+              "type": "ai_tool",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Atualizar evento": {
+        "ai_tool": [
+          [
+            {
+              "node": "AI Agent",
+              "type": "ai_tool",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Deletar evento": {
+        "ai_tool": [
+          [
+            {
+              "node": "AI Agent",
+              "type": "ai_tool",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Buscar todos os eventos": {
+        "ai_tool": [
+          [
+            {
+              "node": "AI Agent",
+              "type": "ai_tool",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "When Executed by Another Workflow": {
+        "main": [
+          [
+            {
+              "node": "AI Agent",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "authors": "system migration",
+    "name": null,
+    "description": null,
+    "autosaved": false
+  },
+  "activeVersionId": "67cf3400-c39b-41f2-8d56-500c3108291f",
   "connections": {
     "OpenAI Chat Model": {
       "ai_languageModel": [
