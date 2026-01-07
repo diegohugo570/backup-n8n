@@ -1,7 +1,617 @@
 {
-  "active": false,
-  "activeVersion": null,
-  "activeVersionId": null,
+  "active": true,
+  "activeVersion": {
+    "updatedAt": "2025-12-11T22:04:59.725Z",
+    "createdAt": "2025-12-11T22:04:59.725Z",
+    "versionId": "23633b55-d63a-420f-9c73-47ebe7a83264",
+    "workflowId": "ABrcfyUlhn5KDkWj",
+    "nodes": [
+      {
+        "parameters": {
+          "workflowInputs": {
+            "values": [
+              {
+                "name": "folder_id"
+              },
+              {
+                "name": "project_id"
+              },
+              {
+                "name": "json2video_apikey"
+              },
+              {
+                "name": "language"
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.executeWorkflowTrigger",
+        "typeVersion": 1.1,
+        "position": [
+          0,
+          0
+        ],
+        "id": "cfc8bdd7-6d1e-43ee-a7af-daaa711d6ad0",
+        "name": "When Executed by Another Workflow"
+      },
+      {
+        "parameters": {
+          "operation": "getAll",
+          "tableId": "media",
+          "returnAll": true,
+          "matchType": "allFilters",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "project_id",
+                "condition": "eq",
+                "keyValue": "={{ $('When Executed by Another Workflow').item.json.project_id }}"
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.supabase",
+        "typeVersion": 1,
+        "position": [
+          208,
+          0
+        ],
+        "id": "e1a1f3c5-bdbe-44d5-9d4f-0fe53c4700bf",
+        "name": "Obter Media",
+        "executeOnce": true,
+        "credentials": {
+          "supabaseApi": {
+            "id": "IbOICFLx28vkTb6x",
+            "name": "Supabase account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "dc4e5975-d435-473c-a1c4-90e0524cbe6e",
+                "name": "image_url",
+                "value": "={{ $json.image_url }}",
+                "type": "string"
+              },
+              {
+                "id": "bbf25e69-0b8f-40ac-8166-213db0102b4d",
+                "name": "audio_url",
+                "value": "={{ $json.audio_url }}",
+                "type": "string"
+              },
+              {
+                "id": "a870f177-f682-45d7-b013-58bec67eca9b",
+                "name": "order_index",
+                "value": "={{ $json.order_index }}",
+                "type": "number"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          448,
+          0
+        ],
+        "id": "ad36b00c-9072-4239-b526-511b0d7b333c",
+        "name": "Edit Fields"
+      },
+      {
+        "parameters": {
+          "sortFieldsUi": {
+            "sortField": [
+              {
+                "fieldName": "order_index"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.sort",
+        "typeVersion": 1,
+        "position": [
+          656,
+          0
+        ],
+        "id": "83caa377-b5c7-4f89-a283-100f62c121f1",
+        "name": "Sort"
+      },
+      {
+        "parameters": {
+          "aggregate": "aggregateAllItemData",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.aggregate",
+        "typeVersion": 1,
+        "position": [
+          880,
+          0
+        ],
+        "id": "32bb1e3e-1010-4e68-a52d-51232a2da805",
+        "name": "Aggregate"
+      },
+      {
+        "parameters": {
+          "jsCode": "// n8n Function Node\n// Entrada esperada em items[0].json:\n// { data: [ { image_url: string, audio_url: string, order_index: number }, ... ] }\n// (se vier só o array, também trato)\n\n// ====== CONFIG ======\nconst WIDTH = 1080;        // 9:16\nconst HEIGHT = 1920;\nconst ZOOM_STRENGTH = 3;   // 1..10 (in) / -1..-10 (out). Ajuste se quiser mais/menos movimento.\n\nfunction pickArrayFromInput(items) {\n  if (!items || !items.length) return [];\n  const root = items[0].json;\n\n  if (Array.isArray(root)) return root;                 // caso raro: já vir como array\n  if (Array.isArray(root?.data)) return root.data;      // formato esperado\n  return [];\n}\n\nconst pairs = pickArrayFromInput(items)\n  .filter(x => x && x.image_url && x.audio_url)\n  .sort((a, b) => (a.order_index ?? 0) - (b.order_index ?? 0));\n\nif (!pairs.length) {\n  throw new Error('Entrada inválida: preciso de { data: [ { image_url, audio_url, order_index }, ... ] }.');\n}\n\n// Monta 1 cena por par (imagem+áudio), com zoom alternado (IN / OUT).\nconst scenes = pairs.map((p, i) => ({\n  comment: `Cena ${i + 1}: zoom ${i % 2 === 0 ? 'IN' : 'OUT'}; cena dura o áudio`,\n  elements: [\n    {\n      type: \"image\",\n      src: p.image_url,\n      duration: -2,               // imagem dura a cena\n      position: \"center-center\",\n      resize: \"fill\",\n      zoom: (i % 2 === 0) ? ZOOM_STRENGTH : -ZOOM_STRENGTH\n      // pan: \"top\" // opcional, se quiser dar movimento lateral/vertical\n    },\n    {\n      type: \"audio\",\n      src: p.audio_url,\n      duration: -1                // cena assume a duração real do áudio\n    }\n  ]\n}));\n\n// Corpo final pro POST /v2/movies do JSON2Video\nconst body = {\n  resolution: \"custom\",\n  width: WIDTH,\n  height: HEIGHT,\n  comment: `${scenes.length} cenas 9:16; zoom alternado (in/out); sem fade; duração = do áudio.`,\n  scenes\n};\n\nreturn [{ json: body }];"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          16,
+          272
+        ],
+        "id": "7a2f7282-adfd-4864-a4f5-12d7a4aae6c2",
+        "name": "Code"
+      },
+      {
+        "parameters": {
+          "method": "POST",
+          "url": "https://api.json2video.com/v2/movies",
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "x-api-key",
+                "value": "={{ $('When Executed by Another Workflow').first().json.json2video_apikey }}"
+              }
+            ]
+          },
+          "sendBody": true,
+          "specifyBody": "json",
+          "jsonBody": "={{\n({\n  \"resolution\": $json.resolution,\n  \"width\": $json.width,\n  \"height\": $json.height,\n  \"scenes\": $json.scenes\n})\n}}",
+          "options": {
+            "redirect": {
+              "redirect": {}
+            }
+          }
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          208,
+          272
+        ],
+        "id": "bf146b1c-6575-4852-b552-ceedf720b5c1",
+        "name": "Cria vídeo"
+      },
+      {
+        "parameters": {
+          "amount": 90
+        },
+        "type": "n8n-nodes-base.wait",
+        "typeVersion": 1.1,
+        "position": [
+          448,
+          272
+        ],
+        "id": "ed452792-dafd-4cd8-8ed2-085df188fed2",
+        "name": "Wait",
+        "webhookId": "6a57d210-1ace-4b72-a61e-25caf9c8bdbf"
+      },
+      {
+        "parameters": {
+          "url": "https://api.json2video.com/v2/movies",
+          "sendQuery": true,
+          "queryParameters": {
+            "parameters": [
+              {
+                "name": "project",
+                "value": "={{ $('Cria vídeo').item.json.project }}"
+              }
+            ]
+          },
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "x-api-key",
+                "value": "={{ $('When Executed by Another Workflow').first().json.json2video_apikey }}"
+              }
+            ]
+          },
+          "options": {
+            "redirect": {
+              "redirect": {}
+            }
+          }
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          656,
+          272
+        ],
+        "id": "0b9b222a-0976-426b-9edb-87633faf68ce",
+        "name": "Obter vídeo"
+      },
+      {
+        "parameters": {
+          "operation": "update",
+          "tableId": "projects",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "id",
+                "condition": "eq",
+                "keyValue": "={{ $('When Executed by Another Workflow').first().json.project_id }}"
+              }
+            ]
+          },
+          "fieldsUi": {
+            "fieldValues": [
+              {
+                "fieldId": "video_url",
+                "fieldValue": "={{ $json.movie.url }}"
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.supabase",
+        "typeVersion": 1,
+        "position": [
+          656,
+          512
+        ],
+        "id": "1ef31c00-ea76-416d-b5b6-c43889bd7200",
+        "name": "Supabase",
+        "credentials": {
+          "supabaseApi": {
+            "id": "IbOICFLx28vkTb6x",
+            "name": "Supabase account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "name": "video_final",
+          "driveId": {
+            "__rl": true,
+            "mode": "list",
+            "value": "My Drive"
+          },
+          "folderId": {
+            "__rl": true,
+            "value": "={{ $('When Executed by Another Workflow').first().json.folder_id }}",
+            "mode": "id"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.googleDrive",
+        "typeVersion": 3,
+        "position": [
+          16,
+          768
+        ],
+        "id": "15d36707-cb28-46f0-98b4-85f6d381a20c",
+        "name": "Google Drive",
+        "credentials": {
+          "googleDriveOAuth2Api": {
+            "id": "6KD5I6pcyhCwphz7",
+            "name": "Google Drive account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "url": "={{ $json.video_url }}",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          896,
+          512
+        ],
+        "id": "29a6bbca-d0ae-4d18-a0a7-e12abe42e369",
+        "name": "Baixa o vídeo"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "ace24e2e-94a6-4bbd-84aa-5c556539b634",
+                "name": "success",
+                "value": true,
+                "type": "boolean"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          208,
+          768
+        ],
+        "id": "dc3cea8f-774a-4eb4-930c-144625fd4915",
+        "name": "Edit Fields1"
+      },
+      {
+        "parameters": {
+          "method": "POST",
+          "url": "https://api.json2video.com/v2/movies",
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "x-api-key",
+                "value": "={{ $('When Executed by Another Workflow').first().json.json2video_apikey }}"
+              }
+            ]
+          },
+          "sendBody": true,
+          "specifyBody": "json",
+          "jsonBody": "={{( \n{\nresolution: $json.resolution,\nwidth: $json.width,\nheight: $json.height,\nquality: $json.quality,\nscenes: $json.scenes,\nelements: $json.elements\n}\n)}}",
+          "options": {
+            "redirect": {
+              "redirect": {}
+            }
+          }
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          16,
+          512
+        ],
+        "id": "61eeeede-1539-42e5-bcc1-188d4f370ad9",
+        "name": "Adiciona legenda"
+      },
+      {
+        "parameters": {
+          "amount": 90
+        },
+        "type": "n8n-nodes-base.wait",
+        "typeVersion": 1.1,
+        "position": [
+          208,
+          512
+        ],
+        "id": "58b638d4-a6ec-4cab-8ed9-2d07091e8b6a",
+        "name": "Wait1",
+        "webhookId": "6a57d210-1ace-4b72-a61e-25caf9c8bdbf"
+      },
+      {
+        "parameters": {
+          "url": "https://api.json2video.com/v2/movies",
+          "sendQuery": true,
+          "queryParameters": {
+            "parameters": [
+              {
+                "name": "project",
+                "value": "={{ $('Adiciona legenda').item.json.project }}"
+              }
+            ]
+          },
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "x-api-key",
+                "value": "={{ $('When Executed by Another Workflow').first().json.json2video_apikey }}"
+              }
+            ]
+          },
+          "options": {
+            "redirect": {
+              "redirect": {}
+            }
+          }
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          448,
+          512
+        ],
+        "id": "83fc8d41-95d4-4354-8bed-2a601c244e0a",
+        "name": "Obter vídeo1"
+      },
+      {
+        "parameters": {
+          "jsCode": "// n8n Function Node\n// Entrada: items[0].json igual ao que você mandou (array com objeto contendo movie.url/width/height)\n// Saída: body para POST /v2/movies (JSON2Video)\n\nfunction getRoot(input) {\n  if (!input || !input.length) throw new Error('Sem items na entrada.');\n  const j = input[0].json;\n  if (Array.isArray(j)) return j[0]; // caso venha array como no exemplo\n  return j;\n}\n\nconst root = getRoot(items);\nconst movie = root?.movie;\nif (!movie || !movie.url) {\n  throw new Error('Não achei movie.url no input.');\n}\n\nconst width  = Number(movie.width)  || 1080;\nconst height = Number(movie.height) || 1920;\n\nconst body = {\n  resolution: \"custom\",\n  width,\n  height,\n  quality: \"high\",\n  // Cena \"vazia\" só pra manter estrutura (elementos de vídeo/legenda ficam no nível do movie)\n  scenes: [\n    { comment: \"Scene 1\", elements: [] }\n  ],\n  elements: [\n    {\n      type: \"video\",\n      src: movie.url\n    },\n    {\n      type: \"subtitles\",\n      language: $('When Executed by Another Workflow').first().json.language,\n      model: \"whisper\",\n      settings: {\n        \"all-caps\": true,\n        position: \"mid-bottom-center\",\n        \"font-size\": 75,\n        \"font-family\": \"Luckiest Guy\",\n        \"outline-width\": 5\n      }\n    }\n  ]\n};\n\nreturn [{ json: body }];\n"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          880,
+          272
+        ],
+        "id": "48262efc-0b88-4ae1-91cd-ffbc7dd2dae6",
+        "name": "Code1"
+      }
+    ],
+    "connections": {
+      "When Executed by Another Workflow": {
+        "main": [
+          [
+            {
+              "node": "Obter Media",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Obter Media": {
+        "main": [
+          [
+            {
+              "node": "Edit Fields",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Edit Fields": {
+        "main": [
+          [
+            {
+              "node": "Sort",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Sort": {
+        "main": [
+          [
+            {
+              "node": "Aggregate",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Aggregate": {
+        "main": [
+          [
+            {
+              "node": "Code",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Code": {
+        "main": [
+          [
+            {
+              "node": "Cria vídeo",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Cria vídeo": {
+        "main": [
+          [
+            {
+              "node": "Wait",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Wait": {
+        "main": [
+          [
+            {
+              "node": "Obter vídeo",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Obter vídeo": {
+        "main": [
+          [
+            {
+              "node": "Code1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Supabase": {
+        "main": [
+          [
+            {
+              "node": "Baixa o vídeo",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Baixa o vídeo": {
+        "main": [
+          [
+            {
+              "node": "Google Drive",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Google Drive": {
+        "main": [
+          [
+            {
+              "node": "Edit Fields1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Adiciona legenda": {
+        "main": [
+          [
+            {
+              "node": "Wait1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Wait1": {
+        "main": [
+          [
+            {
+              "node": "Obter vídeo1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Obter vídeo1": {
+        "main": [
+          [
+            {
+              "node": "Supabase",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Code1": {
+        "main": [
+          [
+            {
+              "node": "Adiciona legenda",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "authors": "system migration",
+    "name": null,
+    "description": null,
+    "autosaved": false
+  },
+  "activeVersionId": "23633b55-d63a-420f-9c73-47ebe7a83264",
   "connections": {
     "When Executed by Another Workflow": {
       "main": [
