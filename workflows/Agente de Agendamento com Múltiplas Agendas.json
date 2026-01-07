@@ -1,7 +1,1677 @@
 {
-  "active": false,
-  "activeVersion": null,
-  "activeVersionId": null,
+  "active": true,
+  "activeVersion": {
+    "updatedAt": "2025-12-28T15:56:26.244Z",
+    "createdAt": "2025-12-28T15:56:26.244Z",
+    "versionId": "71f77474-8094-4bc5-a8a6-e46b4ebb7ec8",
+    "workflowId": "Z4u2VKUVXnzhgeMh",
+    "nodes": [
+      {
+        "parameters": {
+          "options": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+        "typeVersion": 1.1,
+        "position": [
+          -3240,
+          260
+        ],
+        "id": "ec8aa55b-adcf-48f6-9ae8-b486ea2098d8",
+        "name": "When chat message received",
+        "webhookId": "95a1b052-55e2-4966-ad43-cf045efb92e3",
+        "disabled": true
+      },
+      {
+        "parameters": {
+          "options": {
+            "systemMessage": "=Você é o assistente de um salão de beleza\n\nPossuem três profissionais:\n\nArlete: especialista em cuidados das mãos, todos e qualquer agendamento de serviços de mão deve ser feito para essa profissional.\n\nSilvana: especialista em cuidados dos pés, todos e qualquer agendamento de serviços de pé deve ser feito para essa profissional.\n\nMaria: especialista em cuidados do cabelo, todos e qualquer agendamento de serviços de cabelo deve ser feito para essa profissional.\n\nDatetime de agora: {{ new Date().toDateTime().toISO() }} - {{ [\"domingo\", \"segunda-feira\", \"terça-feira\", \"quarta-feira\", \"quinta-feira\", \"sexta-feira\", \"sábado\"][$now.extract(\"weekday\") % 7] }}\n"
+          }
+        },
+        "type": "@n8n/n8n-nodes-langchain.agent",
+        "typeVersion": 1.9,
+        "position": [
+          -3020,
+          260
+        ],
+        "id": "6a5683a3-0199-44ae-bdba-f71a0416223d",
+        "name": "AI Agent"
+      },
+      {
+        "parameters": {
+          "model": {
+            "__rl": true,
+            "value": "gpt-4.1-mini",
+            "mode": "list",
+            "cachedResultName": "gpt-4.1-mini"
+          },
+          "options": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+        "typeVersion": 1.2,
+        "position": [
+          -3200,
+          480
+        ],
+        "id": "e610568e-8889-4c6e-b985-196a93a6a6d1",
+        "name": "OpenAI Chat Model",
+        "credentials": {
+          "openAiApi": {
+            "id": "58nXg6cOh7QVFFh8",
+            "name": "OpenAi account"
+          }
+        }
+      },
+      {
+        "parameters": {},
+        "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+        "typeVersion": 1.3,
+        "position": [
+          -3000,
+          480
+        ],
+        "id": "02f5fcd8-1d1b-4802-b18a-ad999b4a77ea",
+        "name": "Simple Memory"
+      },
+      {
+        "parameters": {
+          "workflowInputs": {
+            "values": [
+              {
+                "name": "nome"
+              },
+              {
+                "name": "email"
+              },
+              {
+                "name": "numero"
+              },
+              {
+                "name": "start"
+              },
+              {
+                "name": "end"
+              },
+              {
+                "name": "evento"
+              },
+              {
+                "name": "idEvento"
+              },
+              {
+                "name": "profissional"
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.executeWorkflowTrigger",
+        "typeVersion": 1.1,
+        "position": [
+          -1440,
+          460
+        ],
+        "id": "35707847-88ff-4fa1-a227-2b256e12e2c1",
+        "name": "When Executed by Another Workflow"
+      },
+      {
+        "parameters": {
+          "rules": {
+            "values": [
+              {
+                "conditions": {
+                  "options": {
+                    "caseSensitive": true,
+                    "leftValue": "",
+                    "typeValidation": "strict",
+                    "version": 2
+                  },
+                  "conditions": [
+                    {
+                      "leftValue": "={{ $json.evento }}",
+                      "rightValue": "agendamento",
+                      "operator": {
+                        "type": "string",
+                        "operation": "equals"
+                      },
+                      "id": "b99856e4-72bd-4a47-be2e-b89c50aa6321"
+                    }
+                  ],
+                  "combinator": "and"
+                },
+                "renameOutput": true,
+                "outputKey": "agendamento"
+              },
+              {
+                "conditions": {
+                  "options": {
+                    "caseSensitive": true,
+                    "leftValue": "",
+                    "typeValidation": "strict",
+                    "version": 2
+                  },
+                  "conditions": [
+                    {
+                      "id": "7ea26e0c-eba1-43d7-be45-8820421bcd2d",
+                      "leftValue": "={{ $json.evento }}",
+                      "rightValue": "cancelamento",
+                      "operator": {
+                        "type": "string",
+                        "operation": "equals",
+                        "name": "filter.operator.equals"
+                      }
+                    }
+                  ],
+                  "combinator": "and"
+                },
+                "renameOutput": true,
+                "outputKey": "cancelamento"
+              },
+              {
+                "conditions": {
+                  "options": {
+                    "caseSensitive": true,
+                    "leftValue": "",
+                    "typeValidation": "strict",
+                    "version": 2
+                  },
+                  "conditions": [
+                    {
+                      "id": "f13a83fb-ba17-4511-be19-8a4abac13308",
+                      "leftValue": "={{ $json.evento }}",
+                      "rightValue": "reagendamento",
+                      "operator": {
+                        "type": "string",
+                        "operation": "equals",
+                        "name": "filter.operator.equals"
+                      }
+                    }
+                  ],
+                  "combinator": "and"
+                },
+                "renameOutput": true,
+                "outputKey": "reagendamento"
+              },
+              {
+                "conditions": {
+                  "options": {
+                    "caseSensitive": true,
+                    "leftValue": "",
+                    "typeValidation": "strict",
+                    "version": 2
+                  },
+                  "conditions": [
+                    {
+                      "id": "f32f2910-aec4-4de6-90c9-a6e0eb6a42ae",
+                      "leftValue": "={{ $json.evento }}",
+                      "rightValue": "disponibilidade",
+                      "operator": {
+                        "type": "string",
+                        "operation": "equals",
+                        "name": "filter.operator.equals"
+                      }
+                    }
+                  ],
+                  "combinator": "and"
+                },
+                "renameOutput": true,
+                "outputKey": "disponibilidade"
+              },
+              {
+                "conditions": {
+                  "options": {
+                    "caseSensitive": true,
+                    "leftValue": "",
+                    "typeValidation": "strict",
+                    "version": 2
+                  },
+                  "conditions": [
+                    {
+                      "id": "754a755d-2d79-4b68-b718-eec33eb3df15",
+                      "leftValue": "={{ $json.evento }}",
+                      "rightValue": "buscar agendamentos",
+                      "operator": {
+                        "type": "string",
+                        "operation": "equals",
+                        "name": "filter.operator.equals"
+                      }
+                    }
+                  ],
+                  "combinator": "and"
+                },
+                "renameOutput": true,
+                "outputKey": "buscar agendamentos"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.switch",
+        "typeVersion": 3.2,
+        "position": [
+          -1160,
+          420
+        ],
+        "id": "774b0547-9efe-474a-85da-a7e4800fa842",
+        "name": "Switch"
+      },
+      {
+        "parameters": {
+          "resource": "calendar",
+          "calendar": {
+            "__rl": true,
+            "value": "={{ \n  $json.profissional === \"Arlete\" \n    ? \"metrichub.digital@gmail.com\" \n    : $json.profissional === \"Silvana\" \n    ? \"Silvana@gmail.com\" \n    : $json.profissional === \"Maria\" \n    ? \"usetrueno@gmail.com\" \n    : \"Email não encontrado\" \n}}",
+            "mode": "id"
+          },
+          "timeMin": "={{ $('When Executed by Another Workflow').item.json.start }}",
+          "timeMax": "={{ $('When Executed by Another Workflow').item.json.end }}",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.googleCalendar",
+        "typeVersion": 1.3,
+        "position": [
+          -580,
+          20
+        ],
+        "id": "e337f6e3-ee5d-44c9-aef3-d17842373172",
+        "name": "Google Calendar",
+        "credentials": {
+          "googleCalendarOAuth2Api": {
+            "id": "qGnCIDRbSkGEuPxk",
+            "name": "Google Calendar account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            },
+            "conditions": [
+              {
+                "id": "03258264-e22d-4dd7-b86f-47608dc56ece",
+                "leftValue": "={{ $json.available }}",
+                "rightValue": "",
+                "operator": {
+                  "type": "boolean",
+                  "operation": "true",
+                  "singleValue": true
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2,
+        "position": [
+          -300,
+          20
+        ],
+        "id": "f9678bb3-86e0-482a-a347-93437b494401",
+        "name": "If"
+      },
+      {
+        "parameters": {
+          "calendar": {
+            "__rl": true,
+            "value": "={{ \n   $('When Executed by Another Workflow').item.json.profissional === \"Arlete\" \n    ? \"metrichub.digital@gmail.com\" \n    : $('When Executed by Another Workflow').item.json.profissional === \"Silvana\" \n    ? \"Silvana@gmail.com\" \n    : $('When Executed by Another Workflow').item.json.profissional === \"Maria\" \n    ? \"usetrueno@gmail.com\" \n    : \"Email não encontrado\" \n}}",
+            "mode": "id"
+          },
+          "start": "={{ $('When Executed by Another Workflow').item.json.start }}",
+          "end": "={{ $('When Executed by Another Workflow').item.json.end }}",
+          "additionalFields": {
+            "attendees": [],
+            "description": "=Nome do contato: {{ $('When Executed by Another Workflow').item.json.nome }}\nEmail: {{ $('When Executed by Another Workflow').item.json.email }}\nNúmero: wa.me/{{ $('When Executed by Another Workflow').item.json.numero }}",
+            "summary": "=Call de apresentação | {{ $('When Executed by Another Workflow').item.json.nome }}"
+          }
+        },
+        "type": "n8n-nodes-base.googleCalendar",
+        "typeVersion": 1.3,
+        "position": [
+          0,
+          0
+        ],
+        "id": "23dd3f44-eaa1-4ad5-ba69-38813780a2e7",
+        "name": "Google Calendar1",
+        "credentials": {
+          "googleCalendarOAuth2Api": {
+            "id": "qGnCIDRbSkGEuPxk",
+            "name": "Google Calendar account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "delete",
+          "calendar": {
+            "__rl": true,
+            "value": "usetrueno@gmail.com",
+            "mode": "list",
+            "cachedResultName": "usetrueno@gmail.com"
+          },
+          "eventId": "={{ $('When Executed by Another Workflow').item.json.idEvento }}",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.googleCalendar",
+        "typeVersion": 1.3,
+        "position": [
+          -580,
+          260
+        ],
+        "id": "a9dfa2d6-4eaa-4a89-a51a-ecb7724628a3",
+        "name": "Google Calendar2",
+        "credentials": {
+          "googleCalendarOAuth2Api": {
+            "id": "qGnCIDRbSkGEuPxk",
+            "name": "Google Calendar account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "resource": "calendar",
+          "calendar": {
+            "__rl": true,
+            "value": "usetrueno@gmail.com",
+            "mode": "list",
+            "cachedResultName": "usetrueno@gmail.com"
+          },
+          "timeMin": "={{ $('When Executed by Another Workflow').item.json.start }}",
+          "timeMax": "={{ $('When Executed by Another Workflow').item.json.end }}",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.googleCalendar",
+        "typeVersion": 1.3,
+        "position": [
+          -600,
+          440
+        ],
+        "id": "58655b19-5e8a-43ff-a713-130b07cd527e",
+        "name": "Google Calendar3",
+        "credentials": {
+          "googleCalendarOAuth2Api": {
+            "id": "qGnCIDRbSkGEuPxk",
+            "name": "Google Calendar account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            },
+            "conditions": [
+              {
+                "id": "03258264-e22d-4dd7-b86f-47608dc56ece",
+                "leftValue": "={{ $json.available }}",
+                "rightValue": "",
+                "operator": {
+                  "type": "boolean",
+                  "operation": "true",
+                  "singleValue": true
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2,
+        "position": [
+          -340,
+          440
+        ],
+        "id": "d417c519-9eca-4f13-8135-2f45e13701f7",
+        "name": "If1"
+      },
+      {
+        "parameters": {
+          "operation": "update",
+          "calendar": {
+            "__rl": true,
+            "value": "usetrueno@gmail.com",
+            "mode": "list",
+            "cachedResultName": "usetrueno@gmail.com"
+          },
+          "eventId": "={{ $('When Executed by Another Workflow').item.json.idEvento }}",
+          "updateFields": {
+            "end": "={{ $('When Executed by Another Workflow').item.json.end }}",
+            "start": "={{ $('When Executed by Another Workflow').item.json.start }}"
+          }
+        },
+        "type": "n8n-nodes-base.googleCalendar",
+        "typeVersion": 1.3,
+        "position": [
+          60,
+          440
+        ],
+        "id": "9228ee4e-7097-4509-be1f-08e6553285e7",
+        "name": "Google Calendar4",
+        "credentials": {
+          "googleCalendarOAuth2Api": {
+            "id": "qGnCIDRbSkGEuPxk",
+            "name": "Google Calendar account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "42aa56eb-ecc8-450d-be7e-365f9c4553e4",
+                "name": "response",
+                "value": "Horário ocupado, peça desculpas ao usuário e pergunte outro horário que o agrade",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          20,
+          220
+        ],
+        "id": "515a80d8-c8d9-4240-b5c1-57aa0eb8ea99",
+        "name": "horário indisponivel"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "89cb9335-c164-4999-8972-c97f7410b928",
+                "name": "response",
+                "value": "Agendamento cancelado com sucesso",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -280,
+          260
+        ],
+        "id": "2532b98f-217d-4399-8e31-a02c84cd84ce",
+        "name": "cancelado"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "5282661d-4c27-42f9-9f93-1ed8db76b1c9",
+                "name": "response",
+                "value": "Agendamento Confirmado",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          240,
+          0
+        ],
+        "id": "c16aa412-f7f0-4b33-a7ea-0b7f0ed2c45f",
+        "name": "agendado"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "cfbb06b3-ca26-40ec-aba7-79d6ac0da7bf",
+                "name": "response",
+                "value": "reagendado com sucesso!",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          280,
+          440
+        ],
+        "id": "a0920ef1-7e0a-4f3b-a5cb-d68a142a18bb",
+        "name": "reagendamento"
+      },
+      {
+        "parameters": {
+          "operation": "getAll",
+          "calendar": {
+            "__rl": true,
+            "value": "usetrueno@gmail.com",
+            "mode": "list",
+            "cachedResultName": "usetrueno@gmail.com"
+          },
+          "returnAll": true,
+          "timeMin": "={{ $('When Executed by Another Workflow').item.json.start }}",
+          "timeMax": "={{ $('When Executed by Another Workflow').item.json.end }}",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.googleCalendar",
+        "typeVersion": 1.3,
+        "position": [
+          -600,
+          660
+        ],
+        "id": "276a33f0-8b23-4ac1-9554-cb1bf00ae666",
+        "name": "Busca eventos",
+        "alwaysOutputData": true,
+        "credentials": {
+          "googleCalendarOAuth2Api": {
+            "id": "qGnCIDRbSkGEuPxk",
+            "name": "Google Calendar account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            },
+            "conditions": [
+              {
+                "id": "30541022-67b2-4e91-b44f-c562b6f71844",
+                "leftValue": "={{ $json.id }}",
+                "rightValue": "",
+                "operator": {
+                  "type": "string",
+                  "operation": "exists",
+                  "singleValue": true
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2,
+        "position": [
+          -360,
+          660
+        ],
+        "id": "2ab124c6-ff94-4682-b4a3-b776dc5b9a73",
+        "name": "If2"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "21d48e7d-38db-4c2d-b2b5-358b8b8d83ce",
+                "name": "response",
+                "value": "Todos os horários estão disponíveis",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -180,
+          800
+        ],
+        "id": "87921ab5-35f9-4f7c-9a8f-1a4905840d71",
+        "name": "Edit Fields"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "6895918b-d3ab-4b59-911a-9a800c3f425c",
+                "name": "início",
+                "value": "={{ $json.start.dateTime }}",
+                "type": "string"
+              },
+              {
+                "id": "7b216308-ca0c-4f92-b6b6-954c3cf41baf",
+                "name": "final",
+                "value": "={{ $json.end.dateTime }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -120,
+          640
+        ],
+        "id": "c13cad1c-a9a9-4a90-bc2b-1eacc00f22e3",
+        "name": "Edit Fields1"
+      },
+      {
+        "parameters": {
+          "aggregate": "aggregateAllItemData",
+          "destinationFieldName": "agendamentos",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.aggregate",
+        "typeVersion": 1,
+        "position": [
+          200,
+          640
+        ],
+        "id": "8ccedfa9-0658-4d04-beb0-5febb5a34bb9",
+        "name": "Aggregate"
+      },
+      {
+        "parameters": {
+          "operation": "getAll",
+          "calendar": {
+            "__rl": true,
+            "value": "usetrueno@gmail.com",
+            "mode": "list",
+            "cachedResultName": "usetrueno@gmail.com"
+          },
+          "returnAll": true,
+          "timeMax": "=",
+          "options": {
+            "query": "={{ $('When Executed by Another Workflow').item.json.email }}"
+          }
+        },
+        "type": "n8n-nodes-base.googleCalendar",
+        "typeVersion": 1.3,
+        "position": [
+          -640,
+          980
+        ],
+        "id": "e71ad522-3772-42cb-9058-c6828f5c6571",
+        "name": "Google Calendar5",
+        "credentials": {
+          "googleCalendarOAuth2Api": {
+            "id": "qGnCIDRbSkGEuPxk",
+            "name": "Google Calendar account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "3eb39b03-2658-4921-8bbb-ccc61096224c",
+                "name": "titulo",
+                "value": "={{ $json.summary }}",
+                "type": "string"
+              },
+              {
+                "id": "28bcdf97-d61d-4be7-89a0-0c7c71832ac1",
+                "name": "id",
+                "value": "={{ $json.id }}",
+                "type": "string"
+              },
+              {
+                "id": "cfc13dbd-e6b1-456a-a839-74dbabea1331",
+                "name": "inicio",
+                "value": "={{ $json.start.dateTime }}",
+                "type": "string"
+              },
+              {
+                "id": "f13f3e20-4568-4034-bd9a-10c55ee0ffe7",
+                "name": "final",
+                "value": "={{ $json.end.dateTime }}",
+                "type": "string"
+              },
+              {
+                "id": "e0dd854a-e2b8-49dd-b7dc-e5b10d4d9d3f",
+                "name": "descricao",
+                "value": "={{ $json.description }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -160,
+          1000
+        ],
+        "id": "7217f371-3963-4430-9d03-226f95be6497",
+        "name": "Edit Fields2"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            },
+            "conditions": [
+              {
+                "id": "30541022-67b2-4e91-b44f-c562b6f71844",
+                "leftValue": "={{ $json.id }}",
+                "rightValue": "",
+                "operator": {
+                  "type": "string",
+                  "operation": "exists",
+                  "singleValue": true
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2,
+        "position": [
+          -420,
+          1000
+        ],
+        "id": "32e3f0cd-634f-4012-af29-48255221edcb",
+        "name": "If3"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "13ab3216-02fc-4402-af0c-b410f67bc356",
+                "name": "response",
+                "value": "Nenhum agendamento do usuário encontrado, confirme se o email está certo",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -420,
+          1280
+        ],
+        "id": "040b71a9-eed8-4fe7-9d96-2ea16f95f06c",
+        "name": "Edit Fields3"
+      },
+      {
+        "parameters": {
+          "aggregate": "aggregateAllItemData",
+          "destinationFieldName": "agendamentos",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.aggregate",
+        "typeVersion": 1,
+        "position": [
+          180,
+          980
+        ],
+        "id": "3204e8c4-1bc7-4ceb-8952-103e6df7c5c4",
+        "name": "Aggregate1"
+      },
+      {
+        "parameters": {
+          "name": "agendamento",
+          "description": "Use essa ferramenta para fazer agendamentos, para isso você precisa:\n1. Email do lead\n2. Data e hora de início e final da reunião no fuso horário -3",
+          "workflowId": {
+            "__rl": true,
+            "value": "ZDAVWRhnGTenioPf",
+            "mode": "id"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "nome": "=",
+              "email": "={{ $fromAI('email', 'insira o email que o usuário forneceu') }}",
+              "numero": "=",
+              "start": "={{ $fromAI('start', 'insira a data e hora de inicio do evento no furo horário -3') }}",
+              "end": "={{ $fromAI('end', 'insira a data e hora de final do evento no furo horário -3') }}",
+              "evento": "agendamento",
+              "profissional": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('profissional', `Insira o nome da profissional`, 'string') }}"
+            },
+            "matchingColumns": [],
+            "schema": [
+              {
+                "id": "nome",
+                "displayName": "nome",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string"
+              },
+              {
+                "id": "email",
+                "displayName": "email",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string"
+              },
+              {
+                "id": "numero",
+                "displayName": "numero",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string"
+              },
+              {
+                "id": "start",
+                "displayName": "start",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string"
+              },
+              {
+                "id": "end",
+                "displayName": "end",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string"
+              },
+              {
+                "id": "evento",
+                "displayName": "evento",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string"
+              },
+              {
+                "id": "idEvento",
+                "displayName": "idEvento",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": true
+              },
+              {
+                "id": "profissional",
+                "displayName": "profissional",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          }
+        },
+        "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+        "typeVersion": 2.1,
+        "position": [
+          -2180,
+          560
+        ],
+        "id": "d2c4cc82-7641-4f6a-9555-079bdc7d9c8f",
+        "name": "agendamento"
+      },
+      {
+        "parameters": {
+          "name": "cancelamento",
+          "description": "=Use essa ferramenta para cancelar um agendamento, para isso você precisa:\n1. Id do evento a ser atualizado\n2. Email do usuário",
+          "workflowId": {
+            "__rl": true,
+            "value": "ZDAVWRhnGTenioPf",
+            "mode": "id"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "email": "={{ $fromAI('email', 'insira o email do usuário') }}",
+              "evento": "cancelamento",
+              "idEvento": "={{ $fromAI('idEvento', 'Insira o ID do evento a ser cancelado') }}"
+            },
+            "matchingColumns": [],
+            "schema": [
+              {
+                "id": "nome",
+                "displayName": "nome",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": true
+              },
+              {
+                "id": "email",
+                "displayName": "email",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string"
+              },
+              {
+                "id": "numero",
+                "displayName": "numero",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": true
+              },
+              {
+                "id": "start",
+                "displayName": "start",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": true
+              },
+              {
+                "id": "end",
+                "displayName": "end",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": true
+              },
+              {
+                "id": "evento",
+                "displayName": "evento",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string"
+              },
+              {
+                "id": "idEvento",
+                "displayName": "idEvento",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          }
+        },
+        "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+        "typeVersion": 2.1,
+        "position": [
+          -2580,
+          500
+        ],
+        "id": "58639ac3-fa34-4b2e-b8dc-1d36fdc51642",
+        "name": "cancelamento"
+      },
+      {
+        "parameters": {
+          "name": "buscarAgendamentos",
+          "description": "=Use essa ferramenta para buscar os agendamentos do usuário, para isso você precisa:\n1. Email do usuário",
+          "workflowId": {
+            "__rl": true,
+            "value": "ZDAVWRhnGTenioPf",
+            "mode": "id"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "email": "={{ $fromAI('email', 'insira o email do usuário') }}",
+              "evento": "buscar agendamentos",
+              "profissional": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('profissional', `Insira o nome da profissional para verificar a agenda.`, 'string') }}"
+            },
+            "matchingColumns": [],
+            "schema": [
+              {
+                "id": "nome",
+                "displayName": "nome",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": true
+              },
+              {
+                "id": "email",
+                "displayName": "email",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string"
+              },
+              {
+                "id": "numero",
+                "displayName": "numero",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": true
+              },
+              {
+                "id": "start",
+                "displayName": "start",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": true
+              },
+              {
+                "id": "end",
+                "displayName": "end",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": true
+              },
+              {
+                "id": "evento",
+                "displayName": "evento",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string"
+              },
+              {
+                "id": "idEvento",
+                "displayName": "idEvento",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": true
+              },
+              {
+                "id": "profissional",
+                "displayName": "profissional",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          }
+        },
+        "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+        "typeVersion": 2.1,
+        "position": [
+          -2720,
+          640
+        ],
+        "id": "eb3ccc54-0eee-4c18-bb23-9c752cc31464",
+        "name": "buscarAgendamentos"
+      },
+      {
+        "parameters": {
+          "name": "disponibilidade",
+          "description": "Use essa ferramenta para fazer agendamentos, para isso você precisa:\n1. Data e hora de início e final da reunião no fuso horário -3",
+          "workflowId": {
+            "__rl": true,
+            "value": "ZDAVWRhnGTenioPf",
+            "mode": "id"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "start": "={{ $fromAI('start', 'insira a data e hora de inicio do evento no furo horário -3') }}",
+              "end": "={{ $fromAI('end', 'insira a data e hora de final do evento no furo horário -3') }}",
+              "evento": "disponibilidade"
+            },
+            "matchingColumns": [],
+            "schema": [
+              {
+                "id": "nome",
+                "displayName": "nome",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": true
+              },
+              {
+                "id": "email",
+                "displayName": "email",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": true
+              },
+              {
+                "id": "numero",
+                "displayName": "numero",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": true
+              },
+              {
+                "id": "start",
+                "displayName": "start",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string"
+              },
+              {
+                "id": "end",
+                "displayName": "end",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string"
+              },
+              {
+                "id": "evento",
+                "displayName": "evento",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string"
+              },
+              {
+                "id": "idEvento",
+                "displayName": "idEvento",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": true
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          }
+        },
+        "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+        "typeVersion": 2.1,
+        "position": [
+          -2600,
+          680
+        ],
+        "id": "161463d9-839f-41df-a523-62478dee16b6",
+        "name": "disponibilidade"
+      },
+      {
+        "parameters": {
+          "name": "reagendamento",
+          "description": "Use essa ferramenta para fazer reagendamentos, para isso você precisa:\n1. Email do lead\n2. Data e hora de início e final da reunião no fuso horário -3\n3. Id do evento a ser atualizado",
+          "workflowId": {
+            "__rl": true,
+            "value": "ZDAVWRhnGTenioPf",
+            "mode": "id"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "nome": "=",
+              "email": "={{ $fromAI('email', 'insira o email do usuário') }}",
+              "numero": "=",
+              "start": "={{ $fromAI('start', 'insira a data e hora de inicio do evento no furo horário -3') }}",
+              "end": "={{ $fromAI('end', 'insira a data e hora de final do evento no furo horário -3') }}",
+              "evento": "reagendamento",
+              "idEvento": "={{ $fromAI('idEvento', 'Insira o ID do evento a ser reagendado') }}"
+            },
+            "matchingColumns": [],
+            "schema": [
+              {
+                "id": "nome",
+                "displayName": "nome",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string"
+              },
+              {
+                "id": "email",
+                "displayName": "email",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string"
+              },
+              {
+                "id": "numero",
+                "displayName": "numero",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string"
+              },
+              {
+                "id": "start",
+                "displayName": "start",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string"
+              },
+              {
+                "id": "end",
+                "displayName": "end",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string"
+              },
+              {
+                "id": "evento",
+                "displayName": "evento",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string"
+              },
+              {
+                "id": "idEvento",
+                "displayName": "idEvento",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          }
+        },
+        "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+        "typeVersion": 2.1,
+        "position": [
+          -2420,
+          520
+        ],
+        "id": "d2f11f24-7468-4e37-a2fd-18a3795cd93b",
+        "name": "reagendamento1"
+      }
+    ],
+    "connections": {
+      "When chat message received": {
+        "main": [
+          [
+            {
+              "node": "AI Agent",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "OpenAI Chat Model": {
+        "ai_languageModel": [
+          [
+            {
+              "node": "AI Agent",
+              "type": "ai_languageModel",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Simple Memory": {
+        "ai_memory": [
+          [
+            {
+              "node": "AI Agent",
+              "type": "ai_memory",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "When Executed by Another Workflow": {
+        "main": [
+          [
+            {
+              "node": "Switch",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Switch": {
+        "main": [
+          [
+            {
+              "node": "Google Calendar",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Google Calendar2",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Google Calendar3",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Busca eventos",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Google Calendar5",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Google Calendar": {
+        "main": [
+          [
+            {
+              "node": "If",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "If": {
+        "main": [
+          [
+            {
+              "node": "Google Calendar1",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "horário indisponivel",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Google Calendar1": {
+        "main": [
+          [
+            {
+              "node": "agendado",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Google Calendar2": {
+        "main": [
+          [
+            {
+              "node": "cancelado",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Google Calendar3": {
+        "main": [
+          [
+            {
+              "node": "If1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "If1": {
+        "main": [
+          [
+            {
+              "node": "Google Calendar4",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "horário indisponivel",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Google Calendar4": {
+        "main": [
+          [
+            {
+              "node": "reagendamento",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Busca eventos": {
+        "main": [
+          [
+            {
+              "node": "If2",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "If2": {
+        "main": [
+          [
+            {
+              "node": "Edit Fields1",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Edit Fields",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Edit Fields1": {
+        "main": [
+          [
+            {
+              "node": "Aggregate",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Google Calendar5": {
+        "main": [
+          [
+            {
+              "node": "If3",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Edit Fields2": {
+        "main": [
+          [
+            {
+              "node": "Aggregate1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "If3": {
+        "main": [
+          [
+            {
+              "node": "Edit Fields2",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Edit Fields3",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "cancelamento": {
+        "ai_tool": [
+          [
+            {
+              "node": "AI Agent",
+              "type": "ai_tool",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "reagendamento1": {
+        "ai_tool": [
+          [
+            {
+              "node": "AI Agent",
+              "type": "ai_tool",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "buscarAgendamentos": {
+        "ai_tool": [
+          [
+            {
+              "node": "AI Agent",
+              "type": "ai_tool",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "agendamento": {
+        "ai_tool": [
+          [
+            {
+              "node": "AI Agent",
+              "type": "ai_tool",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "disponibilidade": {
+        "ai_tool": [
+          [
+            {
+              "node": "AI Agent",
+              "type": "ai_tool",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "authors": "system migration",
+    "name": null,
+    "description": null,
+    "autosaved": false
+  },
+  "activeVersionId": "71f77474-8094-4bc5-a8a6-e46b4ebb7ec8",
   "connections": {
     "When chat message received": {
       "main": [
@@ -333,7 +2003,8 @@
       ],
       "id": "ec8aa55b-adcf-48f6-9ae8-b486ea2098d8",
       "name": "When chat message received",
-      "webhookId": "95a1b052-55e2-4966-ad43-cf045efb92e3"
+      "webhookId": "95a1b052-55e2-4966-ad43-cf045efb92e3",
+      "disabled": true
     },
     {
       "parameters": {
@@ -1701,5 +3372,5 @@
   "tags": [],
   "triggerCount": 0,
   "updatedAt": "2025-07-02T19:05:48.299Z",
-  "versionId": "059d794b-555d-44a9-a67e-7536e27d4792"
+  "versionId": "71f77474-8094-4bc5-a8a6-e46b4ebb7ec8"
 }
