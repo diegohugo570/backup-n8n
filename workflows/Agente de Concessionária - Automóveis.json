@@ -1,0 +1,809 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Supabase buscar usuário",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase buscar usuário": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Supabase criar usuário",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase criar usuário": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Switch2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mensagem Texto": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mensagem Audio": {
+      "main": [
+        [
+          {
+            "node": "Convert to File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch2": {
+      "main": [
+        [
+          {
+            "node": "Mensagem Texto",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Mensagem Texto",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Mensagem Audio",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Evolution API",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File": {
+      "main": [
+        [
+          {
+            "node": "OpenAI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MCP_AUTOMOVEIS": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Enviar texto",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Enviar imagem",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2026-01-02T18:15:56.364Z",
+  "id": "0iWRkC0na5g98HHY",
+  "isArchived": false,
+  "meta": null,
+  "name": "Agente de Concessionária - Automóveis",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "770452ee-72fc-4e91-b24e-a89922ca64e4",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -3600,
+        128
+      ],
+      "id": "6d93e318-10d8-4f27-a34d-1998ae2cc276",
+      "name": "Webhook",
+      "webhookId": "770452ee-72fc-4e91-b24e-a89922ca64e4"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "38973d0e-1b7c-4be5-ab79-06bb04d415cb",
+              "name": "nome",
+              "value": "={{ $json.body.data.pushName }}",
+              "type": "string"
+            },
+            {
+              "id": "a9c54093-0a48-45d3-9006-b532a1103cd0",
+              "name": "whatsapp",
+              "value": "={{ $json.body.data.key.remoteJid }}",
+              "type": "string"
+            },
+            {
+              "id": "cff009fd-f150-44cb-afb5-53710611a773",
+              "name": "message",
+              "value": "={{ $json.body.data.message.conversation }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -3392,
+        128
+      ],
+      "id": "3cd2b68b-1b5c-4eca-8f2e-fbf9fd863863",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "Agente CRM",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "whatsapp",
+              "keyValue": "={{ $json.whatsapp }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -3168,
+        128
+      ],
+      "id": "025e5067-0f05-4e56-a01b-6b718bb7215e",
+      "name": "Supabase buscar usuário",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "2c9859ec-014e-46c0-89d7-961307f7b595",
+              "leftValue": "={{ $json.id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "number",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -2960,
+        128
+      ],
+      "id": "d2fc2e5b-972a-4f50-baa5-9ba999f5bbcb",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "tableId": "Agente CRM",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "nome",
+              "fieldValue": "={{ $('Edit Fields').item.json.nome }}"
+            },
+            {
+              "fieldId": "whatsapp",
+              "fieldValue": "={{ $('Edit Fields').item.json.whatsapp }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -2784,
+        320
+      ],
+      "id": "deb23dfc-cca5-4a7a-820e-060e5e3e88d4",
+      "name": "Supabase criar usuário"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.1,
+      "position": [
+        -2608,
+        128
+      ],
+      "id": "432517f5-a3df-445d-9c66-f92c9c235df9",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c1ce011b-bd95-468e-863e-f2076f644cf9",
+              "name": "message",
+              "value": "={{ $('Edit Fields').first().json.message }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -2032,
+        80
+      ],
+      "id": "c7590355-8883-4a17-9ba3-dca58c8105e5",
+      "name": "Mensagem Texto"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "5efc6961-1ff7-4ef2-a772-7e9761592a3e",
+              "name": "Audio",
+              "value": "={{ $('Webhook').item.json.body.data.message.base64 }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -2032,
+        256
+      ],
+      "id": "eacd0b9b-3e40-455c-be1f-2b8dcefd3b63",
+      "name": "Mensagem Audio"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "bc64f125-d93c-4d1d-97ae-65c0adb08b79",
+                    "leftValue": "={{ $('Webhook').first().json.body.data.messageType }}",
+                    "rightValue": "conversation",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "texto"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "137aec3f-e95e-4d59-b9ba-1140f9fc4fb4",
+                    "leftValue": "={{ $('Webhook').first().json.body.data.messageType }}",
+                    "rightValue": "extendedTextMessage",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "texto"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "137aec3f-e95e-4d59-b9ba-1140f9fc4fb4",
+                    "leftValue": "={{ $('Webhook').first().json.body.data.messageType }}",
+                    "rightValue": "audioMessage",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "audio"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra",
+          "renameFallbackOutput": "Outro"
+        }
+      },
+      "id": "5d140e29-058c-413e-ac1c-127918e26b27",
+      "name": "Switch2",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.1,
+      "position": [
+        -2384,
+        112
+      ],
+      "notesInFlow": false,
+      "notes": "Desenvolvido por Potto Flow"
+    },
+    {
+      "parameters": {
+        "resource": "audio",
+        "operation": "transcribe",
+        "options": {
+          "language": "pt"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        -1632,
+        256
+      ],
+      "id": "dc782ef8-c3d4-4077-9e54-c9259454e6dc",
+      "name": "OpenAI"
+    },
+    {
+      "parameters": {
+        "operation": "toBinary",
+        "sourceProperty": "Audio",
+        "options": {
+          "mimeType": "audio/mp4"
+        }
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        -1808,
+        256
+      ],
+      "id": "f1dbbe74-4275-4814-af49-529bba7baddd",
+      "name": "Convert to File",
+      "notes": "desenvolvido por Potto Flow"
+    },
+    {
+      "parameters": {
+        "resource": "messages-api",
+        "instanceName": "potto-evo",
+        "remoteJid": "={{ $('simplificação de dados').item.json.whatsapp }}",
+        "messageText": "=Olá, não recebemos esse tipo de formato",
+        "options_message": {}
+      },
+      "type": "n8n-nodes-evolution-api.evolutionApi",
+      "typeVersion": 1,
+      "position": [
+        -2032,
+        480
+      ],
+      "id": "56848788-415c-4bc3-95ac-8a4d7ce60a10",
+      "name": "Evolution API"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.1,
+      "position": [
+        -1184,
+        96
+      ],
+      "id": "f17af146-5e6b-4792-9ae3-8d4f266f29e9",
+      "name": "Merge1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "0ef3cc0c-78ff-42c0-ad2a-934618b7c8ae",
+              "name": "message",
+              "value": "={{ $json.text }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1456,
+        256
+      ],
+      "id": "72d7c701-7a84-4abe-acb6-ef7192ddfe76",
+      "name": "Edit Fields1",
+      "notes": "Desenvolvido por Potto Flow"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.message }}",
+        "options": {
+          "systemMessage": "=Role\n\nVocê é um Agente Atendente de Concessionária de Carros.\nSeu objetivo é atender clientes interessados em comprar carros, buscar os veículos disponíveis no banco de dados da concessionária e enviar fotos dos modelos quando solicitado.\n\nTools Disponíveis \n\ntool_buscar_carros – Utilize esta ferramenta para pesquisar carros disponíveis no Supabase.\n\nUse a coluna valor para buscas por preço.\n\nUse a coluna modelos para buscas por modelo ou marca.\n\nSempre filtre conforme os critérios que o cliente especificar (preço, modelo, ano, etc.).\n\ntool_imagens_carros – Utilize esta ferramenta para buscar imagens do carro selecionado.\n\nInstructions\n\nSempre cumprimente o cliente de forma cordial.\n\nCaso a solicitação do cliente esteja incompleta (ex: não especificou preço ou modelo), faça perguntas de acompanhamento para entender melhor a necessidade.\n\nUse tool_buscar_carros primeiro para trazer as opções disponíveis.\n\nSe o cliente pedir fotos de algum carro listado, use tool_imagens_carros.\n\n\nNunca invente preços ou modelos. Use apenas os dados retornados pelas ferramentas.\n\nSe nenhum carro for encontrado, informe ao cliente e sugira alternativas (ex: ampliar faixa de preço ou considerar outro modelo).\n\nExamples\nExemplo 1\n\nInput:\n\"Quero um carro de até 120 mil reais.\"\n\nAção esperada:\n\nChamar tool_buscar_carros filtrando valor <= 120000.\n\nRetornar a lista de carros disponíveis com nome, modelo, ano e preço.\n\nOutput esperado:\n\"Encontrei 3 opções dentro da sua faixa de até R$120.000:\n\nJeep Compass 2022 – R$118.000\n\nToyota Corolla 2021 – R$115.000\n\nHonda Civic 2020 – R$110.000\nDeseja que eu envie fotos de algum desses modelos?\"\n\nExemplo 2\n\nInput:\n\"Me mostra fotos do Jeep Compass que você achou.\"\n\nAção esperada:\n\nChamar tool_imagens_carros para o Jeep Compass listado anteriormente.\n\nOutput esperado: https://noqywpskexfiwmtfygli.supabase.co/storage/v1/object/sign/Carros/CAOA%20Chery%20Tiggo.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9hYjJiOTAxZC03NTc3LTQ1MjktODM4Mi03OTVkZmNkMWQyZjciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJDYXJyb3MvQ0FPQSBDaGVyeSBUaWdnby5wbmciLCJpYXQiOjE3NTY3NjI2OTcsImV4cCI6MTkxNDQ0MjY5N30.Y0cnJLhiZPCvw-FX7DOz2vHOVvTOvmIVmfITvw2ZBDg\n\n\n\nREGRA: \n\n- Não forneça informações fora do escopo de vendas de carros.\n- Quando for SOLICITADO IMAGENS o output é somente a URL SEM NENHUM TEXTO\n- Quando o usuario pedir foto ou imagem de dois carros ao mesmo tempo fale que você só pode enviar uma por vez e peça para ele escolher qual carro quer receber primeiro\n\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        -928,
+        96
+      ],
+      "id": "a392832a-0065-45da-a1e5-e3eaac8aa125",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -1136,
+        464
+      ],
+      "id": "ed386006-bcf5-4dfb-bd2f-8bd95951c21a",
+      "name": "OpenAI Chat Model"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('Edit Fields').item.json.whatsapp }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        -944,
+        464
+      ],
+      "id": "96829655-c970-43ff-a5a4-0847fb5daa7b",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "resource": "messages-api",
+        "instanceName": "potto-evo",
+        "remoteJid": "={{ $('Edit Fields').item.json.whatsapp }}",
+        "messageText": "={{ $json.output }}",
+        "options_message": {}
+      },
+      "type": "n8n-nodes-evolution-api.evolutionApi",
+      "typeVersion": 1,
+      "position": [
+        0,
+        224
+      ],
+      "id": "7d32de45-3603-420e-8675-749e25e70e15",
+      "name": "Enviar texto"
+    },
+    {
+      "parameters": {
+        "sseEndpoint": "https://n8n-fila-hook.pottoflow.com.br/mcp/5766a3aa-5f85-432a-a241-4037886dcd21",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.mcpClientTool",
+      "typeVersion": 1,
+      "position": [
+        -720,
+        464
+      ],
+      "id": "ac4416ae-802f-47c7-a5e1-46402497baf3",
+      "name": "MCP_AUTOMOVEIS",
+      "notes": "desenvolvido por Potto Flow"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "07e55d43-008b-4f7f-94a2-c85a499b3eec",
+              "leftValue": "={{ $json.output }}",
+              "rightValue": "=https://noqywpskexfiwmtfygli.supabase.co/",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -432,
+        96
+      ],
+      "id": "3666de59-28dd-4364-9605-dbe82fed0589",
+      "name": "If1",
+      "notes": "desenvolvido por Potto Flow"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.output }}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "a3df37b9-4c9d-43b9-8e42-e885903694a5",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "resource": "messages-api",
+        "operation": "send-image",
+        "instanceName": "potto-evo",
+        "remoteJid": "={{ $('Edit Fields').item.json.whatsapp }}",
+        "media": "={{ $json.output }}",
+        "caption": "Segue a imagem",
+        "options_message": {}
+      },
+      "type": "n8n-nodes-evolution-api.evolutionApi",
+      "typeVersion": 1,
+      "position": [
+        256,
+        0
+      ],
+      "id": "bed6fccd-3fe0-458f-a62d-2ebda86d6839",
+      "name": "Enviar imagem"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "shared": [
+    {
+      "updatedAt": "2026-01-02T18:15:56.364Z",
+      "createdAt": "2026-01-02T18:15:56.364Z",
+      "role": "workflow:owner",
+      "workflowId": "0iWRkC0na5g98HHY",
+      "projectId": "o60HadikmqrvYZ9Z"
+    }
+  ],
+  "staticData": null,
+  "tags": [
+    {
+      "updatedAt": "2025-12-11T21:49:57.103Z",
+      "createdAt": "2025-12-11T21:49:57.103Z",
+      "id": "jVJBpv1Zg5iwH5ja",
+      "name": "Potto Flow - Aula"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2026-01-02T18:15:56.364Z",
+  "versionId": "409698af-248a-45e8-8a60-c84513a2c78b"
+}
