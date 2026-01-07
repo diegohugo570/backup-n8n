@@ -1,0 +1,269 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "Submit form with customer feedback": {
+      "main": [
+        [
+          {
+            "node": "Classificar feedback",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Classificar feedback": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Aicionar feedback na Planilha",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2026-01-02T18:18:16.366Z",
+  "id": "v37lXv4dbT0d49NX",
+  "isArchived": false,
+  "meta": null,
+  "name": "Análise de sentimento de feedback do cliente",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "formulario-feedback",
+        "formTitle": "Customer Feedback",
+        "formDescription": "Por favor, deixe seu feedback sobre nossa empresa ou produtos.",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Nome",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Qual é o seu feedback?",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "Product"
+                  },
+                  {
+                    "option": "Service"
+                  },
+                  {
+                    "option": "Other"
+                  }
+                ]
+              },
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Seu feedback",
+              "fieldType": "textarea",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Como podemos entrar em contato com você?"
+            }
+          ]
+        },
+        "options": {
+          "formSubmittedText": "Sua resposta foi registrada"
+        }
+      },
+      "id": "d82fbcd5-98f8-4a17-a6bf-7296d548b744",
+      "name": "Submit form with customer feedback",
+      "type": "n8n-nodes-base.formTrigger",
+      "position": [
+        -336,
+        160
+      ],
+      "webhookId": "e7bf682e-48e8-40de-9815-cd180cdd1480",
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "1omWdRbiT6z6GNZ6JClu9gEsRhPQ6J0EJ2yXyFH9Zng4",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1omWdRbiT6z6GNZ6JClu9gEsRhPQ6J0EJ2yXyFH9Zng4/edit?usp=drivesdk",
+          "cachedResultName": "CustomerFeedback"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gid=0",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1omWdRbiT6z6GNZ6JClu9gEsRhPQ6J0EJ2yXyFH9Zng4/edit#gid=0",
+          "cachedResultName": "Sheet1"
+        },
+        "columns": {
+          "value": {
+            "Category": "={{ $json['What is your feedback about?'] }}",
+            "Sentiment": "={{ $json.text }}",
+            "Timestamp": "={{ $json.submittedAt }}",
+            "Entered by": "=Form",
+            "Customer Name": "={{ $json.Name }}",
+            "Customer contact": "={{ $json['How do we get in touch with you?'] }}",
+            "Customer Feedback": "={{ $json['Your feedback'] }}"
+          },
+          "schema": [
+            {
+              "id": "Timestamp",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "Timestamp",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Category",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "Category",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Customer Feedback",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "Customer Feedback",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Customer Name",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "Customer Name",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Customer contact",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "Customer contact",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Entered by",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "Entered by",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Urgent?",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "Urgent?",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Sentiment",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "Sentiment",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            }
+          ],
+          "mappingMode": "defineBelow",
+          "matchingColumns": []
+        },
+        "options": {}
+      },
+      "id": "21865051-2037-4332-93bd-0cd35007c48a",
+      "name": "Aicionar feedback na Planilha",
+      "type": "n8n-nodes-base.googleSheets",
+      "position": [
+        528,
+        144
+      ],
+      "typeVersion": 4.1
+    },
+    {
+      "parameters": {
+        "prompt": "=Classify the sentiment in the following customer feedback: {{ $json['Your feedback'] }}",
+        "options": {},
+        "requestOptions": {}
+      },
+      "id": "d2a85d41-8a3e-42b2-8eff-0920c9b36863",
+      "name": "Classificar feedback",
+      "type": "n8n-nodes-base.openAi",
+      "position": [
+        0,
+        0
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "2f804208-0ff2-410c-aa26-9c27d4381898",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "position": [
+        304,
+        144
+      ],
+      "typeVersion": 2.1
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "shared": [
+    {
+      "updatedAt": "2026-01-02T18:18:16.366Z",
+      "createdAt": "2026-01-02T18:18:16.366Z",
+      "role": "workflow:owner",
+      "workflowId": "v37lXv4dbT0d49NX",
+      "projectId": "o60HadikmqrvYZ9Z"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2026-01-02T18:18:16.366Z",
+  "versionId": "49df9f9b-cb91-47cf-bcd3-47d89e2641b5"
+}
