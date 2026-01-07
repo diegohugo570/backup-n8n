@@ -1,0 +1,370 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "Google Drive Trigger": {
+      "main": [
+        [
+          {
+            "node": "Download file1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download file1": {
+      "main": [
+        [
+          {
+            "node": "Extract Document PDF1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Document PDF1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2026-01-02T18:17:50.746Z",
+  "id": "HxpNP2CjmdPt8yCR",
+  "isArchived": false,
+  "meta": null,
+  "name": "Triagem de Currículo RH - Potto Flow",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "triggerOn": "specificFolder",
+        "folderToWatch": {
+          "__rl": true,
+          "value": "1jRrD5ftWu32mBYDZ0capJcQNmHU-ycWW",
+          "mode": "list",
+          "cachedResultName": "Aula curriculo",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1jRrD5ftWu32mBYDZ0capJcQNmHU-ycWW"
+        },
+        "event": "fileCreated",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDriveTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "a733787d-2575-4ccf-96c0-9bbd9d53cd8c",
+      "name": "Google Drive Trigger"
+    },
+    {
+      "parameters": {
+        "operation": "download",
+        "fileId": {
+          "__rl": true,
+          "value": "={{ $json.id }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        208,
+        0
+      ],
+      "id": "3bb26a6b-a2e5-456d-9327-a7767cd2e79b",
+      "name": "Download file1"
+    },
+    {
+      "parameters": {
+        "operation": "pdf",
+        "options": {}
+      },
+      "id": "5a23ee4f-50d9-4112-9e1a-4b9ccbe537b4",
+      "name": "Extract Document PDF1",
+      "type": "n8n-nodes-base.extractFromFile",
+      "position": [
+        416,
+        0
+      ],
+      "typeVersion": 1,
+      "alwaysOutputData": false,
+      "notes": "Desenvolvido por Potto Flow"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "aeb71684-7c1c-4c39-9ae3-b6aab7d8671d",
+              "name": "job_description",
+              "value": "\"Título: Designer de Marketing\\n\\nSobre a empresa:\\nSomos uma equipe apaixonada por inovação em marketing digital e buscamos transformar a forma como marcas se conectam com seus públicos. Nossa missão é criar campanhas impactantes, que unam design criativo, dados e estratégia para gerar resultados reais. Trabalhamos de forma colaborativa, em um ambiente dinâmico e majoritariamente remoto, valorizando a criatividade, a autonomia e a curiosidade.\\n\\nSobre o time:\\nNosso time é composto por profissionais de marketing, tráfego pago, automação e conteúdo. Acreditamos que o design é peça-chave para transmitir mensagens poderosas e gerar conexão emocional com as pessoas. Procuramos alguém que una criatividade com visão estratégica para fortalecer ainda mais a nossa equipe.\\n\\nSobre a vaga:\\nEstamos em busca de um(a) Designer para Marketing que será responsável por criar peças criativas e funcionais para campanhas digitais, redes sociais, landing pages, anúncios e materiais institucionais. O candidato ideal é alguém que entende a importância do design dentro da jornada de marketing e sabe equilibrar estética, clareza e performance.\\n\\nResponsabilidades:\\n- Desenvolver peças visuais para campanhas de Meta Ads, Google Ads e outros canais\\n- Criar layouts para redes sociais, e-mails marketing e apresentações comerciais\\n- Colaborar com o time de marketing para transformar briefings em soluções visuais atraentes e estratégicas\\n- Acompanhar tendências de design e propor novas abordagens criativas\\n- Garantir consistência visual e identidade da marca em todos os materiais\\n\\nRequisitos:\\n- Experiência prévia como designer em marketing digital (2+ anos)\\n- Domínio das principais ferramentas de design (Adobe Creative Suite ou Figma)\\n- Capacidade de traduzir objetivos de marketing em peças visuais claras e impactantes\\n- Experiência com criação de anúncios e materiais otimizados para performance\\n- Portfólio que mostre projetos digitais relevantes\\n\\nDiferenciais:\\n- Experiência com motion design (After Effects ou similares)\\n- Noções de UX/UI aplicadas a landing pages\\n- Familiaridade com ferramentas de automação de marketing\\n- Experiência em startups ou empresas de crescimento acelerado\\n\\nLocalização:\\nRemoto, com preferência para candidatos no Brasil\\n\\nEmpresas de referência:\\nNubank, Hotmart, RD Station, Rock Content, VTEX, Figma, Canva, Notion, Hubspot, Shopify",
+              "type": "string"
+            },
+            {
+              "id": "f852f5f2-bdb0-479c-884f-995f2df4c2ad",
+              "name": "prompt",
+              "value": "Você é o recrutador em uma agência de recrutamento, é rigoroso e presta atenção extra aos detalhes em um currículo. Você trabalha com empresas e encontra talentos para as vagas delas. Você avalia qualquer currículo de forma muito atenta e crítica. Se o candidato for um “job hopper” (muda de emprego com frequência), você percebe isso e nos informa. Você precisa dizer se o candidato da nossa base é adequado para esta vaga.",
+              "type": "string"
+            },
+            {
+              "id": "5ec48873-c580-43dd-a999-a433772f755c",
+              "name": "json_schema",
+              "value": "[\"name\", \"contact\", \"percentage\", \"summary\", \"reasons-suit\", \"reasons-notsuit\"]",
+              "type": "string"
+            },
+            {
+              "id": "a8debaad-078a-4bed-a92b-25c0c261d9ad",
+              "name": "text_pdf",
+              "value": "={{ $json.text }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        624,
+        0
+      ],
+      "id": "6dedd3c2-781b-4a4b-a8f3-0762448022aa",
+      "name": "Edit Fields2"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.text_pdf }}",
+        "options": {
+          "systemMessage": "=Use esse prompt: {{ $json.prompt }} para avalizar os curriculos que recebe.\n\nA vaga tem essa descrição: {{ $json.job_description }}\n\nO curriculo analisado: {{ JSON.stringify(encodeURIComponent($json.text)) }}\n\nFormato de saida schema: {{ $json.json_schema }}\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        832,
+        0
+      ],
+      "id": "b1056912-29e0-456e-b12c-b5f818b72162",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        752,
+        240
+      ],
+      "id": "2f2cce40-38d5-4732-9678-dfacb1409ad5",
+      "name": "OpenAI Chat Model"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Pega a string JSON do campo \"output\"\nconst raw = $json.output;\n\n// Converte a string em array\nconst parsed = JSON.parse(raw);\n\n// Mapeia os campos de forma clara\nreturn [\n  {\n    json: {\n      name: parsed[0],          // Nome da pessoa\n      contact: parsed[1],       // Contato (email, telefone, LinkedIn, etc.)\n      percentage: parsed[2],    // Percentual\n      summary: parsed[3],       // Resumo\n      reason_suit: parsed[4],   // Razão para contratar\n      reason_notsuit: parsed[5] // Razão para não contratar\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1136,
+        0
+      ],
+      "id": "93e38f33-7aa6-48a7-84a1-7fb5ea5007c1",
+      "name": "Code",
+      "notes": "Desenvolvido por Potto Flow"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1jzisAfWstCLXEi_PBNCJGAajDbgDf-LxDOPjkhJZiQs",
+          "mode": "list",
+          "cachedResultName": "Analise de curriculo - aula",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1jzisAfWstCLXEi_PBNCJGAajDbgDf-LxDOPjkhJZiQs/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Página1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1jzisAfWstCLXEi_PBNCJGAajDbgDf-LxDOPjkhJZiQs/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Nome": "={{ $json.name }}",
+            "Contato": "={{ $json.contact }}",
+            "Porcentagem": "={{ $json.percentage }}",
+            "Resumo": "={{ $json.summary }}",
+            "Razões para Contratar": "={{ $json.reason_suit }}",
+            "Razões para não contratar": "={{ $json.reason_notsuit }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Contato",
+              "displayName": "Contato",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Porcentagem",
+              "displayName": "Porcentagem",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Resumo",
+              "displayName": "Resumo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Razões para Contratar",
+              "displayName": "Razões para Contratar",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Razões para não contratar",
+              "displayName": "Razões para não contratar",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1344,
+        0
+      ],
+      "id": "1d196960-8c52-4ec7-8d06-09f8f3d9f63f",
+      "name": "Append row in sheet"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "shared": [
+    {
+      "updatedAt": "2026-01-02T18:17:50.746Z",
+      "createdAt": "2026-01-02T18:17:50.746Z",
+      "role": "workflow:owner",
+      "workflowId": "HxpNP2CjmdPt8yCR",
+      "projectId": "o60HadikmqrvYZ9Z"
+    }
+  ],
+  "staticData": null,
+  "tags": [
+    {
+      "updatedAt": "2025-12-11T21:49:57.103Z",
+      "createdAt": "2025-12-11T21:49:57.103Z",
+      "id": "jVJBpv1Zg5iwH5ja",
+      "name": "Potto Flow - Aula"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2026-01-02T18:17:50.746Z",
+  "versionId": "c8a00192-786e-4d8a-ab0e-56aeda61733a"
+}
