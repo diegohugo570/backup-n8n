@@ -7385,16 +7385,10 @@
   "staticData": null,
   "tags": [
     {
-      "updatedAt": "2025-08-29T20:23:12.328Z",
-      "createdAt": "2025-08-29T20:23:12.328Z",
-      "id": "aed61lYZzEC2qigZ",
-      "name": "rag"
-    },
-    {
-      "updatedAt": "2025-08-29T20:23:12.328Z",
-      "createdAt": "2025-08-29T20:23:12.328Z",
-      "id": "oi7zaeAEPYokXw1x",
-      "name": "whatsapp"
+      "updatedAt": "2025-06-25T12:16:21.520Z",
+      "createdAt": "2025-06-25T12:16:21.520Z",
+      "id": "fbnh2AFfrHU2ZznN",
+      "name": "formacao-agentes-n8n"
     },
     {
       "updatedAt": "2025-06-25T12:16:21.530Z",
@@ -7403,10 +7397,16 @@
       "name": "ai-agent"
     },
     {
-      "updatedAt": "2025-06-25T12:16:21.520Z",
-      "createdAt": "2025-06-25T12:16:21.520Z",
-      "id": "fbnh2AFfrHU2ZznN",
-      "name": "formacao-agentes-n8n"
+      "updatedAt": "2025-08-29T20:23:12.328Z",
+      "createdAt": "2025-08-29T20:23:12.328Z",
+      "id": "oi7zaeAEPYokXw1x",
+      "name": "whatsapp"
+    },
+    {
+      "updatedAt": "2025-08-29T20:23:12.328Z",
+      "createdAt": "2025-08-29T20:23:12.328Z",
+      "id": "aed61lYZzEC2qigZ",
+      "name": "rag"
     }
   ],
   "triggerCount": 0,
