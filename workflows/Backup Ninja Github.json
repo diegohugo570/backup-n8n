@@ -2,9 +2,9 @@
   "active": false,
   "activeVersionId": null,
   "connections": {},
-  "createdAt": "2026-01-08T14:44:12.849Z",
+  "createdAt": "2026-01-10T12:17:36.664Z",
   "description": null,
-  "id": "8YlsnwskGraiLoak",
+  "id": "S5ySznHVA6lQ3iWj",
   "isArchived": false,
   "meta": null,
   "name": "Backup Ninja Github",
@@ -16,7 +16,7 @@
   },
   "staticData": null,
   "triggerCount": 0,
-  "updatedAt": "2026-01-08T14:44:12.849Z",
+  "updatedAt": "2026-01-10T12:17:36.664Z",
   "versionCounter": 1,
-  "versionId": "e6feacf5-ca04-436b-b713-77a1c45677d9"
+  "versionId": "1249eca2-24fa-4092-ba8f-674c253ec81c"
 }
