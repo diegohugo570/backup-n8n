@@ -63,7 +63,14 @@ Este repositório tem como finalidade:
 
 ## 👤 Autor
 **Diego Hugo**  
-Especialista em Inteligência Artificial com ênfase em Automações Aplicadas em N8N e Python
+Especialista em Inteligência Artificial com foco em **Automações Inteligentes, Agentes Autônomos e Python**
+
+📌 Áreas de atuação:
+- IA Generativa  
+- Agentes Autônomos (LangGraph)  
+- RAG  
+- Automação Inteligente (Python / n8n)  
+- Aplicações reais de IA para empresas
 
 🔹 Especialidades:
 - Automação Inteligente
