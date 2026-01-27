@@ -63,7 +63,7 @@ Este repositório tem como finalidade:
 
 ## 👤 Autor
 **Diego Hugo**  
-Especialista em Inteligência Artificial com ênfase Automações Aplicadas em N8N e Python
+Especialista em Inteligência Artificial com ênfase em Automações Aplicadas em N8N e Python
 
 🔹 Especialidades:
 - Automação Inteligente
