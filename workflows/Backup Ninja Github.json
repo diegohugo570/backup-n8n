@@ -3,8 +3,8 @@
   "activeVersion": null,
   "activeVersionId": null,
   "connections": {},
-  "createdAt": "2026-02-03T19:17:13.695Z",
-  "id": "akVUu55PxDVIuojl",
+  "createdAt": "2026-01-07T19:47:43.565Z",
+  "id": "SUjYNlGysb6mu9jK",
   "isArchived": true,
   "meta": null,
   "name": "Backup Ninja Github",
@@ -16,16 +16,16 @@
   },
   "shared": [
     {
-      "updatedAt": "2026-02-03T19:17:13.695Z",
-      "createdAt": "2026-02-03T19:17:13.695Z",
+      "updatedAt": "2026-01-07T19:47:43.565Z",
+      "createdAt": "2026-01-07T19:47:43.565Z",
       "role": "workflow:owner",
-      "workflowId": "akVUu55PxDVIuojl",
+      "workflowId": "SUjYNlGysb6mu9jK",
       "projectId": "o60HadikmqrvYZ9Z"
     }
   ],
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-02-03T19:18:03.619Z",
-  "versionId": "1037273d-019d-4cb9-ae7d-78a525435c4a"
+  "updatedAt": "2026-01-08T13:13:55.171Z",
+  "versionId": "abe650df-3e70-4280-b1f6-fe9cc55d480c"
 }
