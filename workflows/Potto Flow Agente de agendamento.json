@@ -103,8 +103,8 @@
       ]
     }
   },
-  "createdAt": "2026-01-02T18:14:26.653Z",
-  "id": "2UACJJFSttFGQoiz",
+  "createdAt": "2025-12-17T12:21:15.312Z",
+  "id": "xOIJMptdvsIzKn68",
   "isArchived": false,
   "meta": null,
   "name": "Potto Flow Agente de agendamento",
@@ -121,7 +121,7 @@
         0,
         0
       ],
-      "id": "31bca44b-d26a-454a-af50-bcfa0d884e6d",
+      "id": "78d5a337-6db5-4fe3-88a5-6293940c9f41",
       "name": "Webhook",
       "webhookId": "fa4ac463-aeb4-48ca-a135-d6088cd98990"
     },
@@ -151,7 +151,7 @@
         224,
         0
       ],
-      "id": "6b2d1bf1-f279-419d-8fb6-f89a65d2e406",
+      "id": "1706cf2b-7558-4be1-bfad-7f8eee6d3af0",
       "name": "simplificação de dados",
       "notes": "Desenvolvido por Potto Flow"
     },
@@ -169,7 +169,7 @@
         448,
         0
       ],
-      "id": "38a9722c-de98-437d-96dd-71d442be1fe3",
+      "id": "981be4f3-b33c-4190-9897-944aa07d50e2",
       "name": "AI Agent"
     },
     {
@@ -187,7 +187,7 @@
         352,
         224
       ],
-      "id": "b24d8640-6c27-4fe1-862a-14f0f7b509e8",
+      "id": "e4abeaf5-b888-43c4-9cc1-6d627cb75d7b",
       "name": "OpenAI Chat Model"
     },
     {
@@ -201,7 +201,7 @@
         512,
         224
       ],
-      "id": "d13cb1a5-f551-4f07-b062-b53b82df10a9",
+      "id": "86df4531-fc47-4a23-9586-066ce09f7052",
       "name": "Simple Memory"
     },
     {
@@ -226,7 +226,7 @@
         704,
         240
       ],
-      "id": "1d12c9b0-05db-476b-af9c-6f755e8b0b50",
+      "id": "7f83df19-c943-4913-9e74-292db644ad3f",
       "name": "criar_evento"
     },
     {
@@ -248,7 +248,7 @@
         848,
         240
       ],
-      "id": "6263d5ae-4cb4-4614-ad1a-6c97a9c0f1cf",
+      "id": "e619019e-48b7-436c-b4aa-7b9571e0ded2",
       "name": "buscar_evento"
     },
     {
@@ -269,7 +269,7 @@
         1008,
         240
       ],
-      "id": "ac4a6a07-3c89-4491-a8ab-55c72d08bd1f",
+      "id": "54cb2773-f45b-40be-bdd3-76ea842f1496",
       "name": "deletar_evento",
       "notes": "Desenvolvido por Potto Flow"
     },
@@ -291,7 +291,7 @@
         1168,
         240
       ],
-      "id": "db25e78c-892b-4bc4-9d24-456e21f6754e",
+      "id": "3a7d1203-00fb-4b17-b507-04e9d82e170c",
       "name": "atualizar_evento"
     },
     {
@@ -321,21 +321,20 @@
         992,
         0
       ],
-      "id": "cb0cefc4-5170-477f-be32-22ef5bf01a68",
+      "id": "ac3a1faa-ebaa-42b2-9755-a7c5135370b1",
       "name": "HTTP Request"
     }
   ],
   "pinData": {},
   "settings": {
-    "executionOrder": "v1",
-    "availableInMCP": false
+    "executionOrder": "v1"
   },
   "shared": [
     {
-      "updatedAt": "2026-01-02T18:14:26.653Z",
-      "createdAt": "2026-01-02T18:14:26.653Z",
+      "updatedAt": "2025-12-17T12:21:15.312Z",
+      "createdAt": "2025-12-17T12:21:15.312Z",
       "role": "workflow:owner",
-      "workflowId": "2UACJJFSttFGQoiz",
+      "workflowId": "xOIJMptdvsIzKn68",
       "projectId": "o60HadikmqrvYZ9Z"
     }
   ],
@@ -349,6 +348,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2026-01-02T18:14:26.653Z",
-  "versionId": "4b39eaad-723a-45b5-a987-5c5e46b08754"
+  "updatedAt": "2025-12-17T12:21:15.312Z",
+  "versionId": "f15c9d39-e6e6-4dfe-890f-c8210f8a51c6"
 }
