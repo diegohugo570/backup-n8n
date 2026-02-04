@@ -16,7 +16,13 @@
     },
     "Loop Over Items1": {
       "main": [
-        [],
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ],
         [
           {
             "node": "Upsert Workflows",
@@ -58,40 +64,6 @@
         [
           {
             "node": "Get file data",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Upsert Credentials": {
-      "main": [
-        [
-          {
-            "node": "Loop Over Items",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Loop Over Items": {
-      "main": [
-        [],
-        [
-          {
-            "node": "Upsert Credentials",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "JSON formatting": {
-      "main": [
-        [
-          {
-            "node": "Loop Over Items",
             "type": "main",
             "index": 0
           }
@@ -244,7 +216,7 @@
       "main": [
         [
           {
-            "node": "JSON formatting",
+            "node": "Extract Credentials",
             "type": "main",
             "index": 0
           }
@@ -255,12 +227,45 @@
       "main": [
         [
           {
-            "node": "Importa todos Workflows",
+            "node": "HTTP Request",
             "type": "main",
             "index": 0
           },
           {
-            "node": "HTTP Request",
+            "node": "Importa todos Workflows",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Credentials": {
+      "main": [
+        [
+          {
+            "node": "Create a file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create a file": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Upsert Workflows",
             "type": "main",
             "index": 0
           }
@@ -282,27 +287,12 @@
         "mode": "each",
         "options": {}
       },
-      "id": "d381a414-fdee-43a0-9981-dd46ee3ad29c",
-      "name": "Upsert Credentials",
-      "type": "n8n-nodes-base.executeWorkflow",
-      "position": [
-        944,
-        80
-      ],
-      "typeVersion": 1
-    },
-    {
-      "parameters": {
-        "workflowId": "={{ $workflow.id }}",
-        "mode": "each",
-        "options": {}
-      },
       "id": "f9f4cbc2-9083-49e9-bae5-e3f7015f8293",
       "name": "Upsert Workflows",
       "type": "n8n-nodes-base.executeWorkflow",
       "position": [
-        944,
-        320
+        1808,
+        -32
       ],
       "typeVersion": 1
     },
@@ -314,8 +304,8 @@
       "name": "Loop Over Items1",
       "type": "n8n-nodes-base.splitInBatches",
       "position": [
-        704,
-        304
+        960,
+        288
       ],
       "typeVersion": 3
     },
@@ -328,8 +318,8 @@
       "name": "Importa todos Workflows",
       "type": "n8n-nodes-base.n8n",
       "position": [
-        368,
-        368
+        624,
+        288
       ],
       "typeVersion": 1,
       "executeOnce": false,
@@ -368,19 +358,6 @@
         704
       ],
       "typeVersion": 1
-    },
-    {
-      "parameters": {
-        "jsCode": "// Pega todos os itens de entrada\nconst items = $input.all();\n\n// Se não houver itens, retorna erro\nif (!items.length) {\n  return [{\n    json: {\n      error: \"Nenhum dado recebido do node anterior.\"\n    }\n  }];\n}\n\n// Caso o HTTP Request retorne um ARRAY\nif (Array.isArray(items[0].json)) {\n  return items[0].json.map(item => ({\n    json: item\n  }));\n}\n\n// Caso o HTTP Request retorne um OBJETO\nreturn items.map(item => ({\n  json: item.json\n}));\n"
-      },
-      "id": "5110ccca-ed15-4bae-8b29-5846bf809880",
-      "name": "JSON formatting",
-      "type": "n8n-nodes-base.code",
-      "position": [
-        464,
-        192
-      ],
-      "typeVersion": 2
     },
     {
       "parameters": {
@@ -462,16 +439,16 @@
     {
       "parameters": {
         "content": "## Loop Principal",
-        "height": 515,
-        "width": 1185,
+        "height": 611,
+        "width": 2321,
         "color": 7
       },
       "id": "39efd105-83e1-499d-9708-298db361eba0",
       "name": "Sticky Note2",
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -16,
-        0
+        0,
+        -112
       ],
       "typeVersion": 1
     },
@@ -490,19 +467,6 @@
         80
       ],
       "typeVersion": 1
-    },
-    {
-      "parameters": {
-        "options": {}
-      },
-      "id": "05e204ff-42d6-4636-81d2-726234a8b4e6",
-      "name": "Loop Over Items",
-      "type": "n8n-nodes-base.splitInBatches",
-      "position": [
-        704,
-        64
-      ],
-      "typeVersion": 3
     },
     {
       "parameters": {
@@ -768,8 +732,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        256,
-        96
+        560,
+        -48
       ],
       "id": "6a235baa-741d-4ebf-a540-3bbef6106616",
       "name": "HTTP Request",
@@ -792,10 +756,73 @@
       "typeVersion": 1.3,
       "position": [
         32,
-        272
+        128
       ],
       "id": "7698b13d-2417-4398-ab9a-ef65fb191747",
       "name": "Schedule Trigger1"
+    },
+    {
+      "parameters": {
+        "jsCode": "const workflows = items;\nconst credsMap = new Map();\n\nfor (const item of workflows) {\n  const nodes = item.json.nodes || [];\n  for (const node of nodes) {\n    if (node.credentials) {\n      for (const [type, cred] of Object.entries(node.credentials)) {\n        credsMap.set(cred.id, {\n          credential_id: cred.id,\n          credential_type: type\n        });\n      }\n    }\n  }\n}\n\nreturn Array.from(credsMap.values()).map(c => ({ json: c }));\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        832,
+        -48
+      ],
+      "id": "b974591c-e046-4b44-a172-41fd5a4c884f",
+      "name": "Extract Credentials"
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "owner": {
+          "__rl": true,
+          "mode": "list",
+          "value": "diegohugo570"
+        },
+        "repository": {
+          "__rl": true,
+          "value": "backup-n8n",
+          "mode": "list",
+          "cachedResultName": "backup-n8n",
+          "cachedResultUrl": "https://github.com/diegohugo570/backup-n8n"
+        },
+        "filePath": "docs/credentials/githubApi.json",
+        "fileContent": "={{ JSON.stringify($json, null, 2) }}",
+        "commitMessage": "chore: backup credentials metadata"
+      },
+      "type": "n8n-nodes-base.github",
+      "typeVersion": 1.1,
+      "position": [
+        1104,
+        -48
+      ],
+      "id": "874bdb66-41d8-4897-892c-a76bf5c10fd0",
+      "name": "Create a file",
+      "webhookId": "119660e9-7b51-4508-a80b-165641ef5e5d",
+      "credentials": {
+        "githubApi": {
+          "id": "5Vhzmhb0DlXl9y5x",
+          "name": "GitHub account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        1312,
+        -32
+      ],
+      "id": "62544b1f-5129-464e-8859-8ba245735378",
+      "name": "Merge"
     }
   ],
   "pinData": {},
@@ -821,6 +848,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2026-02-04T12:17:00.553Z",
-  "versionId": "d84d79ab-9556-4308-829f-c2fff8a3c2ba"
+  "updatedAt": "2026-02-04T13:34:55.135Z",
+  "versionId": "52e35257-131c-4a11-a013-1866318b055b"
 }
