@@ -1,0 +1,590 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Facebook Graph API",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Facebook Graph API": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Create a row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Facebook Graph API1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Facebook Graph API1": {
+      "main": [
+        [
+          {
+            "node": "Split Out1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out1": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "Create a row1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create a row": {
+      "main": [
+        [
+          {
+            "node": "Enviar texto",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create a row1": {
+      "main": [
+        [
+          {
+            "node": "Enviar texto1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2026-02-04T12:00:11.869Z",
+  "id": "63kKYFPKEvHBgBYE",
+  "isArchived": false,
+  "meta": null,
+  "name": "Resultado campanhas e-commerce Meta Ads - Potto Flow",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "weeks",
+              "triggerAtDay": [
+                1
+              ],
+              "triggerAtHour": 9
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "f2fa6a38-4685-4b0e-a241-c6ef13569e71",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "05d674ad-ead8-4f80-8a5e-a6201ecfc61a",
+              "name": "conta_anuncio",
+              "value": "4034320191543253",
+              "type": "string"
+            },
+            {
+              "id": "6f8b2f64-d38f-44c3-8356-070b8bec5041",
+              "name": "grupo_cliente",
+              "value": "55119999@s.whatsapp.net",
+              "type": "string"
+            },
+            {
+              "id": "52057f62-a0ee-4e40-99ae-4defb4347aa5",
+              "name": "desde_data",
+              "value": "={{$today.minus({days: 7}).toFormat('yyyy-MM-dd')}}",
+              "type": "string"
+            },
+            {
+              "id": "bb78a028-a793-4d91-828f-93a91f996d22",
+              "name": "ate_data",
+              "value": "={{$today.minus({days: 1}).toFormat('yyyy-MM-dd')}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        208,
+        0
+      ],
+      "id": "c373473b-2dab-4ed2-91de-9100fc7a29da",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "graphApiVersion": "v22.0",
+        "node": "=act_{{ $json.conta_anuncio }}",
+        "edge": "insights",
+        "options": {
+          "queryParameters": {
+            "parameter": [
+              {
+                "name": "time_increment",
+                "value": "1"
+              },
+              {
+                "name": "level",
+                "value": "account"
+              },
+              {
+                "name": "fields",
+                "value": "campaign_name,  spend,  actions,  action_values"
+              },
+              {
+                "name": "limit",
+                "value": "3000"
+              },
+              {
+                "name": "time_range",
+                "value": "={\n  \"since\":\"{{ $json.desde_data }}\",\n  \"until\":\"{{ $json.ate_data }}\"\n} "
+              }
+            ]
+          }
+        }
+      },
+      "type": "n8n-nodes-base.facebookGraphApi",
+      "typeVersion": 1,
+      "position": [
+        416,
+        0
+      ],
+      "id": "02849bfd-7864-40ee-8f76-b6eb93bf6dfa",
+      "name": "Facebook Graph API"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "data",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        624,
+        0
+      ],
+      "id": "31c72021-f497-4f33-9152-ff8e024be4c8",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all();\n\nlet totalGasto = 0;\nlet totalLandingPageViews = 0;\nlet totalVendas = 0;\nlet valorConversao = 0;\n\n// Tipos de ação para compras válidas\nconst tiposCompraValidos = [\n  'purchase',                   // Compras no site\n  'onsite_conversion.purchase'  // Compras na Meta\n];\n\nconst landingPageActionType = 'landing_page_view';\n\nitems.forEach(item => {\n  const data = item.json;\n\n  totalGasto += parseFloat(data.spend) || 0;\n\n  if (data.actions) {\n    data.actions.forEach(action => {\n      const type = action.action_type;\n\n      // Landing Page View\n      if (type === landingPageActionType) {\n        totalLandingPageViews += parseInt(action.value) || 0;\n      }\n\n      // Contar somente os tipos de compra válidos\n      if (tiposCompraValidos.includes(type)) {\n        totalVendas += parseInt(action.value) || 0;\n      }\n    });\n  }\n\n  if (data.action_values) {\n    data.action_values.forEach(action => {\n      const type = action.action_type;\n\n      if (tiposCompraValidos.includes(type)) {\n        valorConversao += parseFloat(action.value) || 0;\n      }\n    });\n  }\n});\n\n// Cálculos\nconst custoPorLPView = totalLandingPageViews > 0\n  ? (totalGasto / totalLandingPageViews).toFixed(2).replace(\".\", \",\")\n  : \"0,00\";\n\nconst custoPorConversao = totalVendas > 0\n  ? (totalGasto / totalVendas).toFixed(2).replace(\".\", \",\")\n  : \"0,00\";\n\nconst ticketMedio = totalVendas > 0\n  ? (valorConversao / totalVendas).toFixed(2).replace(\".\", \",\")\n  : \"0,00\";\n\nconst roas = totalGasto > 0\n  ? (valorConversao / totalGasto).toFixed(2).replace(\".\", \",\")\n  : \"0,00\";\n\nconst taxaConversao = totalLandingPageViews > 0\n  ? ((totalVendas / totalLandingPageViews) * 100).toFixed(2).replace(\".\", \",\") + \"%\"\n  : \"0,00%\";\n\n// Resultado\nreturn [\n  {\n    json: {\n      \"Valor Usado (R$)\": totalGasto.toFixed(2).replace(\".\", \",\"),\n      \"Landing Page Views\": totalLandingPageViews,\n      \"Custo por LP View (R$)\": custoPorLPView,\n      \"Conversões\": totalVendas,\n      \"Custo por Conversão (R$)\": custoPorConversao,\n      \"Valor de Conversão (R$)\": valorConversao.toFixed(2).replace(\".\", \",\"),\n      \"Ticket Médio (R$)\": ticketMedio,\n      \"ROAS\": roas,\n      \"Taxa de Conversão\": taxaConversao\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        832,
+        0
+      ],
+      "id": "7cb5da3a-39b7-46d2-be9c-637eb672240a",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "resource": "messages-api",
+        "instanceName": "potto-evo",
+        "remoteJid": "={{ $('Edit Fields').item.json.grupo_cliente }}",
+        "messageText": "=Bom dia, Thayná!  \n\nSegue o relatório com os resultados da campanha no período de: {{$today.minus({days: 7}).toFormat('dd/MM')}} a {{$today.minus({days: 1}).toFormat('dd/MM')}}  \n\n• Valor usado - R$ {{ $json.INVESTIMENTO }}\n• Pedidos - {{ $json.PEDIDOS }}\n• CPA - R$ {{ $json.CPA }}\n• Receita - {{ $json.RECEITA }}\n• Ticket Médio - {{ $json['TICKET MÉDIO'] }}\n• Taxa de conversão - {{ $json['TAXA DE CONVERSÃO'] }}\n• ROAS - {{ $json.ROAS }}\n\nQualquer dúvida ou ponto que queira alinhar, estamos à disposição!",
+        "options_message": {}
+      },
+      "type": "n8n-nodes-evolution-api.evolutionApi",
+      "typeVersion": 1,
+      "position": [
+        1280,
+        0
+      ],
+      "id": "4a1d194b-a21c-4fdc-bd20-5142948a70f7",
+      "name": "Enviar texto"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "months",
+              "triggerAtHour": 11
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        16,
+        256
+      ],
+      "id": "98c94316-8b54-4881-89bf-cf17b64f48e9",
+      "name": "Schedule Trigger1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "05d674ad-ead8-4f80-8a5e-a6201ecfc61a",
+              "name": "conta_anuncio",
+              "value": "4034320191543253",
+              "type": "string"
+            },
+            {
+              "id": "fec150c2-928e-4088-b578-5773d9586812",
+              "name": "grupo_cliente",
+              "value": "55119999@s.whatsapp.net",
+              "type": "string"
+            },
+            {
+              "id": "52057f62-a0ee-4e40-99ae-4defb4347aa5",
+              "name": "desde_data",
+              "value": "={{$today.minus({months: 1}).startOf('month').toFormat('yyyy-MM-dd')}}",
+              "type": "string"
+            },
+            {
+              "id": "bb78a028-a793-4d91-828f-93a91f996d22",
+              "name": "ate_data",
+              "value": "={{$today.minus({months: 1}).endOf('month').toFormat('yyyy-MM-dd')}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        240,
+        256
+      ],
+      "id": "57989996-5d78-43b0-97fb-8396dde96476",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "graphApiVersion": "v22.0",
+        "node": "=act_{{ $json.conta_anuncio }}",
+        "edge": "insights",
+        "options": {
+          "queryParameters": {
+            "parameter": [
+              {
+                "name": "time_increment",
+                "value": "1"
+              },
+              {
+                "name": "level",
+                "value": "account"
+              },
+              {
+                "name": "fields",
+                "value": "campaign_name,  spend,  actions,  action_values"
+              },
+              {
+                "name": "limit",
+                "value": "3000"
+              },
+              {
+                "name": "time_range",
+                "value": "={\n  \"since\":\"{{ $json.desde_data }}\",\n  \"until\":\"{{ $json.ate_data }}\"\n} "
+              }
+            ]
+          }
+        }
+      },
+      "type": "n8n-nodes-base.facebookGraphApi",
+      "typeVersion": 1,
+      "position": [
+        432,
+        256
+      ],
+      "id": "25bc30f3-eb21-4fc1-a099-7f713d604cd8",
+      "name": "Facebook Graph API1"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "data",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        640,
+        256
+      ],
+      "id": "958a890c-1389-455c-ab75-a10bc7b9465a",
+      "name": "Split Out1"
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all();\n\nlet totalGasto = 0;\nlet totalLandingPageViews = 0;\nlet totalVendas = 0;\nlet valorConversao = 0;\n\n// Tipos de ação para compras válidas\nconst tiposCompraValidos = [\n  'purchase',                   // Compras no site\n  'onsite_conversion.purchase'  // Compras na Meta\n];\n\nconst landingPageActionType = 'landing_page_view';\n\nitems.forEach(item => {\n  const data = item.json;\n\n  totalGasto += parseFloat(data.spend) || 0;\n\n  if (data.actions) {\n    data.actions.forEach(action => {\n      const type = action.action_type;\n\n      // Landing Page View\n      if (type === landingPageActionType) {\n        totalLandingPageViews += parseInt(action.value) || 0;\n      }\n\n      // Contar somente os tipos de compra válidos\n      if (tiposCompraValidos.includes(type)) {\n        totalVendas += parseInt(action.value) || 0;\n      }\n    });\n  }\n\n  if (data.action_values) {\n    data.action_values.forEach(action => {\n      const type = action.action_type;\n\n      if (tiposCompraValidos.includes(type)) {\n        valorConversao += parseFloat(action.value) || 0;\n      }\n    });\n  }\n});\n\n// Cálculos\nconst custoPorLPView = totalLandingPageViews > 0\n  ? (totalGasto / totalLandingPageViews).toFixed(2).replace(\".\", \",\")\n  : \"0,00\";\n\nconst custoPorConversao = totalVendas > 0\n  ? (totalGasto / totalVendas).toFixed(2).replace(\".\", \",\")\n  : \"0,00\";\n\nconst ticketMedio = totalVendas > 0\n  ? (valorConversao / totalVendas).toFixed(2).replace(\".\", \",\")\n  : \"0,00\";\n\nconst roas = totalGasto > 0\n  ? (valorConversao / totalGasto).toFixed(2).replace(\".\", \",\")\n  : \"0,00\";\n\nconst taxaConversao = totalLandingPageViews > 0\n  ? ((totalVendas / totalLandingPageViews) * 100).toFixed(2).replace(\".\", \",\") + \"%\"\n  : \"0,00%\";\n\n// Resultado\nreturn [\n  {\n    json: {\n      \"Valor Usado (R$)\": totalGasto.toFixed(2).replace(\".\", \",\"),\n      \"Landing Page Views\": totalLandingPageViews,\n      \"Custo por LP View (R$)\": custoPorLPView,\n      \"Conversões\": totalVendas,\n      \"Custo por Conversão (R$)\": custoPorConversao,\n      \"Valor de Conversão (R$)\": valorConversao.toFixed(2).replace(\".\", \",\"),\n      \"Ticket Médio (R$)\": ticketMedio,\n      \"ROAS\": roas,\n      \"Taxa de Conversão\": taxaConversao,\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        848,
+        256
+      ],
+      "id": "09e74808-fc64-459e-8244-76f0ca9fd7c6",
+      "name": "Code1"
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "databaseId": 277615,
+        "tableId": 648824,
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": 5310759,
+              "fieldValue": "={{$today.minus({days: 7}).toFormat('yyyy-MM-dd')}}"
+            },
+            {
+              "fieldId": 5310760,
+              "fieldValue": "={{$today.minus({days: 1}).toFormat('yyyy-MM-dd')}}"
+            },
+            {
+              "fieldId": 5310761,
+              "fieldValue": "={{ $json['Valor Usado (R$)'] }}"
+            },
+            {
+              "fieldId": 5310815,
+              "fieldValue": "={{ $json['Landing Page Views'] }}"
+            },
+            {
+              "fieldId": 5310816,
+              "fieldValue": "={{ $json['Custo por LP View (R$)'] }}"
+            },
+            {
+              "fieldId": 5310818,
+              "fieldValue": "={{ $json['Conversões'] }}"
+            },
+            {
+              "fieldId": 5310819,
+              "fieldValue": "={{ $json['Custo por Conversão (R$)'] }}"
+            },
+            {
+              "fieldId": 5310822,
+              "fieldValue": "={{ $json['Valor de Conversão (R$)'] }}"
+            },
+            {
+              "fieldId": 5310824,
+              "fieldValue": "={{ $json['Ticket Médio (R$)'] }}"
+            },
+            {
+              "fieldId": 5310825,
+              "fieldValue": "={{ $json['Taxa de Conversão'] }}"
+            },
+            {
+              "fieldId": 5310826,
+              "fieldValue": "={{ $json.ROAS }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.baserow",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        0
+      ],
+      "id": "c6eac804-491b-4dcc-87cc-4a1ff39c0ec5",
+      "name": "Create a row"
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "databaseId": 277615,
+        "tableId": 648833,
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": 5310829,
+              "fieldValue": "={{$today.minus({ months: 1 }).setLocale('pt-BR').toFormat(\"LLLL 'de' yyyy\")}}"
+            },
+            {
+              "fieldId": 5310831,
+              "fieldValue": "={{ $json['Valor Usado (R$)'] }}"
+            },
+            {
+              "fieldId": 5310832,
+              "fieldValue": "={{ $json['Landing Page Views'] }}"
+            },
+            {
+              "fieldId": 5310833,
+              "fieldValue": "={{ $json['Custo por LP View (R$)'] }}"
+            },
+            {
+              "fieldId": 5310834,
+              "fieldValue": "={{ $json['Conversões'] }}"
+            },
+            {
+              "fieldId": 5310835,
+              "fieldValue": "={{ $json['Custo por Conversão (R$)'] }}"
+            },
+            {
+              "fieldId": 5310836,
+              "fieldValue": "={{ $json['Valor de Conversão (R$)'] }}"
+            },
+            {
+              "fieldId": 5310837,
+              "fieldValue": "={{ $json['Ticket Médio (R$)'] }}"
+            },
+            {
+              "fieldId": 5310838,
+              "fieldValue": "={{ $json['Taxa de Conversão'] }}"
+            },
+            {
+              "fieldId": 5310839,
+              "fieldValue": "={{ $json.ROAS }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.baserow",
+      "typeVersion": 1,
+      "position": [
+        1056,
+        256
+      ],
+      "id": "8179120d-6618-482e-a937-57be7847fb93",
+      "name": "Create a row1"
+    },
+    {
+      "parameters": {
+        "resource": "messages-api",
+        "instanceName": "potto-evo",
+        "remoteJid": "={{ $('Edit Fields1').first().json.grupo_cliente }}",
+        "messageText": "=Bom dia, Thayná!  \n\nSegue o relatório com os resultados da campanha referentes ao mês de: {{$today.minus({ months: 1 }).setLocale('pt-BR').toFormat(\"LLLL 'de' yyyy\")}}\n\n• Valor usado - R$ {{ $json.INVESTIMENTO }}\n• Pedidos - {{ $json.PEDIDOS }}\n• CPA - R$ {{ $json.CPA }}\n• Receita - {{ $json.RECEITA }}\n• Ticket Médio - {{ $json['TICKET MÉDIO'] }}\n• Taxa de conversão - {{ $json['TAXA DE CONVERSÃO'] }}\n• ROAS - {{ $json.ROAS }}\n\nQualquer dúvida ou ponto que queira alinhar, estamos à disposição!",
+        "options_message": {}
+      },
+      "type": "n8n-nodes-evolution-api.evolutionApi",
+      "typeVersion": 1,
+      "position": [
+        1264,
+        256
+      ],
+      "id": "cee6e204-4246-4e49-bb45-db059ae47c47",
+      "name": "Enviar texto1"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "shared": [
+    {
+      "updatedAt": "2026-02-04T12:00:11.869Z",
+      "createdAt": "2026-02-04T12:00:11.869Z",
+      "role": "workflow:owner",
+      "workflowId": "63kKYFPKEvHBgBYE",
+      "projectId": "o60HadikmqrvYZ9Z"
+    }
+  ],
+  "staticData": null,
+  "tags": [
+    {
+      "updatedAt": "2025-12-11T21:49:57.103Z",
+      "createdAt": "2025-12-11T21:49:57.103Z",
+      "id": "jVJBpv1Zg5iwH5ja",
+      "name": "Potto Flow - Aula"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2026-02-04T12:00:11.869Z",
+  "versionId": "82e3b14d-2b3b-4854-9986-20015d9119ae"
+}
