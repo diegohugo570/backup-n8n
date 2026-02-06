@@ -1,0 +1,589 @@
+{
+  "updatedAt": "2025-06-15T14:44:55.397Z",
+  "createdAt": "2025-06-15T14:44:55.397Z",
+  "id": "9QJfMw3KwxGszn48",
+  "name": "Instagram Ninja | Follow-Up Automático | Comentário e DM",
+  "active": false,
+  "isArchived": false,
+  "nodes": [
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ $json.query['hub.challenge'] }}",
+        "options": {}
+      },
+      "id": "3bde08e7-5232-452f-a6df-7420a5649d48",
+      "name": "Resposta - Challenge",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        300,
+        140
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://graph.instagram.com/v21.0/{{ $('Webhook - Follow-Up').item.json.body.entry[0].changes[0].value.id }}/replies",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Variáveis').item.json['Token de acesso'] }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "message",
+              "value": "=🥷🏼🔥 Código recebido @{{ $('Webhook - Follow-Up').item.json.body.entry[0].changes[0].value.from.username }}! o ninja já te entregou a missão no direct. 🥷⚡"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ac7ad84b-0bb0-40a6-a05c-6c2d500c7677",
+      "name": "Responder comentário",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1840,
+        460
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://graph.instagram.com/v21.0/{{ $('Webhook - Follow-Up').item.json.body.entry[0].id }}/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Variáveis').item.json['Token de acesso'] }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"recipient\": {\n    \"comment_id\": \"{{ $('Webhook - Follow-Up').item.json.body.entry[0].changes[0].value.id }}\"\n  },\n  \"message\": {\n    \"attachment\": {\n      \"type\": \"template\",\n      \"payload\": {\n        \"template_type\": \"button\",\n        \"text\": \"🥷 Missão recebida. Agora é com você.\\n\\nO caminho do ninja é simples:\\n\\nVocê aprende hoje, configura amanhã e começa a vender no piloto automático em poucos dias.\\n\\nSem equipe. Sem ferramentas caras. Sem complicação.\",\n        \"buttons\": [\n          {\n            \"type\": \"web_url\",\n            \"url\": \"https://ninja-das-automacoes.pay.yampi.com.br/r/SWKSM6E7M2\",\n            \"title\": \"🥷🏼 Aceitar Missão\"\n          },\n          {\n            \"type\": \"web_url\",\n            \"url\": \"https://ninjadasautomacoes.com.br/\",\n            \"title\": \"⭐️ Quero mais detalhes\"\n          }\n        ]\n      }\n    }\n  }\n}\n",
+        "options": {}
+      },
+      "id": "030dddad-224c-425a-a73e-24fb1ae880cc",
+      "name": "Enviar mensagem com botões na DM",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2320,
+        460
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "3dee049f-8591-42cb-a821-75280637d3a6",
+      "name": "Espera 5 segundos",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2080,
+        460
+      ],
+      "webhookId": "02a8b495-2dc1-4205-b53a-72c39d202d3e"
+    },
+    {
+      "parameters": {
+        "path": "ninja-follow-up",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "d46492ef-88a4-4694-9777-efe63b2dae0a",
+      "name": "Webhook - Challenge",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        80,
+        140
+      ],
+      "webhookId": "6761f957-d6b3-4b12-88fc-8619b26eea03"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "15163d06-085b-4775-b8e5-514bc20162cb",
+              "name": "Token de acesso",
+              "value": "",
+              "type": "string"
+            },
+            {
+              "id": "a40337ff-20f8-4057-aa4a-626d09c6046f",
+              "name": "Id do Instagram",
+              "value": "",
+              "type": "string"
+            },
+            {
+              "id": "22f6820c-81c2-4cb4-8160-3bc4bbf1f466",
+              "name": "baseUrl",
+              "value": "",
+              "type": "string"
+            },
+            {
+              "id": "f609d7fb-a996-431a-acc7-a0e90cf23b07",
+              "name": "apikey",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b11fd158-87ba-44f4-8c73-346a628ed550",
+      "name": "Variáveis",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        380,
+        640
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "ninja-follow-up",
+        "options": {}
+      },
+      "id": "5866b980-efd3-4359-9dea-94b38cf3ac74",
+      "name": "Webhook - Follow-Up",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        80,
+        640
+      ],
+      "webhookId": "6761f957-d6b3-4b12-88fc-8619b26eea03"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": false,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "80c2244b-aa39-44f8-b4a0-e4c603988ae0",
+              "leftValue": "={{ $('Webhook - Follow-Up').item.json.body.entry[0].changes[0].field }}",
+              "rightValue": "comments",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {
+          "ignoreCase": true
+        }
+      },
+      "id": "39f8467c-3a5a-455f-8d8a-73ad91347130",
+      "name": "Filtro Mensagem",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        700,
+        620
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://graph.instagram.com/v21.0/{{ $('Webhook - Follow-Up').item.json.body.entry[0].id }}/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Variáveis').item.json['Token de acesso'] }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"recipient\": {\n    \"id\": \"{{ $('Webhook - Follow-Up').item.json.body.entry[0].messaging[0].sender.id }}\"\n  },\n  \"message\": {\n    \"attachment\": {\n      \"type\": \"template\",\n      \"payload\": {\n        \"template_type\": \"button\",\n         \"text\": \"🔥 Você desbloqueou +60 ferramentas gratuitas para automatizar tudo no seu negócio sem pagar caro!\\n\\n⚡ Agora você pode:\\n✅ Criar chatbots fodas para WhatsApp e Instagram\\n✅ Enviar e-mails automáticos sem mensalidade absurda\\n✅ Captar leads e vender no piloto automático\\n✅ Fazer tudo que te cobram caro para fazer\\n\\n🚀 Passo a passo pronto. Só pegar e aplicar!\",\n        \"buttons\": [\n          {\n            \"type\": \"web_url\",\n            \"url\": \"https://ninja-das-automacoes.pay.yampi.com.br/r/SWKSM6E7M2\",\n            \"title\": \"🔥 Quero acessar agora!\"\n          },\n          {\n            \"type\": \"web_url\",\n            \"url\": \"https://ninjadasautomacoes.com.br/\",\n            \"title\": \"🤔 Quero mais detalhes\"\n          }\n        ]\n      }\n    }\n  }\n}\n",
+        "options": {}
+      },
+      "id": "199c1e33-6ec5-40ee-85f7-c496ed35a881",
+      "name": "Enviar Copy com botões na DM",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1480,
+        820
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": false,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "0c58cece-195b-492c-94c9-37654035c613",
+              "leftValue": "={{ $('Webhook - Follow-Up').item.json.body.entry[0].messaging[0].message.text }}",
+              "rightValue": "AUTO",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {
+          "ignoreCase": true
+        }
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1100,
+        840
+      ],
+      "id": "0a91f13e-942f-43a4-901d-b7a8ed6129d1",
+      "name": "Mensagem = Auto"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": false,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "26b58b99-14e5-48ba-aff0-00c52a63cb5a",
+              "leftValue": "={{ $('Webhook - Follow-Up').item.json.body.entry[0].changes[0].value.text }}",
+              "rightValue": "AUTO",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            },
+            {
+              "id": "0cc04f45-34c7-43a8-b519-43a361a73d6d",
+              "leftValue": "={{ $('Webhook - Follow-Up').item.json.body.entry[0].changes[0].value.from.id }}",
+              "rightValue": "17841429168809278",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {
+          "ignoreCase": true
+        }
+      },
+      "id": "51e73420-a464-41ec-b953-65bff7451c02",
+      "name": "Filtro - FollowUp",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1220,
+        500
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "2c19fe5e-ea9f-456b-97fe-4be582ead4f0",
+              "leftValue": "={{ $('Webhook - Follow-Up').item.json.body.entry[0].changes[0].value.media.media_product_type }}",
+              "rightValue": "FEED",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            },
+            {
+              "id": "161bba8f-e682-4ba9-8b0a-27bda76df1eb",
+              "leftValue": "={{ $('Webhook - Follow-Up').item.json.body.entry[0].changes[0].value.media.media_product_type }}",
+              "rightValue": "AD",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1540,
+        480
+      ],
+      "id": "cc8e0fa4-49cf-42f8-b029-cd5909ea5548",
+      "name": "Filtro Feed or AD"
+    },
+    {
+      "parameters": {
+        "content": "## Webhook Get de Autenticação\n### - Precisa ter a mesma URL do POST",
+        "height": 320,
+        "width": 520
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "7bff2f4e-13f2-4858-aa55-7cf9972f33dd",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "## Webhook POST\n### - Recebe mensagens\n",
+        "height": 360,
+        "width": 320,
+        "color": 2
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -20,
+        480
+      ],
+      "id": "0c5c66a6-96bc-455b-93ea-37618dd07144",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "## Mapeia Variáveis",
+        "height": 360,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        320,
+        480
+      ],
+      "id": "dfaf410d-c571-43f9-8780-7ad5fb438a27",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "## Filtro Mensagem ou Comentário",
+        "height": 360,
+        "width": 400,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        580,
+        480
+      ],
+      "id": "7d6cbc8e-f566-401c-9e6d-c9b1d9da2920",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "content": "## Responde Comentário e manda botão na DM",
+        "height": 300,
+        "width": 1500,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1020,
+        400
+      ],
+      "id": "adeb0f16-8520-4fb8-babf-00f02b0d3f58",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "content": "## Envia botão para DM com palavra-chave",
+        "height": 300,
+        "width": 700,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1020,
+        740
+      ],
+      "id": "9c57aae1-0f87-4382-8d72-313acd1a1988",
+      "name": "Sticky Note5"
+    }
+  ],
+  "connections": {
+    "Responder comentário": {
+      "main": [
+        [
+          {
+            "node": "Espera 5 segundos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Espera 5 segundos": {
+      "main": [
+        [
+          {
+            "node": "Enviar mensagem com botões na DM",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook - Challenge": {
+      "main": [
+        [
+          {
+            "node": "Resposta - Challenge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Variáveis": {
+      "main": [
+        [
+          {
+            "node": "Filtro Mensagem",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook - Follow-Up": {
+      "main": [
+        [
+          {
+            "node": "Variáveis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filtro Mensagem": {
+      "main": [
+        [
+          {
+            "node": "Filtro - FollowUp",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Mensagem = Auto",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mensagem = Auto": {
+      "main": [
+        [
+          {
+            "node": "Enviar Copy com botões na DM",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filtro - FollowUp": {
+      "main": [
+        [
+          {
+            "node": "Filtro Feed or AD",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filtro Feed or AD": {
+      "main": [
+        [
+          {
+            "node": "Responder comentário",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "meta": null,
+  "pinData": {},
+  "versionId": "e1a31f40-f117-4871-85c4-201ea7db86ee",
+  "activeVersionId": null,
+  "triggerCount": 0,
+  "shared": [
+    {
+      "updatedAt": "2025-06-15T14:44:55.397Z",
+      "createdAt": "2025-06-15T14:44:55.397Z",
+      "role": "workflow:owner",
+      "workflowId": "9QJfMw3KwxGszn48",
+      "projectId": "o60HadikmqrvYZ9Z"
+    }
+  ],
+  "activeVersion": null,
+  "tags": [
+    {
+      "updatedAt": "2025-06-14T14:35:30.743Z",
+      "createdAt": "2025-06-14T14:35:30.743Z",
+      "id": "f7Ttu7FQN3EvRKX9",
+      "name": "🥷🏼 Ninja Automações"
+    }
+  ]
+}
