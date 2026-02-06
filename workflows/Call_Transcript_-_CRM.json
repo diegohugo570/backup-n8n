@@ -1,0 +1,570 @@
+{
+  "updatedAt": "2025-07-03T18:50:22.590Z",
+  "createdAt": "2025-07-03T18:50:22.590Z",
+  "id": "dMEyh6NTBAR9g1Pa",
+  "name": "Call Transcript - CRM",
+  "active": false,
+  "isArchived": false,
+  "nodes": [
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "validate_transcript_id",
+              "leftValue": "={{ $json.full_transcript }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "e6f9eeb9-ad66-49c3-84b3-a2320a3bab26",
+      "name": "Validate_Webhook_Data",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        -660,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "text": "={{ $('Code').item.json.full_transcript }}",
+        "attributes": {
+          "attributes": [
+            {
+              "name": "Resumo",
+              "description": "Resumo da conversa com no máximo 800 caracteres",
+              "required": true
+            },
+            {
+              "name": "Quantidade de Colaboradores",
+              "description": "A quantidade de colaboradores na empresa do lead"
+            },
+            {
+              "name": "CRM Atual",
+              "description": "Ferramenta de CRM usada atualmente pela empresa"
+            },
+            {
+              "name": "Próximos passos combinados",
+              "description": "Uma lista dos próximos passos que ficaram definidos na conversa (em bullet points)"
+            },
+            {
+              "name": "Ferramenta de Email marketing",
+              "description": "Qual é a ferramenta de email marketing atual?"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.informationExtractor",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "866c4e5d-ef45-43cf-907a-6119702875cb",
+      "name": "Information Extractor"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4.1-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4.1-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        180
+      ],
+      "id": "c5a047d2-8f10-4007-b4c3-aaf13dadc27a",
+      "name": "OpenAI Chat Model"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "check_transcript_exists",
+              "leftValue": "={{ $json.data.approved }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "5072dd49-2989-404d-b23e-46f1481236dc",
+      "name": "Aprovado?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        -220,
+        200
+      ]
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        20,
+        400
+      ],
+      "id": "291aec79-6c79-46c0-9bce-9106a6acab59",
+      "name": "No Operation, do nothing"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Nome da Reunião: {{ $('Get Transcript1').item.json.data.transcript.title }}\n\nResumo da Reunião: {{ $json.output.Resumo }}\n\nQuantidade de Colaboradores: {{ $json.output['Quantidade de Colaboradores'] }}\n\nCRM Atual: {{ $json.output['CRM Atual'] }}\n\nPróximos Passos: {{ $json.output['Próximos passos combinados'] }}",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "Sua tarefa é registrar informações de uma reunião com lead no CRM Clickup. \n\nSOP:\n\n1. use \"get_tasks\" para listar todos os nomes de leads que estão atualmente abertos no CRM. \n2. Através do nome da reunião, encontre qual é o lead no CRM e separe o \"ID\" desse lead\n3. Use \"edit_fields\", passando o ID selecionado, para preencher os campos personalizados com as novas informações recebidas. Nessa etapa você deve passar o ID da Task e o ID do campo personalizad (que você encontra no json recebido anteriormente ao usar a tool \"get_tasks\"). \n\nImportante: \nCaso o número de colaboradores ou o CRM atual não seja identificado, preencha o campo com \"Não Identificado\". Nunca deixe um campo vazio.\n\nAo finalizar, responda com uma mensagem se sucesso ou erro, com um resumo curto do que foi executado. "
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        480,
+        0
+      ],
+      "id": "0f169e8b-ae3b-4d40-a702-baa2e6306b2d",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4.1",
+          "mode": "list",
+          "cachedResultName": "gpt-4.1"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        380,
+        260
+      ],
+      "id": "08cb5486-a946-4a3a-bdd5-28fe5870d07b",
+      "name": "OpenAI Chat Model1"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "7868478942"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        500,
+        260
+      ],
+      "id": "5b153792-3780-4cff-9260-1de8a04756a7",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.fireflies.ai/graphql",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer YOUR-API-KEY-PLACEHOLDER"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"query\": \"query TranscriptWithParticipants($transcriptId: String!) { transcript(id: $transcriptId) { id title participants sentences { text } } }\",\n  \"variables\": {\n    \"transcriptId\": \"{{ $json.body.meetingId }}\"\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -1240,
+        340
+      ],
+      "id": "a2c4f97d-35c0-46d5-bd93-73e3ca193ec4",
+      "name": "Get Transcript1"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Obter os dados do transcript\nconst inputData = $input.first().json;\nconst sentences = inputData.data.transcript.sentences;\n\n// Concatenar todas as sentences em um texto completo\nconst fullTranscript = sentences\n  .map(sentence => sentence.text)\n  .join(' ')\n  .trim();\n\n// Retornar apenas o transcript completo\nreturn [{ \n  json: {\n    transcript_id: inputData.data.transcript.id,\n    title: inputData.data.transcript.title,\n    full_transcript: fullTranscript\n  }\n}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -960,
+        340
+      ],
+      "id": "6c1fff9c-7e16-46e3-add9-a47731db1610",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "operation": "sendAndWait",
+        "sendTo": "email@example.com",
+        "subject": "Aprovação de Reunião > CRM",
+        "message": "=Reunião: {{ $('Get Transcript1').item.json.data.transcript.title }}\n\nParticipantes: {{ $('Get Transcript1').item.json.data.transcript.participants[0] }}\n\nÉ um lead comercial?",
+        "approvalOptions": {
+          "values": {
+            "approvalType": "double",
+            "approveLabel": " SIM",
+            "disapproveLabel": "NÃO"
+          }
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        -440,
+        380
+      ],
+      "id": "86b63c9b-3bb7-4fb6-9b16-058440feb4f6",
+      "name": "Gmail",
+      "webhookId": "f0134177-a9b2-460f-b6ac-9ce3aa4a0da6",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "sendAndWait",
+        "chatId": "TELEGRAM-CHAT-ID-PLACEHOLDER",
+        "message": "=Reunião: {{ $('Get Transcript1').item.json.data.transcript.title }}\n\nParticipantes: {{ $('Get Transcript1').item.json.data.transcript.participants[0] }}\n\nÉ um lead comercial?",
+        "approvalOptions": {
+          "values": {
+            "approvalType": "double",
+            "approveLabel": "✅ SIM",
+            "disapproveLabel": "❌ NÃO"
+          }
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -440,
+        200
+      ],
+      "id": "23948e06-2933-49b8-83cc-7d46b492eb51",
+      "name": "Telegram",
+      "webhookId": "c196394a-7106-4f7d-a60f-5435f9c5d9d3"
+    },
+    {
+      "parameters": {
+        "chatId": "=TELEGRAM-CHAT-ID-PLACEHOLDER",
+        "text": "={{ $json.output }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        940,
+        40
+      ],
+      "id": "20fb31b9-6905-4acb-8a41-8f5737bd5ca9",
+      "name": "Mensagem Resposta",
+      "webhookId": "a07d04b9-1e65-4926-83c4-6ba6c8ba4d74"
+    },
+    {
+      "parameters": {
+        "operation": "setCustomField",
+        "task": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Task_ID', `Preencha o ID da task que deseja atualizar`, 'string') }}",
+        "field": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Field_ID', `Preencha o ID do campo que deseja atualizar. Você encontra essa informação no JSON que a tool \"get_tasks\" retorna.`, 'string') }}",
+        "value": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Value', `As informações a serem adicionadas no campo`, 'string') }}"
+      },
+      "type": "n8n-nodes-base.clickUpTool",
+      "typeVersion": 1,
+      "position": [
+        740,
+        260
+      ],
+      "id": "a7d0d062-1174-4f6c-8d9d-a0198ec1de50",
+      "name": "edit_fields"
+    },
+    {
+      "parameters": {
+        "chatId": "TELEGRAM-CHAT-ID-PLACEHOLDER",
+        "text": "A reunião de agora deu algum problema.",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -440,
+        580
+      ],
+      "id": "abfb7b12-2dc2-4fa7-817d-6d880c53feee",
+      "name": "Telegram1",
+      "webhookId": "28e3774f-2ad3-4522-8794-b752e4b496d0"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "team": "TEAM-ID-PLACEHOLDER",
+        "space": "SPACE-ID-PLACEHOLDER",
+        "folderless": true,
+        "list": "LIST-ID-PLACEHOLDER",
+        "filters": {
+          "statuses": [
+            "🤝 lead",
+            "🤝 reunião realizada"
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.clickUpTool",
+      "typeVersion": 1,
+      "position": [
+        620,
+        260
+      ],
+      "id": "49505fbf-86a9-44f3-8061-f889c46beb05",
+      "name": "get_tasks"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -1500,
+        340
+      ],
+      "id": "d2d0b2d8-0627-44af-9f45-fb9701e18a44",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "content": "## Webhook\nSubstitua esse nó por um nó \"webhook\".\nConfigure o método POST.\nCole a URL dentro das configurações do Fireflies.\nExecute o nó e espere pelo evento de \"transcript concluído\".\nSó depois disso, conecte ao restante do fluxo. ",
+        "height": 400,
+        "width": 280
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -1580,
+        100
+      ],
+      "id": "5d9d4718-442b-4500-b7f8-7fbb6403f094",
+      "name": "Sticky Note"
+    }
+  ],
+  "connections": {
+    "Validate_Webhook_Data": {
+      "main": [
+        [
+          {
+            "node": "Telegram",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Gmail",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Telegram1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Information Extractor": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Information Extractor",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aprovado?": {
+      "main": [
+        [
+          {
+            "node": "Information Extractor",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Mensagem Resposta",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Transcript1": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Validate_Webhook_Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Telegram": {
+      "main": [
+        [
+          {
+            "node": "Aprovado?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "edit_fields": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get_tasks": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "meta": null,
+  "pinData": {},
+  "versionId": "d712bcde-1b2c-4415-b014-ebdf10a34550",
+  "activeVersionId": null,
+  "triggerCount": 0,
+  "shared": [
+    {
+      "updatedAt": "2025-07-03T18:50:22.590Z",
+      "createdAt": "2025-07-03T18:50:22.590Z",
+      "role": "workflow:owner",
+      "workflowId": "dMEyh6NTBAR9g1Pa",
+      "projectId": "o60HadikmqrvYZ9Z"
+    }
+  ],
+  "activeVersion": null,
+  "tags": [
+    {
+      "updatedAt": "2025-07-03T18:50:15.091Z",
+      "createdAt": "2025-07-03T18:50:15.091Z",
+      "id": "mDAx05FqXyrEsodM",
+      "name": "crm"
+    },
+    {
+      "updatedAt": "2025-07-03T18:50:15.093Z",
+      "createdAt": "2025-07-03T18:50:15.093Z",
+      "id": "n7uAyUdmzzD2ikur",
+      "name": "automation"
+    }
+  ]
+}
