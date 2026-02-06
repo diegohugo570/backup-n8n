@@ -1,9 +1,9 @@
 {
   "active": false,
+  "activeVersion": null,
   "activeVersionId": null,
   "connections": {},
   "createdAt": "2026-02-06T14:13:35.148Z",
-  "description": null,
   "id": "UPSEkJ5foGkEIkrq",
   "isArchived": false,
   "meta": null,
@@ -14,9 +14,18 @@
     "callerPolicy": "workflowsFromSameOwner",
     "availableInMCP": false
   },
+  "shared": [
+    {
+      "updatedAt": "2026-02-06T14:13:35.148Z",
+      "createdAt": "2026-02-06T14:13:35.148Z",
+      "role": "workflow:owner",
+      "workflowId": "UPSEkJ5foGkEIkrq",
+      "projectId": "o60HadikmqrvYZ9Z"
+    }
+  ],
   "staticData": null,
+  "tags": [],
   "triggerCount": 0,
   "updatedAt": "2026-02-06T14:13:35.148Z",
-  "versionCounter": 1,
   "versionId": "8a2f4242-e175-4490-8cc4-8a0479267cb3"
 }
