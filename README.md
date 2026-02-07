@@ -61,6 +61,58 @@ Este repositório tem como finalidade:
 
 ---
 
+## 📂 Projetos em Destaque
+
+### 🤖 Potto Flow – Agente com Follow Up Inteligente (WhatsApp)
+
+![Potto Flow - Agente com Follow Up](./Agente%20com%20follow%20up.png)
+
+**Descrição:**  
+Workflow avançado de **Agente de IA com Follow Up automático**, desenvolvido no **n8n**, focado em **atendimento, qualificação e reengajamento de leads via WhatsApp**.
+
+Este projeto simula um **assistente humano**, com **memória de conversa, entendimento de intenção do usuário e automações de acompanhamento temporal**, sendo ideal para clínicas, vendas, suporte ou pré-atendimento.
+
+**O que esse agente faz na prática:**
+- Recebe mensagens via **Webhook (WhatsApp API)**
+- Filtra mensagens válidas (ignora grupos, edições, newsletters e mensagens próprias)
+- Cria ou recupera usuários automaticamente no **Supabase**
+- Interpreta mensagens em **texto, áudio ou imagem**
+  - Áudio → transcrição automática com IA
+- Utiliza **Agente de IA (LLM)** com:
+  - Prompt estruturado
+  - Memória de conversa por usuário
+  - Ferramenta de escrita no banco (Tool Calling)
+- Identifica o **desejo/intenção do usuário** (ex: agendamento)
+- Responde de forma natural e contextual via **WhatsApp**
+- Atualiza histórico, última interação e estágio do lead no banco
+- Executa **Follow Ups automáticos**:
+  - ⏱️ Após 10 minutos
+  - ⏱️ Após 24 horas
+  - ⏱️ Após 3 dias
+- Evita mensagens repetidas usando controle de **etapas**
+- Totalmente orientado a **experiência do usuário e conversão**
+
+**Stack utilizada:**
+- n8n  
+- Webhooks  
+- OpenAI (LLM + Transcrição de Áudio)  
+- Supabase (Database + Tool Calling)  
+- WhatsApp API (Z-API)  
+- Memory Buffer (contexto por usuário)  
+- Automação baseada em tempo (Schedule Trigger)
+
+**Casos de uso reais:**
+- Clínicas e consultórios  
+- SDR e pré-vendas automatizado  
+- Atendimento inteligente no WhatsApp  
+- Follow up de leads sem intervenção humana  
+- Redução de abandono de conversas  
+
+📁 **Arquivo do workflow incluso no repositório:**  
+`Potto_Flow___Agente_com_Follow_Up.json`
+
+---
+
 ## 👤 Autor
 **Diego Hugo**  
 Especialista em Inteligência Artificial com foco em **Automações Inteligentes, Agentes Autônomos e Python**
