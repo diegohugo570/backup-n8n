@@ -1,0 +1,640 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "Obtendo Arquivo": {
+      "main": [
+        [
+          {
+            "node": "Fazendo Download",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fazendo Download": {
+      "main": [
+        [
+          {
+            "node": "Transcrevendo o Arquivo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Transcrevendo o Arquivo": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "Auto-fixing Output Parser",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Auto-fixing Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Auto-fixing Output Parser",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Append or update row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Get row(s) in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "HTML1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTML1": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-07-01T18:42:40.861Z",
+  "id": "Xctf6atC2LVXsCrU",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Análise de vendas com Dashboard - Dascia",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "triggerOn": "specificFolder",
+        "folderToWatch": {
+          "__rl": true,
+          "value": "1BtjE7V3GKrbZ6PGb4rdgfR2kUVUYoLaP",
+          "mode": "list",
+          "cachedResultName": "Cold Calls",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1BtjE7V3GKrbZ6PGb4rdgfR2kUVUYoLaP"
+        },
+        "event": "fileCreated",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDriveTrigger",
+      "typeVersion": 1,
+      "position": [
+        320,
+        260
+      ],
+      "id": "411a11c0-a840-4866-9dfe-9c376b8ac815",
+      "name": "Obtendo Arquivo",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "6KD5I6pcyhCwphz7",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "download",
+        "fileId": {
+          "__rl": true,
+          "value": "={{ $json.id }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        540,
+        260
+      ],
+      "id": "cd9b2aef-6be8-4998-9ac9-afadddebade0",
+      "name": "Fazendo Download",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "6KD5I6pcyhCwphz7",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "audio",
+        "operation": "transcribe",
+        "options": {
+          "language": "pt"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        760,
+        260
+      ],
+      "id": "a74a0cca-eb83-4c29-b7a3-9d6235475d40",
+      "name": "Transcrevendo o Arquivo",
+      "credentials": {
+        "openAiApi": {
+          "id": "58nXg6cOh7QVFFh8",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.text }}",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "<Role>\nVocê é um especialista em cold calls com mais de 15 anos de experiência em vendas consultivas por telefone. Já treinou centenas de vendedores e revisou milhares de ligações. Seu objetivo é analisar minuciosamente a qualidade de uma cold call com foco em gerar reuniões ou oportunidades de vendas qualificadas, fornecendo feedback acionável que melhore o desempenho do vendedor.\n</Role>\n\n<Input>\nVocê receberá a transcrição completa de uma cold call, em texto corrido. Analise cada parte do diálogo, considerando o que foi dito por quem vende e as reações do cliente potencial. Foque no conteúdo da fala, no tom percebido e na estrutura argumentativa.\n</Input>\n\n<Contexto>\nEssa cold call faz parte de um processo comercial consultivo. Seu objetivo é avaliar se o vendedor consegue:\n- Quebrar o gelo e gerar rapport\n- Explorar as necessidades ou dores do cliente\n- Superar objeções de forma profissional\n- Conduzir o lead para o próximo passo (agendamento ou fechamento)\n- Manter um tom humano, empático e seguro\n\nConsidere aspectos como:\n- Clareza e objetividade das falas\n- Capacidade de escuta ativa\n- Formulação de perguntas relevantes\n- Adequação das respostas\n- Timing e ritmo da conversa\n- Técnica de fechamento ou call to action\n\nEvite julgamentos genéricos. Aponte com precisão trechos bons ou ruins se necessário. Oriente pensando em melhoria prática.\n</Contexto>\n\n<Expectativa>\nApós ler a transcrição, faça uma análise estruturada. A resposta deve ser detalhada, profissional e sem rodeios. Você deve identificar:\n- Aspectos positivos que o vendedor deve manter e reforçar\n- Aspectos negativos ou ausentes que precisam de correção\n- Recomendações diretas para melhoria\n\nSua nota deve refletir o resultado geral da ligação considerando o objetivo (qualificar e avançar o lead) e as boas práticas de vendas consultivas por telefone.\n</Expectativa>\n\n<Formato de Resposta>\nResponda exatamente neste formato JSON, com todas as chaves preenchidas conforme instruído abaixo:\n\n{\n  \"nota\": <number>,  \n  // Número inteiro ou decimal de 0 a 10. Avalie a qualidade geral da ligação. 0 = muito ruim, 10 = excelente. Baseie a nota em critérios como empatia, técnica de vendas, estrutura da conversa e eficácia em avançar para o próximo passo.\n\n  \"feedback\": <string>,  \n  // Um resumo direto e objetivo da sua avaliação geral. Explique em 2 a 5 frases o resultado da análise, mencionando se a ligação foi bem conduzida ou não e por quê.\n\n  \"pontos_fortes\": [<string>, ...],  \n  // Lista de aspectos positivos observados na transcrição. Cada item deve ser uma frase curta e clara (ex: \"Empatia ao lidar com a objeção\", \"Perguntas abertas bem formuladas\", \"Boa construção de rapport\").\n\n  \"pontos_fracos\": [<string>, ...],  \n  // Lista de aspectos negativos ou pontos de melhoria. Cada item deve ser uma frase curta e direta (ex: \"Interrompeu o cliente\", \"Fechamento confuso\", \"Faltou exploração de necessidades\").\n\n  \"acao_recomendada\": <string>  \n  // Instrução prática e personalizada para o vendedor ou para o gestor. Explique em 1 a 3 frases o que deve ser feito a seguir (ex: \"Realizar treinamento focado em fechamento\", \"Reforçar técnica de escuta ativa\", \"Aptidão adequada — pronto para avançar\").\n}\n</Formato de Resposta>\n\n<Estilo>\nUse linguagem técnica, objetiva e direta. Evite elogios vazios, floreios ou rodeios. Seja específico nas críticas e claro nas sugestões. Mantenha tom profissional, mas humano. Ajude o vendedor a entender com clareza o que manter e o que melhorar.\n</Estilo>",
+          "maxIterations": 10
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.9,
+      "position": [
+        360,
+        560
+      ],
+      "id": "bf6c867e-13b5-4a91-b8b1-501f3b5c0cee",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o-mini-2024-07-18",
+          "mode": "list",
+          "cachedResultName": "gpt-4o-mini-2024-07-18"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        80,
+        280
+      ],
+      "id": "a21ecf27-9da7-413a-b364-f28cb6a038ba",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "58nXg6cOh7QVFFh8",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserAutofixing",
+      "typeVersion": 1,
+      "position": [
+        360,
+        700
+      ],
+      "id": "4dd8cea3-886b-44cc-8d6d-a9ca27497285",
+      "name": "Auto-fixing Output Parser"
+    },
+    {
+      "parameters": {
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"nota\": {\n      \"type\": \"number\"\n    },\n    \"feedback\": {\n      \"type\": \"string\"\n    },\n    \"pontos_fortes\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"string\"\n      }\n    },\n    \"pontos_fracos\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"string\"\n      }\n    },\n    \"acao_recomendada\": {\n      \"type\": \"string\"\n    }\n  },\n  \"required\": [\n    \"nota\",\n    \"feedback\",\n    \"pontos_fortes\",\n    \"pontos_fracos\",\n    \"acao_recomendada\"\n  ]\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.2,
+      "position": [
+        80,
+        440
+      ],
+      "id": "2e599a54-a304-4099-adfa-e448e30b41bf",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "path": "dash-cold-call",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -20,
+        940
+      ],
+      "id": "7698adba-922d-4153-b1a5-b0318baac76d",
+      "name": "Webhook",
+      "webhookId": "c5786786-60d7-4dbe-8f05-19a78362d33e"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        420,
+        940
+      ],
+      "id": "72eaf9c6-1d3e-48a5-9a61-c3cb2d0b7a3b",
+      "name": "Aggregate"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ $json.html }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.2,
+      "position": [
+        860,
+        940
+      ],
+      "id": "c9af1ee5-e6d7-4aa8-bca3-959bac9d13b7",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "content": "## Modelos e Estrutura",
+        "height": 400,
+        "width": 260,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        0,
+        200
+      ],
+      "id": "ff0774c2-d3c3-4ba9-9dbc-6e4adae04516",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "## Extração de Dados",
+        "height": 260,
+        "width": 700,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        260,
+        200
+      ],
+      "id": "18a13ac7-a35e-4a2c-b938-ef591877c801",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "## Análise e Carregamento",
+        "height": 360,
+        "width": 700,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        260,
+        460
+      ],
+      "id": "be2b7bd7-eab1-48ee-bc41-2759f9024d16",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "## Front-end",
+        "height": 360,
+        "width": 1140,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -60,
+        840
+      ],
+      "id": "c572766d-e110-4fea-ba02-6f77963383cf",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "content": "## Links\n- [Planilha](https://docs.google.com/spreadsheets/d/1dLqeFmS7DdJcfCqjHzj4P6Y7Z9CnCz0uURdFSXLB8eA/edit?gid=0#gid=0)\n- [Pasta do Drive](https://drive.google.com/drive/u/0/folders/1BtjE7V3GKrbZ6PGb4rdgfR2kUVUYoLaP)\n- [Dashboard](https://n8nwebhook.agenciasiha.com.br/webhook/dash-cold-call)",
+        "width": 960
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "a917131c-0341-4a0d-937d-e015f374ad3e",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "html": "<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Dashboard Cold Call</title>\n    <style>\n        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');\n        \n        * {\n            margin: 0;\n            padding: 0;\n            box-sizing: border-box;\n        }\n\n        :root {\n            --primary: #2563eb;\n            --primary-light: #3b82f6;\n            --secondary: #64748b;\n            --success: #10b981;\n            --warning: #f59e0b;\n            --danger: #ef4444;\n            --background: #ffffff;\n            --surface: #f8fafc;\n            --border: #e2e8f0;\n            --text-primary: #0f172a;\n            --text-secondary: #64748b;\n            --text-muted: #94a3b8;\n        }\n\n        body {\n            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;\n            background: var(--background);\n            color: var(--text-primary);\n            line-height: 1.6;\n            padding: 2rem;\n        }\n\n        .dashboard-container {\n            max-width: 1400px;\n            margin: 0 auto;\n        }\n\n        .header {\n            text-align: center;\n            margin-bottom: 3rem;\n            padding-bottom: 2rem;\n            border-bottom: 1px solid var(--border);\n        }\n\n        h1 {\n            font-size: 2.25rem;\n            font-weight: 700;\n            color: var(--text-primary);\n            margin-bottom: 0.5rem;\n        }\n\n        .subtitle {\n            font-size: 1rem;\n            color: var(--text-secondary);\n            font-weight: 400;\n        }\n\n        .stats-grid {\n            display: grid;\n            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));\n            gap: 1.5rem;\n            margin-bottom: 3rem;\n        }\n\n        .stat-card {\n            background: var(--surface);\n            border: 1px solid var(--border);\n            border-radius: 12px;\n            padding: 1.5rem;\n            text-align: center;\n            transition: all 0.2s ease;\n        }\n\n        .stat-card:hover {\n            transform: translateY(-2px);\n            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);\n        }\n\n        .stat-value {\n            font-size: 2rem;\n            font-weight: 700;\n            margin-bottom: 0.5rem;\n        }\n\n        .stat-value.primary { color: var(--primary); }\n        .stat-value.success { color: var(--success); }\n        .stat-value.warning { color: var(--warning); }\n        .stat-value.secondary { color: var(--secondary); }\n\n        .stat-label {\n            font-size: 0.875rem;\n            color: var(--text-secondary);\n            font-weight: 500;\n        }\n\n        .cards-grid {\n            display: grid;\n            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));\n            gap: 1.5rem;\n        }\n\n        .call-card {\n            background: var(--background);\n            border: 1px solid var(--border);\n            border-radius: 12px;\n            padding: 1.5rem;\n            transition: all 0.2s ease;\n        }\n\n        .call-card:hover {\n            transform: translateY(-2px);\n            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);\n        }\n\n        .card-header {\n            display: flex;\n            justify-content: space-between;\n            align-items: center;\n            margin-bottom: 1.5rem;\n            padding-bottom: 1rem;\n            border-bottom: 1px solid var(--border);\n            cursor: pointer;\n            transition: all 0.2s ease;\n        }\n\n        .card-header:hover {\n            background: var(--surface);\n            margin: -0.5rem -0.5rem 1rem -0.5rem;\n            padding: 1rem 0.5rem;\n            border-radius: 8px;\n        }\n\n        .card-header-left {\n            display: flex;\n            align-items: center;\n            gap: 0.75rem;\n            flex: 1;\n        }\n\n        .collapse-icon {\n            width: 20px;\n            height: 20px;\n            display: flex;\n            align-items: center;\n            justify-content: center;\n            background: var(--surface);\n            border: 1px solid var(--border);\n            border-radius: 4px;\n            font-size: 0.75rem;\n            color: var(--text-secondary);\n            transition: all 0.2s ease;\n        }\n\n        .collapse-icon.expanded {\n            background: var(--primary);\n            color: white;\n            border-color: var(--primary);\n        }\n\n        .card-content {\n            overflow: hidden;\n            transition: all 0.3s ease;\n        }\n\n        .card-content.collapsed {\n            max-height: 0;\n            opacity: 0;\n            margin-bottom: 0;\n        }\n\n        .card-content.expanded {\n            max-height: 2000px;\n            opacity: 1;\n            margin-bottom: 0;\n        }\n\n        .call-name {\n            font-size: 1rem;\n            font-weight: 600;\n            color: var(--text-primary);\n            flex: 1;\n            margin-right: 1rem;\n        }\n\n        .grade-badge {\n            padding: 0.375rem 0.75rem;\n            border-radius: 6px;\n            font-weight: 600;\n            font-size: 0.875rem;\n            min-width: 50px;\n            text-align: center;\n        }\n\n        .grade-excellent { \n            background: #dcfce7; \n            color: #166534;\n        }\n        .grade-good { \n            background: #dbeafe; \n            color: #1e40af;\n        }\n        .grade-average { \n            background: #fef3c7; \n            color: #92400e;\n        }\n        .grade-poor { \n            background: #fee2e2; \n            color: #dc2626;\n        }\n\n        .call-meta {\n            display: grid;\n            grid-template-columns: 1fr 1fr;\n            gap: 1rem;\n            margin-bottom: 1.5rem;\n            padding: 1rem;\n            background: var(--surface);\n            border-radius: 8px;\n        }\n\n        .meta-item {\n            display: flex;\n            flex-direction: column;\n            gap: 0.25rem;\n        }\n\n        .meta-label {\n            font-size: 0.75rem;\n            color: var(--text-muted);\n            text-transform: uppercase;\n            font-weight: 500;\n            letter-spacing: 0.5px;\n        }\n\n        .meta-value {\n            font-size: 0.875rem;\n            color: var(--text-primary);\n            font-weight: 500;\n        }\n\n        .section-title {\n            font-size: 0.875rem;\n            font-weight: 600;\n            color: var(--text-primary);\n            margin-bottom: 0.75rem;\n            text-transform: uppercase;\n            letter-spacing: 0.5px;\n        }\n\n        .feedback-text {\n            font-size: 0.875rem;\n            color: var(--text-secondary);\n            line-height: 1.6;\n            padding: 1rem;\n            background: var(--surface);\n            border-radius: 8px;\n            margin-bottom: 1.5rem;\n            border-left: 3px solid var(--primary);\n        }\n\n        .points-grid {\n            display: grid;\n            grid-template-columns: 1fr 1fr;\n            gap: 1rem;\n            margin-bottom: 1.5rem;\n        }\n\n        .points-container {\n            background: var(--surface);\n            border-radius: 8px;\n            padding: 1rem;\n        }\n\n        .points-list {\n            list-style: none;\n            padding: 0;\n        }\n\n        .points-list li {\n            font-size: 0.8rem;\n            line-height: 1.5;\n            margin-bottom: 0.5rem;\n            padding-left: 1.25rem;\n            position: relative;\n            color: var(--text-secondary);\n        }\n\n        .strong-point::before {\n            content: '✓';\n            position: absolute;\n            left: 0;\n            color: var(--success);\n            font-weight: bold;\n        }\n\n        .weak-point::before {\n            content: '!';\n            position: absolute;\n            left: 0;\n            color: var(--warning);\n            font-weight: bold;\n        }\n\n        .recommendation {\n            background: var(--surface);\n            border: 1px solid var(--border);\n            border-radius: 8px;\n            padding: 1rem;\n        }\n\n        .recommendation-text {\n            font-size: 0.875rem;\n            color: var(--text-secondary);\n            line-height: 1.6;\n        }\n\n        .summary-stats {\n            display: grid;\n            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));\n            gap: 1rem;\n            margin-bottom: 2rem;\n            padding: 1.5rem;\n            background: var(--surface);\n            border-radius: 12px;\n            border: 1px solid var(--border);\n        }\n\n        .summary-item {\n            text-align: center;\n        }\n\n        .summary-value {\n            font-size: 1.5rem;\n            font-weight: 700;\n            color: var(--primary);\n            margin-bottom: 0.25rem;\n        }\n\n        .summary-label {\n            font-size: 0.75rem;\n            color: var(--text-muted);\n            text-transform: uppercase;\n            font-weight: 500;\n            letter-spacing: 0.5px;\n        }\n\n        .filters-section {\n            background: var(--surface);\n            border: 1px solid var(--border);\n            border-radius: 12px;\n            padding: 1.5rem;\n            margin-bottom: 2rem;\n        }\n\n        .filters-title {\n            font-size: 1rem;\n            font-weight: 600;\n            color: var(--text-primary);\n            margin-bottom: 1rem;\n        }\n\n        .filters-grid {\n            display: grid;\n            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));\n            gap: 1rem;\n            margin-bottom: 1rem;\n        }\n\n        .filter-group {\n            display: flex;\n            flex-direction: column;\n            gap: 0.5rem;\n        }\n\n        .filter-label {\n            font-size: 0.75rem;\n            color: var(--text-muted);\n            text-transform: uppercase;\n            font-weight: 500;\n            letter-spacing: 0.5px;\n        }\n\n        .filter-input, .filter-select {\n            padding: 0.75rem;\n            border: 1px solid var(--border);\n            border-radius: 6px;\n            font-size: 0.875rem;\n            background: var(--background);\n            color: var(--text-primary);\n            transition: border-color 0.2s ease;\n        }\n\n        .filter-input:focus, .filter-select:focus {\n            outline: none;\n            border-color: var(--primary);\n        }\n\n        .filter-input::placeholder {\n            color: var(--text-muted);\n        }\n\n        .clear-filters {\n            background: var(--primary);\n            color: white;\n            border: none;\n            border-radius: 6px;\n            padding: 0.75rem 1rem;\n            font-size: 0.875rem;\n            font-weight: 500;\n            cursor: pointer;\n            transition: background-color 0.2s ease;\n        }\n\n        .clear-filters:hover {\n            background: var(--primary-light);\n        }\n\n        .url-button {\n            display: inline-flex;\n            align-items: center;\n            gap: 0.375rem;\n            padding: 0.5rem 0.75rem;\n            background: var(--primary);\n            color: white;\n            text-decoration: none;\n            border-radius: 6px;\n            font-size: 0.75rem;\n            font-weight: 500;\n            transition: background-color 0.2s ease;\n        }\n\n        .url-button:hover {\n            background: var(--primary-light);\n            color: white;\n        }\n\n        .url-container {\n            display: flex;\n            flex-direction: column;\n            gap: 0.5rem;\n        }\n\n        .url-text {\n            font-size: 0.75rem;\n            color: var(--text-muted);\n            word-break: break-all;\n            line-height: 1.4;\n        }\n            body {\n                padding: 1rem;\n            }\n            \n            .cards-grid {\n                grid-template-columns: 1fr;\n            }\n            \n            .call-meta, .points-grid {\n                grid-template-columns: 1fr;\n            }\n            \n            h1 {\n                font-size: 1.875rem;\n            }\n        }\n    </style>\n</head>\n<body>\n    <div class=\"dashboard-container\">\n        <div class=\"header\">\n            <h1>Dashboard Cold Call</h1>\n            <p class=\"subtitle\">Análise de Performance de Vendas</p>\n        </div>\n\n        <!-- Resumo -->\n        <div class=\"summary-stats\">\n            <div class=\"summary-item\">\n                <div class=\"summary-value\">{{ $json.data.length }}</div>\n                <div class=\"summary-label\">Total de Ligações</div>\n            </div>\n            <div class=\"summary-item\">\n                <div class=\"summary-value\">{{ ($json.data.reduce((sum, call) => sum + call.GRADE, 0) / $json.data.length).toFixed(1) }}</div>\n                <div class=\"summary-label\">Nota Média</div>\n            </div>\n            <div class=\"summary-item\">\n                <div class=\"summary-value\">{{ Math.round(($json.data.filter(call => call.GRADE < 7).length / $json.data.length) * 100) }}%</div>\n                <div class=\"summary-label\">Necessitam Melhoria</div>\n            </div>\n            <div class=\"summary-item\">\n                <div class=\"summary-value\">{{ Math.floor(($json.data.reduce((sum, call) => sum + call.FILE_DURATION, 0) / $json.data.length) / 60) }}min {{ Math.round(($json.data.reduce((sum, call) => sum + call.FILE_DURATION, 0) / $json.data.length) % 60) }}s</div>\n                <div class=\"summary-label\">Duração Média</div>\n            </div>\n        </div>\n\n        <!-- Filtros -->\n        <div class=\"filters-section\">\n            <div class=\"filters-title\">Filtros</div>\n            <div class=\"filters-grid\">\n                <div class=\"filter-group\">\n                    <label class=\"filter-label\">Buscar por nome</label>\n                    <input type=\"text\" class=\"filter-input\" id=\"filtroNome\" placeholder=\"Digite o nome do arquivo...\">\n                </div>\n                <div class=\"filter-group\">\n                    <label class=\"filter-label\">Nota mínima</label>\n                    <select class=\"filter-select\" id=\"filtroNota\">\n                        <option value=\"\">Todas as notas</option>\n                        <option value=\"9\">9+ (Excelente)</option>\n                        <option value=\"8\">8+ (Muito Bom)</option>\n                        <option value=\"7\">7+ (Bom)</option>\n                        <option value=\"6\">6+ (Regular)</option>\n                        <option value=\"5\">5+ (Ruim)</option>\n                    </select>\n                </div>\n                <div class=\"filter-group\">\n                    <label class=\"filter-label\">Duração mínima (min)</label>\n                    <input type=\"number\" class=\"filter-input\" id=\"filtroDuracao\" placeholder=\"Ex: 2\">\n                </div>\n                <div class=\"filter-group\">\n                    <label class=\"filter-label\">Data</label>\n                    <input type=\"date\" class=\"filter-input\" id=\"filtroData\">\n                </div>\n            </div>\n            <button class=\"clear-filters\" onclick=\"limparFiltros()\">Limpar Filtros</button>\n        </div>\n        <div class=\"stats-grid\">\n            <div class=\"stat-card\">\n                <div class=\"stat-value primary\">{{ $json.data.length }}</div>\n                <div class=\"stat-label\">Ligações Analisadas</div>\n            </div>\n            <div class=\"stat-card\">\n                <div class=\"stat-value success\">{{ $json.data.filter(call => call.GRADE >= 9).length }}</div>\n                <div class=\"stat-label\">Excelentes (9-10)</div>\n            </div>\n            <div class=\"stat-card\">\n                <div class=\"stat-value warning\">{{ $json.data.filter(call => call.GRADE >= 7 && call.GRADE < 9).length }}</div>\n                <div class=\"stat-label\">Boas (7-8)</div>\n            </div>\n            <div class=\"stat-card\">\n                <div class=\"stat-value secondary\">{{ Math.max(...$json.data.map(call => call.GRADE)) }}</div>\n                <div class=\"stat-label\">Melhor Nota</div>\n            </div>\n        </div>\n\n        <!-- Cards das Ligações -->\n        <div id=\"cardsContainer\" class=\"cards-grid\">\n            {{ $json.data.map((call, index) => `\n                <div class=\"call-card\" data-name=\"${call.NAME.toLowerCase()}\" data-grade=\"${call.GRADE}\" data-duration=\"${call.FILE_DURATION}\" data-date=\"${call.CREATED_TIME.split('T')[0]}\">\n                    <div class=\"card-header\" onclick=\"toggleCard(${index})\">\n                        <div class=\"card-header-left\">\n                            <div class=\"collapse-icon\" id=\"icon-${index}\">▼</div>\n                            <h3 class=\"call-name\">${call.NAME}</h3>\n                        </div>\n                        <div class=\"grade-badge ${call.GRADE >= 9 ? 'grade-excellent' : call.GRADE >= 7 ? 'grade-good' : call.GRADE >= 5 ? 'grade-average' : 'grade-poor'}\">${call.GRADE}</div>\n                    </div>\n\n                    <div class=\"card-content collapsed\" id=\"content-${index}\">\n                        <div class=\"call-meta\">\n                            <div class=\"meta-item\">\n                                <div class=\"meta-label\">Data</div>\n                                <div class=\"meta-value\">${new Date(call.CREATED_TIME).toLocaleDateString('pt-BR')}</div>\n                            </div>\n                            <div class=\"meta-item\">\n                                <div class=\"meta-label\">Duração</div>\n                                <div class=\"meta-value\">${Math.floor(call.FILE_DURATION / 60)}:${(call.FILE_DURATION % 60).toString().padStart(2, '0')}</div>\n                            </div>\n                            <div class=\"meta-item\">\n                                <div class=\"meta-label\">Tamanho</div>\n                                <div class=\"meta-value\">${(call.FILE_SIZE / 1024 / 1024).toFixed(1)}MB</div>\n                            </div>\n                            <div class=\"meta-item\">\n                                <div class=\"meta-label\">Arquivo</div>\n                                <div class=\"url-container\">\n                                    <div class=\"url-text\">${call.URL.length > 40 ? call.URL.substring(0, 40) + '...' : call.URL}</div>\n                                    <a href=\"${call.URL}\" target=\"_blank\" class=\"url-button\">\n                                        <span>Abrir</span>\n                                        <span>↗</span>\n                                    </a>\n                                </div>\n                            </div>\n                        </div>\n\n                        <div class=\"feedback-section\">\n                            <div class=\"section-title\">Feedback</div>\n                            <div class=\"feedback-text\">${call.FEEDBACK}</div>\n                        </div>\n\n                        <div class=\"points-grid\">\n                            <div class=\"points-container\">\n                                <div class=\"section-title\">Pontos Fortes</div>\n                                <ul class=\"points-list\">\n                                    ${JSON.parse(call.STRONGS).map(ponto => `<li class=\"strong-point\">${ponto}</li>`).join('')}\n                                </ul>\n                            </div>\n                            <div class=\"points-container\">\n                                <div class=\"section-title\">Melhorias</div>\n                                <ul class=\"points-list\">\n                                    ${JSON.parse(call.WEAKS).map(ponto => `<li class=\"weak-point\">${ponto}</li>`).join('')}\n                                </ul>\n                            </div>\n                        </div>\n\n                        <div class=\"recommendation\">\n                            <div class=\"section-title\">Recomendação</div>\n                            <div class=\"recommendation-text\">${call.RECOMMENDED_ACTION}</div>\n                        </div>\n                    </div>\n                </div>\n            `).join('') }}\n        </div>\n    </div>\n\n    <script>\n        function toggleCard(index) {\n            const content = document.getElementById(`content-${index}`);\n            const icon = document.getElementById(`icon-${index}`);\n            \n            if (content.classList.contains('collapsed')) {\n                content.classList.remove('collapsed');\n                content.classList.add('expanded');\n                icon.textContent = '▲';\n                icon.classList.add('expanded');\n            } else {\n                content.classList.remove('expanded');\n                content.classList.add('collapsed');\n                icon.textContent = '▼';\n                icon.classList.remove('expanded');\n            }\n        }\n\n        function aplicarFiltros() {\n            const filtroNome = document.getElementById('filtroNome').value.toLowerCase();\n            const filtroNota = parseInt(document.getElementById('filtroNota').value) || 0;\n            const filtroDuracao = parseInt(document.getElementById('filtroDuracao').value) * 60 || 0; // convertendo para segundos\n            const filtroData = document.getElementById('filtroData').value;\n\n            const cards = document.querySelectorAll('.call-card');\n            \n            cards.forEach(card => {\n                const nome = card.dataset.name;\n                const nota = parseInt(card.dataset.grade);\n                const duracao = parseInt(card.dataset.duration);\n                const data = card.dataset.date;\n\n                const matchNome = !filtroNome || nome.includes(filtroNome);\n                const matchNota = !filtroNota || nota >= filtroNota;\n                const matchDuracao = !filtroDuracao || duracao >= filtroDuracao;\n                const matchData = !filtroData || data === filtroData;\n\n                if (matchNome && matchNota && matchDuracao && matchData) {\n                    card.style.display = 'block';\n                } else {\n                    card.style.display = 'none';\n                }\n            });\n        }\n\n        function limparFiltros() {\n            document.getElementById('filtroNome').value = '';\n            document.getElementById('filtroNota').value = '';\n            document.getElementById('filtroDuracao').value = '';\n            document.getElementById('filtroData').value = '';\n            \n            const cards = document.querySelectorAll('.call-card');\n            cards.forEach(card => {\n                card.style.display = 'block';\n            });\n        }\n\n        // Event listeners para filtros\n        document.addEventListener('DOMContentLoaded', function() {\n            document.getElementById('filtroNome').addEventListener('input', aplicarFiltros);\n            document.getElementById('filtroNota').addEventListener('change', aplicarFiltros);\n            document.getElementById('filtroDuracao').addEventListener('input', aplicarFiltros);\n            document.getElementById('filtroData').addEventListener('change', aplicarFiltros);\n        });\n    </script>\n</body>\n</html>"
+      },
+      "type": "n8n-nodes-base.html",
+      "typeVersion": 1.2,
+      "position": [
+        620,
+        940
+      ],
+      "id": "08d787a4-866d-4c1e-ada1-60fb9c5691ff",
+      "name": "HTML1"
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "1dLqeFmS7DdJcfCqjHzj4P6Y7Z9CnCz0uURdFSXLB8eA",
+          "mode": "list",
+          "cachedResultName": "Análise de Cold Calls",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1dLqeFmS7DdJcfCqjHzj4P6Y7Z9CnCz0uURdFSXLB8eA/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Página1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1dLqeFmS7DdJcfCqjHzj4P6Y7Z9CnCz0uURdFSXLB8eA/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "FILE_SIZE": "={{ $('Fazendo Download').item.json.size }}",
+            "NAME": "={{ $('Fazendo Download').item.json.name }}",
+            "CREATED_TIME": "={{ $('Fazendo Download').item.json.createdTime }}",
+            "ID": "={{ $('Fazendo Download').item.json.id }}",
+            "URL": "=https://drive.google.com/file/d/{{ $('Fazendo Download').item.json.id }}",
+            "FILE_DURATION": "={{ $('Transcrevendo o Arquivo').item.json.usage.seconds }}",
+            "GRADE": "={{ $json.output.nota }}",
+            "FEEDBACK": "={{ $json.output.feedback }}",
+            "STRONGS": "={{ $json.output.pontos_fortes }}",
+            "WEAKS": "={{ $json.output.pontos_fracos }}",
+            "RECOMMENDED_ACTION": "={{ $json.output.acao_recomendada }}"
+          },
+          "matchingColumns": [
+            "ID"
+          ],
+          "schema": [
+            {
+              "id": "ID",
+              "displayName": "ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "NAME",
+              "displayName": "NAME",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "URL",
+              "displayName": "URL",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "CREATED_TIME",
+              "displayName": "CREATED_TIME",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "FILE_SIZE",
+              "displayName": "FILE_SIZE",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "FILE_DURATION",
+              "displayName": "FILE_DURATION",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "GRADE",
+              "displayName": "GRADE",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "FEEDBACK",
+              "displayName": "FEEDBACK",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "STRONGS",
+              "displayName": "STRONGS",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "WEAKS",
+              "displayName": "WEAKS",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "RECOMMENDED_ACTION",
+              "displayName": "RECOMMENDED_ACTION",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        760,
+        560
+      ],
+      "id": "182f414b-ff42-45cf-b812-9ba11e50f428",
+      "name": "Append or update row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "LOJgWrBsYdHTsczQ",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1dLqeFmS7DdJcfCqjHzj4P6Y7Z9CnCz0uURdFSXLB8eA",
+          "mode": "list",
+          "cachedResultName": "Análise de Cold Calls",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1dLqeFmS7DdJcfCqjHzj4P6Y7Z9CnCz0uURdFSXLB8eA/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Página1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1dLqeFmS7DdJcfCqjHzj4P6Y7Z9CnCz0uURdFSXLB8eA/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        200,
+        940
+      ],
+      "id": "b5255d6f-fcae-43eb-9b94-58efd6918264",
+      "name": "Get row(s) in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "LOJgWrBsYdHTsczQ",
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-07-01T18:42:40.861Z",
+      "createdAt": "2025-07-01T18:42:40.861Z",
+      "role": "workflow:owner",
+      "workflowId": "Xctf6atC2LVXsCrU",
+      "projectId": "o60HadikmqrvYZ9Z"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-07-01T18:45:29.553Z",
+  "versionId": "a9a4477f-21e3-476a-88b7-14025623e328"
+}

@@ -1,0 +1,2094 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Supabase",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase": {
+      "main": [
+        [
+          {
+            "node": "Limit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Auto-fixing Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Auto-fixing Output Parser",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Auto-fixing Output Parser",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain": {
+      "main": [
+        [
+          {
+            "node": "cria ideia",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "cria ideia": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "If verificacao",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain1": {
+      "main": [
+        [
+          {
+            "node": "cria ideia1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Auto-fixing Output Parser1": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Basic LLM Chain1",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model3": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Auto-fixing Output Parser1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser1": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Auto-fixing Output Parser1",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "cria ideia1": {
+      "main": [
+        [
+          {
+            "node": "envia mensagem c painel",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "If reprovada",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "envia mensagem c painel": {
+      "main": [
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If reprovada": {
+      "main": [
+        [
+          {
+            "node": "define ideia",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Basic LLM Chain1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If verificacao": {
+      "main": [
+        [
+          {
+            "node": "define ideia",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Basic LLM Chain1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "define ideia": {
+      "main": [
+        [
+          {
+            "node": "escritor do carrossel",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model4": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "escritor do carrossel",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Auto-fixing Output Parser2": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "escritor do carrossel",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model5": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Auto-fixing Output Parser2",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser2": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Auto-fixing Output Parser2",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "escritor do carrossel": {
+      "main": [
+        [
+          {
+            "node": "separa os cards",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit1": {
+      "main": [
+        [
+          {
+            "node": "Loop geracao",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "separa os cards": {
+      "main": [
+        [
+          {
+            "node": "Limit1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "gerador de prompt de imagem",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "criar imagem template1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model6": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "gerador de prompt de imagem",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "gerador de prompt de imagem": {
+      "main": [
+        [
+          {
+            "node": "OpenAI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI": {
+      "main": [
+        [
+          {
+            "node": "Convert to File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File": {
+      "main": [
+        [
+          {
+            "node": "Salva imagens IA",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Salva imagens IA": {
+      "main": [
+        [
+          {
+            "node": "criar imagem template",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "criar imagem template": {
+      "main": [
+        [
+          {
+            "node": "baixa imagem",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "baixa imagem": {
+      "main": [
+        [
+          {
+            "node": "Salva imagem post",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Salva imagem post": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "criar imagem template1": {
+      "main": [
+        [
+          {
+            "node": "baixa imagem1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "baixa imagem1": {
+      "main": [
+        [
+          {
+            "node": "Salva imagem post1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Salva imagem post1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Loop geracao",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Loop geracao",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop imagens": {
+      "main": [
+        [
+          {
+            "node": "junta id imagens",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "salva imagem instagram",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop geracao": {
+      "main": [
+        [
+          {
+            "node": "Aggregate1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "salva imagem instagram": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Loop imagens",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait2": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "junta id imagens": {
+      "main": [
+        [
+          {
+            "node": "cria carrossel",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "cria carrossel": {
+      "main": [
+        [
+          {
+            "node": "posta carrossel",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "posta carrossel": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate1": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Loop imagens",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "Supabase1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase1": {
+      "main": [
+        [
+          {
+            "node": "Supabase2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-08-27T18:32:11.872Z",
+  "id": "Y6GS7Oos3SnqEjK1",
+  "isArchived": false,
+  "meta": null,
+  "name": "Gerador_de_Carrossel DascIA",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -6016,
+        1488
+      ],
+      "id": "0859a076-15f7-47a5-9405-65935e135a7d",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "tableId": "conteudos",
+        "returnAll": true
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -5776,
+        1488
+      ],
+      "id": "c26d4b3c-fe09-4775-af29-47b517de6942",
+      "name": "Supabase"
+    },
+    {
+      "parameters": {
+        "maxItems": 7,
+        "keep": "lastItems"
+      },
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        -5520,
+        1488
+      ],
+      "id": "7d7d0411-5e3f-45c9-b905-3fc23b2565a5",
+      "name": "Limit"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        -5280,
+        1488
+      ],
+      "id": "61cce49f-6edf-4911-b214-7e2abfdc1a25",
+      "name": "Aggregate"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=### Ultimas ideias publicadas\n{{ $json.data.map(i => \"Ideia: \" + i.ideia + \"\\nDescrição: \" + i.descricao).join(\"\\n\\n\") }}",
+        "hasOutputParser": true,
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=## IDENTIDADE\n**Perfil:** Estrategista de conteúdo especializado em IA aplicada a negócios, automação n8n e storytelling técnico que converte curiosos em praticantes.\n\n**Cargo:** Chief Ideation Officer - responsável por conceber ideias 100% originais de conteúdo para carrossel.\n\n---\n\n## PARÂMETROS DE ESTILO\n- **Tom:** Energético, instigante, levemente provocativo\n- **Vocabulário:** Claro, preciso, analogias inteligentes, zero buzzwords\n- **Estrutura:** Sentenças curtas, voz ativa, ritmo snackable\n- **Narrativa:** Problema real → Solução inovadora → Resultado prático\n\n---\n\n## TÉCNICAS DE CRIATIVIDADE (APLICAR OBRIGATORIAMENTE)\n\n### 1. CONSTRAINT STORMING\nImponha limitações extremas para forçar criatividade:\n- \"E se você tivesse apenas 5 minutos?\"\n- \"E se não pudesse usar código?\"\n- \"E se fosse para uma criança de 10 anos?\"\n\n### 2. REVERSÃO RADICAL\nPegue uma abordagem comum e faça o oposto:\n- Em vez de \"automatizar para economizar tempo\" → \"automatizar para criar tempo de qualidade\"\n- Em vez de \"IA substitui humanos\" → \"IA potencializa intuição humana\"\n\n### 3. MASHUP CRIATIVO\nCombine IA/n8n com áreas inesperadas:\n- IA + Psicologia comportamental\n- n8n + Técnicas de negociação\n- Automação + Storytelling\n\n### 4. ANALOGIAS CRUZADAS\nUse referências de outros universos:\n- IA como \"personal trainer de dados\"\n- n8n como \"coreografia empresarial\"\n- Automação como \"superpoder invisível\"\n\n---\n\n## INSTRUÇÕES PRINCIPAIS\n\n**INPUT ESPERADO:**\n- `last_contents`: Lista dos 7 últimos posts (para evitar repetição)\n\n**OUTPUT OBRIGATÓRIO:** Exatamente 5 ideias COMPLETAMENTE DISTINTAS\n\n---\n\n## CRITÉRIOS RIGOROSOS\n\n### ✅ OBRIGATÓRIO:\n1. **Originalidade Extrema:** 4+ ideias devem vir de brainstorm puro, SEM inspiração em news_list\n2. **Diversidade Radical:** Cada ideia deve abordar um ângulo completamente diferente\n3. **Problema Real:** Dor genuína do público (marketers, produto, tech)\n4. **Ação Prática:** insight prático e aplicavel\n5. **Zero Sobreposição:** Nenhuma ideia pode ser similar às de last_contents\n\n### ❌ PROIBIDO:\nIdeias genéricas sobre \"automação de feedback\"\nConceitos vagos como \"personalização em massa\"\nRepetir temas já explorados em last_contents\nUsar mais de 1 notícia como inspiração\nCRÍTICO: Usar verbos imperativos (Crie, Desenvolva, Integre, Implemente, Faça)\nCRÍTICO: Dar instruções ao leitor sobre o que fazer\nCRÍTICO: Usar linguagem de tutorial ou passo-a-passo\n\n---\n\n## PROCESSO DE VALIDAÇÃO INTERNA\n\n**ANTES DE GERAR A RESPOSTA:**\n\n1. **Análise de Exclusão:** Liste mentalmente todos os temas de `last_contents` e marque como PROIBIDOS\n2. **Brainstorm Forçado:** Gere 15 rascunhos usando as 4 técnicas obrigatórias\n3. **Filtro de Originalidade:** Elimine qualquer ideia que lembre `last_contents`\n4. **Teste de Diversidade:** Certifique-se que as 5 ideias escolhidas são de universos completamente diferentes\n5. **Validação Prática:** Cada ideia deve permitir uma ação concreta em 60s\n\n---\n\n## TEMPLATE DE RESPOSTA\n\n{\n  \"ideas\": [\n    {\n      \"idea\": \"ideia do conteúdo\",\n      \"description\": \"descrição\"\n    },\n    {\n      \"idea\": \"ideia do conteúdo\",\n      \"description\": \"descrição\"\n    },\n    {\n      \"idea\": \"ideia do conteúdo\",\n      \"description\": \"descrição\"\n    }\n  ]\n}\n\n\n---\n\n## CHECKLIST FINAL (AUTO-REVISÃO)\n\nAntes de enviar, confirme:\n- As 5 ideias são de temas COMPLETAMENTE diferentes?\n- Nenhuma lembra os temas de `last_contents`?\n- Cada uma permite ação prática?\n- Usei máximo 1 inspiração de `news_list`?\n- O tom está energético e instigante?\n- Evitei buzzwords e mantive clareza?\n\n---\n\n## EXEMPLOS DE DIREÇÃO (NÃO REPLICAR - APENAS INSPIRAR)\n\n**IMPORTANTE:** Estes exemplos mostram a QUALIDADE e ESTRUTURA desejada, mas você deve criar ideias em territórios COMPLETAMENTE DIFERENTES.\n\n### Exemplo A: Aplicação Específica + Resultado Mensurável\n**Ideia:** IA como copiloto de vendas (sem clichê)\n**Estrutura:** Problema específico + solução técnica detalhada + resultado quantificável\n**Aprendizado:** Seja específico sobre a implementação técnica e o benefício de negócio\n\n### Exemplo B: Reposicionamento Estratégico\n**Ideia:** Venda serviços de automação sem virar freelancer barato  \n**Estrutura:** Problema comum + mudança de perspectiva + transformação de valor\n**Aprendizado:** Foque na transformação estratégica, não apenas na funcionalidade técnica\n\n### Exemplo C: Arquitetura para Contexto Específico\n**Ideia:** Arquitetura enxuta para equipes pequenas escalarem com IA\n**Estrutura:** Limitação real + solução adaptada + benefício proporcional ao contexto\n**Aprendizado:** Adapte a solução para o contexto específico do usuário\n\n**REGRA CRÍTICA:** Use estes exemplos apenas para entender o PADRÃO de qualidade. Suas 5 novas ideias devem explorar territórios COMPLETAMENTE DIFERENTES desses exemplos.\n\n---\n\n## CONTEXTO DO PÚBLICO\n**Alvo:** Profissionais de marketing, produto e tecnologia que desejam dominar IA e automações para aplicar na empresa que trabalham ou vender soluções.\n\n**Objetivo:** gerar insights práticos e aplicaveís, mostrando as aplicações de soluções com IA e automação, gerando interesse em aprender mais.\n"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.6,
+      "position": [
+        -5024,
+        1488
+      ],
+      "id": "6b554d0c-054e-4156-922a-18f30b45842a",
+      "name": "Basic LLM Chain"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4.1-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4.1-mini"
+        },
+        "options": {
+          "temperature": 0.9
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -5040,
+        1712
+      ],
+      "id": "124a1c2a-76f1-44d5-ad0c-840671dc4d62",
+      "name": "OpenAI Chat Model"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserAutofixing",
+      "typeVersion": 1,
+      "position": [
+        -4880,
+        1664
+      ],
+      "id": "d8cd1fed-7fc4-4df8-8585-ac0479703164",
+      "name": "Auto-fixing Output Parser"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -5008,
+        1872
+      ],
+      "id": "8b70d1c1-0172-4eeb-9569-47d14be6d2ec",
+      "name": "OpenAI Chat Model1"
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"ideas\": [\n    {\n      \"idea\": \"Inteligencia Artificial aplicada a clinicas\",\n      \"description\": \"Mostre aplicações de IA em clinicas médicas\"\n    },\n    {\n      \"idea\": \"Inteligencia Artificial aplicada a ecommerce\",\n      \"description\": \"Mostrar a oportunidades de aplicações em ecommerce\"\n    },\n    {\n      \"idea\": \"Venda serviços de automação sem virar freelancer barato\",\n      \"description\": \"Foque na transformação estratégica, não apenas na funcionalidade técnica\"\n    }\n  ]\n}\n"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.2,
+      "position": [
+        -4784,
+        1872
+      ],
+      "id": "816a2f8c-713a-46cc-a47e-d06a62537b05",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "tableId": "hitl",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "status",
+              "fieldValue": "em analise"
+            },
+            {
+              "fieldId": "id_execucao",
+              "fieldValue": "={{ $execution.id }}"
+            },
+            {
+              "fieldId": "content",
+              "fieldValue": "={{ $json.output }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -4464,
+        1488
+      ],
+      "id": "89b0099f-9785-496d-a3d7-d8d48fcc8de8",
+      "name": "cria ideia"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https:/seu dominio/message/sendText/sua instancia",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "sua chave api"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number"
+            },
+            {
+              "name": "text",
+              "value": "=Ei! Tenho algumas ideias de conteúdo e preciso do seu feedback:\n\n"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -4144,
+        1488
+      ],
+      "id": "b897700c-c75f-444b-bf8a-479d1d9a0479",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "resume": "webhook",
+        "httpMethod": "POST",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -3824,
+        1488
+      ],
+      "id": "7bfc5f55-e59b-4f24-bf43-bf11ea868014",
+      "name": "Wait",
+      "webhookId": "13927169-ac77-4f54-857a-89cfa285b76c"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=### Ultimas ideias publicadas\n{{ $('Aggregate').item.json.data.map(i => \"Ideia: \" + i.ideia + \"\\nDescrição: \" + i.descricao).join(\"\\n\\n\") }}",
+        "hasOutputParser": true,
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=## IDENTIDADE\n**Perfil:** Estrategista de conteúdo sênior com 30 anos de experiência, especializado em IA aplicada a negócios, automação n8n e storytelling técnico que converte curiosos em praticantes. \n\n**Cargo:** Chief Ideation Officer - responsável por conceber ideias 100% originais de conteúdo para carrossel.\n\n---\n\n## PARÂMETROS DE ESTILO\n- **Tom:** Energético, instigante, levemente provocativo\n- **Vocabulário:** Claro, preciso, analogias inteligentes, zero buzzwords\n- **Estrutura:** Sentenças curtas, voz ativa, ritmo snackable\n- **Narrativa:** Problema real → Solução inovadora → Resultado prático\n\n---\n\n## TÉCNICAS DE CRIATIVIDADE (APLICAR OBRIGATORIAMENTE)\n\n### 1. CONSTRAINT STORMING\nImponha limitações extremas para forçar criatividade:\n- \"E se você tivesse apenas 5 minutos?\"\n- \"E se não pudesse usar código?\"\n- \"E se fosse para uma criança de 10 anos?\"\n\n### 2. REVERSÃO RADICAL\nPegue uma abordagem comum e faça o oposto:\n- Em vez de \"automatizar para economizar tempo\" → \"automatizar para criar tempo de qualidade\"\n- Em vez de \"IA substitui humanos\" → \"IA potencializa intuição humana\"\n\n### 3. MASHUP CRIATIVO\nCombine IA/n8n com áreas inesperadas:\n- IA + Psicologia comportamental\n- n8n + Técnicas de negociação\n- Automação + Storytelling\n\n### 4. ANALOGIAS CRUZADAS\nUse referências de outros universos:\n- IA como \"personal trainer de dados\"\n- n8n como \"coreografia empresarial\"\n- Automação como \"superpoder invisível\"\n\n---\n\n## INSTRUÇÕES PRINCIPAIS\n\n**INPUT ESPERADO:**\n- `last_contents`: Lista dos 7 últimos posts (para evitar repetição)\n- `news_list`: Notícias recentes (usar MAX 1 ideia inspirada em notícias)\n\n**OUTPUT OBRIGATÓRIO:** Exatamente 5 ideias COMPLETAMENTE DISTINTAS\n\n---\n\n## Contexto\n\nAs cinco ideias a seguir foram reprovadas.\n{{ $('Basic LLM Chain').item.json.output.ideas.map(i => \"Ideia: \" + i.idea + \"\\nDescrição: \" + i.description).join(\"\\n\\n\") }}\n\nMotivo: {{ $json.body.feedback }}\nSiga a instruções e crie ideias totalmente diferente das anteriores, se forem minimamente semelhante você será punido severamente.\n\n---\n\n## CRITÉRIOS RIGOROSOS\n\n### ✅ OBRIGATÓRIO:\n1. **Originalidade Extrema:** 4+ ideias devem vir de brainstorm puro, SEM inspiração em news_list\n2. **Diversidade Radical:** Cada ideia deve abordar um ângulo completamente diferente\n3. **Problema Real:** Dor genuína do público (marketers, produto, tech)\n4. **Ação Prática:** insight prático e aplicavel\n5. **Zero Sobreposição:** Nenhuma ideia pode ser similar às de last_contents\n\n### ❌ PROIBIDO:\nIdeias genéricas sobre \"automação de feedback\"\nConceitos vagos como \"personalização em massa\"\nRepetir temas já explorados em last_contents\nUsar mais de 1 notícia como inspiração\nCRÍTICO: Usar verbos imperativos (Crie, Desenvolva, Integre, Implemente, Faça)\nCRÍTICO: Dar instruções ao leitor sobre o que fazer\nCRÍTICO: Usar linguagem de tutorial ou passo-a-passo\n\n---\n\n## PROCESSO DE VALIDAÇÃO INTERNA\n\n**ANTES DE GERAR A RESPOSTA:**\n\n1. **Análise de Exclusão:** Liste mentalmente todos os temas de `last_contents` e marque como PROIBIDOS\n2. **Brainstorm Forçado:** Gere 15 rascunhos usando as 4 técnicas obrigatórias\n3. **Filtro de Originalidade:** Elimine qualquer ideia que lembre `last_contents`\n4. **Teste de Diversidade:** Certifique-se que as 5 ideias escolhidas são de universos completamente diferentes\n5. **Validação Prática:** Cada ideia deve permitir uma ação concreta em 60s\n\n---\n\n## TEMPLATE DE RESPOSTA\n\n{\n  \"ideas\": [\n    {\n      \"idea\": \"ideia do conteúdo\",\n      \"description\": \"descrição\"\n    },\n    {\n      \"idea\": \"ideia do conteúdo\",\n      \"description\": \"descrição\"\n    },\n    {\n      \"idea\": \"ideia do conteúdo\",\n      \"description\": \"descrição\"\n    }\n  ]\n}\n\n\n---\n\n## CHECKLIST FINAL (AUTO-REVISÃO)\n\nAntes de enviar, confirme:\n- As 5 ideias são de temas COMPLETAMENTE diferentes?\n- Nenhuma lembra os temas de `last_contents`?\n- Cada uma permite ação prática?\n- Usei máximo 1 inspiração de `news_list`?\n- O tom está energético e instigante?\n- Evitei buzzwords e mantive clareza?\n\n---\n\n## EXEMPLOS DE DIREÇÃO (NÃO REPLICAR - APENAS INSPIRAR)\n\n**IMPORTANTE:** Estes exemplos mostram a QUALIDADE e ESTRUTURA desejada, mas você deve criar ideias em territórios COMPLETAMENTE DIFERENTES.\n\n### Exemplo A: Aplicação Específica + Resultado Mensurável\n**Ideia:** IA como copiloto de vendas (sem clichê)\n**Estrutura:** Problema específico + solução técnica detalhada + resultado quantificável\n**Aprendizado:** Seja específico sobre a implementação técnica e o benefício de negócio\n\n### Exemplo B: Reposicionamento Estratégico\n**Ideia:** Venda serviços de automação sem virar freelancer barato  \n**Estrutura:** Problema comum + mudança de perspectiva + transformação de valor\n**Aprendizado:** Foque na transformação estratégica, não apenas na funcionalidade técnica\n\n### Exemplo C: Arquitetura para Contexto Específico\n**Ideia:** Arquitetura enxuta para equipes pequenas escalarem com IA\n**Estrutura:** Limitação real + solução adaptada + benefício proporcional ao contexto\n**Aprendizado:** Adapte a solução para o contexto específico do usuário\n\n**REGRA CRÍTICA:** Use estes exemplos apenas para entender o PADRÃO de qualidade. Suas 5 novas ideias devem explorar territórios COMPLETAMENTE DIFERENTES desses exemplos.\n\n---\n\n## CONTEXTO DO PÚBLICO\n**Alvo:** Profissionais de marketing, produto e tecnologia que desejam dominar IA e automações para aplicar na empresa que trabalham ou vender soluções.\n\n**Objetivo:** gerar insights práticos e aplicaveís, mostrando as aplicações de soluções com IA e automação, gerando interesse em aprender mais.\n"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.6,
+      "position": [
+        -3024,
+        1648
+      ],
+      "id": "e591abd7-4a88-43b9-b60f-3b416f28b86a",
+      "name": "Basic LLM Chain1"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4.1-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4.1-mini"
+        },
+        "options": {
+          "temperature": 0.9
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -3104,
+        1872
+      ],
+      "id": "6d46f42b-29bd-4bb1-a83c-9c6007417895",
+      "name": "OpenAI Chat Model2"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserAutofixing",
+      "typeVersion": 1,
+      "position": [
+        -2944,
+        1824
+      ],
+      "id": "f3846bd5-0c85-4896-903a-0bbc37818857",
+      "name": "Auto-fixing Output Parser1"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -3056,
+        2032
+      ],
+      "id": "613f4fca-b8a5-49e2-9225-a76234d62989",
+      "name": "OpenAI Chat Model3"
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"ideas\": [\n    {\n      \"idea\": \"Inteligencia Artificial aplicada a clinicas\",\n      \"description\": \"Mostre aplicações de IA em clinicas médicas\"\n    },\n    {\n      \"idea\": \"Inteligencia Artificial aplicada a ecommerce\",\n      \"description\": \"Mostrar a oportunidades de aplicações em ecommerce\"\n    },\n    {\n      \"idea\": \"Venda serviços de automação sem virar freelancer barato\",\n      \"description\": \"Foque na transformação estratégica, não apenas na funcionalidade técnica\"\n    }\n  ]\n}\n"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.2,
+      "position": [
+        -2848,
+        2032
+      ],
+      "id": "db53b5b8-afdf-4137-986d-b84f0deb7c84",
+      "name": "Structured Output Parser1"
+    },
+    {
+      "parameters": {
+        "tableId": "hitl",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "status",
+              "fieldValue": "em analise"
+            },
+            {
+              "fieldId": "id_execucao",
+              "fieldValue": "={{ $execution.id }}"
+            },
+            {
+              "fieldId": "content",
+              "fieldValue": "={{ $json.output }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -2528,
+        1648
+      ],
+      "id": "feee9355-ed27-4f28-b5d4-82a4bbb82757",
+      "name": "cria ideia1"
+    },
+    {
+      "parameters": {
+        "resume": "webhook",
+        "httpMethod": "POST",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -1984,
+        1712
+      ],
+      "id": "3dfa5fd4-356e-4f03-b550-e61cbf95aa85",
+      "name": "Wait1",
+      "webhookId": "13927169-ac77-4f54-857a-89cfa285b76c"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://seu dominio/message/sendText/sua instancia",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "sua chave api"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number"
+            },
+            {
+              "name": "text",
+              "value": "=Ei! Tenho novas ideias de conteúdo diferente daquelas, me da um feedback?\n\n"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -2208,
+        1648
+      ],
+      "id": "4cbe1631-cda2-408b-9f3e-09c944c9dc05",
+      "name": "envia mensagem c painel"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "7acef431-4d64-42ce-9ce7-43ff35c044db",
+              "name": "ideia",
+              "value": "={{ $json.body.ideia }}",
+              "type": "string"
+            },
+            {
+              "id": "9292c974-3c2d-4824-b45c-2942e97d0942",
+              "name": "descricao",
+              "value": "={{ $json.body.descricao }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -3136,
+        1184
+      ],
+      "id": "d244e269-07df-4d40-85d4-391398bb4705",
+      "name": "define ideia"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "5a565082-c50f-42fe-86aa-6ebfee9d7493",
+              "leftValue": "={{ $json.body.status }}",
+              "rightValue": "aprovada",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -1728,
+        2048
+      ],
+      "id": "dfb7b4e3-207e-418e-b3d0-324b8b7c2c92",
+      "name": "If reprovada"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "5a565082-c50f-42fe-86aa-6ebfee9d7493",
+              "leftValue": "={{ $json.body.status }}",
+              "rightValue": "aprovada",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -3584,
+        1488
+      ],
+      "id": "2d2b0e10-70cd-4ece-a6b3-9ea762c7346a",
+      "name": "If verificacao"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Ideia: {{ $json.ideia }}\nDescrição: {{ $json.descricao }}",
+        "hasOutputParser": true,
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=## ROLE\n\n### perfil\n\nVocê é um copywritter sênior especialista em criação de conteúdos carrossel no Instagram e storytelling, seu objetivo é unir narrativas envolventes com insights práticos sobre inteligência artificial e automações em **n8n**.\n\nCada conteúdo deve entregar uma narrativa, uma pequena dose de motivação e um insight de valor que o leitor possa aplicar imediatamente.\n\n---\n\n## STYLING\\ELEMENTS\n\n* **Tom:** Jovial e próximo, como uma boa conversa entre amigos nerds.\n* **Dicção:** Frases curtas, verbos fortes; \n* **Ritmo:** Varie frases de 4‑12 palavras; finalize cada slide com micro‑gancho que convida a deslizar.\n\n---\n\n## TECHNIQUES\n\n1. **Hook & Open Loop:** Inicie com surpresa ou pergunta intrigante.\n2. **Mini‑Story (Parábola):** Personifique um desafio real.\n3. **Cliffhanger Suave:** Termine cada slide sugerindo continuação.\n4. **Regra do 3:** Entregue insights em trios (3 passos, 3 dicas…).\n5. **CTA Circular:** Feche legenda retomando a promessa do gancho.\n\n---\n\n## INSTRUCTIONS\n\nProduza carrossel em **português** para jovens (18‑30) interessados em IA e automações **n8n**. Formato de saída obrigatório:\n\n\nSlide 1: <texto até 30 palavras>\nSlide 2: <texto até 30 palavras>\n...\nSlide N: <texto até 30 palavras>\nCaption: <texto da legenda com CTA + 4–6 hashtags>\n\nVocê também deve definir se o slide deve conter ou não imagem, usando layout = 1 para DEVE conter e layout = 2 para NÃO DEVE conter, o que vai definir se deve incluir imagem ou não é se a presença da imagem contribuiria para uma melhor visualização do que foi escrito no slide, de preferência, o primeiro slide deve sempre possuir imagem, e ao longo do post inclua em momentos estratégicos.\n\nRegras adicionais:\n\n* 5–10 slides (você decide o nº ideal).\n* Máximo 30 palavras por slide, sem quebras de linha internas.\n* Sem menções ofensivas, sem jargões corporativos, sem gírias caricatas.\n* Hashtags específicas (#InteligenciaArtificial #Automacao #n8n #TechTips ...) — evite genéricas.\n\n\n---\n\n## CONTEXT\n\n* **Objetivo de Negócio:** Atrair seguidores interessados em automações IA + n8n e convertê‑los em leads.\n* **Dores da Audiência:** Falta de tempo, medo de código, busca por resultados rápidos, querem automatizar processos na empresa atual ou vender serviços de automações com IA\n\n---\n\n## EXAMPLES\n\n### Exemplo 1 (8 slides)\n\n## Exemplo 1 — **\"IA não é só automação de tarefa chata\"**\n\n### Slide 1\nTodo mundo usa IA só pra cortar tarefa repetitiva. Ok, funciona. Mas e se desse pra fazer mais?\n\n### Slide 2\nJoão, que tem uma agência, resolveu testar algo novo: usar IA pra melhorar reuniões com clientes.\n\n### Slide 3\nPlugou no n8n uma IA que escuta reuniões gravadas e depois manda um resumo com insights pra cliente e equipe.\n\n### Slide 4\nA sacada: o resumo não é só texto bruto. IA extrai **ideias, sugestões e pendências** que viram ações práticas no CRM.\n\n### Slide 5\nResultado? Clientes se sentem ouvidos, equipe foca em ação estratégica. Ninguém mais caça áudio de 1 hora atrás.\n\n### Slide 6\nTecnologia usada: Whisper API (voz → texto) + ChatGPT API (texto → insight). Tudo via n8n, sem dor.\n\n### Slide 7\nIA deixou de ser luxo e virou diferencial da agência. Cliente fecha porque percebe valor na inteligência entregue.\n\n### Slide 8\nEssa é a real diferença: IA bem pensada não só economiza tempo, ela muda a percepção do valor do que você entrega.\n\n**Caption**\nIA que só automatiza é útil. IA que transforma percepção de valor é o que faz você crescer.\n#n8n #InteligenciaArtificial #Estratégia #Negócios\n\n---\n\n## Exemplo 2 — **\"Automatizar sem código não é só pra iniciante\"**\n\n### Slide 1\nQuem manja de tech subestima low-code. \"Ah, mas eu já sei Python\". E daí?\n\n### Slide 2\nRafa, programador experiente, percebeu que n8n podia acelerar prototipagem. Em vez de abrir IDE, começou a testar ideias em minutos.\n\n### Slide 3\nNova rotina: valida hipóteses conectando APIs, IA e dados internos sem precisar escrever boilerplate.\n\n### Slide 4\nQuando uma ideia valida, aí sim ele codifica algo mais robusto. Mas primeiro? Testa em horas, não semanas.\n\n### Slide 5\nÚltimo teste: extrair reviews do Google Maps → análise com IA → gerar plano de ação. Tudo no almoço.\n\n### Slide 6\nEconomizou tempo suficiente pra testar 3× mais ideias que antes. Aumentou produtividade do time inteiro.\n\n### Slide 7\nEfeito colateral: ajudou estagiários e não-devs a participarem. Agora o time inteiro cria soluções.\n\n### Slide 8\nAutomação sem código não é só pra fugir de programação. É sobre validar mais rápido e escalar decisões estratégicas.\n\n**Caption**\nNão é sobre não saber programar. É sobre otimizar tempo e usar expertise no que importa.\n#n8n #Automacao #IA #LowCode\n\n---\n\n## Exemplo 3 — **\"Venda serviços de automação sem virar freelancer barato\"**\n\n### Slide 1\nAutomação como serviço é ótimo, mas sem estratégia você vira “freela quebra-galho”.\n\n### Slide 2\nCarol passou por isso. Vender automação por tarefa feita em 15 minutos não paga conta.\n\n### Slide 3\nMudou abordagem: começou a vender automação como **consultoria estratégica**.\n\n### Slide 4\nAgora conversa com cliente sobre negócio, gargalos e oportunidades antes de abrir o n8n.\n\n### Slide 5\nCria sistemas integrados (planilha → IA → CRM → WhatsApp), não só pequenos scripts isolados.\n\n### Slide 6\nCliente não paga pela ferramenta usada, mas pela solução integrada que poupa horas, aumenta vendas e melhora o atendimento.\n\n### Slide 7\nPreço? 10× maior. Tempo gasto? Quase o mesmo. Valor percebido? Incomparável.\n\n### Slide 8\nMoral da história: vender automação com IA é mais sobre entender negócios do que conectar bloquinhos.\n\n**Caption**\nAutomação barata é custo. Automação estratégica com IA é investimento. Mude seu posicionamento.\n#n8n #Automacao #IA #Negócios\n\n\n---\n\n## STEPS\n\n1. Receber briefing (objetivo, tema, CTA desejado).\n2. Definir gancho e jornada em 5 pontos (Início → Conflito → Virada → Solução → CTA).\n3. Escolher nº de slides (7‑10) conforme profundidade.\n4. Redigir cada slide (≤30 palavras) mantendo suspense.\n5. Criar legenda com CTA + hashtags.\n6. Revisar métrica‑a‑métrica (abaixo) e ajustar.\n7. Entregar no formato exigido.\n\n---\n\n## MÉTRICAS DE AVALIAÇÃO\n\n| Métrica               | Alvo             |\n| --------------------- | ---------------- |\n| Precisão Técnica      | 100%             |\n| Engajamento (gancho)  | CTR Slide 1 >50% |\n| Retenção              | ≥70% vão ao fim  |\n| Consistência de Tom   | 95%              |\n| Aderência ao Objetivo | Total            |\n| Naturalidade          | Alta             |\n\n**Checklist Final:** Gancho? Suspense? Slides ≤30 palavras? CTA + hashtags? Tudo ok → entregar.\n\n"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.6,
+      "position": [
+        -2624,
+        992
+      ],
+      "id": "bc91a6c9-bc9e-4129-a1a1-3facfbf99669",
+      "name": "escritor do carrossel"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4.1-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4.1-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -2800,
+        1232
+      ],
+      "id": "904cca9a-15ef-4017-b767-d008e154a5e3",
+      "name": "OpenAI Chat Model4"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserAutofixing",
+      "typeVersion": 1,
+      "position": [
+        -2560,
+        1200
+      ],
+      "id": "35d9e72a-21af-4122-83f4-14a49dd789e7",
+      "name": "Auto-fixing Output Parser2"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -2640,
+        1328
+      ],
+      "id": "05d64465-aed5-4214-bf5b-34f2af7ae0cb",
+      "name": "OpenAI Chat Model5"
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n\t\"caption\": \"California\",\n\t\"slides\": [\n      {\n        \"conteudo\": \"conteúdo slide 1\",\n        \"layout\": \"1\"\n      },\n      {\n        \"conteudo\": \"conteúdo slide 2\",\n        \"layout\": \"2\"\n      },\n      {\n        \"conteudo\": \"conteúdo slide 3\",\n        \"layout\": \"1\"\n      }\n    ]\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.2,
+      "position": [
+        -2448,
+        1392
+      ],
+      "id": "9293903b-ab3b-4836-a589-9667e0af790e",
+      "name": "Structured Output Parser2"
+    },
+    {
+      "parameters": {
+        "maxItems": 2
+      },
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        -1776,
+        992
+      ],
+      "id": "fe7e48c5-23e3-4fee-931e-ad99708e19d3",
+      "name": "Limit1",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "output.slides",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        -2064,
+        992
+      ],
+      "id": "352990f2-53a4-44e4-a7e4-f1082ab3cdbf",
+      "name": "separa os cards"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "e182438a-6ef5-40b8-b0fa-db6622084cf4",
+              "leftValue": "={{ $json.layout }}",
+              "rightValue": "1",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -944,
+        1168
+      ],
+      "id": "549fd5d6-3bba-4e86-be24-5602a365be20",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -576,
+        1104
+      ],
+      "id": "f31ecf81-3a01-452a-8478-af661900847c",
+      "name": "OpenAI Chat Model6"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=## Role:\nVocê é um diretor de arte sênior com mais de 30 anos de experiência em descrever imagens, cenas e composições ricas em detalhes, identidade e que sempre carregam uma mensagem que pode ser sentida pelo usuário.\n\n## Instructions:\nVocê vai receber o tema de um post e o conteúdo de um slide específico. Sua tarefa é criar um prompt conciso e direto para gerar uma imagem ultra-realista em 4K que contribua perfeitamente para reforçar a narrativa, o impacto emocional e o entendimento do conteúdo do slide em específico.\n\n## Context:\n\n* Tema do post: {{ $('define ideia').item.json.ideia }}\n* Conteúdo do slide específico: {{ $json.conteudo }}\n\n## Rules:\n\n1. Crie prompts detalhados, precisos e altamente visuais, considerando estilo, iluminação, atmosfera e composição, sem explicações ou comentários adicionais..\n2. A imagem deve ter uma forte conexão emocional e visual com o conteúdo e o objetivo do slide.\n3. Priorize sempre imagens em resolução ultra-realista 4K, estilo fotográfico ou cinematográfico.\n4. Sugira elementos simbólicos ou metafóricos quando apropriado, para aprofundar o impacto emocional ou narrativo.\n5. Especifique claramente os detalhes como cenário, roupas, expressões, iluminação, paleta de cores, textura e estilo.\n6. Seja conciso, máximo de 10 linhas.\n7. SEMPRE inclua no prompt detalhes sobre: lente e técnica, iluminação, textura e cor, ângulo, pós-processamento e composição.\n8. Seu prompt SEMPRE deve dialogar com o conteúdo do slide em que a imagem será exibida, sendo uma estensão do conteúdo e do que ele transmite ao leitor.\n9. NUNCA gera as imagens direcionado ao tema do post, seu foco sempre deve ser no slide em específico e na mensagem que ele carrega.\n\n\n## Steps:\n\n1. Leia e interprete o tema e o conteúdo específico do slide.\n2. Identifique o tom emocional, objetivo central e mensagem-chave.\n3. Imagine uma cena visualmente impactante que reforce a mensagem do slide.\n4. Descreva detalhadamente o cenário, elementos visuais, personagens (se houver), ações e expressões.\n5. Destaque claramente o estilo visual, iluminação e atmosfera emocional que devem ser capturados.\n6. Finalize com recomendações técnicas claras: resolução (4K), formato (SEMPRE horizontal) e estilo visual desejado (cinematográfico, fotográfico, etc.).\n\n## Exemplos de prompt:\n\nUltra-realistic 4K horizontal image of a confident small business owner sitting at a cozy desk in a sunlit home office. Shot with a 50mm f/1.4 prime lens at eye level, wide aperture for creamy bokeh. Natural daylight streams through a window from the left, creating soft cinematic lighting and subtle shadow gradients.\n\nBehind the subject: a corkboard with photos, sticky notes and graphs, all slightly out of focus. On the desk: an open laptop showing an n8n automation workflow, a ceramic mug with visible steam, a pen and a neatly organized notebook.\n\nThe subject wears a dark blue shirt with rolled sleeves, relaxed posture, gentle smile, and direct gaze at the camera. Color palette: warm earth tones with hints of teal and green. Texture: detailed wood grain on the desk, soft fabric on the chair.\n\nStyle: cinematic photography, sharp focus on the eyes, realistic skin, high dynamic range, no text in the image, 16:9 aspect ratio. Professional-grade post-processing, subtle film grain, balanced contrast and saturation.\n"
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.6,
+      "position": [
+        -528,
+        928
+      ],
+      "id": "b05f60fd-7714-46d9-ab63-2a6ad382683b",
+      "name": "gerador de prompt de imagem"
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "model": "gpt-image-1",
+        "prompt": "={{ $json.text }}",
+        "options": {
+          "quality": "low",
+          "size": "1536x1024"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        -80,
+        928
+      ],
+      "id": "13075c27-6255-4070-9267-a05e809940ec",
+      "name": "OpenAI"
+    },
+    {
+      "parameters": {
+        "operation": "toBinary",
+        "sourceProperty": "b64_json",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        208,
+        928
+      ],
+      "id": "c9e308d6-9669-4e3a-adee-b03ddfc1c21c",
+      "name": "Convert to File"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://id do projeto.supabase.co/storage/v1/object/nome do bucket/{{ \n  'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {\n    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);\n    return v.toString(16);\n  })\n}}\n",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "sua chave api"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer sua chave api"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "binaryData",
+        "inputDataFieldName": "data",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        448,
+        928
+      ],
+      "id": "a8ddbb06-be67-41b5-b922-42431cd879a7",
+      "name": "Salva imagens IA"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.templated.io/v1/render",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer sua chave api"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"template\": \"a514dd92-136a-4d55-9166-4d2d11eb1431\",\n  \"format\": \"jpg\",\n  \"layers\": {\n    \"image-2\": {\n      \"image_url\": \"https://ubkzbzavhhboyskyhybz.supabase.co/storage/v1/object/public/imagens-posts//IMG-20230701-WA0044.jpg\"\n    },\n    \"text-1\": {\n      \"text\": \"Lucas Evangelista\",\n      \"color\": \"#000000\"\n    },\n    \"text-2\": {\n      \"text\": \"@o.lucasevangelista\",\n      \"color\": \"#000000\"\n    },\n    \"text-3\": {\n      \"text\": \"{{ $('If').item.json.conteudo }}\",\n      \"color\": \"#000000\"\n    },\n    \"image-1\": {\n      \"image_url\": \"https://ubkzbzavhhboyskyhybz.supabase.co/storage/v1/object/public/{{ $json.Key }}\"\n    }\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        704,
+        928
+      ],
+      "id": "3398131b-95e3-43ea-88c8-07811c69a3f5",
+      "name": "criar imagem template"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.url }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        960,
+        928
+      ],
+      "id": "12e20379-331f-439d-be7a-ea84f169b2c3",
+      "name": "baixa imagem"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://ubkzbzavhhboyskyhybz.supabase.co/storage/v1/object/imagens-posts/{{ \n  'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {\n    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);\n    return v.toString(16);\n  })\n}}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "sua chave api"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer sua chave api"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "binaryData",
+        "inputDataFieldName": "data",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1248,
+        928
+      ],
+      "id": "b8c12d32-e6df-4995-a159-8759a8070551",
+      "name": "Salva imagem post"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f3b47356-e5d5-4612-b752-1d813f9e4810",
+              "name": "url_imagem",
+              "value": "=https://ubkzbzavhhboyskyhybz.supabase.co/storage/v1/object/public/{{ $json.Key }}",
+              "type": "string"
+            },
+            {
+              "id": "94e778e3-8ad5-4b21-8f45-b12b72be435b",
+              "name": "conteudo",
+              "value": "={{ $('Loop geracao').item.json.conteudo }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1520,
+        1200
+      ],
+      "id": "f289ecaf-98ed-4682-9df2-d98987b17215",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.templated.io/v1/render",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "sua chave api"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"template\": \"446db08c-996e-4cde-b2a9-c82610ca9954\",\n  \"format\": \"jpg\",\n  \"layers\": {\n    \"image-2\": {\n      \"image_url\": \"https://ubkzbzavhhboyskyhybz.supabase.co/storage/v1/object/public/imagens-posts//IMG-20230701-WA0044.jpg\"\n    },\n    \"text-1\": {\n      \"text\": \"Lucas Evangelista\",\n      \"color\": \"#000000\"\n    },\n    \"text-2\": {\n      \"text\": \"@o.lucasevangelista\",\n      \"color\": \"#000000\"\n    },\n    \"text-3\": {\n      \"text\": \"{{ $json.conteudo }}\",\n      \"color\": \"#000000\"\n    }\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -656,
+        1344
+      ],
+      "id": "1aba770d-b740-44d3-97af-a67df38e45f9",
+      "name": "criar imagem template1"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.url }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -400,
+        1344
+      ],
+      "id": "443ea5d9-d575-431a-ab0b-b3c95a24b526",
+      "name": "baixa imagem1"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://id do seu projeto.supabase.co/storage/v1/object/nome do seu bucket/{{ \n  'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {\n    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);\n    return v.toString(16);\n  })\n}}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "sua chave api"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer sua chave api"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "binaryData",
+        "inputDataFieldName": "data",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -128,
+        1344
+      ],
+      "id": "6ab010e2-1352-49de-b3eb-5e0cf58dd35d",
+      "name": "Salva imagem post1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f3b47356-e5d5-4612-b752-1d813f9e4810",
+              "name": "url_imagem",
+              "value": "=https://ubkzbzavhhboyskyhybz.supabase.co/storage/v1/object/public/{{ $json.Key }}",
+              "type": "string"
+            },
+            {
+              "id": "9d432319-48d9-4c95-a7fd-0ce70e33b7da",
+              "name": "conteudo",
+              "value": "={{ $('Loop geracao').item.json.conteudo }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        112,
+        1344
+      ],
+      "id": "6006fbb2-c2ee-4c18-a673-dbee906cfe8a",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        -608,
+        368
+      ],
+      "id": "d14a049c-4dfa-47f3-901a-91296d8c6e56",
+      "name": "Loop imagens"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        -1504,
+        992
+      ],
+      "id": "b6ef8bfa-2e53-4153-a942-6947e00d32ba",
+      "name": "Loop geracao"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://graph.instagram.com/v23.0/id da conta do ig/media",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer  sua chave api"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "image_url",
+              "value": "={{ $json.url_imagem }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -240,
+        464
+      ],
+      "id": "b5262974-6877-485a-84c2-9aa3a68c07db",
+      "name": "salva imagem instagram"
+    },
+    {
+      "parameters": {
+        "url": "=https://graph.instagram.com/v23.0/{{ $json.id }}",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "fields",
+              "value": "status_code"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer sua chave api"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        80,
+        464
+      ],
+      "id": "6eaec3f8-0fa6-45cb-8470-c116e6f157f2",
+      "name": "HTTP Request1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "d18d2504-29bb-4863-a13e-f4d4af9ab422",
+              "leftValue": "={{ $json.status_code }}",
+              "rightValue": "FINISHED",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        368,
+        464
+      ],
+      "id": "5cb26f97-dd79-4be2-8399-c57fd44a85d8",
+      "name": "If1"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        768,
+        448
+      ],
+      "id": "7c91432f-90c0-4193-9eba-dff9bcba46bf",
+      "name": "Wait2",
+      "webhookId": "099376e6-0e94-4520-8218-40fa80e0daca"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "destinationFieldName": "imagens",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        -336,
+        112
+      ],
+      "id": "cdd11004-abfc-4d35-9f52-25a57868517b",
+      "name": "junta id imagens"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://graph.instagram.com/v23.0/id da conta do ig/media",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer  sua chave api"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "caption",
+              "value": "={{ $('escritor do carrossel').item.json.output.caption }}"
+            },
+            {
+              "name": "media_type",
+              "value": "CAROUSEL"
+            },
+            {
+              "name": "children",
+              "value": "={{ $json.imagens.map(image => image.id ).join() }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "75e24afa-4825-4a18-b12d-a18d33673d0c",
+      "name": "cria carrossel"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://graph.instagram.com/v23.0/id da conta do IG/media_publish",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer  sua chave api"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "creation_id",
+              "value": "={{ $json.id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        224,
+        0
+      ],
+      "id": "cefce586-aa47-49cd-ab53-ef1552db4328",
+      "name": "posta carrossel"
+    },
+    {
+      "parameters": {
+        "tableId": "conteudos",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "ideia",
+              "fieldValue": "={{ $('define ideia').item.json.ideia }}"
+            },
+            {
+              "fieldId": "descricao",
+              "fieldValue": "={{ $('define ideia').item.json.descricao }}"
+            },
+            {
+              "fieldId": "conteudo",
+              "fieldValue": "={{ $json }}"
+            },
+            {
+              "fieldId": "id_postagem",
+              "fieldValue": "={{ $('posta carrossel').item.json.id }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        672,
+        0
+      ],
+      "id": "5166543c-ce4b-4f52-b230-c83c1cd31d46",
+      "name": "Supabase1"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        -1216,
+        688
+      ],
+      "id": "869bfe4d-491f-4caf-b5f3-d9ddc13ee8a3",
+      "name": "Aggregate1"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "data",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        -944,
+        608
+      ],
+      "id": "a427aafa-0e82-445c-8380-2e86463322ab",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "866df07d-30ee-4b1d-8555-9fa5af1e2e6e",
+              "name": "conteudo",
+              "value": "={{ JSON.stringify($('Aggregate1').item.json.data.map(c => ({ imagem: c.url_imagem, conteudo: c.conteudo }))) }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        448,
+        0
+      ],
+      "id": "6a6f2876-3628-482a-b720-ce286a67b5a9",
+      "name": "Edit Fields2"
+    },
+    {
+      "parameters": {
+        "tableId": "metricas",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "colhido_1h",
+              "fieldValue": "false"
+            },
+            {
+              "fieldId": "colhido_6h",
+              "fieldValue": "false"
+            },
+            {
+              "fieldId": "colhido_12h",
+              "fieldValue": "false"
+            },
+            {
+              "fieldId": "colhido_24h",
+              "fieldValue": "false"
+            },
+            {
+              "fieldId": "id_postagem",
+              "fieldValue": "={{ $('posta carrossel').item.json.id }}"
+            },
+            {
+              "fieldId": "id_conteudo",
+              "fieldValue": "={{ $json.id }}"
+            },
+            {
+              "fieldId": "created_at",
+              "fieldValue": "={{ $now }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        912,
+        0
+      ],
+      "id": "08e01335-8e71-4c83-8d14-088a85eb73fd",
+      "name": "Supabase2"
+    }
+  ],
+  "pinData": {
+    "When clicking ‘Test workflow’": [
+      {
+        "json": {}
+      }
+    ],
+    "escritor do carrossel": [
+      {
+        "json": {
+          "output": {
+            "caption": "Automação sem alma entrega scripts vazios. Automação com storytelling personalizado cria relações reais. Use inteligência para sentir, não só calcular.\n#n8n #Automacao #InteligenciaArtificial #Storytelling #LeadNurturing",
+            "slides": [
+              {
+                "conteudo": "Você já sentiu que automação derrete o calor da conversa? E se ela pudesse contar histórias, com alma e jeito?",
+                "layout": "1"
+              },
+              {
+                "conteudo": "Ana quer nutrir leads, mas odeia mensagens frias. Então, decidiu criar fluxos que entendem o perfil e reagem como gente.",
+                "layout": "2"
+              },
+              {
+                "conteudo": "Com n8n, ela conecta dados do lead, ajusta a narrativa e personaliza o tom automaticamente sem parecer robô.",
+                "layout": "2"
+              },
+              {
+                "conteudo": "O segredo: usar etapas que adaptam conteúdo emocional, perguntas que fazem o lead se sentir ouvido, não só nutrido.",
+                "layout": "2"
+              },
+              {
+                "conteudo": "Ela cria três perfis: curioso, prático e indeciso. Cada um recebe uma jornada que toca valores reais, não só fatos.",
+                "layout": "2"
+              },
+              {
+                "conteudo": "Resultado? Leads mais engajados, respostas genuínas e fechamento que nasce de conexão, não só números na planilha.",
+                "layout": "2"
+              },
+              {
+                "conteudo": "Quer automatizar com alma e não parecer máquina? Comece entendendo seu lead e criando histórias que se adaptam a ele.",
+                "layout": "1"
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "Basic LLM Chain1": [
+      {
+        "json": {
+          "output": {
+            "ideas": [
+              {
+                "idea": "IA como orquestradora emocional em atendimento ao cliente",
+                "description": "Explore como a IA pode identificar e reagir às emoções humanas em tempo real durante atendimentos, transformando interações frias em experiências empáticas que aumentam a fidelização."
+              },
+              {
+                "idea": "Automação n8n para potencializar negociações complexas",
+                "description": "Mostre como fluxos automatizados combinados com gatilhos estratégicos podem mapear cenários de negociação, ajustando ofertas em tempo real para fechar contratos com maior assertividade."
+              },
+              {
+                "idea": "IA como personal trainer para dados internos",
+                "description": "Apresente a IA como um coach que treina e revela padrões ocultos dentro dos dados da empresa, estimulando insights práticos para decisões mais ágeis e seguras no dia a dia."
+              },
+              {
+                "idea": "Storytelling automatizado para nutrir leads sem perder alma",
+                "description": "Investigue como automações podem criar narrativas personalizadas que se adaptam ao perfil do lead, mantendo um tom natural e emocional, evitando que o processo pareça mecânico ou impessoal."
+              },
+              {
+                "idea": "Automação invisível para criar tempo de qualidade entre equipes remotas",
+                "description": "Reverta a ideia de automação como redução de tarefas e mostre como ela pode liberar espaços para conexões reais e estratégicas entre membros distantes, fortalecendo a colaboração e criatividade."
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "Basic LLM Chain": [
+      {
+        "json": {
+          "output": {
+            "ideas": [
+              {
+                "idea": "IA como orquestradora emocional em atendimento ao cliente",
+                "description": "Explore como a IA pode identificar e reagir às emoções humanas em tempo real durante atendimentos, transformando interações frias em experiências empáticas que aumentam a fidelização."
+              },
+              {
+                "idea": "Automação n8n para potencializar negociações complexas",
+                "description": "Mostre como fluxos automatizados combinados com gatilhos estratégicos podem mapear cenários de negociação, ajustando ofertas em tempo real para fechar contratos com maior assertividade."
+              },
+              {
+                "idea": "IA como personal trainer para dados internos",
+                "description": "Apresente a IA como um coach que treina e revela padrões ocultos dentro dos dados da empresa, estimulando insights práticos para decisões mais ágeis e seguras no dia a dia."
+              },
+              {
+                "idea": "Storytelling automatizado para nutrir leads sem perder alma",
+                "description": "Investigue como automações podem criar narrativas personalizadas que se adaptam ao perfil do lead, mantendo um tom natural e emocional, evitando que o processo pareça mecânico ou impessoal."
+              },
+              {
+                "idea": "Automação invisível para criar tempo de qualidade entre equipes remotas",
+                "description": "Reverta a ideia de automação como redução de tarefas e mostre como ela pode liberar espaços para conexões reais e estratégicas entre membros distantes, fortalecendo a colaboração e criatividade."
+              }
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-08-27T18:32:11.872Z",
+      "createdAt": "2025-08-27T18:32:11.872Z",
+      "role": "workflow:owner",
+      "workflowId": "Y6GS7Oos3SnqEjK1",
+      "projectId": "o60HadikmqrvYZ9Z"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-08-27T18:32:11.872Z",
+  "versionId": "c969b659-1c35-4d54-a30c-0985f461efd4"
+}

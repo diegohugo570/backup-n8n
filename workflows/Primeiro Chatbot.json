@@ -1,0 +1,233 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Formata celular",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formata celular": {
+      "main": [
+        [
+          {
+            "node": "OpenAI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI": {
+      "main": [
+        [
+          {
+            "node": "Envia mensagem",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-06-14T13:48:30.400Z",
+  "id": "TDAkyvEqKKMrPQka",
+  "isArchived": false,
+  "meta": null,
+  "name": "Primeiro Chatbot",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "931e7972-ef72-4d68-8637-214facdfe820",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -880,
+        180
+      ],
+      "id": "3d526567-0cf1-415a-ba23-67caaf7797ad",
+      "name": "Webhook",
+      "webhookId": "931e7972-ef72-4d68-8637-214facdfe820"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-evolution-api.evolutionApi",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "bd11f052-dcc4-4339-adb1-f10980373d7d",
+      "name": "Evolution API",
+      "credentials": {}
+    },
+    {
+      "parameters": {
+        "jsCode": "return [{\n  telefone_limpo: $json.body.data.key.remoteJid.replace(\"@s.whatsapp.net\", \"\")\n}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -660,
+        180
+      ],
+      "id": "5015a525-7421-4e88-b3da-b54e7f85266a",
+      "name": "Formata celular"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini-2024-07-18",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI-2024-07-18"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=Você é um assistente de IA especializado em Instagram, focado em ajudar nutricionistas a crescerem sua presença na plataforma. Sua função é fornecer estratégias, gerar conteúdos, e oferecer dicas práticas para aumentar o engajamento, conquistar seguidores e viralizar. Você deve ser criativo, informativo e estratégico, sempre considerando o público-alvo da nutricionista e as melhores práticas do Instagram. Baseie sua resposta na mensagem da nutricionista que estará mais abaixo.\n\nAqui estão suas principais responsabilidades:\n\nGeração de Conteúdo:\n\nSe a nutricionista não tiver um tema em mente, sugira temas relevantes para o público dela (ex.: alimentação saudável, receitas fitness, mitos nutricionais, dicas para emagrecimento saudável, etc.).\n\nCrie textos criativos e informativos para legendas de posts, stories e reels.\n\nSugira formatos de conteúdo (ex.: carrossel, vídeo curto, post único, antes e depois, etc.).\n\nInclua chamadas para ação (CTAs) para engajar os seguidores (ex.: \"Salve este post para consultar depois!\", \"Compartilhe com quem precisa ver isso!\", etc.).\n\nIdeias de Vídeos e Imagens:\n\nSugira ideias visuais para acompanhar o conteúdo (ex.: fotos de pratos saudáveis, gráficos nutricionais, vídeos de preparo de receitas, depoimentos de clientes, etc.).\n\nIndique ferramentas úteis para criação de conteúdo (ex.: Canva, Adobe Spark, InShot, etc.).\n\nDê dicas de iluminação, enquadramento e edição para melhorar a qualidade visual.\n\nHashtags e Público-Alvo:\n\nForneça uma lista de hashtags relevantes para o tema da postagem (ex.: #NutriçãoSaudável, #AlimentaçãoConsciente, #ReceitasFitness, etc.).\n\nIdentifique o público-alvo da postagem (ex.: mulheres de 25-40 anos interessadas em emagrecimento saudável, atletas amadores, etc.).\n\nSugira hashtags de nicho e populares para aumentar o alcance.\n\nMelhor Horário para Postar:\n\nIndique os melhores horários para postar com base no público-alvo e no engajamento histórico da nutricionista.\n\nConsidere fusos horários e hábitos de consumo de conteúdo do público.\n\nEstratégias para Viralizar e Ganhar Seguidores:\n\nDê dicas para aumentar o engajamento (ex.: interagir com seguidores nos comentários, usar enquetes nos stories, colaborar com outros perfis, etc.).\n\nSugira estratégias para reels e trends que possam viralizar (ex.: desafios saudáveis, dicas rápidas em vídeos de 15 segundos, etc.).\n\nRecomende ações para atrair novos seguidores (ex.: sorteios, parcerias com marcas, uso de hashtags estratégicas, etc.).\n\nAnálise e Melhoria Contínua:\n\nSugira métricas para acompanhar o desempenho das postagens (ex.: taxa de engajamento, alcance, salvações, etc.).\n\nDê ideias para melhorar conteúdos com base nos resultados obtidos.\n\nInspiração e Tendências:\n\nTraga exemplos de conteúdos que estão funcionando para outros perfis de nutrição.\n\nMantenha a nutricionista atualizada sobre as últimas tendências do Instagram (ex.: novos recursos, mudanças no algoritmo, etc.).\n\nExemplo de Resposta:\n\nTema sugerido: \"5 Mitos sobre Dietas Low Carb que Você Precisa Saber\"\n\nConteúdo da legenda:\n\"Você já ouviu falar que low carb é só comer bacon e ovos? 🥓🍳 Errado! Hoje vou desvendar 5 mitos comuns sobre essa dieta que muita gente acredita. ⬇️\n1️⃣ Low carb não é sinônimo de zero carboidratos.\n2️⃣ Não é uma dieta apenas para emagrecer.\n3️⃣ Não precisa ser rica em gordura.\n4️⃣ Não é ruim para a saúde do coração (se feita corretamente).\n5️⃣ Não é uma dieta temporária, mas um estilo de vida.\nSalva este post para não cair nessas armadilhas! 💡 E me conta nos comentários: qual desses mitos mais te surpreendeu? 👇\"\n\nIdeias visuais:\n\nCarrossel com cards coloridos, cada um explicando um mito.\n\nVídeo curto mostrando alimentos low carb e explicando os mitos em formato de narração.\n\nImagem de antes e depois de alguém que adotou a dieta corretamente.\n\nHashtags sugeridas:\n#LowCarb #Nutrição #Saúde #EmagrecimentoSaudável #Dieta #DicasDeNutrição #AlimentaçãoSaudável\n\nPúblico-alvo:\nMulheres e homens de 25-45 anos interessados em emagrecimento e saúde.\n\nMelhor horário para postar:\n18h-20h (horário em que o público costuma estar mais ativo no Instagram).\n\nSempre que a nutricionista precisar, você estará pronto para ajudar com novas ideias, ajustes e estratégias para impulsionar o crescimento do perfil dela no Instagram.\n\nMENSAGEM DA NUTRICIONISTA: {{ $('Webhook').item.json.body.data.message.conversation }}\n\n"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        -400,
+        180
+      ],
+      "id": "0290dfca-c491-44ed-9248-97ead0ef0916",
+      "name": "OpenAI"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://evolution-api-production-824c.up.railway.app/message/sendText/BOT",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "5m0TA3VWkAZcNR2cFdGQSpEvDGiaOJUF"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $('Formata celular').item.json.telefone_limpo }}"
+            },
+            {
+              "name": "text",
+              "value": "={{ $json.message.content }}"
+            },
+            {
+              "name": "forceSend",
+              "value": false
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        0,
+        180
+      ],
+      "id": "9b6b2d7d-d921-45f4-a798-ed9c9643f86f",
+      "name": "Envia mensagem"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "primary-production-b5c5.up.railway.app",
+            "user-agent": "axios/1.7.9",
+            "content-length": "928",
+            "accept-encoding": "gzip, compress, deflate, br",
+            "content-type": "application/json",
+            "x-forwarded-for": "162.220.232.29",
+            "x-forwarded-host": "primary-production-b5c5.up.railway.app",
+            "x-forwarded-proto": "https",
+            "x-railway-edge": "railway/us-west1",
+            "x-railway-request-id": "8QQ4e2tgQXaemZCHza1QtA_3167001623",
+            "x-real-ip": "162.220.232.29",
+            "x-request-start": "1741440259679"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "event": "messages.upsert",
+            "instance": "BOT",
+            "data": {
+              "key": {
+                "remoteJid": "5511981370549@s.whatsapp.net",
+                "fromMe": false,
+                "id": "F8DB4FAFAC3F6EE29E21AF54DE13A65A"
+              },
+              "pushName": "DSR Marketing",
+              "status": "DELIVERY_ACK",
+              "message": {
+                "conversation": "Teste",
+                "messageContextInfo": {
+                  "deviceListMetadata": {
+                    "senderKeyHash": "pWp4D+Bh3lcK6Q==",
+                    "senderTimestamp": "1740269616",
+                    "recipientKeyHash": "0WDtKy4wdlvXpQ==",
+                    "recipientTimestamp": "1740317852"
+                  },
+                  "deviceListMetadataVersion": 2,
+                  "messageSecret": "9NN0bEKHFq6emIeVbOJmH1KG+6PNdVjSCHKt2u4G6AE="
+                }
+              },
+              "messageType": "conversation",
+              "messageTimestamp": 1741440259,
+              "instanceId": "668372c2-c67f-402d-8336-02ca0c95b27d",
+              "source": "android"
+            },
+            "destination": "https://primary-production-b5c5.up.railway.app/webhook-test/931e7972-ef72-4d68-8637-214facdfe820",
+            "date_time": "2025-03-08T10:24:19.540Z",
+            "sender": "5511943825525@s.whatsapp.net",
+            "server_url": "http://localhost:8080",
+            "apikey": "3A0167A6C7A0-47C7-93B7-B9BF05E43205"
+          },
+          "webhookUrl": "https://primary-production-b5c5.up.railway.app/webhook-test/931e7972-ef72-4d68-8637-214facdfe820",
+          "executionMode": "test"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-06-14T13:48:30.400Z",
+      "createdAt": "2025-06-14T13:48:30.400Z",
+      "role": "workflow:owner",
+      "workflowId": "TDAkyvEqKKMrPQka",
+      "projectId": "o60HadikmqrvYZ9Z"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-06-14T13:48:30.400Z",
+  "versionId": "aa98a151-e9ac-441c-8f57-f5271d24c2b1"
+}

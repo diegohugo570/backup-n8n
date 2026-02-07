@@ -1,0 +1,859 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Supabase",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Supabase2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Supabase1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres Chat Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Obtém Linhas Histórico",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Obtém Linhas Histórico": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Supabase5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Supabase4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Supabase3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain": {
+      "main": [
+        [
+          {
+            "node": "Supabase6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase5": {
+      "main": [
+        [
+          {
+            "node": "Aggregate2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate2": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase4": {
+      "main": [
+        [
+          {
+            "node": "Aggregate1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase2": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase3": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase6": {
+      "main": [
+        [
+          {
+            "node": "Supabase4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-07-07T14:35:35.531Z",
+  "id": "Sl6yYYX83yIpjahI",
+  "isArchived": false,
+  "meta": null,
+  "name": "Memória Procedural",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -760,
+        20
+      ],
+      "id": "b658acc5-f0e5-4004-9122-d95eea3afbf5",
+      "name": "When chat message received",
+      "webhookId": "17fd522c-2345-46fd-b230-bdc5da65c313"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "user_prompts",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "remoteJid",
+              "keyValue": "={{ $json.sessionId }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -540,
+        20
+      ],
+      "id": "d84664fd-ccf5-4e15-b5ad-efa05e9c2518",
+      "name": "Supabase",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "d9d15b3b-6c54-4de5-b99b-78bf13f44f67",
+              "leftValue": "={{ $json.remoteJid }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -320,
+        20
+      ],
+      "id": "166458dd-a82f-4136-a3aa-62fac0a1eb3f",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "tableId": "user_prompts",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "prompt",
+              "fieldValue": "=<Cargo>\nVocê é uma assistente pessoal focada em em ajudar o cliente.\n</Cargo>\n\n<Instruções>\nSeja educada com o cliente e sempre prestativa. Você deve guiar a conversa assim:\n\n1) Saiba o nome\n2) Saiba a idade\n3) Com isso, apenas ajude-o\n</Instruções>"
+            },
+            {
+              "fieldId": "updated_at",
+              "fieldValue": "={{ $now }}"
+            },
+            {
+              "fieldId": "created_at",
+              "fieldValue": "={{ $now }}"
+            },
+            {
+              "fieldId": "remoteJid",
+              "fieldValue": "={{ $('When chat message received').item.json.sessionId }}"
+            },
+            {
+              "fieldId": "nova_mensagem",
+              "fieldValue": "true"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        0,
+        180
+      ],
+      "id": "fe3e18ce-f1d3-4e2c-b78c-e2b345b7adc0",
+      "name": "Supabase1"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.1,
+      "position": [
+        300,
+        20
+      ],
+      "id": "861d8a09-3dde-47be-b5fe-918d55295b6a",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('When chat message received').item.json.chatInput }}",
+        "options": {
+          "systemMessage": "={{ $json.prompt }}"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.9,
+      "position": [
+        540,
+        20
+      ],
+      "id": "d8b3ada3-a8bf-422b-bf8e-3dfee6438d71",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        440,
+        260
+      ],
+      "id": "463e7477-220e-4795-8f1a-6832c2e7c990",
+      "name": "OpenAI Chat Model"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('When chat message received').item.json.sessionId }}",
+        "tableName": "n8n_chat_trim",
+        "contextWindowLength": 20
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
+      "typeVersion": 1.3,
+      "position": [
+        640,
+        240
+      ],
+      "id": "334ec9ef-a467-4e1e-b2e2-12fab8c00043",
+      "name": "Postgres Chat Memory"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 1
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -760,
+        600
+      ],
+      "id": "ef72732a-1ba0-41b8-be2e-07c69bbd2c1a",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "tableId": "n8n_chat_trim",
+        "returnAll": true
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -580,
+        600
+      ],
+      "id": "f0f13e70-a0c0-4d82-bc4e-349bbf406c7b",
+      "name": "Obtém Linhas Histórico",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "session_id",
+              "renameField": true,
+              "outputFieldName": "remoteJids"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        -380,
+        600
+      ],
+      "id": "f50ba878-72d5-472b-8145-929aff167628",
+      "name": "Aggregate"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "bd3036ff-0d5c-4485-a28a-958b5ce6534f",
+              "name": "remoteJids",
+              "value": "={{ $('Aggregate').item.json.remoteJids.unique() }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -180,
+        600
+      ],
+      "id": "193ad57b-1a69-4742-b83a-80ccb37cb7b0",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        940,
+        600
+      ],
+      "id": "682bd011-e8e8-4a27-9b6d-dcf6f61e6618",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "remoteJid",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        680,
+        600
+      ],
+      "id": "268f8b17-aedd-4005-a3e3-0c1f42c13881",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "2bdfa7f1-8877-4bc5-90d0-f99d6d9a3b81",
+              "name": "historico",
+              "value": "={{ $json.message.map(m => `${m.type === \"human\" ? \"Usuário\" : \"Você\"}: ${m.content}`).join(\"\\n\") }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1780,
+        700
+      ],
+      "id": "a3af6dab-f3fd-40e3-ae82-4194068262c7",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "message"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        1600,
+        700
+      ],
+      "id": "bd82e171-7464-4132-b7d4-34270677855c",
+      "name": "Aggregate1"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=# Prompt antigo\n{{ $json.prompt }}\n\n# Novas conversas\n{{ $('Edit Fields1').item.json.historico }}",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=<cargo>\nEspecialista em personalização de prompts baseado em histórico de conversas para criar comunicação adaptada ao usuário.\n</cargo>\n\n<contexto>\nVocê recebe como input o prompt original de uma IA e o histórico completo de conversas entre essa IA e um usuário. Sua função é analisar essas interações para identificar preferências, estilo de comunicação, informações pessoais, regras específicas e nuances do usuário, criando um novo prompt personalizado que SUBSTITUA o prompt original.\n</contexto>\n\n<instruções>\n- Analise o prompt original e o histórico de conversas para identificar padrões, preferências e informações relevantes do usuário.\n- PEGUE O PROMPT ORIGINAL e o modifique/personalize baseado no que aprendeu das conversas.\n- Identifique quais instruções do prompt original JÁ FORAM CUMPRIDAS baseado no histórico (ex: se já coletou nome e idade, remova essas instruções).\n- Mantenha apenas as instruções que ainda são relevantes ou adicione novas baseadas no comportamento observado.\n- Identifique informações pessoais mencionadas (nome, idade, profissão, interesses, etc.) e inclua no prompt.\n- Observe o estilo de comunicação preferido pelo usuário (formal, informal, técnico, casual) e ajuste o tom.\n- Note preferências específicas sobre formato de resposta, tom, ou abordagem.\n- Identifique regras ou limitações que o usuário estabeleceu.\n- Crie ou modifique tags XML conforme necessário para incorporar essas informações.\n- Tags sugeridas: <cargo>, <contexto>, <instruções>, <tom>, <regras>, <preferencias>, <informacoes_pessoais>, <estilo_comunicacao>, <exemplos>.\n- MANTENHA O CARGO/FUNÇÃO ORIGINAL do prompt, apenas personalizando e aprimorando.\n- O novo prompt deve ser o prompt original PERSONALIZADO e ADAPTADO ao progresso da conversa.\n</instruções>\n\n<tom>\nPreciso, analítico, focado em personalização efetiva.\n</tom>\n\n<regras>\n- Retorne APENAS o novo prompt personalizado baseado no prompt original, sem explicações ou comentários adicionais.\n- O cargo deve ser baseado no prompt original, não em personalização de prompts.\n- Remova instruções já cumpridas e mantenha apenas as relevantes.\n- Não invente informações que não estejam no histórico.\n- Use as tags XML de forma consistente e organizada.\n</regras>\n\n<lembre-se>\nSeu output será o prompt original MODIFICADO, personalizado e adaptado ao progresso da conversa, pronto para substituir o original e proporcionar uma experiência mais personalizada ao usuário.\n</lembre-se>"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.6,
+      "position": [
+        2220,
+        700
+      ],
+      "id": "79329397-d80c-4b6f-9c31-47f2788fcd57",
+      "name": "Basic LLM Chain"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4.1-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4.1-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        2240,
+        580
+      ],
+      "id": "436fd557-0477-4972-aae8-28a1791abb0f",
+      "name": "OpenAI Chat Model1"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1160,
+        500
+      ],
+      "id": "0348a2e1-e4ee-4e9a-8dde-5ff3087bf4e1",
+      "name": "No Operation, do nothing"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "tableId": "user_prompts",
+        "returnAll": true
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        60,
+        600
+      ],
+      "id": "19193643-19e4-4e60-929a-58fdf9be72cb",
+      "name": "Supabase5",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "remoteJid"
+            },
+            {
+              "fieldToAggregate": "nova_mensagem"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        280,
+        600
+      ],
+      "id": "b863953c-e43d-41d9-bf11-aaf2d54bf079",
+      "name": "Aggregate2"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "cd774150-a8e6-4188-ad7e-ff4394bb52d3",
+              "name": "remoteJid",
+              "value": "={{ $('Edit Fields').item.json.remoteJids.filter(jid => $json.nova_mensagem[$json.remoteJid.indexOf(jid)] === true) }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        500,
+        600
+      ],
+      "id": "f9879f43-ffa1-4e8b-83ac-b16efd2fc5e4",
+      "name": "Edit Fields2"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "n8n_chat_trim",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "session_id",
+              "keyValue": "={{ $json.remoteJid }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        1200,
+        680
+      ],
+      "id": "9ab33132-680a-4f7b-a8a6-387e55debc02",
+      "name": "Supabase4"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "user_prompts",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "remoteJid",
+              "condition": "eq",
+              "keyValue": "={{ $('When chat message received').item.json.sessionId }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "nova_mensagem",
+              "fieldValue": "true"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "847247b7-9a5e-4de5-bbe5-9d5bb6a74e5b",
+      "name": "Supabase2"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "user_prompts",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "remoteJid",
+              "keyValue": "={{ $('Loop Over Items').item.json.remoteJid }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        1980,
+        700
+      ],
+      "id": "a8299d02-1f0e-4db8-9b3c-3406e3c895eb",
+      "name": "Supabase3",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "user_prompts",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "remoteJid",
+              "condition": "eq",
+              "keyValue": "={{ $('Loop Over Items').item.json.remoteJid }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "updated_at",
+              "fieldValue": "={{ $now }}"
+            },
+            {
+              "fieldId": "nova_mensagem",
+              "fieldValue": "false"
+            },
+            {
+              "fieldId": "prompt",
+              "fieldValue": "={{ $json.text }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        2580,
+        700
+      ],
+      "id": "e6ae5822-2057-4c98-8d2e-aa9137871ca6",
+      "name": "Supabase6"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-07-07T14:35:35.531Z",
+      "createdAt": "2025-07-07T14:35:35.531Z",
+      "role": "workflow:owner",
+      "workflowId": "Sl6yYYX83yIpjahI",
+      "projectId": "o60HadikmqrvYZ9Z"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-07-07T14:35:35.531Z",
+  "versionId": "12c90729-4f95-44c4-a4a7-4db16f56fe87"
+}

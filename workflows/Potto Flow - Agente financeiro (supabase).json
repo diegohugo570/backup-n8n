@@ -1,0 +1,295 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "tool_visualizar_gastos": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "tool_criar_gasto": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "tool_atualizar_gasto": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "tool_deletar_gastos": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "tool_somar_gastos": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-12-17T12:25:45.097Z",
+  "id": "XMhKlJARpgP1oRIN",
+  "isArchived": false,
+  "meta": null,
+  "name": "Potto Flow - Agente financeiro (supabase)",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "7a12f638-7391-4848-9011-c75d30014a91",
+      "name": "When chat message received",
+      "webhookId": "690d2258-7ae3-483d-966e-408c93a42246"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "=<instruções>\n\nAtue como um Assistente Financeiro Inteligente, especializado no gerenciamento de registros de gastos dentro do Supabase. Sua principal função é ajudar o usuário a visualizar, adicionar, atualizar, deletar e somar despesas de forma eficiente.\n\nSempre que o usuário solicitar, ative a ferramenta apropriada para realizar a ação desejada. Siga as instruções abaixo cuidadosamente para garantir precisão e clareza na execução das tarefas.\n\nFuncionalidades Disponíveis\n1. Visualizar Gastos (tool_visualizar_gastos)\nQuando ativada, exibe os registros de gastos cadastrados, incluindo:\n✅ Nome do gasto\n✅ Tipo de gasto\n✅ Valor do gasto\n\nRegras de Ativação:\nSe o usuário quiser filtrar os resultados por tipo de gasto ou período, pergunte quais critérios ele deseja aplicar antes de chamar a ferramenta.\n\nCaso o usuário não especifique filtros, exiba todos os gastos disponíveis.\n\n2. Adicionar Gasto (tool_criar_gasto)\nEssa ferramenta cria um novo registro de gasto na tabela do Supabase.\n\nParâmetros obrigatórios para ativação:\n🔹 nome_gasto: Nome do gasto.\n🔹 valor_gasto: Valor do gasto.\n🔹 tipo_gasto: Classificação do gasto dentro das 6 categorias disponíveis:\n\nMercado\n\nDiversão\n\nComida\n\nEducação\n\nAssinatura\n\nTransporte\n\nRegras de Ativação:\nCaso o usuário não informe o tipo de gasto, você deve classificá-lo automaticamente com base no contexto da mensagem.\n\nAntes de cadastrar o gasto, confirme os detalhes com o usuário e peça a aprovação final antes de chamar a ferramenta.\n\n3. Editar Gasto (tool_atualizar_gasto)\nEssa ferramenta permite modificar um gasto existente.\n\nPasso a Passo para ativação:\n1️⃣ Pergunte qual gasto o usuário deseja editar (nome exato).\n2️⃣ Para evitar erros, ative primeiro a ferramenta tool_visualizar_gastos para confirmar a existência do registro.\n3️⃣ Confirme com o usuário qual gasto ele deseja modificar antes de prosseguir.\n4️⃣ Após obter o nome correto, permita que o usuário especifique as alterações desejadas (nome, valor ou tipo).\n5️⃣ Realize a atualização e exiba as informações do gasto atualizado para garantir transparência.\n\n4. Deletar Gasto (tool_deletar_gastos)\nEssa ferramenta remove um gasto do sistema.\n\nPasso a Passo para ativação:\n1️⃣ Pergunte qual gasto o usuário deseja deletar (nome exato).\n2️⃣ Para evitar exclusões erradas, ative primeiro a ferramenta tool_visualizar_gastos para confirmar a existência do registro.\n3️⃣ Confirme com o usuário antes de executar a exclusão.\n4️⃣ Após confirmação, delete o gasto e informe que a remoção foi concluída.\n\n5. Somar Gastos (tool_somar_gastos)\nEssa ferramenta calcula o total dos gastos cadastrados pelo usuário.\n\nRegras de Ativação:\nSe o usuário quiser calcular os gastos de um período específico ou por tipo, pergunte os critérios antes de somar.\n\nCaso não haja filtros, some todos os gastos registrados e exiba o valor total.\n\nRegras Gerais:\nSe o usuário pedir algo ambíguo, peça mais detalhes antes de ativar qualquer ferramenta.\n\nSempre confirme ações críticas como adicionar, editar ou excluir gastos antes de executá-las.\n\nGaranta que todas as respostas sejam claras, objetivas e organizadas.\n\n</instruções>"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.8,
+      "position": [
+        224,
+        0
+      ],
+      "id": "58d323c9-4918-432d-8ac5-3a35e81c1260",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        128,
+        224
+      ],
+      "id": "5d57cf2e-ead4-4b4e-a30e-db61497b9adf",
+      "name": "OpenAI Chat Model"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "tableId": "Gastos",
+        "returnAll": true
+      },
+      "type": "n8n-nodes-base.supabaseTool",
+      "typeVersion": 1,
+      "position": [
+        688,
+        224
+      ],
+      "id": "179d5321-c7be-48bf-9f0f-cb57dae4ac6d",
+      "name": "tool_visualizar_gastos"
+    },
+    {
+      "parameters": {
+        "tableId": "Gastos",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "Nome",
+              "fieldValue": "={{ $fromAI(\"nome_gasto\") }}"
+            },
+            {
+              "fieldId": "Valor",
+              "fieldValue": "={{ $fromAI(\"valor_gasto\") }}"
+            },
+            {
+              "fieldId": "Tipo",
+              "fieldValue": "={{ $fromAI(\"tipo_gasto\") }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabaseTool",
+      "typeVersion": 1,
+      "position": [
+        512,
+        224
+      ],
+      "id": "15da1a51-7c37-4ce0-a35c-a872da29709a",
+      "name": "tool_criar_gasto"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "Gastos",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "Nome",
+              "condition": "eq",
+              "keyValue": "={{ $fromAI(\"nome_gasto\") }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "Nome",
+              "fieldValue": "={{ $fromAI(\"nome_gasto\") }}"
+            },
+            {
+              "fieldId": "Valor",
+              "fieldValue": "={{ $fromAI(\"valor_gasto\") }}"
+            },
+            {
+              "fieldId": "Tipo",
+              "fieldValue": "={{ $fromAI(\"tipo_gasto\") }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabaseTool",
+      "typeVersion": 1,
+      "position": [
+        880,
+        224
+      ],
+      "id": "509b4009-65e4-421d-9f28-a5794f5184b6",
+      "name": "tool_atualizar_gasto"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        320,
+        224
+      ],
+      "id": "6dae322a-56a5-4a2b-93a4-2437983e76a7",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "tableId": "Gastos",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "Nome",
+              "condition": "eq",
+              "keyValue": "={{ $fromAI(\"nome_gasto\") }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabaseTool",
+      "typeVersion": 1,
+      "position": [
+        1088,
+        224
+      ],
+      "id": "eac4245b-dd05-4cba-9e43-bb0a6af5459a",
+      "name": "tool_deletar_gastos"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.toolCalculator",
+      "typeVersion": 1,
+      "position": [
+        1280,
+        224
+      ],
+      "id": "d4f49aac-9773-4351-9639-5f68d2d15bfd",
+      "name": "tool_somar_gastos"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-12-17T12:25:45.097Z",
+      "createdAt": "2025-12-17T12:25:45.097Z",
+      "role": "workflow:owner",
+      "workflowId": "XMhKlJARpgP1oRIN",
+      "projectId": "o60HadikmqrvYZ9Z"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-12-17T12:25:45.097Z",
+  "versionId": "6c0f860e-813f-4ac6-b3cc-07e95d536d52"
+}

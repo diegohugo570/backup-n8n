@@ -1,0 +1,355 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "Lista de Nomes": {
+      "main": [
+        [
+          {
+            "node": "R.O.F.A.I",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "R.O.F.E.I",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Lista de Nomes",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "R.O.F.A.I": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-06-15T14:57:08.134Z",
+  "id": "shLVttXRTFrnhBMN",
+  "isArchived": false,
+  "meta": null,
+  "name": "Fundamentos Function Node Loops com SplitInBatches",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "# 🧠 O que é o Function Node?\n\n## O Function Node permite usar JavaScript para criar ou manipular dados.\n\n### Você pode:\n### - Modificar dados recebidos\n### - Criar múltiplos itens a partir de um array\n### - Adicionar lógica e condições com `if`, `map`, `return`\n\n📌 O resultado precisa ser um array de objetos como:\n\n```javascript\n[\n  { json: { nome: \"Ana\", mensagem: \"Olá Ana\" } },\n  { json: { nome: \"Bruno\", mensagem: \"Olá Bruno\" } }\n]\n",
+        "height": 880,
+        "width": 720,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        0,
+        340
+      ],
+      "id": "c649e5e9-6187-4609-adce-9c56fc7ea49c",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "# ⚙️ Modos de Execução: \"Run Once for All Items\" vs \"Run Once for Each Item\"\n\n## Ao usar Code , você escolhe como ele executa:\n\n---\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n## 💡 Resumo:\n\n### - Use **All Items** quando receber arrays (listas)\n### - Use **Each Item** quando quiser tratar cada item individualmente",
+        "height": 1120,
+        "width": 800,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        740,
+        340
+      ],
+      "id": "502419ea-5308-4499-92b8-53756b19cea6",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "# 🧠🔁 Aula: Function Node + Loops com SplitInBatches\n\n## Nessa aula, você vai aprender a:\n\n### - Usar o **Function Node** para aplicar lógica com JavaScript\n### - Criar estruturas dinâmicas e múltiplos itens com `.map()`\n### - Usar o **SplitInBatches** para simular loops\n### - Processar uma lista item por item (ex: mensagens personalizadas)\n",
+        "height": 320,
+        "width": 1020,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "ecd896cf-5b26-484f-8492-8ae662dbaafa",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "# 🔄 O que é o Loop Over Items?\n\n## Esse node divide os dados em \"lotes\", simulando um loop.\n\n### Com ele, você pode:\n### - Processar 1 item por vez\n### - Usar em envios por API, e-mail, etc.\n### - Evitar sobrecarregar serviços externos\n\n### 🧪 Dica: Defina o \"Batch Size\" como `1` para um loop item-a-item.",
+        "height": 1120,
+        "width": 1140,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1560,
+        340
+      ],
+      "id": "6ea8addb-0b38-488f-b3cf-4aa9dbd30a86",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "content": "# 🚀 Desafio da Aula\n\n## Teste seu aprendizado com os seguintes passos:\n\n### 1. Adicione novos nomes na lista inicial\n### 2. No Function Node, transforme o nome em MAIÚSCULAS:\n```javascript\nmensagem: `Olá ${nome.toUpperCase()}, seja bem-vindo(a)!\n```\n\n### 3. Experimente mudar o \"Batch Size\" para 2 e veja o comportamento",
+        "height": 460,
+        "width": 800,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2720,
+        340
+      ],
+      "id": "3b5241af-ba59-46b6-90d1-d9722baf9d75",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c495a311-bb71-4be1-a0d4-132dc45a95f8",
+              "name": "nomes",
+              "value": "[\"Ana\", \"Bruno\", \"Carlos\", \"Daniela\"]",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "fd06a4ab-1d03-46bd-a54d-5f40e624e3d1",
+      "name": "Lista de Nomes",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        400,
+        960
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Converte cada nome para um objeto com nome formatado\nconst nomes = $input.first().json.nomes;\nreturn nomes.map(nome => ({\n  json: {\n    nome: nome,\n    mensagem: `Olá ${nome}, bem-vindo(a) ao sistema!`\n  }\n}));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1080,
+        740
+      ],
+      "id": "b7239681-1caf-4330-8d7d-c8578877d54e",
+      "name": "R.O.F.A.I"
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "// O Function Node será executado 1 vez para cada item individualmente\nconst nome = $json.nome;\n\nreturn {mensagem: `Olá ${nome}, seja bem-vindo(a)!`};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1240,
+        1100
+      ],
+      "id": "57d010d2-d9cd-4982-8d4f-2ec7031c041d",
+      "name": "R.O.F.E.I"
+    },
+    {
+      "parameters": {
+        "content": "## 🔁 Run Once for Each Item\n\n### - O node executa **uma vez para cada item individual**\n### - Ideal quando os dados já estão separados em itens no fluxo\n### - Não precisa usar `.map()` aqui!\n",
+        "height": 340,
+        "width": 720,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        780,
+        900
+      ],
+      "id": "3b86fd2c-69a7-4f76-8030-118ea47a5c93",
+      "name": "Sticky Note5"
+    },
+    {
+      "parameters": {
+        "content": "## ✅ Run Once for All Items (modo padrão)\n\n### - O node executa **uma única vez**, recebendo **todos os itens juntos**\n### - Ideal quando você quer trabalhar com arrays ou listas\n### - Exemplo: transformar um array de nomes em mensagens\n---",
+        "height": 340,
+        "width": 720,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        780,
+        540
+      ],
+      "id": "7224026a-a8f2-4e6a-8ff2-db182ba682cc",
+      "name": "Sticky Note6"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "nomes",
+        "options": {
+          "destinationFieldName": "nome"
+        }
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        940,
+        1100
+      ],
+      "id": "3814ebfe-def6-47fe-b0a0-08ff4ce48fda",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        100,
+        960
+      ],
+      "id": "09927587-69fd-4fc5-a3e4-2fc724d13b3e",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "batchSize": 2,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1720,
+        920
+      ],
+      "id": "a23574bc-b583-4774-9fbb-e1c60cbc7abe",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "fb8401af-03c3-48c4-a62c-1f252b7e2303",
+              "name": "mensagem",
+              "value": "={{ $json.mensagem }}",
+              "type": "string"
+            },
+            {
+              "id": "c2e36f59-b829-409a-93d7-da5de74d41d5",
+              "name": "nome",
+              "value": "={{ $json.nome }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2320,
+        1060
+      ],
+      "id": "f9e14ccb-5907-4fe5-bc18-9df2d2d852a6",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        2280,
+        800
+      ],
+      "id": "bb073ac9-5f0f-4e2a-b49e-864ea5ceba73",
+      "name": "No Operation, do nothing"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-06-15T14:57:08.134Z",
+      "createdAt": "2025-06-15T14:57:08.134Z",
+      "role": "workflow:owner",
+      "workflowId": "shLVttXRTFrnhBMN",
+      "projectId": "o60HadikmqrvYZ9Z"
+    }
+  ],
+  "staticData": null,
+  "tags": [
+    {
+      "updatedAt": "2025-06-14T14:35:30.743Z",
+      "createdAt": "2025-06-14T14:35:30.743Z",
+      "id": "f7Ttu7FQN3EvRKX9",
+      "name": "🥷🏼 Ninja Automações"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-06-15T14:57:08.134Z",
+  "versionId": "f3ce41ee-bdd1-4235-9318-392c82682d80"
+}

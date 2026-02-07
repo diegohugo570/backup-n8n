@@ -1,0 +1,492 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Supabase",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres Chat Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "salva_nome": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "salva_idade": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "salva_amigos": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "obtem_amigos": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "salvar_comida_favorita": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Cria Usuário",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Obtém Informações",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cria Usuário": {
+      "main": [
+        [
+          {
+            "node": "Obtém Informações",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Obtém Informações": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-07-07T14:34:35.479Z",
+  "id": "uEsier43oSo9MPmk",
+  "isArchived": false,
+  "meta": null,
+  "name": "Memória Semântica - Hot Path",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -640,
+        120
+      ],
+      "id": "635794bd-2877-4fa3-aecd-b86e13092ef0",
+      "name": "When chat message received",
+      "webhookId": "342b787a-7dad-4b4e-96bf-ed1c82b6c255"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('When chat message received').item.json.chatInput }}",
+        "options": {
+          "systemMessage": "=<cargo>\nVocê é um assistente pessoal que deve ser amigável e se comportar como uma namorada do usuário.\n</cargo>\n\n<instruções>\nVocê deve conversar com o usuário naturalmente, mas quando ele mencionar o nome, idade, nome de amigos ou comida favorita você deve usar uma das <ferramentas> mais adequadas.\n\nSe você não souber as <informações do usuário>, pergunte-o!\n</instruções>\n\n<informações do usuário>\nNome: {{ $if($json.nome, $json.nome, \"Valor desconhecido\") }}\nIdade: {{ $if($json.idade, $json.idade, \"Valor desconhecido\") }}\nAmigos: {{ $if($json.amigos, $json.amigos, \"Valor desconhecido\") }}\nComida favorita: {{ $if($json.comida_favorita, $json.comida_favorita, \"Valor desconhecido\") }}\n</informações do usuário>\n\n<ferramentas>\n- salva_nome: deve ser chamada para salvar o nome do usuário quando ele mencionar\n- salva_idade: deve ser chamada para salvar a idade do usuário quando ele mencionar\n- obtem_amigos: deve ser chamada SEMPRE antes de salvar_amigos. útil para obter o nome dos amigos atuais\n- salvar_amigos: deve ser chamada para salvar os nomes, separados por vírgula, dos amigos (existentes + novos)\n- salvar_comida_favorita: deve ser chamada para salvar o nome da comida favorita do usuário\n</ferramentas>"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.9,
+      "position": [
+        480,
+        140
+      ],
+      "id": "88eaa7d5-e832-4136-8ab8-e772c0976932",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4.1-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4.1-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        360,
+        320
+      ],
+      "id": "60710505-bf43-4074-b119-b8e9bc58edea",
+      "name": "OpenAI Chat Model"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('When chat message received').item.json.sessionId }}",
+        "tableName": "n8n_chat_trim"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
+      "typeVersion": 1.3,
+      "position": [
+        500,
+        320
+      ],
+      "id": "1290986c-f1ea-4aac-8eb5-024289d02fc6",
+      "name": "Postgres Chat Memory"
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Útil para salvar o nome do usuário",
+        "operation": "update",
+        "tableId": "users",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "remoteJid",
+              "condition": "eq",
+              "keyValue": "={{ $('When chat message received').item.json.sessionId }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "nome",
+              "fieldValue": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('fieldValues0_Field_Value', `Nome do usuário`, 'string') }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabaseTool",
+      "typeVersion": 1,
+      "position": [
+        940,
+        620
+      ],
+      "id": "36e6d00f-ebac-408b-95e2-37f26333b857",
+      "name": "salva_nome"
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Útil para salvar a idade do usuário",
+        "operation": "update",
+        "tableId": "users",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "remoteJid",
+              "condition": "eq",
+              "keyValue": "={{ $('When chat message received').item.json.sessionId }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "idade",
+              "fieldValue": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('fieldValues0_Field_Value', `Idade do usuário`, 'string') }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabaseTool",
+      "typeVersion": 1,
+      "position": [
+        820,
+        620
+      ],
+      "id": "bf6e9cba-a1b5-4f02-af17-be7b1d1f8d6a",
+      "name": "salva_idade"
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Útil para salvar o nome dos amigos",
+        "operation": "update",
+        "tableId": "users",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "remoteJid",
+              "condition": "eq",
+              "keyValue": "={{ $('When chat message received').item.json.sessionId }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "amigos",
+              "fieldValue": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('fieldValues0_Field_Value', `Nome dos amigos separados por vírgula`, 'string') }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabaseTool",
+      "typeVersion": 1,
+      "position": [
+        700,
+        620
+      ],
+      "id": "4dfec08a-424a-4e43-bb29-ade6b7060471",
+      "name": "salva_amigos"
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Útil para obter o nome dos amigos atuais",
+        "operation": "get",
+        "tableId": "users",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "remoteJid",
+              "keyValue": "={{ $('When chat message received').item.json.sessionId }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabaseTool",
+      "typeVersion": 1,
+      "position": [
+        560,
+        620
+      ],
+      "id": "514b5e77-aa14-4dc0-9fe0-94d93293bed4",
+      "name": "obtem_amigos"
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Útil para salvar o nome da comida favorita",
+        "operation": "update",
+        "tableId": "users",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "remoteJid",
+              "condition": "eq",
+              "keyValue": "={{ $('When chat message received').item.json.sessionId }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "comida favorita",
+              "fieldValue": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('fieldValues0_Field_Value', `Comida favorita do usuário`, 'string') }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabaseTool",
+      "typeVersion": 1,
+      "position": [
+        400,
+        620
+      ],
+      "id": "bb141a88-e711-4b5a-9710-eb14e43cbbf5",
+      "name": "salvar_comida_favorita"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "users",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "remoteJid",
+              "keyValue": "={{ $json.sessionId }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -420,
+        120
+      ],
+      "id": "c5480929-4cc5-4fcf-b0e6-aaedfab48037",
+      "name": "Supabase",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "176485fb-7fb8-4b14-b4c0-21bd2bd85166",
+              "leftValue": "={{ $json.isEmpty() }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -200,
+        120
+      ],
+      "id": "0fb19024-85cd-4fa2-8dd9-80a62c9ee1de",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "tableId": "users",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "remoteJid",
+              "fieldValue": "={{ $('When chat message received').item.json.sessionId }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "de985678-e472-4d8a-ac1a-cf4ed76a05ce",
+      "name": "Cria Usuário"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "users",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "remoteJid",
+              "keyValue": "={{ $('When chat message received').first().json.sessionId }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        220,
+        140
+      ],
+      "id": "5f701327-93d1-4473-a5c8-92dcaec13060",
+      "name": "Obtém Informações"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-07-07T14:34:35.479Z",
+      "createdAt": "2025-07-07T14:34:35.479Z",
+      "role": "workflow:owner",
+      "workflowId": "uEsier43oSo9MPmk",
+      "projectId": "o60HadikmqrvYZ9Z"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-07-07T14:34:35.479Z",
+  "versionId": "3e976837-b93c-4308-a7d2-771c16582ca6"
+}

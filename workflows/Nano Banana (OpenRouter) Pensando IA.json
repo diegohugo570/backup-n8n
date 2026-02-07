@@ -1,0 +1,147 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "Nano Banana": {
+      "main": [
+        [
+          {
+            "node": "FILTRAR_BASE64",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Nano Banana",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "FILTRAR_BASE64": {
+      "main": [
+        [
+          {
+            "node": "Enviar imagem",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-08-29T20:20:08.275Z",
+  "id": "UCAeuRzX0oqdZUYn",
+  "isArchived": false,
+  "meta": null,
+  "name": "Nano Banana (OpenRouter) Pensando IA",
+  "nodes": [
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://openrouter.ai/api/v1/chat/completions",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "openRouterApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"model\": \"google/gemini-2.5-flash-image-preview:free\",\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": [\n        {\n          \"type\": \"text\",\n          \"text\": \"Gerar uma imagem de: {{ $json.body.data.message.conversation }}\"\n        }\n      ]\n    }\n  ]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        336,
+        80
+      ],
+      "id": "289abf78-62d4-4bc2-b8cb-7937d8838653",
+      "name": "Nano Banana"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "6cf3800f-ad8c-4f29-9f37-ddfdb7a0605c",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        80,
+        80
+      ],
+      "id": "497a735f-d273-4531-8dfe-d75c3295c7cd",
+      "name": "Webhook",
+      "webhookId": "6cf3800f-ad8c-4f29-9f37-ddfdb7a0605c"
+    },
+    {
+      "parameters": {
+        "resource": "messages-api",
+        "operation": "send-image",
+        "instanceName": "PensandoAI",
+        "remoteJid": "={{ $('Webhook').item.json.body.data.key.remoteJid }}",
+        "media": "={{ $('FILTRAR_BASE64').item.json.base64Data }}",
+        "options_message": {}
+      },
+      "type": "n8n-nodes-evolution-api.evolutionApi",
+      "typeVersion": 1,
+      "position": [
+        848,
+        80
+      ],
+      "id": "b5a63692-d979-4cf2-aeeb-82523f233536",
+      "name": "Enviar imagem"
+    },
+    {
+      "parameters": {
+        "jsCode": "const inputData = $input.all();\n\nconst outputData = [];\n\nfor (const item of inputData) {\n  const imageUrl = item.json.choices[0].message.images[0].image_url.url;\n  \n  \n  const base64Data = imageUrl.split(',')[1];\n  \n  \n  const binaryData = Buffer.from(base64Data, 'base64');\n  \n  outputData.push({\n    json: {\n      ...item.json,\n      base64Data: base64Data, \n    },\n    binary: {\n      data: {\n        data: binaryData,\n        mimeType: 'image/png',\n        fileName: 'generated_image.png'\n      }\n    }\n  });\n}\n\nreturn outputData;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        592,
+        80
+      ],
+      "id": "ecb8b6e9-858d-4edf-be0a-d71a8f8dd1ce",
+      "name": "FILTRAR_BASE64"
+    },
+    {
+      "parameters": {
+        "content": "## Nano Banana",
+        "height": 256,
+        "width": 1104
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        0,
+        0
+      ],
+      "typeVersion": 1,
+      "id": "092c4ab1-03e5-4f02-9f70-9735f2699c0a",
+      "name": "Sticky Note"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-08-29T20:20:08.275Z",
+      "createdAt": "2025-08-29T20:20:08.275Z",
+      "role": "workflow:owner",
+      "workflowId": "UCAeuRzX0oqdZUYn",
+      "projectId": "o60HadikmqrvYZ9Z"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-08-29T20:20:08.275Z",
+  "versionId": "68e28758-3f03-4c7b-9a80-2c7491e5036c"
+}

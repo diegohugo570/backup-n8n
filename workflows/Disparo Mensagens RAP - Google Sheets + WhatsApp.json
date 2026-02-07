@@ -1,0 +1,197 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "Start Manual": {
+      "main": [
+        [
+          {
+            "node": "Ler Contatos do Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ler Contatos do Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "Gerar Mensagem RAP",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gerar Mensagem RAP": {
+      "main": [
+        [
+          {
+            "node": "Dividir em Lotes (200)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Dividir em Lotes (200)": {
+      "main": [
+        [
+          {
+            "node": "Enviar via WhatsApp API",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Enviar via WhatsApp API": {
+      "main": [
+        [
+          {
+            "node": "Delay entre mensagens",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delay entre mensagens": {
+      "main": [
+        [
+          {
+            "node": "Dividir em Lotes (200)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-11-03T13:12:56.987Z",
+  "id": "mcDbODrpvYAaVNja",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Disparo Mensagens RAP - Google Sheets + WhatsApp",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "6b9b98d8-0374-4726-acd2-5e3c8e147f51",
+      "name": "Start Manual",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -176,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/130R2GVn5BQTJAid5xm6qBOGAVE6IfbJx8E0uJ1BtHVU/edit?gid=0#gid=0",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/130R2GVn5BQTJAid5xm6qBOGAVE6IfbJx8E0uJ1BtHVU/edit?gid=0#gid=0",
+          "mode": "url"
+        },
+        "options": {}
+      },
+      "id": "ddd48dd3-d55f-411f-bca7-8c5e846cafed",
+      "name": "Ler Contatos do Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 3,
+      "position": [
+        80,
+        0
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "LOJgWrBsYdHTsczQ",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "functionCode": "return items.map(item => {\n  const nome = item.json.nome || 'aí';\n  const empresa = item.json.empresa || 'sua empresa';\n  const setor = item.json.setor || 'seu setor';\n  const topico = item.json.topico || 'um tema interessante';\n  const whatsapp = item.json.whatsapp;\n\n  const mensagem = `Oi ${nome}, tudo bem? Preciso falar com você 5 minutos, pode ser?\\n\\n` +\n  `Vi que a ${empresa} atua no setor de ${setor}, e notei que muitas empresas dessa área enfrentam desafios em ${topico}.\\n\\n` +\n  `Nós ajudamos empresas como a sua a resolver isso com automações inteligentes integradas a ferramentas como Google Maps, WhatsApp e CRMs.\\n\\n` +\n  `Faz sentido para você conversarmos 15 minutos sobre como isso poderia ajudar a ${empresa}?`;\n\n  return {\n    json: {\n      nome,\n      empresa,\n      setor,\n      topico,\n      whatsapp,\n      mensagem\n    }\n  };\n});"
+      },
+      "id": "5ead2ed2-6811-4bbb-8eed-6beed8ac9071",
+      "name": "Gerar Mensagem RAP",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        336,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "batchSize": 1,
+        "options": {}
+      },
+      "id": "4c821ee8-2b95-430b-a115-2f7e460b4ca6",
+      "name": "Dividir em Lotes (200)",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 1,
+      "position": [
+        576,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://api.seuendpointdewhatsapp.com/send",
+        "jsonParameters": true,
+        "options": {}
+      },
+      "id": "6b8d5390-d529-418b-b4cf-31ee66d0aec2",
+      "name": "Enviar via WhatsApp API",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 2,
+      "position": [
+        832,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 5,
+        "unit": "seconds"
+      },
+      "id": "e4ba2b90-b222-4623-848d-271fb542e000",
+      "name": "Delay entre mensagens",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1,
+      "position": [
+        1088,
+        0
+      ],
+      "webhookId": "9b6c0ac0-ed1b-4b3d-b237-ac7140b3cf19"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-11-03T13:12:56.987Z",
+      "createdAt": "2025-11-03T13:12:56.987Z",
+      "role": "workflow:owner",
+      "workflowId": "mcDbODrpvYAaVNja",
+      "projectId": "o60HadikmqrvYZ9Z"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-11-03T20:07:46.973Z",
+  "versionId": "62b76ab1-9907-45c9-8f41-710da94cfd31"
+}

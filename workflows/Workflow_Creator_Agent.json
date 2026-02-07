@@ -1,0 +1,228 @@
+{
+  "updatedAt": "2025-06-25T12:17:06.967Z",
+  "createdAt": "2025-06-25T12:16:42.266Z",
+  "id": "272SJnp9McHKRSHE",
+  "name": "Workflow Creator Agent",
+  "active": false,
+  "isArchived": false,
+  "nodes": [
+    {
+      "parameters": {
+        "contextWindowLength": 10
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        1180,
+        500
+      ],
+      "id": "ef482c9f-e789-483e-84ea-666d434a8ad1",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        700,
+        240
+      ],
+      "id": "95962ff3-094c-4c96-9c20-b4dcede66724",
+      "name": "Chat Message",
+      "webhookId": "10a2ebbe-bed4-40b8-88fa-b3ae8c036749"
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "workflowObject": "={{ $json.toJsonString() }}",
+        "requestOptions": {}
+      },
+      "type": "n8n-nodes-base.n8n",
+      "typeVersion": 1,
+      "position": [
+        1680,
+        240
+      ],
+      "id": "1ba458e5-5443-48b4-91cb-dc5f1750ca7d",
+      "name": "Cria o Workflow",
+      "notesInFlow": false,
+      "credentials": {
+        "n8nApi": {
+          "id": "TcexyNIh3ZiaZTis",
+          "name": "n8n account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "=You are a professional n8n Workflow Creator.\n\nYour job is to generate complete, import-ready n8n workflow JSONs based on user input. Prioritize decisive action and intelligent assumptions. Do not delay by asking unnecessary clarifying questions — only pause if the request is too vague to proceed.\n\nYou have access to:\n- The full n8n Cheat Sheet Guide with node structures, tool configurations, and integration best practices\n\nBuild workflows confidently using the most likely logic unless told otherwise.\n\nWorkflow Requirements:\n- All nodes must include `id`, `name`, `type`, `typeVersion`, `position`, `parameters`, and be linked via `connections`\n- Use expressions like `{{$node[\"NodeName\"].json[\"field\"]}}` to pass data between nodes\n- Avoid placeholders like `\"API_KEY_HERE\"` — use `{{ myCredentials }}`\n- Include `try/catch` in Function or Code nodes\n- Output only the full JSON inside a ```json code block — no extra commentary, screenshots, or Markdown outside the block\n\nIf the use case clearly involves AI reasoning, include an AI Agent node using:\n- `@n8n/n8n-nodes-langchain.agent`\n- `model`: `chatgpt-4o-latest` (fallback: `o1-mini`)\n- `promptType`: `\"define\"`\n- `responseFormat`: `\"json_object\"` for structured replies\n- Add memory and tool nodes where applicable\n\nIf the use case involves automation (e.g., Slack, Airtable, HTTP, Notion), structure the logic with appropriate trigger and integration nodes. Use examples from your internal references to shape node structure and configuration.\n\nOnly ask the user follow-up questions when you cannot make a reasonable assumption.\n\nBe bold. Be accurate. Build workflows.\n\nOnce you generate the complete workflow JSON, return it as the final output so it can be validated by the next node. Do not hold it internally or summarize it — return the full JSON inside a single ```json code block.\n\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.8,
+      "position": [
+        1040,
+        240
+      ],
+      "id": "c5123eb0-2622-4291-a95e-5cb30f0f8861",
+      "name": "N8N AI Agent Workflow Creator"
+    },
+    {
+      "parameters": {
+        "model": "anthropic/claude-sonnet-4",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        940,
+        500
+      ],
+      "id": "fa9be269-8500-4bbe-b5cf-2f9aac03a406",
+      "name": "Claude Sonnet 4"
+    },
+    {
+      "parameters": {
+        "jsCode": "const raw = $json.output || $json.message || $json.text;\n\nif (!raw) {\n  throw new Error(\"Missing AI output text.\");\n}\n\nconst match = raw.match(/```json\\s*([\\s\\S]*?)```/);\nif (!match) {\n  throw new Error(\"No ```json code block found.\");\n}\n\nconst jsonString = match[1].trim();\n\ntry {\n  const parsed = JSON.parse(jsonString);\n\n  // ✅ Return as a proper n8n item\n  return [{ json: parsed }];\n} catch (err) {\n  throw new Error(\"Workflow JSON parse failed: \" + err.message);\n}\n"
+      },
+      "id": "0143e431-b519-4387-a50c-4a1138bc6f7a",
+      "name": "Valida o JSON do Fluxo",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1400,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "content": "",
+        "height": 680,
+        "width": 1240,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        620,
+        20
+      ],
+      "id": "87a540b6-1432-42f3-9a75-96f2a89e25f3",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "▇▔▔▇▔▇▇▇▔▇▔▔▇▔▔▇▔▔▔▇▔▔▇▇▔▔▇▇▇▔▔▇▔▔▇▔▇▇▇▇▔▇▔▔▔▔▔▇▇▔▔▇▔▔▔▇▔▔▔▇▇▇▔▇▇▇▔▔▇▇▇▇▔▔▇▇▔▔▇▇▇▇▇▔▔▇▇▔▔▇▇▇▔▔▔▔▇▇▔▔▔▇▇▇▔▇▇▇▇▔▇▔▔▇▔▇▇▇▇▇▔▔▔▔▔▔▔▇▇▇▔▔▇▔▔▔▇▔▔▇▇▇▔▔▇▔▔▇▇▇▔▇▔▔▇▔▇▇▇▇▔▇▔▔▇▔▇▇▇▇▔▔▇▇▇\n▇▇▔▇▔▇▔▇▔▇▇▔▇▔▔▇▔▔▔▇▔▇▔▔▇▔▇▔▔▇▔▇▔▇▔▔▇▔▔▔▔▇▔▔▔▔▇▔▔▇▔▇▔▔▔▇▔▔▇▔▔▔▔▇▔▔▇▔▇▔▔▔▔▇▔▔▇▔▔▔▇▔▔▔▇▔▔▇▔▇▔▔▇▔▔▇▔▔▇▔▇▔▔▔▔▇▔▔▔▔▇▇▔▇▔▔▔▇▔▔▔▔▔▔▔▔▔▇▔▔▇▔▇▔▔▔▇▔▔▇▔▔▇▔▇▔▇▔▔▔▔▇▇▔▇▔▇▔▔▔▔▇▔▔▇▔▇▔▔▔▔▇▔▔▔\n▇▔▇▇▔▇▇▇▔▇▔▇▇▔▔▇▔▇▔▇▔▇▔▔▇▔▇▇▇▔▔▇▇▔▔▔▇▇▇▔▔▇▔▔▔▔▇▔▔▇▔▇▔▇▔▇▔▔▇▔▔▔▔▇▇▇▔▔▇▇▇▔▔▇▇▇▇▔▔▔▇▔▔▔▇▔▔▇▔▇▇▇▔▔▔▇▇▇▇▔▇▔▇▇▔▇▇▇▔▔▇▔▇▇▔▔▔▇▔▔▔▔▇▇▇▔▔▇▇▇▔▔▔▇▔▇▔▔▔▇▇▇▔▔▇▔▇▔▔▔▔▇▔▇▇▔▇▇▇▔▔▇▔▔▇▔▇▇▇▔▔▔▇▇▔\n▇▔▔▇▔▇▔▇▔▇▔▔▇▔▔▇▔▇▔▇▔▇▔▔▇▔▇▔▔▇▔▇▔▇▔▔▇▔▔▔▔▇▔▔▔▔▇▔▔▇▔▇▔▇▔▇▔▔▇▔▔▔▔▇▔▔▇▔▇▔▔▔▔▇▔▔▇▔▔▔▇▔▔▔▇▔▔▇▔▇▔▔▇▔▔▇▔▔▇▔▇▔▔▇▔▇▔▔▔▔▇▔▔▇▔▔▔▇▔▔▔▔▔▔▔▔▔▇▔▔▇▔▔▔▇▔▔▔▔▇▔▔▇▔▇▔▇▔▔▔▔▇▔▔▇▔▇▔▔▔▔▔▇▔▇▔▇▔▔▔▔▔▔▔▇\n▇▔▔▇▔▇▇▇▔▇▔▔▇▔▔▔▇▔▇▔▔▔▇▇▔▔▇▔▔▇▔▇▔▔▇▔▇▔▔▔▔▇▇▇▇▔▔▇▇▔▔▔▇▔▇▔▔▔▔▇▇▇▔▇▔▔▇▔▇▇▇▇▔▇▔▔▇▔▔▔▇▔▔▔▔▇▇▔▔▇▔▔▇▔▔▇▔▔▇▔▔▇▇▔▔▇▇▇▇▔▇▔▔▇▔▔▔▇▔▔▔▔▔▔▔▔▔▇▇▇▔▔▔▔▇▔▔▔▔▇▔▔▇▔▇▔▔▇▇▇▔▇▔▔▇▔▇▇▇▇▔▔▔▇▔▔▇▇▇▇▔▇▇▇▔\n▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔",
+        "height": 140,
+        "width": 2480
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "9b84e4ef-34ba-4c50-9f20-024dc1176020",
+      "name": "Sticky Note1"
+    }
+  ],
+  "connections": {
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "N8N AI Agent Workflow Creator",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chat Message": {
+      "main": [
+        [
+          {
+            "node": "N8N AI Agent Workflow Creator",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "N8N AI Agent Workflow Creator": {
+      "main": [
+        [
+          {
+            "node": "Valida o JSON do Fluxo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Claude Sonnet 4": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "N8N AI Agent Workflow Creator",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Valida o JSON do Fluxo": {
+      "main": [
+        [
+          {
+            "node": "Cria o Workflow",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "meta": null,
+  "pinData": {},
+  "versionId": "901c9e33-994a-4170-963c-72544ddabcfb",
+  "activeVersionId": null,
+  "triggerCount": 0,
+  "shared": [
+    {
+      "updatedAt": "2025-06-25T12:16:42.266Z",
+      "createdAt": "2025-06-25T12:16:42.266Z",
+      "role": "workflow:owner",
+      "workflowId": "272SJnp9McHKRSHE",
+      "projectId": "o60HadikmqrvYZ9Z"
+    }
+  ],
+  "activeVersion": null,
+  "tags": [
+    {
+      "updatedAt": "2025-06-25T12:16:21.520Z",
+      "createdAt": "2025-06-25T12:16:21.520Z",
+      "id": "fbnh2AFfrHU2ZznN",
+      "name": "formacao-agentes-n8n"
+    },
+    {
+      "updatedAt": "2025-06-25T12:16:21.512Z",
+      "createdAt": "2025-06-25T12:16:21.512Z",
+      "id": "HGjaXtx8ENj2ce7D",
+      "name": "ricneves"
+    },
+    {
+      "updatedAt": "2025-06-25T12:16:21.530Z",
+      "createdAt": "2025-06-25T12:16:21.530Z",
+      "id": "Ch0QO7kMAbdnPRda",
+      "name": "ai-agent"
+    }
+  ]
+}

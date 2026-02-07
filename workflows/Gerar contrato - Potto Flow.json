@@ -1,0 +1,309 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Simplificação de dados",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simplificação de dados": {
+      "main": [
+        [
+          {
+            "node": "Google Drive",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Drive": {
+      "main": [
+        [
+          {
+            "node": "Google Docs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Docs": {
+      "main": [
+        [
+          {
+            "node": "Google Drive1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Drive1": {
+      "main": [
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File": {
+      "main": [
+        [
+          {
+            "node": "Evolution API",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-12-17T12:28:52.135Z",
+  "id": "ejGtJE751WUBK2bp",
+  "isArchived": false,
+  "meta": null,
+  "name": "Gerar contrato - Potto Flow",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "ed0ea685-9060-4382-afcd-940017a41aae",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "3b9f5ddb-a310-4a79-9a27-71f734a3e582",
+      "name": "Webhook",
+      "webhookId": "ed0ea685-9060-4382-afcd-940017a41aae"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "00e8e3e2-de7f-473c-8483-f0695d41bb67",
+              "name": "nome_cliente",
+              "value": "={{ $json.body.data.fields[0].value }}",
+              "type": "string"
+            },
+            {
+              "id": "c0d43825-c30a-4c4b-bb51-6c156d5a92d3",
+              "name": "CPF_CNPJ",
+              "value": "={{ $json.body.data.fields[1].value }}",
+              "type": "string"
+            },
+            {
+              "id": "e5e4c6ef-307a-4dfa-8965-e3ee5d4d99f1",
+              "name": "endereco_cliente",
+              "value": "={{ $json.body.data.fields[2].value }}",
+              "type": "string"
+            },
+            {
+              "id": "ea5658ef-df64-4adc-95b2-b188027610f2",
+              "name": "telefone_cliente",
+              "value": "={{ $json.body.data.fields[3].value }}",
+              "type": "string"
+            },
+            {
+              "id": "47663c73-06e3-4034-80e7-162d97f244ea",
+              "name": "email_cliente",
+              "value": "={{ $json.body.data.fields[4].value }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        224,
+        0
+      ],
+      "id": "e2331fe7-c136-4bd5-8eb6-542606dc4d95",
+      "name": "Simplificação de dados"
+    },
+    {
+      "parameters": {
+        "operation": "copy",
+        "fileId": {
+          "__rl": true,
+          "value": "1zXGzMKp3Uf6jkhEZXzUoHTgK6Z3Vcx9_ICHAIq_Bt44",
+          "mode": "list",
+          "cachedResultName": "Aula contrato - CONTRATO DE PRESTAÇÃO DE SERVIÇOS DE INTELIGÊNCIA ARTIFICIAL ",
+          "cachedResultUrl": "https://docs.google.com/document/d/1zXGzMKp3Uf6jkhEZXzUoHTgK6Z3Vcx9_ICHAIq_Bt44/edit?usp=drivesdk"
+        },
+        "name": "=Contrato - {{ $json.nome_cliente }} - {{ $json.CPF_CNPJ }}",
+        "sameFolder": false,
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "1dmNA05hKmVjNZZ-5QuNBhy2Tz53iZJnv",
+          "mode": "list",
+          "cachedResultName": "aula contratos - pasta clientes",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1dmNA05hKmVjNZZ-5QuNBhy2Tz53iZJnv"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        448,
+        0
+      ],
+      "id": "101dfcea-134e-4c9e-9c4f-295e2ef5812c",
+      "name": "Google Drive"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentURL": "={{ $json.id }}",
+        "actionsUi": {
+          "actionFields": [
+            {
+              "action": "replaceAll",
+              "text": "{nome-cliente}",
+              "replaceText": "={{ $('Simplificação de dados').item.json.nome_cliente }}",
+              "matchCase": true
+            },
+            {
+              "action": "replaceAll",
+              "text": "{cpf-cnpj}",
+              "replaceText": "={{ $('Simplificação de dados').item.json.CPF_CNPJ }}",
+              "matchCase": true
+            },
+            {
+              "action": "replaceAll",
+              "text": "{endereco-cliente}",
+              "replaceText": "={{ $('Simplificação de dados').item.json.endereco_cliente }}",
+              "matchCase": true
+            },
+            {
+              "action": "replaceAll",
+              "text": "{telefone-cliente}",
+              "replaceText": "={{ $('Simplificação de dados').item.json.telefone_cliente }}",
+              "matchCase": true
+            },
+            {
+              "action": "replaceAll",
+              "text": "{email-cliente}",
+              "replaceText": "={{ $('Simplificação de dados').item.json.email_cliente }}",
+              "matchCase": true
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.googleDocs",
+      "typeVersion": 2,
+      "position": [
+        672,
+        0
+      ],
+      "id": "9b43e5fb-5463-4b51-9a09-2e02089869d0",
+      "name": "Google Docs"
+    },
+    {
+      "parameters": {
+        "operation": "download",
+        "fileId": {
+          "__rl": true,
+          "value": "={{ $json.documentId }}",
+          "mode": "id"
+        },
+        "options": {
+          "googleFileConversion": {
+            "conversion": {
+              "docsToFormat": "application/pdf"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        880,
+        0
+      ],
+      "id": "1cc5db8a-35b1-416f-a02b-233f225a1ffd",
+      "name": "Google Drive1"
+    },
+    {
+      "parameters": {
+        "operation": "binaryToPropery",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        1104,
+        0
+      ],
+      "id": "235270ef-ffb8-49e6-896a-1571a54fe351",
+      "name": "Extract from File"
+    },
+    {
+      "parameters": {
+        "resource": "messages-api",
+        "operation": "send-document",
+        "instanceName": "potto-evo",
+        "remoteJid": "={{ $('Simplificação de dados').item.json.telefone_cliente }}",
+        "media": "={{ $json.data }}",
+        "caption": "Novo contrato criado. Segue para aprovação",
+        "options_message": {}
+      },
+      "type": "n8n-nodes-evolution-api.evolutionApi",
+      "typeVersion": 1,
+      "position": [
+        1328,
+        0
+      ],
+      "id": "907dbcc1-df65-4ed4-8cd6-03f460dce74a",
+      "name": "Evolution API"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-12-17T12:28:52.135Z",
+      "createdAt": "2025-12-17T12:28:52.135Z",
+      "role": "workflow:owner",
+      "workflowId": "ejGtJE751WUBK2bp",
+      "projectId": "o60HadikmqrvYZ9Z"
+    }
+  ],
+  "staticData": null,
+  "tags": [
+    {
+      "updatedAt": "2025-12-11T21:49:57.103Z",
+      "createdAt": "2025-12-11T21:49:57.103Z",
+      "id": "jVJBpv1Zg5iwH5ja",
+      "name": "Potto Flow - Aula"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-12-17T12:28:52.135Z",
+  "versionId": "2693f4ea-cc30-4ddf-b3fc-ef0ba90a5e0f"
+}

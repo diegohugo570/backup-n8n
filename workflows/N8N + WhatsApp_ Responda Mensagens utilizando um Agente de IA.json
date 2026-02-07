@@ -1,0 +1,372 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Dados",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Dados": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis Chat Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Evolution API",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Evolution API": {
+      "main": [
+        [
+          {
+            "node": "Evolution API1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-06-22T12:52:14.460Z",
+  "id": "T1T2WYKIOJ5rFbgB",
+  "isArchived": false,
+  "meta": null,
+  "name": "N8N + WhatsApp: Responda Mensagens utilizando um Agente de IA",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "540ed0bc-5fad-425e-8fce-b05b4cd0e27b",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        60,
+        500
+      ],
+      "id": "92cddc92-b861-4b74-aa6e-a25e76a77578",
+      "name": "Webhook",
+      "webhookId": "540ed0bc-5fad-425e-8fce-b05b4cd0e27b"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "310c0cce-bd8e-43b1-b40e-850a9d8a1daa",
+              "name": "Quem mandou",
+              "value": "={{ $json.body.data.key.remoteJid }}",
+              "type": "string"
+            },
+            {
+              "id": "080faabe-abf9-45ee-9711-1f475c3742c3",
+              "name": "Instancia",
+              "value": "={{ $json.body.instance }}",
+              "type": "string"
+            },
+            {
+              "id": "caf10002-6d7c-42f1-b088-1b18c8a39096",
+              "name": "Mensagem",
+              "value": "={{ $json.body.data.message.conversation }}",
+              "type": "string"
+            },
+            {
+              "id": "04f7b0d5-9a52-4594-b71c-04a1b4c95e47",
+              "name": "Id da mensagem",
+              "value": "={{ $json.body.data.key.id }}",
+              "type": "string"
+            },
+            {
+              "id": "e90cf818-d301-4ee8-9045-28475b788d43",
+              "name": "Nome da pessoa",
+              "value": "={{ $json.body.data.pushName }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        340,
+        500
+      ],
+      "id": "9af6c1eb-e173-47de-8b06-78a6ac6835fd",
+      "name": "Dados"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('Dados').item.json.Mensagem }}",
+        "options": {
+          "systemMessage": "=Você deve responder dúvidas dos clientes sobre a nossa página."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        660,
+        500
+      ],
+      "id": "42c2464a-3f57-47b0-a05c-b78832bf3046",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        420,
+        880
+      ],
+      "id": "c428c2f2-d63c-4fc4-a7dd-c557d7ae217b",
+      "name": "OpenAI Chat Model"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('Dados').item.json['Quem mandou'] }}",
+        "sessionTTL": 3600,
+        "contextWindowLength": 10
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
+      "typeVersion": 1.4,
+      "position": [
+        780,
+        880
+      ],
+      "id": "2b8a930d-10c3-4560-b96a-0a34ce1ec4ee",
+      "name": "Redis Chat Memory"
+    },
+    {
+      "parameters": {
+        "resource": "chat-api",
+        "operation": "read-messages",
+        "instanceName": "={{ $('Dados').item.json.Instancia }}",
+        "remoteJid": "={{ $('Dados').item.json['Quem mandou'] }}",
+        "messageId": "={{ $('Dados').item.json['Id da mensagem'] }}"
+      },
+      "type": "n8n-nodes-evolution-api.evolutionApi",
+      "typeVersion": 1,
+      "position": [
+        1180,
+        500
+      ],
+      "id": "c0b5c3dd-9f20-4049-856c-6bb4fe3c12f7",
+      "name": "Evolution API"
+    },
+    {
+      "parameters": {
+        "resource": "messages-api",
+        "instanceName": "={{ $('Dados').item.json.Instancia }}",
+        "remoteJid": "={{ $('Dados').item.json['Quem mandou'] }}",
+        "messageText": "={{ $('AI Agent').item.json.output }}",
+        "options_message": {
+          "delay": 3000,
+          "linkPreview": true
+        }
+      },
+      "type": "n8n-nodes-evolution-api.evolutionApi",
+      "typeVersion": 1,
+      "position": [
+        1380,
+        500
+      ],
+      "id": "8a6eaa62-6a0b-47f2-8c63-50fad2d36b69",
+      "name": "Evolution API1"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Retorna informações da nossa página",
+        "url": "https://www.youtube.com/@guilherme_laz"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        980,
+        880
+      ],
+      "id": "eeb8efb3-c526-49f5-9a8c-21f2a14e6755",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "content": "## Como usar:\n\n1. Copie a URL do Webhook e cole na sua instância da Evolution\n\n2. Modifique o System Prompt do AI Agent\n\n3. Escolha entre o Groq ou OpenAi e insira as credenciais\n\n4. Insira as credenciais do Redis\n\n5. Altere o Link da página que você quer consultar no node HTTP Request",
+        "height": 300,
+        "width": 520,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        0,
+        20
+      ],
+      "id": "be42781c-ab62-4568-b69b-24daf6875a6c",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "# 1\nCopie a URL de produção e cole na Evolution",
+        "height": 300,
+        "width": 250,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -20,
+        380
+      ],
+      "id": "3ac31d2d-9e2f-4cd9-bfb8-9b07fec9d75d",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "# 2\nModifique o System Prompt do agente\n",
+        "height": 300,
+        "width": 520,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        520,
+        400
+      ],
+      "id": "e3a23f79-37cb-40ff-81db-87cc8f8900fb",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "# 3\nEscolha um, insira as credenciais e conecte ao agente",
+        "height": 280,
+        "width": 290,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        380,
+        740
+      ],
+      "id": "3bf73f29-732c-4132-89b7-e0c9c578cbb8",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        560,
+        880
+      ],
+      "id": "89887472-c823-4454-b5cc-c2cf2969c9b4",
+      "name": "Groq Chat Model"
+    },
+    {
+      "parameters": {
+        "content": "# 4\nInsira as credenciais",
+        "height": 280,
+        "width": 150,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        740,
+        740
+      ],
+      "id": "1a227f88-cc20-43da-96a7-442eff9f4c3b",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "content": "# 5\nAltere o link da página",
+        "height": 280,
+        "width": 150,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        940,
+        740
+      ],
+      "id": "44a5b120-21af-41e3-80ae-36e4921ac658",
+      "name": "Sticky Note5"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-06-22T12:52:14.460Z",
+      "createdAt": "2025-06-22T12:52:14.460Z",
+      "role": "workflow:owner",
+      "workflowId": "T1T2WYKIOJ5rFbgB",
+      "projectId": "o60HadikmqrvYZ9Z"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-06-22T12:53:03.115Z",
+  "versionId": "211cfdec-2767-4ee6-b4ad-29d98848a47a"
+}

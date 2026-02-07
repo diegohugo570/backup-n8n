@@ -1,0 +1,619 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "pega metricas 1 hora",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "pega metricas 1 hora": {
+      "main": [
+        [
+          {
+            "node": "pega metricas instagram",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "pega metricas instagram": {
+      "main": [
+        [
+          {
+            "node": "Supabase",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger1": {
+      "main": [
+        [
+          {
+            "node": "pega metricas 6 horas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "pega metricas instagram1": {
+      "main": [
+        [
+          {
+            "node": "Supabase1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "pega metricas 6 horas": {
+      "main": [
+        [
+          {
+            "node": "pega metricas instagram1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger2": {
+      "main": [
+        [
+          {
+            "node": "pega metricas 6 horas1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "pega metricas instagram2": {
+      "main": [
+        [
+          {
+            "node": "Supabase2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "pega metricas 6 horas1": {
+      "main": [
+        [
+          {
+            "node": "pega metricas instagram2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger3": {
+      "main": [
+        [
+          {
+            "node": "pega metricas 6 horas2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "pega metricas instagram3": {
+      "main": [
+        [
+          {
+            "node": "Supabase3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "pega metricas 6 horas2": {
+      "main": [
+        [
+          {
+            "node": "pega metricas instagram3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-08-27T18:32:57.519Z",
+  "id": "w9IN2MxMWYTQwmIx",
+  "isArchived": false,
+  "meta": null,
+  "name": "Métricas DascIA Carrossel",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        112,
+        112
+      ],
+      "id": "7a2753dc-e450-46ba-81ba-0b6dc90f8bea",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "tableId": "metricas",
+        "returnAll": true,
+        "matchType": "allFilters",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "colhido_1h",
+              "condition": "eq",
+              "keyValue": "false"
+            },
+            {
+              "keyName": "created_at",
+              "condition": "lte",
+              "keyValue": "={{ $now.minus(1, 'hours') }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        352,
+        112
+      ],
+      "id": "70c39cf3-99ad-436c-9022-988aa7dd3f8c",
+      "name": "pega metricas 1 hora"
+    },
+    {
+      "parameters": {
+        "url": "=https://graph.instagram.com/{{ $json.id_postagem }}/insights?metric=reach,likes,comments,saved,shares&access_token=seu token de acesso",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        672,
+        112
+      ],
+      "id": "62ace01d-46db-406c-b845-b6e5bd5d20ab",
+      "name": "pega metricas instagram"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "metricas",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "id",
+              "condition": "eq",
+              "keyValue": "={{ $('pega metricas 1 hora').item.json.id }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "metricas_1h",
+              "fieldValue": "={{ ({\n\"alcance\": $json.data[0].values[0].value,\n\"likes\": $json.data[1].values[0].value,\n\"comentarios\": $json.data[2].values[0].value,\n\"saves\": $json.data[3].values[0].value,\n\"compartilhamentos\": $json.data[4].values[0].value\n}) }}"
+            },
+            {
+              "fieldId": "colhido_1h",
+              "fieldValue": "true"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        960,
+        112
+      ],
+      "id": "29e4dc8d-4cf2-4bae-81dd-a2c8af4b05c4",
+      "name": "Supabase"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        80,
+        384
+      ],
+      "id": "1d6cff7d-8bff-4f7a-9624-2f5299aede5b",
+      "name": "Schedule Trigger1"
+    },
+    {
+      "parameters": {
+        "url": "=https://graph.instagram.com/{{ $json.id_postagem }}/insights?metric=reach,likes,comments,saved,shares&access_token=seu token de acesso",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        672,
+        384
+      ],
+      "id": "18aa9ea7-7391-4fd3-9fe0-8628e7fbedb7",
+      "name": "pega metricas instagram1"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "metricas",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "id",
+              "condition": "eq",
+              "keyValue": "={{ $('pega metricas 6 horas').item.json.id }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "metricas_6h",
+              "fieldValue": "={{ ({\n\"alcance\": $json.data[0].values[0].value,\n\"likes\": $json.data[1].values[0].value,\n\"comentarios\": $json.data[2].values[0].value,\n\"saves\": $json.data[3].values[0].value,\n\"compartilhamentos\": $json.data[4].values[0].value\n}) }}"
+            },
+            {
+              "fieldId": "colhido_6h",
+              "fieldValue": "true"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        960,
+        384
+      ],
+      "id": "08d1ebb0-2359-4752-98a4-f7f4ccc28318",
+      "name": "Supabase1"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "tableId": "metricas",
+        "returnAll": true,
+        "matchType": "allFilters",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "colhido_6h",
+              "condition": "eq",
+              "keyValue": "false"
+            },
+            {
+              "keyName": "created_at",
+              "condition": "lte",
+              "keyValue": "={{ $now.minus(6, 'hours') }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        352,
+        384
+      ],
+      "id": "39cc046b-92e7-42cb-98f0-1a4989e9fc74",
+      "name": "pega metricas 6 horas"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        64,
+        672
+      ],
+      "id": "7aa5539b-7596-4ced-8f41-045a0198e547",
+      "name": "Schedule Trigger2"
+    },
+    {
+      "parameters": {
+        "url": "=https://graph.instagram.com/{{ $json.id_postagem }}/insights?metric=reach,likes,comments,saved,shares&access_token=seu token de acesso",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        672,
+        672
+      ],
+      "id": "69a1a84b-1eee-4702-8b16-d513d18efb5e",
+      "name": "pega metricas instagram2"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "metricas",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "id",
+              "condition": "eq",
+              "keyValue": "={{ $('pega metricas 6 horas1').item.json.id }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "metricas_12h",
+              "fieldValue": "={{ ({\n\"alcance\": $json.data[0].values[0].value,\n\"likes\": $json.data[1].values[0].value,\n\"comentarios\": $json.data[2].values[0].value,\n\"saves\": $json.data[3].values[0].value,\n\"compartilhamentos\": $json.data[4].values[0].value\n}) }}"
+            },
+            {
+              "fieldId": "colhido_12h",
+              "fieldValue": "true"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        928,
+        672
+      ],
+      "id": "72163936-c9b9-454d-8599-e5dd2b518a7a",
+      "name": "Supabase2"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "tableId": "metricas",
+        "returnAll": true,
+        "matchType": "allFilters",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "colhido_12h",
+              "condition": "eq",
+              "keyValue": "false"
+            },
+            {
+              "keyName": "created_at",
+              "condition": "lte",
+              "keyValue": "={{ $now.minus(12, 'hours') }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        368,
+        672
+      ],
+      "id": "9c502e61-107f-46c9-8334-8e6c318a1981",
+      "name": "pega metricas 6 horas1"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        48,
+        944
+      ],
+      "id": "acd7e79d-f69e-400d-bc3a-4cf723964514",
+      "name": "Schedule Trigger3"
+    },
+    {
+      "parameters": {
+        "url": "=https://graph.instagram.com/{{ $json.id_postagem }}/insights?metric=reach,likes,comments,saved,shares&access_token=seu token de acesso",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        672,
+        944
+      ],
+      "id": "ae3ae18e-2288-4279-bcf4-79b1d27486db",
+      "name": "pega metricas instagram3"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "metricas",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "id",
+              "condition": "eq",
+              "keyValue": "={{ $('pega metricas 6 horas2').item.json.id }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "metricas_24h",
+              "fieldValue": "={{ ({\n\"alcance\": $json.data[0].values[0].value,\n\"likes\": $json.data[1].values[0].value,\n\"comentarios\": $json.data[2].values[0].value,\n\"saves\": $json.data[3].values[0].value,\n\"compartilhamentos\": $json.data[4].values[0].value\n}) }}"
+            },
+            {
+              "fieldId": "colhido_24h",
+              "fieldValue": "true"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        928,
+        944
+      ],
+      "id": "0e616d14-c214-4fe1-90b7-ea21bbe5a8e8",
+      "name": "Supabase3"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "tableId": "metricas",
+        "returnAll": true,
+        "matchType": "allFilters",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "colhido_24h",
+              "condition": "eq",
+              "keyValue": "false"
+            },
+            {
+              "keyName": "created_at",
+              "condition": "lte",
+              "keyValue": "={{ $now.minus(24, 'hours') }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        368,
+        944
+      ],
+      "id": "6711967d-ecad-4196-96fb-7689368593e4",
+      "name": "pega metricas 6 horas2"
+    },
+    {
+      "parameters": {
+        "content": "# Métricas de 1 hora",
+        "height": 280,
+        "width": 1160
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        0,
+        0
+      ],
+      "typeVersion": 1,
+      "id": "7428a237-81eb-42f4-ba10-b59865ae4bb3",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "# Métricas de 6 horas",
+        "height": 280,
+        "width": 1160,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        0,
+        288
+      ],
+      "typeVersion": 1,
+      "id": "515c0ba1-c6ce-4b42-9f0b-0506c9e57ae3",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "# Métricas de 6 horas",
+        "height": 280,
+        "width": 1160,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        0,
+        560
+      ],
+      "typeVersion": 1,
+      "id": "5116dd96-c224-46aa-93d3-c54b0959217a",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "# Métricas de 6 horas",
+        "height": 280,
+        "width": 1160,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        0,
+        848
+      ],
+      "typeVersion": 1,
+      "id": "76a69591-23ef-4e3e-8d7c-605df1e35df7",
+      "name": "Sticky Note3"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-08-27T18:32:57.519Z",
+      "createdAt": "2025-08-27T18:32:57.519Z",
+      "role": "workflow:owner",
+      "workflowId": "w9IN2MxMWYTQwmIx",
+      "projectId": "o60HadikmqrvYZ9Z"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-08-27T18:32:57.519Z",
+  "versionId": "bcea33ee-caaa-4df5-84a5-fc35887a6fd5"
+}

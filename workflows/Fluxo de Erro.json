@@ -1,0 +1,341 @@
+{
+  "active": true,
+  "activeVersion": {
+    "updatedAt": "2025-12-11T22:04:59.725Z",
+    "createdAt": "2025-12-11T22:04:59.725Z",
+    "versionId": "090ede8a-6842-4b4f-b237-b9f718cdc502",
+    "workflowId": "JYdbN8I7nmRyvlhh",
+    "nodes": [
+      {
+        "parameters": {},
+        "type": "n8n-nodes-base.errorTrigger",
+        "typeVersion": 1,
+        "position": [
+          0,
+          0
+        ],
+        "id": "61b6c06c-2428-4a92-8355-095116ca5265",
+        "name": "Error Trigger"
+      },
+      {
+        "parameters": {
+          "method": "POST",
+          "url": "=https://[domínio da sua instância aqui]/message/sendText/[nome da sua instância aqui]",
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "apikey",
+                "value": "chave api da sua instância aqui"
+              }
+            ]
+          },
+          "sendBody": true,
+          "bodyParameters": {
+            "parameters": [
+              {
+                "name": "number",
+                "value": "=seu número aqui"
+              },
+              {
+                "name": "text",
+                "value": "={{ $json.mensagem }}"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          560,
+          0
+        ],
+        "id": "28097191-1a29-40e7-8e2d-47628aa70197",
+        "name": "envia mensagem"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "dd46a5a5-2757-4870-857b-4eaee46dd423",
+                "name": "mensagem",
+                "value": "=*Notificação de ERRO no fluxo:* {{ $json.workflow.name }}\n\nURL da execução: https://[seu domínio aqui]/workflow/{{ $json.workflow.id }}/executions/{{ $json.execution.id }}\n\n*ERRO:*\nNome: {{ $json.execution.error.name }}\nStatus: {{ $json.execution.mode }}\nNó onde aconteceu o erro: {{ $json.execution.lastNodeExecuted }}\n\n*RAZÃO:*\nMensagem: {{ $json.execution.error.message }}\n\n*Workflow ERRO:*\nNome do Workflow: {{ $json.workflow.name }}\nlink: https://[seu domínio aqui]/workflow/{{ $json.workflow.id }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          280,
+          0
+        ],
+        "id": "23295781-4a11-4a37-bba8-bffdbd577627",
+        "name": "Edit Fields1"
+      }
+    ],
+    "connections": {
+      "Error Trigger": {
+        "main": [
+          [
+            {
+              "node": "Edit Fields1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Edit Fields1": {
+        "main": [
+          [
+            {
+              "node": "envia mensagem",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "authors": "system migration",
+    "name": null,
+    "description": null,
+    "autosaved": false
+  },
+  "activeVersionId": "090ede8a-6842-4b4f-b237-b9f718cdc502",
+  "connections": {
+    "Error Trigger": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "envia mensagem",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-06-15T14:34:34.247Z",
+  "id": "JYdbN8I7nmRyvlhh",
+  "isArchived": false,
+  "meta": null,
+  "name": "Fluxo de Erro",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "61b6c06c-2428-4a92-8355-095116ca5265",
+      "name": "Error Trigger"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://[domínio da sua instância aqui]/message/sendText/[nome da sua instância aqui]",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "chave api da sua instância aqui"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "=seu número aqui"
+            },
+            {
+              "name": "text",
+              "value": "={{ $json.mensagem }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        560,
+        0
+      ],
+      "id": "28097191-1a29-40e7-8e2d-47628aa70197",
+      "name": "envia mensagem"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "dd46a5a5-2757-4870-857b-4eaee46dd423",
+              "name": "mensagem",
+              "value": "=*Notificação de ERRO no fluxo:* {{ $json.workflow.name }}\n\nURL da execução: https://[seu domínio aqui]/workflow/{{ $json.workflow.id }}/executions/{{ $json.execution.id }}\n\n*ERRO:*\nNome: {{ $json.execution.error.name }}\nStatus: {{ $json.execution.mode }}\nNó onde aconteceu o erro: {{ $json.execution.lastNodeExecuted }}\n\n*RAZÃO:*\nMensagem: {{ $json.execution.error.message }}\n\n*Workflow ERRO:*\nNome do Workflow: {{ $json.workflow.name }}\nlink: https://[seu domínio aqui]/workflow/{{ $json.workflow.id }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        280,
+        0
+      ],
+      "id": "23295781-4a11-4a37-bba8-bffdbd577627",
+      "name": "Edit Fields1"
+    }
+  ],
+  "pinData": {
+    "Error Trigger": [
+      {
+        "json": {
+          "execution": {
+            "id": "791",
+            "url": "https://n8nwebhook.lucasevange.com/workflow/02AxdxAUndmmOVTx/executions/791",
+            "error": {
+              "level": "warning",
+              "tags": {},
+              "context": {
+                "itemIndex": 0,
+                "request": {
+                  "body": {
+                    "recipient": {
+                      "id": "1893769711379971"
+                    },
+                    "message": {
+                      "text": "Claro! Eu sou o Max, um SDR da TechMinds AI. Meu papel é ajudar empresas a descobrir como nossos agentes de IA podem transformar seus processos de atendimento, vendas e automação. Estou aqui para entender suas necessidades e, se fizer sentido, agendar uma reunião para uma demonstração mais detalhada com um de nossos especialistas. 😊"
+                    }
+                  },
+                  "headers": {
+                    "authorization": "**hidden**",
+                    "content-type": "application/json",
+                    "accept": "application/json,text/html,application/xhtml+xml,application/xml,text/*;q=0.9, image/*;q=0.8, */*;q=0.7"
+                  },
+                  "method": "POST",
+                  "uri": "https://graph.instagram.com/v22.0/17841468786430880/messag",
+                  "gzip": true,
+                  "rejectUnauthorized": true,
+                  "followRedirect": true,
+                  "resolveWithFullResponse": true,
+                  "followAllRedirects": true,
+                  "timeout": 300000,
+                  "encoding": null,
+                  "json": false,
+                  "useStream": true
+                }
+              },
+              "functionality": "regular",
+              "name": "NodeApiError",
+              "timestamp": 1745863370274,
+              "node": {
+                "parameters": {
+                  "curlImport": "",
+                  "method": "POST",
+                  "url": "=https://graph.instagram.com/v22.0/{{ $('Edit Fields').item.json.recipientId }}/messag",
+                  "authentication": "none",
+                  "provideSslCertificates": false,
+                  "sendQuery": false,
+                  "sendHeaders": true,
+                  "specifyHeaders": "keypair",
+                  "headerParameters": {
+                    "parameters": [
+                      {
+                        "name": "Authorization",
+                        "value": "Bearer IGACEVzjzLMLFBZAE4yMjcxNzVfN1k4Yl8zcVVoUm9uVk5CMTZA5TWV4TzVjUzk2c0NyN0J1Q3hvWEhYWUNIczVzZATIwOWUtLWxfbU9wZAzVsYXlGVUlVNVpxb1FsdThmanJWNDZAGUDBzZAVQ4Y2FZAQXdWQUNjVS1IQ0NnZAlA4S3FJYwZDZD"
+                      },
+                      {
+                        "name": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ]
+                  },
+                  "sendBody": true,
+                  "contentType": "json",
+                  "specifyBody": "keypair",
+                  "bodyParameters": {
+                    "parameters": [
+                      {
+                        "name": "recipient.id",
+                        "value": "={{ $('Edit Fields').item.json.senderId }}"
+                      },
+                      {
+                        "name": "message.text",
+                        "value": "={{ $json.output }}"
+                      }
+                    ]
+                  },
+                  "options": {},
+                  "infoMessage": ""
+                },
+                "type": "n8n-nodes-base.httpRequest",
+                "typeVersion": 4.2,
+                "position": [
+                  5360,
+                  720
+                ],
+                "id": "458848a4-7072-4e79-9f52-74678a5778e1",
+                "name": "HTTP Request2"
+              },
+              "messages": [
+                "400 - \"{\\\"error\\\":{\\\"message\\\":\\\"Unsupported post request. Object with ID '17841468786430880' does not exist, cannot be loaded due to missing permissions, or does not support this operation\\\",\\\"type\\\":\\\"IGApiException\\\",\\\"code\\\":100,\\\"error_subcode\\\":33,\\\"fbtrace_id\\\":\\\"AoWx0slyOvnAGwRneT4F_OY\\\"}}\""
+              ],
+              "httpCode": "400",
+              "description": "Unsupported post request. Object with ID '17841468786430880' does not exist, cannot be loaded due to missing permissions, or does not support this operation",
+              "message": "Bad request - please check your parameters",
+              "stack": "NodeApiError: Bad request - please check your parameters\n    at ExecuteContext.execute (/usr/local/lib/node_modules/n8n/node_modules/n8n-nodes-base/dist/nodes/HttpRequest/V3/HttpRequestV3.node.js:597:21)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at WorkflowExecute.runNode (/usr/local/lib/node_modules/n8n/node_modules/n8n-core/dist/execution-engine/workflow-execute.js:681:27)\n    at /usr/local/lib/node_modules/n8n/node_modules/n8n-core/dist/execution-engine/workflow-execute.js:915:51\n    at /usr/local/lib/node_modules/n8n/node_modules/n8n-core/dist/execution-engine/workflow-execute.js:1246:20"
+            },
+            "lastNodeExecuted": "HTTP Request2",
+            "mode": "retry",
+            "retryOf": "789"
+          },
+          "workflow": {
+            "id": "02AxdxAUndmmOVTx",
+            "name": "Agente Instagram - Aula copy"
+          }
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-06-15T14:34:34.247Z",
+      "createdAt": "2025-06-15T14:34:34.247Z",
+      "role": "workflow:owner",
+      "workflowId": "JYdbN8I7nmRyvlhh",
+      "projectId": "o60HadikmqrvYZ9Z"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-06-15T14:34:34.247Z",
+  "versionId": "090ede8a-6842-4b4f-b237-b9f718cdc502"
+}

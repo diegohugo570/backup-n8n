@@ -1,0 +1,235 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Security Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Executa N8N Audit": {
+      "main": [
+        [
+          {
+            "node": "Seta o Prompt para o Agente",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Seta o Prompt para o Agente": {
+      "main": [
+        [
+          {
+            "node": "AI Security Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Executa N8N Audit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Security Agent": {
+      "main": [
+        [
+          {
+            "node": "Envia Mensagem no Canal de Auditoria",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-06-23T20:34:51.068Z",
+  "id": "ZBq5S019RiKLk7wW",
+  "isArchived": false,
+  "meta": null,
+  "name": "Agente  de IA - Auditor e Segurança",
+  "nodes": [
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o-mini-2024-07-18",
+          "mode": "list",
+          "cachedResultName": "gpt-4o-mini-2024-07-18"
+        },
+        "options": {
+          "temperature": 0.7
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        900,
+        480
+      ],
+      "id": "4ed387bb-8859-4a4a-90e4-35149aebf908",
+      "name": "OpenAI Chat Model"
+    },
+    {
+      "parameters": {
+        "command": "n8n audit"
+      },
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        540,
+        280
+      ],
+      "id": "ac2a2398-9096-4abe-a278-d63f7923fc9a",
+      "name": "Executa N8N Audit"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "6f183c9d-98ba-4c73-afae-acde075723f5",
+              "name": "input_prompt",
+              "value": "={{ $json.stdout }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        740,
+        280
+      ],
+      "id": "444c9167-9876-4c6f-b953-1f8e2ea62a62",
+      "name": "Seta o Prompt para o Agente"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "weeks",
+              "triggerAtDay": [
+                1
+              ],
+              "triggerAtHour": 9
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        320,
+        280
+      ],
+      "id": "dd7ddf46-ea5a-4b8b-9c75-413038d69bce",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "3213131",
+          "mode": "id"
+        },
+        "text": "={{ $json.output }}",
+        "otherOptions": {}
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.3,
+      "position": [
+        1360,
+        280
+      ],
+      "id": "f2b4db0e-ab85-459e-89d2-a1dfe062eb32",
+      "name": "Envia Mensagem no Canal de Auditoria",
+      "webhookId": "e0e4c59d-d80b-4a09-a040-832c9a9b789b"
+    },
+    {
+      "parameters": {
+        "content": "",
+        "height": 600,
+        "width": 1360,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        220,
+        40
+      ],
+      "id": "b3c706da-3567-4db1-a13d-4e447f69accd",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.input_prompt }}",
+        "options": {
+          "systemMessage": "=<PAPEL>\nAtue como um especialista em análise de logs e segurança cibernética. Você é um agente de auditoria altamente qualificado com vasta experiência na interpretação de registros do n8n audit. Sua tarefa é processar e analisar o log fornecido, gerando um resumo detalhado das atividades registradas e fornecendo insights valiosos sobre possíveis padrões, anomalias e riscos encontrados.\n</PAPEL>\n\n<INSTRUÇÕES>\n1. Receba e leia o log do comando n8n audit.\n2. Identifique e classifique os eventos registrados, agrupando-os em categorias.\n3. Gere um resumo estruturado.\n4. Forneça insights e recomendações, abordando:\n  - Possíveis problemas de segurança\n  - Melhorias operacionais \n  - Sugestões para otimização e boas práticas no uso do n8n\n  - Apresente as informações de forma organizada e clara, separando-as em seções com títulos e listas estruturadas.\n</INSTRUÇÕES>\n\n<RESPOSTA_ESPERADA>\n### 📋 Resumo da Análise do Log n8n audit:\n\n\n### 🔍 Insights e Recomendações:\n\n\n⚡ *Conclusão:* Resumo da análise e recomendação final.\n</RESPOSTA_ESPERADA>"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        940,
+        280
+      ],
+      "id": "1a5a99cc-2b1e-4837-b6d0-c66d6c7094d5",
+      "name": "AI Security Agent"
+    },
+    {
+      "parameters": {
+        "content": "▇▔▔▇▔▇▇▇▔▇▔▔▇▔▔▔▇▇▇▔▇▇▇▇▔▔▇▇▇▔▇▔▔▇▔▇▇▇▔▔▇▔▇▇▇▇▇▔▇▔▔▔▇▔▔▔▇▇▔▔▔▇▇▇▔▇▇▇▇▔▇▔▔▇▔▇▇▇▇▇▔▔▔▔▔▔▔▇▇▇▔▔▇▔▔▔▇▔▔▇▇▇▔▔▇▔▔▇▇▇▔▇▔▔▇▔▇▇▇▇▔▇▔▔▇▔▇▇▇▇▔▔▇▇▇\n▇▇▔▇▔▇▔▇▔▇▇▔▇▔▔▇▔▔▔▔▇▔▔▔▔▇▔▔▔▔▇▔▔▇▔▇▔▔▇▔▇▔▔▔▇▔▔▔▇▔▔▔▇▔▔▇▔▔▇▔▇▔▔▔▔▇▔▔▔▔▇▇▔▇▔▔▔▇▔▔▔▔▔▔▔▔▔▇▔▔▇▔▇▔▔▔▇▔▔▇▔▔▇▔▇▔▇▔▔▔▔▇▇▔▇▔▇▔▔▔▔▇▔▔▇▔▇▔▔▔▔▇▔▔▔\n▇▔▇▇▔▇▇▇▔▇▔▇▇▔▔▔▇▇▔▔▇▇▇▔▔▇▔▔▔▔▇▔▔▇▔▇▇▇▔▔▇▔▔▔▇▔▔▔▔▇▔▇▔▔▔▇▇▇▇▔▇▔▇▇▔▇▇▇▔▔▇▔▇▇▔▔▔▇▔▔▔▔▇▇▇▔▔▇▇▇▔▔▔▇▔▇▔▔▔▇▇▇▔▔▇▔▇▔▔▔▔▇▔▇▇▔▇▇▇▔▔▇▔▔▇▔▇▇▇▔▔▔▇▇▔\n▇▔▔▇▔▇▔▇▔▇▔▔▇▔▔▔▔▔▇▔▇▔▔▔▔▇▔▔▔▔▇▔▔▇▔▇▔▔▇▔▇▔▔▔▇▔▔▔▔▔▇▔▔▔▔▇▔▔▇▔▇▔▔▇▔▇▔▔▔▔▇▔▔▇▔▔▔▇▔▔▔▔▔▔▔▔▔▇▔▔▇▔▔▔▇▔▔▔▔▇▔▔▇▔▇▔▇▔▔▔▔▇▔▔▇▔▇▔▔▔▔▔▇▔▇▔▇▔▔▔▔▔▔▔▇\n▇▔▔▇▔▇▇▇▔▇▔▔▇▔▔▇▇▇▔▔▇▇▇▇▔▔▇▇▇▔▔▇▇▔▔▇▔▔▇▔▇▔▔▔▇▔▔▔▔▔▇▔▔▔▔▇▔▔▇▔▔▇▇▔▔▇▇▇▇▔▇▔▔▇▔▔▔▇▔▔▔▔▔▔▔▔▔▇▇▇▔▔▔▔▇▔▔▔▔▇▔▔▇▔▇▔▔▇▇▇▔▇▔▔▇▔▇▇▇▇▔▔▔▇▔▔▇▇▇▇▔▇▇▇▔\n▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔",
+        "width": 1920
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "cddf3c90-b882-4bdd-946f-701ecc4e4703",
+      "name": "Sticky Note1"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-06-23T20:34:51.068Z",
+      "createdAt": "2025-06-23T20:34:51.068Z",
+      "role": "workflow:owner",
+      "workflowId": "ZBq5S019RiKLk7wW",
+      "projectId": "o60HadikmqrvYZ9Z"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-07-02T13:49:45.499Z",
+  "versionId": "3780da87-097c-441e-b50e-39d01039e659"
+}

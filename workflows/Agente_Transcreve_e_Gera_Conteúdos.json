@@ -1,0 +1,1118 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Google Drive",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "ConsultaTranscricao",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Drive": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Agente Resume Live",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Agente Resume Live",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GeraDocumento": {
+      "main": [
+        [
+          {
+            "node": "EscreveDocumento",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "EscreveDocumento": {
+      "main": [
+        [
+          {
+            "node": "Agente Gerador Idéias de Conteúdo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Agente Resume Live": {
+      "main": [
+        [
+          {
+            "node": "GeraDocumento",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Agente Gerador Idéias de Conteúdo",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser1": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Agente Gerador Idéias de Conteúdo",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Agente Gerador Idéias de Conteúdo": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "ColocaIdeiasBanco",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IdeiasConteudo": {
+      "ai_tool": [
+        [
+          {
+            "node": "Agente Gerador Idéias de Conteúdo",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Think": {
+      "ai_tool": [
+        [
+          {
+            "node": "Agente Gerador Idéias de Conteúdo",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "PegaUrl",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Replace Me": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PegaUrl": {
+      "main": [
+        [
+          {
+            "node": "Transcreve",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Transcreve": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ConsultaTranscricao": {
+      "main": [
+        [
+          {
+            "node": "VerificaTranscricao",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "VerificaTranscricao": {
+      "main": [
+        [
+          {
+            "node": "PegaTranscricao",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PegaTranscricao": {
+      "main": [
+        [
+          {
+            "node": "Agente Resume Live",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ColocaIdeiasBanco": {
+      "main": [
+        [
+          {
+            "node": "MovePasta",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Think1": {
+      "ai_tool": [
+        [
+          {
+            "node": "Agente Resume Live",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MovePasta": {
+      "main": [
+        [
+          {
+            "node": "Replace Me",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-07-08T19:00:21.005Z",
+  "id": "SSFH5ny0JoiMAZao",
+  "isArchived": false,
+  "meta": null,
+  "name": "Agente_Transcreve_e_Gera_Conteúdos",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -940,
+        500
+      ],
+      "id": "08f2657d-11b0-4650-af1c-3b72d5d9e334",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "triggerOn": "specificFolder",
+        "folderToWatch": {
+          "__rl": true,
+          "value": "1x-DA0bViBYzF7IpwGJbONcaw1euJ8wFm",
+          "mode": "id"
+        },
+        "event": "fileCreated",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDriveTrigger",
+      "typeVersion": 1,
+      "position": [
+        -960,
+        220
+      ],
+      "id": "01b01324-964a-4ff3-a0aa-17bfc0317b3b",
+      "name": "Google Drive Trigger",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "amount": 30
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        720,
+        520
+      ],
+      "id": "71dd98e0-ca3a-4c02-9e90-16becbee336b",
+      "name": "Wait",
+      "webhookId": "2d07fdda-5e5d-4ed3-a52c-fb1dcac778c0"
+    },
+    {
+      "parameters": {
+        "resource": "fileFolder",
+        "returnAll": true,
+        "filter": {
+          "folderId": {
+            "__rl": true,
+            "value": "https://drive.google.com/drive/u/0/folders/1JCa_19pgoRdfYeJFsn4PllIBp__cJEU3",
+            "mode": "url"
+          }
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        -620,
+        500
+      ],
+      "id": "912e36b0-fc68-452f-a245-1531c8f74873",
+      "name": "Google Drive"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4.1-mini-2025-04-14",
+          "mode": "list",
+          "cachedResultName": "gpt-4.1-mini-2025-04-14"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -560,
+        1300
+      ],
+      "id": "db883b42-cf96-43d1-95d2-2a9948548fd9",
+      "name": "OpenAI Chat Model"
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n\t\"titulo\": \"California\",\n\t\"transcricaoliveorganizada\": \"texto da live\"\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.2,
+      "position": [
+        -200,
+        1280
+      ],
+      "id": "e5f9b2aa-b689-4af3-95dc-2a829207105f",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "driveId": "sharedWithMe",
+        "folderId": "=1RcL6SDwN98g1YNnY6R86Ckdsza5hfK1C",
+        "title": "={{ $json.output.titulo }}"
+      },
+      "type": "n8n-nodes-base.googleDocs",
+      "typeVersion": 2,
+      "position": [
+        -80,
+        1020
+      ],
+      "id": "61babe48-d656-4054-8693-53e3382051c2",
+      "name": "GeraDocumento"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentURL": "={{ $json.id }}",
+        "actionsUi": {
+          "actionFields": [
+            {
+              "action": "insert",
+              "text": "=Título da Live: {{ $('Agente Resume Live').item.json.output.titulo }}\n\n{{ $('Agente Resume Live').item.json.output.transcricaoliveorganizada }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.googleDocs",
+      "typeVersion": 2,
+      "position": [
+        140,
+        1020
+      ],
+      "id": "baff7417-5656-4e32-b706-70b288158a37",
+      "name": "EscreveDocumento"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.text }}",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "=Vocé é um agente de IA especialista em analisar transcrições de uma live, você crie um título para a live, organiza em formato de tópicos, assuntos, o que essa live leva a pessoa do ponto a para o ponto b? e um resumo completo de tudo o que foi falado na live.\n\nSua resposta será sempre nesse formato:\n\n{\n\"titulo\": \"<string>\", // aqui você coloca o título do texto\n\"transcricaoliveorganizada\": \"<string>\" // aqui você vai colocar o restante da live organizada em formato de tópicos, assuntos e um resumo completo\n}\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.8,
+      "position": [
+        -460,
+        1020
+      ],
+      "id": "7b4b80fc-ab34-4ff7-8ea0-0b85b909d2bd",
+      "name": "Agente Resume Live"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4.1-mini-2025-04-14",
+          "mode": "list",
+          "cachedResultName": "gpt-4.1-mini-2025-04-14"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        340,
+        1260
+      ],
+      "id": "6dc9e392-380d-404d-8808-7c37130e824e",
+      "name": "OpenAI Chat Model1"
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"Ideia01\": {\n\t\"FormatoConteudo\": \"Reels\",\n\t\"BigIdeaViral\": \"Tema central do vídeo\",\n  \"ConteudoSugerido\": \"Texto do carrossel ou roteiro do video\"\n  },\n  \"Ideia02\": {\n\t\"FormatoConteudo\": \"Reels\",\n\t\"BigIdeaViral\": \"Tema central do vídeo\",\n  \"ConteudoSugerido\": \"Texto do carrossel ou roteiro do video\"\n  },\n  \"Ideia03\": {\n\t\"FormatoConteudo\": \"Reels\",\n\t\"BigIdeaViral\": \"Tema central do vídeo\",\n  \"ConteudoSugerido\": \"Texto do carrossel ou roteiro do video\"\n  },\n  \"Ideia04\": {\n\t\"FormatoConteudo\": \"Reels\",\n\t\"BigIdeaViral\": \"Tema central do vídeo\",\n  \"ConteudoSugerido\": \"Texto do carrossel ou roteiro do video\"\n  },\n  \"Ideia05\": {\n\t\"FormatoConteudo\": \"Reels\",\n\t\"BigIdeaViral\": \"Tema central do vídeo\",\n    \"ConteudoSugerido\": \"Texto do carrossel ou roteiro do video\"\n  }\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.2,
+      "position": [
+        800,
+        1280
+      ],
+      "id": "7aceb99c-604a-4e24-9f11-b65ae57a3370",
+      "name": "Structured Output Parser1"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Transcrição: {{ $('PegaTranscricao').item.json.text }}\n\nResumo: {{ $('Agente Resume Live').item.json.output.transcricaoliveorganizada }}",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "=Aja como um copywriter com 30 anos de experiencia em criar conteúdos de reels e carrosseis virais para instagram.\n\nSeu papel é gerar ao menos 5 ideias de conteúdos a partir de uma transcrição de uma live que você irá receber. Você precisa gerar:\n\n1 - Formato de conteúdo: reels ou carrossel apenas.\n2 - Big Idea Viral: O tema do video ou carrossel a ideia geral.\n3 - Conteudo de Video ou Carrossel sugerido: aqui você gera um roteiro ou um texto para o carrossel de sugestão.\n\nOs conteúdos tem que ser relevantes e que levem a pessoa de um ponto A para um ponto B. O público alvo são mulheres empreendedores, mães, e mulheres em gerão que estão em busca de organizar suas vidas de uma maneira geral.\n\nAntes de gerar consulte a tool: \"IdeiasConteudo\" para não repetir as ideias.\n\nSua resposta será sempre nesse formato:\n\n{\n  \"Ideia01\": {\n\t\"FormatoConteudo\": \"Reels\", // formatos aceitos carrossel ou reels\n\t\"BigIdeaViral\": \"Tema central do vídeo\",\n  \"ConteudoSugerido\": \"Texto do carrossel ou roteiro do video\"\n  },\n  \"Ideia02\": {\n\t\"FormatoConteudo\": \"Reels\", // formatos aceitos carrossel ou reels\n\t\"BigIdeaViral\": \"Tema central do vídeo\",\n  \"ConteudoSugerido\": \"Texto do carrossel ou roteiro do video\"\n  },\n  \"Ideia03\": {\n\t\"FormatoConteudo\": \"Reels\", // formatos aceitos carrossel ou reels\n\t\"BigIdeaViral\": \"Tema central do vídeo\",\n  \"ConteudoSugerido\": \"Texto do carrossel ou roteiro do video\"\n  },\n  \"Ideia04\": {\n\t\"FormatoConteudo\": \"Reels\", // formatos aceitos carrossel ou reels\n\t\"BigIdeaViral\": \"Tema central do vídeo\",\n  \"ConteudoSugerido\": \"Texto do carrossel ou roteiro do video\"\n  },\n  \"Ideia05\": {\n\t\"FormatoConteudo\": \"Reels\", // formatos aceitos carrossel ou reels\n\t\"BigIdeaViral\": \"Tema central do vídeo\",\n    \"ConteudoSugerido\": \"Texto do carrossel ou roteiro do video\"\n  }\n}"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.8,
+      "position": [
+        440,
+        1020
+      ],
+      "id": "7a418d73-332f-4f98-9d51-8507b00210ad",
+      "name": "Agente Gerador Idéias de Conteúdo"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "output",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        800,
+        1020
+      ],
+      "id": "32fef558-b576-46e9-a7e6-e086ee049fe9",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Útil para consultar ideias atuais.",
+        "documentId": {
+          "__rl": true,
+          "value": "19jVHTo1Xn0L0R8em0jlKN48R9tEa8vEORsmZcDloER0",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Página1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19jVHTo1Xn0L0R8em0jlKN48R9tEa8vEORsmZcDloER0/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.5,
+      "position": [
+        480,
+        1400
+      ],
+      "id": "732639ca-ed2f-4790-8eee-d3eb9f28896c",
+      "name": "IdeiasConteudo"
+    },
+    {
+      "parameters": {
+        "description": "=Use the tool to think about something. It will not obtain new information or change the database, but just append the thought to the log. Use it when complex reasoning or some cache memory is needed."
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolThink",
+      "typeVersion": 1,
+      "position": [
+        640,
+        1380
+      ],
+      "id": "1d345ad0-ed91-46cf-aab0-c9e13a354b1c",
+      "name": "Think"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        -280,
+        500
+      ],
+      "id": "cb917578-e351-4f21-bde9-6dd9bf947853",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "name": "Replace Me",
+      "typeVersion": 1,
+      "position": [
+        1920,
+        600
+      ],
+      "id": "7ff847cf-663e-4c3b-a2c3-d8d6a43ce079"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "fe9d77c7-bea7-4bd5-9841-b4fa1ac4cde0",
+              "name": "Url",
+              "value": "=https://proxy-ggdrive.vercel.app/api/stream?id={{ $json.id }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        80,
+        520
+      ],
+      "id": "90b661a6-49f2-4ac3-9f99-c978c73b3079",
+      "name": "PegaUrl"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.assemblyai.com/v2/transcript",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"audio_url\": \"{{ $json.Url }}\",\n  \"language_code\": \"pt\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        400,
+        520
+      ],
+      "id": "3f2c26e3-be26-4ca2-9523-73b12d1bbcf5",
+      "name": "Transcreve"
+    },
+    {
+      "parameters": {
+        "url": "=https://api.assemblyai.com/v2/transcript/{{ $json.id }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {}
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1100,
+        520
+      ],
+      "id": "4bc5a7bf-c5e8-46e4-9c5d-6981fd6ffc84",
+      "name": "ConsultaTranscricao"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "f0c76f47-dd21-4c47-9778-c4d70017a409",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "completed",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1560,
+        520
+      ],
+      "id": "1bed8c97-7071-4228-80f5-9452e4ba3a58",
+      "name": "VerificaTranscricao"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "dcd7f6cc-4263-4090-8558-eb17e39e6693",
+              "name": "text",
+              "value": "={{ $json.text }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -700,
+        1020
+      ],
+      "id": "eca6c9c7-4042-4a86-9f2f-27a583a05b3b",
+      "name": "PegaTranscricao"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "11vHwaqy_GPZ2vCvzRLJnMlRNPONLEKwa2jVLzaZ292Y",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Página1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19jVHTo1Xn0L0R8em0jlKN48R9tEa8vEORsmZcDloER0/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Big Idea Viral": "={{ $json.BigIdeaViral }}",
+            "Data": "={{ $now.format('dd/MM/yyyy') }}",
+            "Formato do Conteúdo": "={{ $json.FormatoConteudo }}",
+            "Roteiro de Conteúdo Sugerido": "={{ $json.ConteudoSugerido }}",
+            "Live de Referencia": "={{ $('Agente Resume Live').item.json.output.titulo }}"
+          },
+          "matchingColumns": [
+            "Big Idea Viral"
+          ],
+          "schema": [
+            {
+              "id": "Big Idea Viral",
+              "displayName": "Big Idea Viral",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Data",
+              "displayName": "Data",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Live de Referencia",
+              "displayName": "Live de Referencia",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Formato do Conteúdo",
+              "displayName": "Formato do Conteúdo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Roteiro de Conteúdo Sugerido",
+              "displayName": "Roteiro de Conteúdo Sugerido",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        1040,
+        1020
+      ],
+      "id": "be9cc0cd-ce61-44ef-aa88-4a4c037b539b",
+      "name": "ColocaIdeiasBanco"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.toolThink",
+      "typeVersion": 1,
+      "position": [
+        -340,
+        1360
+      ],
+      "id": "53c7ebbc-68de-4e85-a3cb-264c9b4204bc",
+      "name": "Think1"
+    },
+    {
+      "parameters": {
+        "operation": "move",
+        "fileId": {
+          "__rl": true,
+          "value": "={{ $('Google Drive').item.json.id }}",
+          "mode": "id"
+        },
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "1FdrmBNiK43LhpPdrqczVnRDX8PhurS5K",
+          "mode": "id"
+        }
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        1400,
+        1020
+      ],
+      "id": "0c44f083-84c2-4f42-9cc4-57719492e6d1",
+      "name": "MovePasta"
+    },
+    {
+      "parameters": {
+        "content": "# Transcreve o vídeo ou live",
+        "height": 100,
+        "width": 2060
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -320,
+        320
+      ],
+      "typeVersion": 1,
+      "id": "6477fbfe-9f96-40e1-ac93-b579b6c77c32",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "# Agente resume live",
+        "height": 100,
+        "width": 1020,
+        "color": 2
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -720,
+        820
+      ],
+      "typeVersion": 1,
+      "id": "91889901-2fed-4046-8fbd-a21e55835116",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "# Agente gera idéias a partir da live",
+        "height": 100,
+        "width": 780,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        380,
+        820
+      ],
+      "typeVersion": 1,
+      "id": "2ef1db77-4b57-488c-99b9-e9a691ab6fbf",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "# Move o vídeo para pasta transcrita",
+        "height": 140,
+        "width": 440,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1220,
+        820
+      ],
+      "typeVersion": 1,
+      "id": "a8f63c37-e3ca-4bf1-9036-930c5e84d715",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "content": "# Monitora pasta no drive",
+        "height": 140,
+        "width": 500,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -980,
+        20
+      ],
+      "typeVersion": 1,
+      "id": "c8385ac4-b7f7-421a-adc6-c80e13205e98",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "content": "# AGENTES QUE RESUME UMA LIVE\n# GERA CONTEÚDO A PARTIR DELA",
+        "height": 120,
+        "width": 620,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        0,
+        0
+      ],
+      "typeVersion": 1,
+      "id": "ba9d1652-e82e-4203-9cda-a27aa166b059",
+      "name": "Sticky Note5"
+    },
+    {
+      "parameters": {
+        "content": "# Instruções do template\n\n## Alterar os seguintes nodes:\n\n1 - Google drive: Alterar a URL da pasta do Drive\n2 - GeraDocumento: Alterar o ID da pasta do Drive\n3 - ColocaIdeiasBanco: Alterar o ID da pasta do Drive\n4 - MovePasta: Alterar o ID da pasta do Drive\n\n## Credenciais necessárias:\n\n1 - Google Drive\n2 - Google Docs\n3 - API AssemblyAI\n4 - Google Sheets\n5 - API OpenAI ",
+        "height": 460,
+        "width": 460
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1540,
+        20
+      ],
+      "typeVersion": 1,
+      "id": "a019e05b-0ac4-41d0-bf42-eb1a9fcc2669",
+      "name": "Sticky Note6"
+    }
+  ],
+  "pinData": {
+    "Google Drive Trigger": [
+      {
+        "json": {
+          "kind": "drive#file",
+          "fileExtension": "mov",
+          "copyRequiresWriterPermission": false,
+          "md5Checksum": "d4ccf143078e84eb84d830c604d15fd9",
+          "writersCanShare": true,
+          "viewedByMe": false,
+          "mimeType": "video/quicktime",
+          "parents": [
+            "1x-DA0bViBYzF7IpwGJbONcaw1euJ8wFm"
+          ],
+          "thumbnailLink": "https://lh3.googleusercontent.com/drive-storage/AJQWtBNm5_vIus2euRHKhxHitjhpesEF7tPa7TI04epTaTON_3erkXoyV4QjnT62VUg66Zv21Jq5UWK_Gjom1dURswNUBSNhIQvYmkxewmfyjMAB=s220",
+          "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/video/quicktime",
+          "shared": true,
+          "lastModifyingUser": {
+            "displayName": "ecoupdigital",
+            "kind": "drive#user",
+            "me": false,
+            "permissionId": "12422255344827209146",
+            "emailAddress": "ecoupdigital@gmail.com",
+            "photoLink": "https://lh3.googleusercontent.com/a-/ALV-UjVYrLr151-cKRpPrGzuYCh1Kh-eOY3HytmTCu3bSQYt8WdLTQ=s64"
+          },
+          "owners": [
+            {
+              "displayName": "ecoupdigital",
+              "kind": "drive#user",
+              "me": false,
+              "permissionId": "12422255344827209146",
+              "emailAddress": "ecoupdigital@gmail.com",
+              "photoLink": "https://lh3.googleusercontent.com/a-/ALV-UjVYrLr151-cKRpPrGzuYCh1Kh-eOY3HytmTCu3bSQYt8WdLTQ=s64"
+            }
+          ],
+          "headRevisionId": "0B7WbBoZCKWpiTURUc2tUZkZPRUc0d3NRdlJGNzJyVVFxb09FPQ",
+          "webViewLink": "https://drive.google.com/file/d/19Uy9mPBRkXvL3pZS3aoaR4Cxrg_VDRBG/view?usp=drivesdk",
+          "webContentLink": "https://drive.google.com/uc?id=19Uy9mPBRkXvL3pZS3aoaR4Cxrg_VDRBG&export=download",
+          "size": "47461773",
+          "viewersCanCopyContent": true,
+          "permissions": [
+            {
+              "id": "anyoneWithLink",
+              "type": "anyone",
+              "kind": "drive#permission",
+              "role": "writer",
+              "allowFileDiscovery": false
+            },
+            {
+              "id": "13734399727500676345",
+              "displayName": "Jonathan Renan",
+              "type": "user",
+              "kind": "drive#permission",
+              "photoLink": "https://lh3.googleusercontent.com/a/ACg8ocLDIOi3DRIpkp54m9-GGlDuoh3D8syTkM1vE7rfHeHWv9xdoG99=s64",
+              "emailAddress": "jonathan.outeiro@gmail.com",
+              "role": "writer",
+              "deleted": false,
+              "pendingOwner": false
+            },
+            {
+              "id": "12422255344827209146",
+              "displayName": "ecoupdigital",
+              "type": "user",
+              "kind": "drive#permission",
+              "photoLink": "https://lh3.googleusercontent.com/a-/ALV-UjVYrLr151-cKRpPrGzuYCh1Kh-eOY3HytmTCu3bSQYt8WdLTQ=s64",
+              "emailAddress": "ecoupdigital@gmail.com",
+              "role": "owner",
+              "deleted": false,
+              "pendingOwner": false
+            },
+            {
+              "id": "10461062418990166804",
+              "displayName": "mktmediaeco",
+              "type": "user",
+              "kind": "drive#permission",
+              "photoLink": "https://lh3.googleusercontent.com/a-/ALV-UjUcdoPfMdACcM7ya3CN2KEFOWnsVn7z-Nk-xvbpt2rOv0VvI1c=s64",
+              "emailAddress": "mktmediaeco@gmail.com",
+              "role": "writer",
+              "deleted": false,
+              "pendingOwner": false
+            },
+            {
+              "id": "12537008697134960276",
+              "displayName": "vercel-proxy",
+              "type": "user",
+              "kind": "drive#permission",
+              "photoLink": "https://lh3.googleusercontent.com/a-/ALV-UjWCht05O3EU8qi_N6XyGvydfjMb9RcZrBwMG9BxJhFpm6yKAqc=s64",
+              "emailAddress": "vercel-proxy@loyal-landing-235923.iam.gserviceaccount.com",
+              "role": "writer",
+              "deleted": false,
+              "pendingOwner": false
+            }
+          ],
+          "hasThumbnail": true,
+          "spaces": [
+            "drive"
+          ],
+          "id": "19Uy9mPBRkXvL3pZS3aoaR4Cxrg_VDRBG",
+          "name": "a3f8102b77834d1196d408fdeeba0eab.mov",
+          "starred": false,
+          "trashed": false,
+          "explicitlyTrashed": false,
+          "createdTime": "2025-04-25T02:55:40.370Z",
+          "modifiedTime": "2025-04-25T02:55:03.000Z",
+          "quotaBytesUsed": "47461773",
+          "version": "5",
+          "originalFilename": "a3f8102b77834d1196d408fdeeba0eab.mov",
+          "ownedByMe": false,
+          "fullFileExtension": "mov",
+          "isAppAuthorized": false,
+          "capabilities": {
+            "canChangeViewersCanCopyContent": false,
+            "canEdit": true,
+            "canCopy": true,
+            "canComment": true,
+            "canAddChildren": false,
+            "canDelete": false,
+            "canDownload": true,
+            "canListChildren": false,
+            "canRemoveChildren": false,
+            "canRename": true,
+            "canTrash": false,
+            "canReadRevisions": true,
+            "canChangeCopyRequiresWriterPermission": false,
+            "canMoveItemIntoTeamDrive": false,
+            "canUntrash": false,
+            "canModifyContent": true,
+            "canMoveItemOutOfDrive": false,
+            "canAddMyDriveParent": false,
+            "canRemoveMyDriveParent": true,
+            "canMoveItemWithinDrive": true,
+            "canShare": true,
+            "canMoveChildrenWithinDrive": false,
+            "canModifyContentRestriction": true,
+            "canChangeSecurityUpdateEnabled": false,
+            "canAcceptOwnership": false,
+            "canReadLabels": false,
+            "canModifyLabels": false,
+            "canModifyEditorContentRestriction": true,
+            "canModifyOwnerContentRestriction": false,
+            "canRemoveContentRestriction": false,
+            "canDisableInheritedPermissions": false,
+            "canEnableInheritedPermissions": true
+          },
+          "thumbnailVersion": "1",
+          "modifiedByMe": false,
+          "permissionIds": [
+            "anyoneWithLink",
+            "13734399727500676345",
+            "12422255344827209146",
+            "10461062418990166804",
+            "12537008697134960276"
+          ],
+          "linkShareMetadata": {
+            "securityUpdateEligible": false,
+            "securityUpdateEnabled": true
+          },
+          "sha1Checksum": "d5b4de3dcc5a95d2845f2733af380f4055659cff",
+          "sha256Checksum": "b15d678d172b6d6e097fbf0d1afabfb85d339726988223d34fe8ae546eb3c7ae",
+          "inheritedPermissionsDisabled": false
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-07-08T19:00:21.005Z",
+      "createdAt": "2025-07-08T19:00:21.005Z",
+      "role": "workflow:owner",
+      "workflowId": "SSFH5ny0JoiMAZao",
+      "projectId": "o60HadikmqrvYZ9Z"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-07-08T19:00:33.088Z",
+  "versionId": "599ad50f-00c0-48a8-8a17-f986e8124cd3"
+}

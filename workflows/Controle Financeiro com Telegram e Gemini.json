@@ -1,0 +1,262 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "Telegram Trigger": {
+      "main": [
+        [
+          {
+            "node": "É Áudio? ",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "É Áudio? ": {
+      "main": [
+        [
+          {
+            "node": "Telegram GetFile (Áudio) ",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Telegram GetFile (Áudio) ": {
+      "main": [
+        [
+          {
+            "node": "Analyze audio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Analyze audio": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Create a database page",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create a database page": {
+      "main": [
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-11-01T14:02:31.810Z",
+  "id": "XorFzU6Dv30GYGwj",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Controle Financeiro com Telegram e Gemini",
+  "nodes": [
+    {
+      "parameters": {
+        "updates": [
+          "message"
+        ],
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "f429dde0-381c-4734-b9ff-2a653038d647",
+      "name": "Telegram Trigger",
+      "webhookId": "f07f803d-5d43-4f4b-9eff-f0bb0aab1f92",
+      "credentials": {
+        "telegramApi": {
+          "id": "8FM4WkHXoltVj4Wk",
+          "name": "Credencial de Faturas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "651a5e32-0f49-4275-a16d-f285fddcd08d",
+              "leftValue": "",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        208,
+        0
+      ],
+      "id": "99a905ef-d454-4f67-b515-fdfd0c61f92d",
+      "name": "É Áudio? "
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        496,
+        -16
+      ],
+      "id": "b88a619f-f920-4cff-97a8-d7bd8ba28f16",
+      "name": "Telegram GetFile (Áudio) ",
+      "webhookId": "9ea9f5aa-b7ec-47de-8986-ba690899c8c3",
+      "credentials": {
+        "telegramApi": {
+          "id": "8FM4WkHXoltVj4Wk",
+          "name": "Credencial de Faturas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "audio",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1,
+      "position": [
+        704,
+        -16
+      ],
+      "id": "962d67fb-f66b-45d9-9999-e603b665845e",
+      "name": "Analyze audio",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "Q7CBkXMMZRTOoyA5",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field called 'myNewField' to the JSON of each one\nfor (const item of $input.all()) {\n  item.json.myNewField = 1;\n}\n\nreturn $input.all();"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        912,
+        -16
+      ],
+      "id": "21f9f98c-3314-460a-a4c1-b756667e9367",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "databaseId": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [
+        1120,
+        -16
+      ],
+      "id": "507967b4-1446-4097-bc71-d630c9bc1489",
+      "name": "Create a database page",
+      "credentials": {
+        "notionApi": {
+          "id": "IEYJOb9XCQly3N8A",
+          "name": "Notion account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        1328,
+        -16
+      ],
+      "id": "1ba8013a-4a26-414e-9c06-82f4760d413b",
+      "name": "Send a text message",
+      "webhookId": "9a01570e-9ac2-4ef7-944e-e0215ee1d05d",
+      "credentials": {
+        "telegramApi": {
+          "id": "8FM4WkHXoltVj4Wk",
+          "name": "Credencial de Faturas"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-11-01T14:02:31.810Z",
+      "createdAt": "2025-11-01T14:02:31.810Z",
+      "role": "workflow:owner",
+      "workflowId": "XorFzU6Dv30GYGwj",
+      "projectId": "o60HadikmqrvYZ9Z"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-11-01T14:15:44.070Z",
+  "versionId": "e83bd8fb-9cfb-48af-a3b4-14bc183187ef"
+}

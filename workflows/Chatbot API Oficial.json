@@ -1,0 +1,3056 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Supabase",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "cria usuario",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Edit Fields3": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "set mensagem",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "WhatsApp Business Cloud1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "WhatsApp Business Cloud2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "set mensagem": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "OpenAI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI": {
+      "main": [
+        [
+          {
+            "node": "set mensagem1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "set mensagem1": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "OpenAI1": {
+      "main": [
+        [
+          {
+            "node": "set mensagem2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "set mensagem2": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "salvar mensagem",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calculator": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "WhatsApp Business Cloud3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "salvar mensagem": {
+      "main": [
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "pega mensagens",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "verifica se é a última",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "mensagemFinal": {
+      "main": [
+        [
+          {
+            "node": "Supabase2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres Chat Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "pega mensagens": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "verifica se é a última": {
+      "main": [
+        [
+          {
+            "node": "apaga mensagens",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No Operation, do nothing1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "apaga mensagens": {
+      "main": [
+        [
+          {
+            "node": "mensagemFinal",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "criarContato": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "movimentarCRM": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "atualizaInfo": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "agendamento": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "reagendamento": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "cancelamento": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "buscarAgendamentos": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "disponibilidade": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "atualizaEmail": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "desativaIA": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "cria usuario": {
+      "main": [
+        [
+          {
+            "node": "cria FU",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "cria FU": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "aTT Hora ultima mensagem": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "atualiza FU",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No Operation, do nothing2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "atualiza FU": {
+      "main": [
+        [
+          {
+            "node": "att usuario",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "aTT Hora ultima mensagem",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "WhatsApp Trigger": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "WhatsApp Business Cloud1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "WhatsApp Business Cloud2": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "OpenAI1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "WhatsApp Business Cloud3": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "No Operation, do nothing": {
+      "main": [
+        [
+          {
+            "node": "Supabase1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase2": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "pegar modelos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "pegar modelos": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook1": {
+      "main": [
+        [
+          {
+            "node": "Supabase3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase3": {
+      "main": [
+        [
+          {
+            "node": "Aggregate1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate1": {
+      "main": [
+        [
+          {
+            "node": "Supabase4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase4": {
+      "main": [
+        [
+          {
+            "node": "Aggregate2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate2": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields4": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook2": {
+      "main": [
+        [
+          {
+            "node": "WhatsApp Business Cloud",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "WhatsApp Business Cloud": {
+      "main": [
+        [
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If2": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Respond to Webhook3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-06-15T14:35:07.952Z",
+  "id": "gHMm9ZZxLgTWwDZF",
+  "isArchived": false,
+  "meta": null,
+  "name": "Chatbot API Oficial",
+  "nodes": [
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c81810b2-3224-42d3-a642-3bfb2f5a5eca",
+              "name": "numero",
+              "value": "={{ $json.contacts[0].wa_id }}",
+              "type": "string"
+            },
+            {
+              "id": "bfc9ba54-c25b-429d-9544-2ca269de5d43",
+              "name": "tipoMensagem",
+              "value": "={{ $json.messages[0].type }}",
+              "type": "string"
+            },
+            {
+              "id": "29f451d2-5de5-4be2-9bb6-b71dad26215b",
+              "name": "idMensagem",
+              "value": "={{ $json.messages[0].id }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -2160,
+        760
+      ],
+      "id": "d1eb47ca-12fd-4e16-9d0b-190d1106d97e",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "usuariosoficial",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "numero",
+              "keyValue": "={{ $json.numero }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -1920,
+        760
+      ],
+      "id": "44f2fafa-b83c-46d7-8bca-99232830c933",
+      "name": "Supabase",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "94cdd99f-a8b0-48d0-bd0d-869feaf31f93",
+              "leftValue": "={{ $json.id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "number",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -1700,
+        760
+      ],
+      "id": "5a650c29-dd24-4f74-8d2b-95ceedc9e4ab",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f15fa3ab-2e2a-4997-9a04-868e857f934b",
+              "name": "userId",
+              "value": "={{ $json.id }}",
+              "type": "string"
+            },
+            {
+              "id": "ada560d0-7531-4a76-9fc1-414e729d36ac",
+              "name": "email",
+              "value": "={{ $('cria usuario').item.json.email }}",
+              "type": "string"
+            },
+            {
+              "id": "e17c0b65-3e9d-4557-8bd3-079f5f8a27ab",
+              "name": "nome",
+              "value": "=não temos, você deve primeiramente pedi-lo e usar a ferramenta \"criarlead\"",
+              "type": "string"
+            },
+            {
+              "id": "aed4e3ce-a279-4407-b71c-29e137eba59b",
+              "name": "informacoes",
+              "value": "={{ $('cria usuario').item.json.informacoes }}",
+              "type": "string"
+            },
+            {
+              "id": "c9b85cc1-6ce0-42f9-b2d9-229f64f3d9b9",
+              "name": "etapa",
+              "value": "={{ $('cria usuario').item.json.etapa }}",
+              "type": "string"
+            },
+            {
+              "id": "2e8dfbef-8cdc-4e03-bac4-218e90aace57",
+              "name": "ativo",
+              "value": "={{ $('cria usuario').item.json.ativo }}",
+              "type": "boolean"
+            },
+            {
+              "id": "3f50efc6-0fc1-4979-bffa-2252825dfce3",
+              "name": "idNegociacao",
+              "value": "={{ $('cria usuario').item.json.idNegociacao }}",
+              "type": "string"
+            },
+            {
+              "id": "df1642b2-784a-49d0-b7a0-e080c8abf8f2",
+              "name": "informacoes",
+              "value": "={{ $('cria usuario').item.json.informacoes }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -780,
+        880
+      ],
+      "id": "64fe3d19-4010-4d14-88a9-4c5258b98e81",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f15fa3ab-2e2a-4997-9a04-868e857f934b",
+              "name": "userId",
+              "value": "={{ $('If').item.json.id }}",
+              "type": "string"
+            },
+            {
+              "id": "28c09087-da29-421e-9759-5b2297d45a8d",
+              "name": "nome",
+              "value": "={{ $('If').item.json.nome }}",
+              "type": "string"
+            },
+            {
+              "id": "3c28dcae-2bb7-4483-8dff-83bbf8b096fa",
+              "name": "email",
+              "value": "={{ $('If').item.json.email }}",
+              "type": "string"
+            },
+            {
+              "id": "65862dc1-f422-4caf-97bd-a055b1984378",
+              "name": "idNegociacao",
+              "value": "={{ $('If').item.json.idNegociacao }}",
+              "type": "string"
+            },
+            {
+              "id": "5d94cfb4-107c-412b-b467-fb0c22c070f0",
+              "name": "etapa",
+              "value": "={{ $('If').item.json.etapa }}",
+              "type": "string"
+            },
+            {
+              "id": "0fb479e8-3185-4c96-aa20-05b9a8c27915",
+              "name": "ativo",
+              "value": "={{ $('If').item.json.ativo }}",
+              "type": "boolean"
+            },
+            {
+              "id": "8276ee4f-27d7-438c-bfe0-49b45a9c4d18",
+              "name": "informacoes",
+              "value": "={{ $('If').item.json.informacoes }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -800,
+        640
+      ],
+      "id": "111002ad-5283-44ca-8d25-08a1d4039cec",
+      "name": "Edit Fields3"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        -320,
+        720
+      ],
+      "id": "a286f62e-bc68-4dbf-a2a1-9a07aaa75c76",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('Edit Fields').item.json.tipoMensagem }}",
+                    "rightValue": "text",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "f0e889b5-acf2-430d-8f45-05d1956ec4ec"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "text"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "0af3be3d-e875-4ad6-a6e5-9ae7470994e3",
+                    "leftValue": "={{ $('Edit Fields').item.json.tipoMensagem }}",
+                    "rightValue": "audio",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "audio"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "7e828a37-4837-4ae6-8971-6e1cec9ce027",
+                    "leftValue": "={{ $('Edit Fields').item.json.tipoMensagem }}",
+                    "rightValue": "image",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Imagem"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -40,
+        700
+      ],
+      "id": "417e274f-b424-40bd-a3dd-05a612ec4e9d",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "612b47f6-0e25-4147-bd6a-596213694267",
+              "name": "mensagem",
+              "value": "={{ $('WhatsApp Trigger').item.json.messages[0].text.body }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        600,
+        440
+      ],
+      "id": "96f802d0-c32f-43fb-a734-084aca450889",
+      "name": "set mensagem"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.url }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer EACLqeVwE704BO3Gm4R1P8ZCEWclW2QeyGTunfeiiCFCvF3cCH7KkUTAEtsDBTO2vXJcbRZCEoubPFnZCSTl79gDbHSlaLrsHgGhZABYRMN6UDF3uZBTLsbhWyD4SJciXVOYqNQFQi1jclqRau5DRiH1N1ZCqF2ydvckZCLiqdUlZAQhsZAtI1Lw78UfcsuqQ4ZBgZDZD"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        400,
+        720
+      ],
+      "id": "fcb6a048-acef-4ed9-91b0-ee56368714a0",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "resource": "audio",
+        "operation": "transcribe",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        620,
+        720
+      ],
+      "id": "d17d377e-60cf-4be6-aa9b-507e071ae7cc",
+      "name": "OpenAI"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "612b47f6-0e25-4147-bd6a-596213694267",
+              "name": "mensagem",
+              "value": "={{ $json.text }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        920,
+        720
+      ],
+      "id": "dea57588-cbe1-41d1-a509-1a01e6528097",
+      "name": "set mensagem1"
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "text": "=Here is an image sent by the user. Describe the image and transcribe any text visible in the image. Put in as much detail as possible. In English always.",
+        "inputType": "base64",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        620,
+        960
+      ],
+      "id": "46d93b07-d641-4a19-9074-c8ee84a57c37",
+      "name": "OpenAI1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "612b47f6-0e25-4147-bd6a-596213694267",
+              "name": "mensagem",
+              "value": "={{ $json.content }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        920,
+        960
+      ],
+      "id": "2349ae8f-e01a-435b-80bb-607a01c14158",
+      "name": "set mensagem2"
+    },
+    {
+      "parameters": {
+        "numberInputs": 3
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        1260,
+        720
+      ],
+      "id": "61bd0708-f0be-4937-aad4-39486a686de2",
+      "name": "Merge1"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('mensagemFinal').item.json.mensagemFinal }}\n\nDatetime that this message is being sent: {{ new Date().toDateTime().toISO() }} - {{ [\"domingo\", \"segunda-feira\", \"terça-feira\", \"quarta-feira\", \"quinta-feira\", \"sexta-feira\", \"sábado\"][$now.extract(\"weekday\") % 7] }}",
+        "options": {
+          "systemMessage": "=<role>\nVocê é Max, um SDR (Sales Development Representative) de elite da TechMinds AI, especializado em qualificar leads e agendar reuniões de demonstração para soluções de agentes de IA. Seu objetivo principal é identificar prospects qualificados, despertar genuíno interesse em nossos agentes de IA para atendimento, vendas e automação, e agendar reuniões com decisores. Você é conhecido por sua habilidade excepcional em abrir portas para oportunidades de alto valor, utilizando uma abordagem consultiva estratégica que desperta curiosidade e cria urgência legítima.\n</role>\n\n<personalidade>\n- Entusiasmado: transmite energia positiva e convicção genuína no valor das soluções\n- Confiante: demonstra conhecimento seguro sem arrogância\n- Persuasivo: utiliza narrativas envolventes e perguntas estratégicas para construir interesse\n- Astuto: lê sinais sutis e adapta abordagens em tempo real\n- Persistente: supera objeções com elegância e mantém foco no objetivo\n- Empático: conecta-se genuinamente com as dores dos prospects\n- Orientado a resultados: mantém clareza de propósito em cada interação\n- Curioso: faz perguntas perspicazes que revelam oportunidades não aparentes\n- Amigavel: sua linguagem é simples e próxima ao lead.\n- Formatação: você está interagindo via Whatsapp, suas mensagens são curtas e diretas, e caso preciso, divide elas em partes.\n</personalidade>\n\n<solucoes_oferecidas>\n1. <agentes_atendimento>\n   - Automação de atendimento ao cliente 24/7 com agente de IA\n   - Redução de até 85% no tempo de resposta ao cliente\n   - Escalabilidade para lidar com picos de demanda sem aumento de custo\n   - Integração com sistemas de CRM e documentos existentes\n   - Cases de referência: empresas com redução de 67% nos custos de atendimento\n</agentes_atendimento>\n2. <agentes_qualificacao>\n   - Qualificação automatizada de leads com Agentes de IA\n   - Identificação precisa de leads de alta prioridade para equipe comercial\n   - Aumento médio de 40% na taxa de conversão da equipe de vendas\n   - Escalabilidade para processar centenas de leads simultaneamente\n   - Cases de referência: empresas com aumento de 3.2x no volume de vendas\n</agentes_qualificacao>\n3. <agentes_agendamento>\n   - Agentes de IA para agendamentos e gerenciamento de calendários\n   - Redução de 95% no tempo gasto com idas e vindas de e-mails para agendar\n   - Integração com sistemas de calendário corporativos\n   - Experiência personalizada que reflete a cultura da empresa\n   - Cases de referência: empresas com aumento de 52% em reuniões realizadas\n</agentes_agendamento>\n4. <agentes_vendas>\n   - Agentes de IA para vendas que aumentam a capacidade da equipe\n   - Acompanhamento automatizado de leads em todas as etapas do funil\n   - Personalização avançada baseada em comportamentos e preferências\n   - Escalabilidade para mercados e segmentos múltiplos simultaneamente\n   - Cases de referência: empresas com redução de 29 dias no ciclo de vendas\n</agentes_vendas>\n</solucoes_oferecidas>\n\n<metodologia_spin>\n<situacao>\nPerguntas para entender o contexto atual e operações do prospect:\n- \"Como funciona atualmente o processo de [atendimento/qualificação/vendas] na sua empresa?\"\n- \"Quantas pessoas estão dedicadas a essa atividade hoje?\"\n- \"Qual volume de [contatos/leads/tickets] vocês processam mensalmente?\"\n- \"Quais sistemas ou ferramentas vocês utilizam para gerenciar esses processos?\"\n</situacao>\n\n<problema>\nPerguntas para descobrir dores e desafios específicos:\n- \"Quais são os maiores desafios que vocês enfrentam com o processo atual?\"\n- \"O que acontece quando o volume aumenta significativamente?\"\n- \"Que tipo de problemas ou erros são mais frequentes nesse processo?\"\n- \"Como esses desafios impactam outras áreas do negócio?\"\n</problema>\n\n<implicacao>\nPerguntas para amplificar as consequências dos problemas:\n- \"Qual o impacto financeiro desses problemas para o negócio?\"\n- \"Como isso afeta a experiência do cliente e as taxas de retenção?\"\n- \"Que oportunidades vocês podem estar perdendo devido a essas limitações?\"\n- \"Como essa situação afeta o crescimento e a escalabilidade do negócio?\"\n</implicacao>\n\n<necessidade_solucao>\nPerguntas para cristalizar o valor de uma solução:\n- \"Se vocês pudessem reduzir o tempo de atendimento em 85%, qual seria o impacto?\"\n- \"Quanto valeria aumentar a capacidade de processamento de leads em 10x?\"\n- \"Se a equipe atual pudesse focar apenas em casos complexos, quanto isso representaria?\"\n- \"Que resultados vocês considerariam transformadores nessa área?\"\n</necessidade_solucao>\n</metodologia_spin>\n\n<etapas_crm>\nSEMPRE use a ferramenta movimentarCRM para movimentar os leads no CRM informando para qual etapa deve ser movido.\n<demonstracao_interesse>\nStatus a ser atualizado APENAS quando o lead mostrar genuíno interesse em saber mais.\nSinais que justificam esta movimentação:\n- Prospect faz perguntas específicas sobre capacidades da solução\n- Compartilha informações detalhadas sobre processos internos\n- Expressa insatisfação clara com soluções atuais\n- Solicita mais informações ou materiais\n- Concorda em continuar a conversa em outro momento\n</demonstracao_interesse>\n\n<apresentacao>\nStatus a ser atualizado quando iniciar apresentação ativa de soluções. Comente sobre a capacidade, integrações, cases de sucesso.\nSinais que justificam esta movimentação:\n- Você começar a apresentar a solução, do que é capaz, etc.\n- Faz perguntas sobre implementação ou customização\n- Menciona orçamento ou processo de decisão\n- Pede exemplos de casos de uso ou histórias de sucesso\n</apresentacao>\n\n<reuniao_agendada>\nStatus final quando uma reunião com vendedor é confirmada.\nCritérios para confirmar agendamento:\n- Data e horário específicos confirmados\n- Participantes-chave comprometidos a participar\n- Agenda e objetivos da reunião estabelecidos\n- Expectativas alinhadas sobre o que será apresentado\n</reuniao_agendada>\n</etapas_crm>\n\n<script>\n1. Apresentação: se apresente de forma calorosa e pergunte o nome do lead.\n2. Faça perguntas investigativas para entender se ele tem interesse nas soluções desenvolvidas pela empresa.\n3. Continue fazendo perguntas investigativas para entender se ele é qualificado\n4. Apresente como funciona as soluções de IA e os benefícios\n5. Faça o agendamento de uma reunião para o lead\n</agendamento>\n</script>\n\n<melhores_praticas>\n1. Use as perguntas SPIN em sequência lógica para criar fluxo natural\n2. Documente minuciosamente todas as informações obtidas para o vendedor\n3. Estabeleça próximos passos claros ao final de cada interação\n4. Movimente o status no CRM com rigor, baseado em critérios objetivos\n5. Adapte exemplos e cases ao setor específico do prospect\n6. Forneça sempre opções limitadas (2-3) ao sugerir horários para reuniões\n7. Conecte todas as capacidades mencionadas a benefícios específicos\n8. Apresente-se como consultor estratégico, não como vendedor\n</melhores_praticas>\n\n<informações_lead>\nNome: {{ $('Merge').item.json.nome }}\nEtapa CRM: {{ $('Merge').item.json.etapa }}\nInformações adicionais: {{ $('Merge').item.json.informacoes }}\n</informações_lead>\n\n<tools>\nFerramentas que você tem acesso:\n1. Agendamento: você deve usá-lá para fazer agendamentos após obter o dia e hora desejado pelo usuário e o seu email.\n2. buscar agendamentos: use essa ferramenta sempre que o usuário desejar reagendar ou cancelar uma reunião, use ela para obter o id do agendamento, confirme com o usuário qual agendamento ele deseja modificar, e após isso use a ferramenta de cancelar ou de reagendar.\n3. Reagendamento: use quando o usuário precisar reagendar a reunião dele, para isso você precisa do email do usuário, do id do agendamento e o dia e hora que ele deseja reagendar.\n4. Cancelamento: use essa ferramenta quando o usuário desejar cancelar a reunião, para isso você precisa do id do agendamento.\n5. Buscar disponibilidade, você deve usar essa ferramenta de dois modos:\n   1. Conferindo se um horário específico que o usuário desejar esta livre, informando o dateTime de início e final.\n   2. Conferindo os horários disponíveis no dia que o usuário deseja, informando o dateTime do dia começando as 10h e o finalizando as 18h.\n6. atualizaInfo: use essa ferramenta para atualizar as informações relevantes do usuário que obter ao longo da conversa. Como:\n  - Faturamento\n  - email\n  - dores\n  - desejos\n  - Nicho\n  - Negócio\n</tools>\n\n<regras>\n1. NUNCA mova um lead para \"Demonstração de Interesse\" sem sinais claros de interesse genuíno\n2. SEMPRE qualifique rigorosamente antes de agendar reuniões com vendedores\n3. NUNCA faça promessas técnicas específicas que não possam ser cumpridas\n4. SEMPRE documente detalhadamente todas as informações para o vendedor que assumirá a conta\n5. NUNCA pressione de forma antiética ou use táticas manipuladoras\n6. SEMPRE priorize compreender antes de apresentar soluções\n7. NUNCA desqualifique um lead sem explorar completamente o potencial\n9. NUNCA envie propostas ou detalhes técnicos profundos antes da reunião com vendedor\n10. SEMPRE trate objeções como pedidos legítimos de informação, não como rejeições\n11. SEMPRE use as ferramentas de CRM conforme o lead avança na conversa.\n12. SEMPRE salve informações relevantes do usuário utilizando a ferramenta atualizainfo.\n13. SEMPRE peça o nome do lead, nunca prossiga sem ter o nome do lead.\n14. SEMPRE peça o email do lead antes de fazer um agendamento!\n15. SEMPRE siga o <script>, passe por cada etapa.\n\n</regras>"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        2540,
+        920
+      ],
+      "id": "4a325f0e-dfc2-44ed-aa37-24b332e8922c",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "gpt-4o"
+        },
+        "options": {
+          "temperature": 0
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        2380,
+        1160
+      ],
+      "id": "5025ba55-0aa0-4f44-a822-484771ba562f",
+      "name": "OpenAI Chat Model"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.toolCalculator",
+      "typeVersion": 1,
+      "position": [
+        3040,
+        980
+      ],
+      "id": "ea9d5501-798e-4ab9-8c9f-f33fa744f42f",
+      "name": "Calculator"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "6381034e-8c90-427e-822a-9db121326dfd",
+              "name": "output",
+              "value": "={{ $json.output.split('\\n\\n') }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3140,
+        820
+      ],
+      "id": "b06d57d4-5086-4f97-a882-9ea9344d4aad",
+      "name": "Edit Fields2"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "output",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        3480,
+        780
+      ],
+      "id": "ef68aa44-2f74-4732-969a-6685e39ba366",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        3700,
+        780
+      ],
+      "id": "36896b50-207b-460d-88e5-9fde6fa58882",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        4280,
+        920
+      ],
+      "id": "935c6a46-d190-4175-9f3f-491ff39cd25d",
+      "name": "Wait",
+      "webhookId": "9c2a5d80-6db9-4464-9120-43b88c38d522"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        4040,
+        640
+      ],
+      "id": "3c7b849b-050c-4f74-98f3-e816321311a2",
+      "name": "No Operation, do nothing",
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "tableId": "bufferOficial",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "numero",
+              "fieldValue": "={{ $('Edit Fields').item.json.numero }}"
+            },
+            {
+              "fieldId": "mensagem",
+              "fieldValue": "={{ $json.mensagem }}"
+            },
+            {
+              "fieldId": "idMensagem",
+              "fieldValue": "={{ $('Edit Fields').item.json.idMensagem }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        1460,
+        700
+      ],
+      "id": "d9666ae8-cd24-4fc9-bbca-19f3a37e2754",
+      "name": "salvar mensagem"
+    },
+    {
+      "parameters": {
+        "amount": 10
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1680,
+        700
+      ],
+      "id": "f4464918-a9ff-4957-82c5-31c5bf057b20",
+      "name": "Wait1",
+      "webhookId": "3dbc7d1f-c198-4cb3-81f7-104609c55893"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        1420,
+        940
+      ],
+      "id": "336bbd10-28c3-4777-8950-01ca58c675df",
+      "name": "Aggregate"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "960da309-a338-4421-8b76-6710c39e368d",
+              "name": "mensagemFinal",
+              "value": "={{ $('Aggregate').item.json.data.map(item => item.mensagem).join('\\n') }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2120,
+        920
+      ],
+      "id": "0baf5b9d-5430-48fb-8e99-e5fed33a84c1",
+      "name": "mensagemFinal",
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('Edit Fields').item.json.numero }}",
+        "contextWindowLength": 10
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
+      "typeVersion": 1.3,
+      "position": [
+        2500,
+        1140
+      ],
+      "id": "b47c8efb-b261-47da-838f-e3a8d969298f",
+      "name": "Postgres Chat Memory"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "tableId": "bufferOficial",
+        "returnAll": true,
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "numero",
+              "condition": "eq",
+              "keyValue": "={{ $('Edit Fields').item.json.numero }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        1880,
+        700
+      ],
+      "id": "e04bfb28-9448-4ef9-b0c2-5c2d4cea593a",
+      "name": "pega mensagens"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "303166ed-c1e0-4e83-bd9c-aa7350da93ba",
+              "leftValue": "={{ $json.data.last().idMensagem }}",
+              "rightValue": "={{ $('Edit Fields').item.json.idMensagem }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1680,
+        940
+      ],
+      "id": "03c47cb8-fe79-44dc-a71c-39a1d4643189",
+      "name": "verifica se é a última"
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "tableId": "bufferOficial",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "numero",
+              "condition": "eq",
+              "keyValue": "={{ $('Edit Fields').item.json.numero }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        1900,
+        920
+      ],
+      "id": "8800f6e5-aefb-4e90-aa3d-fbab862c68d6",
+      "name": "apaga mensagens"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1660,
+        1240
+      ],
+      "id": "6766f939-913d-493f-8f44-716b0583e799",
+      "name": "No Operation, do nothing1"
+    },
+    {
+      "parameters": {
+        "name": "criarContato",
+        "description": "Use essa ferramenta somente no primeiro contato do lead, deve usá-la para criar seu contato e negociação no CRM",
+        "workflowId": {
+          "__rl": true,
+          "value": "DBAjP9quLcncV0hs",
+          "mode": "id"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "nome": "={{ $fromAI('nome', 'insira o nome do usuário') }}",
+            "idDatabase": "={{ $('Merge').item.json.userId }}",
+            "numero": "={{ $('Edit Fields').item.json.numero }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "nome",
+              "displayName": "nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "numero",
+              "displayName": "numero",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "idDatabase",
+              "displayName": "idDatabase",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.1,
+      "position": [
+        2520,
+        1460
+      ],
+      "id": "683decea-d751-4e46-9c6e-818d3d1e01c5",
+      "name": "criarContato"
+    },
+    {
+      "parameters": {
+        "name": "movimentarCRM",
+        "description": "=Use essa ferramenta para movimentar a negociação do lead no CRM, você deve informar para qual dessas etapas deve ser movido:\n1. interesse\n2. apresentação\n3. reunião",
+        "workflowId": {
+          "__rl": true,
+          "value": "WUZAcAzJc0n6awnJ",
+          "mode": "id"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "etapa": "={{ $fromAI('etapa', 'insira a etapa em que a negociação deve ser movida') }}",
+            "idnegociacao": "={{ $('Merge').item.json.idNegociacao }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "etapa",
+              "displayName": "etapa",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "idnegociacao",
+              "displayName": "idnegociacao",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.1,
+      "position": [
+        2420,
+        1580
+      ],
+      "id": "083981ee-b6fe-4615-8be2-b70cd654762a",
+      "name": "movimentarCRM"
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "=Use essa ferramenta para inserir novas informações relevantes sobre o usuário, como:\nempresa dele, nicho, desafios, dores, desejos, etc.",
+        "operation": "update",
+        "tableId": "usuarios",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "id",
+              "condition": "eq",
+              "keyValue": "={{ $('Merge').item.json.userId }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "informacoes",
+              "fieldValue": "={{ $('Merge').item.json.informacoes }}\n- {{ $fromAI('informacoes', 'insira somente as novas informacoes relevantes sobre o usuário') }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabaseTool",
+      "typeVersion": 1,
+      "position": [
+        2620,
+        1320
+      ],
+      "id": "de7174a0-0203-4395-bfca-e3ba2192a779",
+      "name": "atualizaInfo"
+    },
+    {
+      "parameters": {
+        "name": "agendamento",
+        "description": "Use essa ferramenta para fazer agendamentos, para isso você precisa:\n1. Email do lead\n2. Data e hora de início e final da reunião no fuso horário -3",
+        "workflowId": {
+          "__rl": true,
+          "value": "dFiQnErdIZU4zxNB",
+          "mode": "id"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "nome": "={{ $('Merge').item.json.nome }}",
+            "email": "={{ $fromAI('email', 'insira o email que o usuário forneceu') }}",
+            "numero": "={{ $('Edit Fields').item.json.numero }}",
+            "start": "={{ $fromAI('start', 'insira a data e hora de inicio do evento no furo horário -3') }}",
+            "end": "={{ $fromAI('end', 'insira a data e hora de final do evento no furo horário -3') }}",
+            "evento": "agendamento"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "nome",
+              "displayName": "nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "numero",
+              "displayName": "numero",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "start",
+              "displayName": "start",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "end",
+              "displayName": "end",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "evento",
+              "displayName": "evento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "idEvento",
+              "displayName": "idEvento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.1,
+      "position": [
+        3660,
+        1320
+      ],
+      "id": "98df4e1c-29bf-4d26-b513-bc96fa3e7d1f",
+      "name": "agendamento"
+    },
+    {
+      "parameters": {
+        "name": "reagendamento",
+        "description": "Use essa ferramenta para fazer reagendamentos, para isso você precisa:\n1. Email do lead\n2. Data e hora de início e final da reunião no fuso horário -3\n3. Id do evento a ser atualizado",
+        "workflowId": {
+          "__rl": true,
+          "value": "dFiQnErdIZU4zxNB",
+          "mode": "id"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "nome": "={{ $('Merge').item.json.nome }}",
+            "email": "={{ $fromAI('email', 'insira o email do usuário') }}",
+            "numero": "={{ $('Edit Fields').item.json.numero }}",
+            "start": "={{ $fromAI('start', 'insira a data e hora de inicio do evento no furo horário -3') }}",
+            "end": "={{ $fromAI('end', 'insira a data e hora de final do evento no furo horário -3') }}",
+            "evento": "reagendamento",
+            "idEvento": "={{ $fromAI('idEvento', 'Insira o ID do evento a ser reagendado') }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "nome",
+              "displayName": "nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "numero",
+              "displayName": "numero",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "start",
+              "displayName": "start",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "end",
+              "displayName": "end",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "evento",
+              "displayName": "evento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "idEvento",
+              "displayName": "idEvento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.1,
+      "position": [
+        3460,
+        1260
+      ],
+      "id": "8f20595a-de93-46b5-be01-2e4d5c0eea33",
+      "name": "reagendamento"
+    },
+    {
+      "parameters": {
+        "name": "cancelamento",
+        "description": "=Use essa ferramenta para cancelar um agendamento, para isso você precisa:\n1. Id do evento a ser atualizado\n2. Email do usuário",
+        "workflowId": {
+          "__rl": true,
+          "value": "dFiQnErdIZU4zxNB",
+          "mode": "id"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "email": "={{ $fromAI('email', 'insira o email do usuário') }}",
+            "evento": "cancelamento",
+            "idEvento": "={{ $fromAI('idEvento', 'Insira o ID do evento a ser cancelado') }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "nome",
+              "displayName": "nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": true
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "numero",
+              "displayName": "numero",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": true
+            },
+            {
+              "id": "start",
+              "displayName": "start",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": true
+            },
+            {
+              "id": "end",
+              "displayName": "end",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": true
+            },
+            {
+              "id": "evento",
+              "displayName": "evento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "idEvento",
+              "displayName": "idEvento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.1,
+      "position": [
+        3300,
+        1240
+      ],
+      "id": "90c1d9cc-0fee-4f9b-9b06-89eab1b914f6",
+      "name": "cancelamento"
+    },
+    {
+      "parameters": {
+        "name": "buscarAgendamentos",
+        "description": "=Use essa ferramenta para buscar os agendamentos do usuário, para isso você precisa:\n1. Email do usuário",
+        "workflowId": {
+          "__rl": true,
+          "value": "dFiQnErdIZU4zxNB",
+          "mode": "id"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "email": "={{ $fromAI('email', 'insira o email do usuário') }}",
+            "evento": "buscar agendamentos"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "nome",
+              "displayName": "nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": true
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "numero",
+              "displayName": "numero",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": true
+            },
+            {
+              "id": "start",
+              "displayName": "start",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": true
+            },
+            {
+              "id": "end",
+              "displayName": "end",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": true
+            },
+            {
+              "id": "evento",
+              "displayName": "evento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "idEvento",
+              "displayName": "idEvento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.1,
+      "position": [
+        3080,
+        1460
+      ],
+      "id": "142aa9e5-d6b3-4ed9-b81f-008697fbc709",
+      "name": "buscarAgendamentos"
+    },
+    {
+      "parameters": {
+        "name": "disponibilidade",
+        "description": "Use essa ferramenta para fazer agendamentos, para isso você precisa:\n1. Data e hora de início e final da reunião no fuso horário -3",
+        "workflowId": {
+          "__rl": true,
+          "value": "dFiQnErdIZU4zxNB",
+          "mode": "id"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "start": "={{ $fromAI('start', 'insira a data e hora de inicio do evento no furo horário -3') }}",
+            "end": "={{ $fromAI('end', 'insira a data e hora de final do evento no furo horário -3') }}",
+            "evento": "disponibilidade"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "nome",
+              "displayName": "nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": true
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": true
+            },
+            {
+              "id": "numero",
+              "displayName": "numero",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": true
+            },
+            {
+              "id": "start",
+              "displayName": "start",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "end",
+              "displayName": "end",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "evento",
+              "displayName": "evento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "idEvento",
+              "displayName": "idEvento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.1,
+      "position": [
+        3280,
+        1440
+      ],
+      "id": "39cde69d-11e6-4972-90e0-3a78403d1056",
+      "name": "disponibilidade"
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Use essa ferramenta para inserir o email do usuário",
+        "operation": "update",
+        "tableId": "usuarios",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "id",
+              "condition": "eq",
+              "keyValue": "={{ $('Merge').item.json.userId }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "email",
+              "fieldValue": "={{ $fromAI('email', 'insira o email do usuário') }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabaseTool",
+      "typeVersion": 1,
+      "position": [
+        2880,
+        1460
+      ],
+      "id": "ed0a6c5a-de5a-4df6-9a5e-b48dcca73e0f",
+      "name": "atualizaEmail"
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Sempre que o usuário desejar falar com um humano, use essa tool",
+        "operation": "update",
+        "tableId": "usuarios",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "id",
+              "condition": "eq",
+              "keyValue": "={{ $('Merge').item.json.userId }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "ativo",
+              "fieldValue": "false"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabaseTool",
+      "typeVersion": 1,
+      "position": [
+        2760,
+        1240
+      ],
+      "id": "2bb8319d-0f99-41f9-919a-8b1c4abcf4ba",
+      "name": "desativaIA"
+    },
+    {
+      "parameters": {
+        "tableId": "usuariosoficial",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "numero",
+              "fieldValue": "={{ $('Edit Fields').item.json.numero }}"
+            },
+            {
+              "fieldId": "ativo",
+              "fieldValue": "true"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -1320,
+        880
+      ],
+      "id": "ed40c8e8-c513-48a9-a202-f84a8604747e",
+      "name": "cria usuario"
+    },
+    {
+      "parameters": {
+        "tableId": "followUpsOficial",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "userId",
+              "fieldValue": "={{ $json.id }}"
+            },
+            {
+              "fieldId": "ultimaMensagem",
+              "fieldValue": "={{ $now }}"
+            },
+            {
+              "fieldId": "ultimoFU",
+              "fieldValue": "={{ $now }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -1080,
+        880
+      ],
+      "id": "a611fd16-803d-45a5-993d-f92b53bce318",
+      "name": "cria FU"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "followUpsOficial",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "userId",
+              "condition": "eq",
+              "keyValue": "={{ $('If').item.json.id }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "ultimaMensagem",
+              "fieldValue": "={{ $now }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -1060,
+        640
+      ],
+      "id": "531ba37b-d9fe-4982-a3d8-73224c39a0f6",
+      "name": "aTT Hora ultima mensagem"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "36307e80-aadb-4cd9-bed7-e776dbd89d60",
+              "leftValue": "={{ $('Supabase').item.json.resetarFU }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -560,
+        260
+      ],
+      "id": "62a6fa68-d5bc-4e33-8608-86d6b77d1a89",
+      "name": "If1"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        -360,
+        420
+      ],
+      "id": "f0af4087-37d5-489b-86b5-78f8286214c9",
+      "name": "No Operation, do nothing2"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "followUpsOficial",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "userId",
+              "condition": "eq",
+              "keyValue": "={{ $json.userId }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "fu1",
+              "fieldValue": "false"
+            },
+            {
+              "fieldId": "fu2",
+              "fieldValue": "false"
+            },
+            {
+              "fieldId": "fu3",
+              "fieldValue": "false"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -300,
+        20
+      ],
+      "id": "38fc8ca6-b46c-4c6f-8b48-8facbca73d81",
+      "name": "atualiza FU"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "usuariosoficial",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "id",
+              "condition": "eq",
+              "keyValue": "={{ $('If1').item.json.userId }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "resetarFU",
+              "fieldValue": "false"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "401fb98b-6ec8-4ccc-b5f5-c5b810b2db9e",
+      "name": "att usuario"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "412a764d-4394-484c-a2cb-af18401e9e44",
+              "leftValue": "={{ $json.ativo }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        -1340,
+        640
+      ],
+      "id": "35ac9eb1-c97e-4ac4-8a72-c316eeb832a3",
+      "name": "Filter"
+    },
+    {
+      "parameters": {
+        "updates": [
+          "messages"
+        ],
+        "options": {
+          "messageStatusUpdates": []
+        }
+      },
+      "type": "n8n-nodes-base.whatsAppTrigger",
+      "typeVersion": 1,
+      "position": [
+        -2440,
+        760
+      ],
+      "id": "52ab2cee-7965-4920-94d1-cb321ead87f7",
+      "name": "WhatsApp Trigger",
+      "webhookId": "d91d7046-bf57-4d8d-90b5-957cefbd8f56"
+    },
+    {
+      "parameters": {
+        "resource": "media",
+        "operation": "mediaUrlGet",
+        "mediaGetId": "={{ $('WhatsApp Trigger').item.json.messages[0].audio.id }}"
+      },
+      "type": "n8n-nodes-base.whatsApp",
+      "typeVersion": 1,
+      "position": [
+        200,
+        720
+      ],
+      "id": "552a715a-e003-453b-aded-bb85d6cb5f4f",
+      "name": "WhatsApp Business Cloud1",
+      "webhookId": "a14a5768-9602-470e-b0b7-0a4cd4b2152b"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.url }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer EACLqeVwE704BO3Gm4R1P8ZCEWclW2QeyGTunfeiiCFCvF3cCH7KkUTAEtsDBTO2vXJcbRZCEoubPFnZCSTl79gDbHSlaLrsHgGhZABYRMN6UDF3uZBTLsbhWyD4SJciXVOYqNQFQi1jclqRau5DRiH1N1ZCqF2ydvckZCLiqdUlZAQhsZAtI1Lw78UfcsuqQ4ZBgZDZD"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        380,
+        960
+      ],
+      "id": "82b2d5be-08d6-49c1-b01d-156df68e53b2",
+      "name": "HTTP Request1"
+    },
+    {
+      "parameters": {
+        "resource": "media",
+        "operation": "mediaUrlGet",
+        "mediaGetId": "={{ $('WhatsApp Trigger').item.json.messages[0].image.id }}"
+      },
+      "type": "n8n-nodes-base.whatsApp",
+      "typeVersion": 1,
+      "position": [
+        200,
+        960
+      ],
+      "id": "8a25bebb-669c-438d-9c6f-88fc0202526b",
+      "name": "WhatsApp Business Cloud2",
+      "webhookId": "a14a5768-9602-470e-b0b7-0a4cd4b2152b"
+    },
+    {
+      "parameters": {
+        "operation": "send",
+        "phoneNumberId": "578384715366205",
+        "recipientPhoneNumber": "={{ $('Edit Fields').item.json.numero }}",
+        "textBody": "={{ $json.output }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.whatsApp",
+      "typeVersion": 1,
+      "position": [
+        4000,
+        900
+      ],
+      "id": "778aa84b-bdef-4c33-9b79-f165af36e4d9",
+      "name": "WhatsApp Business Cloud3",
+      "webhookId": "cf08cec1-7d6f-4743-bcf6-ca85436d0674"
+    },
+    {
+      "parameters": {
+        "tableId": "conversas",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "userId",
+              "fieldValue": "={{ $('Merge').item.json.userId }}"
+            },
+            {
+              "fieldId": "content",
+              "fieldValue": "={{ $('AI Agent').item.json.output }}"
+            },
+            {
+              "fieldId": "from",
+              "fieldValue": "ai"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        4320,
+        640
+      ],
+      "id": "ed040999-6d48-48c8-9576-d668f31eae44",
+      "name": "Supabase1"
+    },
+    {
+      "parameters": {
+        "tableId": "conversas",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "userId",
+              "fieldValue": "={{ $('Merge').item.json.userId }}"
+            },
+            {
+              "fieldId": "content",
+              "fieldValue": "={{ $json.mensagemFinal }}"
+            },
+            {
+              "fieldId": "from",
+              "fieldValue": "human"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        2320,
+        920
+      ],
+      "id": "0f186642-023c-40aa-885b-8d5a72079453",
+      "name": "Supabase2"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://graph.facebook.com/v22.0/1582200205766068/message_templates",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer EACLqeVwE704BO3Gm4R1P8ZCEWclW2QeyGTunfeiiCFCvF3cCH7KkUTAEtsDBTO2vXJcbRZCEoubPFnZCSTl79gDbHSlaLrsHgGhZABYRMN6UDF3uZBTLsbhWyD4SJciXVOYqNQFQi1jclqRau5DRiH1N1ZCqF2ydvckZCLiqdUlZAQhsZAtI1Lw78UfcsuqQ4ZBgZDZD"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"name\": \"aviso_entrega_pedido_11\",\n  \"language\": \"pt_BR\",\n  \"category\": \"UTILITY\",\n  \"components\": [\n    {\n      \"type\": \"HEADER\",\n      \"format\": \"TEXT\",\n      \"text\": \"Seu pedido 12 está em rota de entrega\"\n    },\n    {\n      \"type\": \"BODY\",\n      \"text\": \"Olá, {{1}}! Seu pedido saiu para a entrega, fique de olho que ele será entregue até as 14h.\",\n      \"example\": {\n        \"body_text\": [\n          [\n            \"João\"\n          ]\n        ]\n      }\n    },\n    {\n      \"type\": \"BUTTONS\",\n      \"buttons\": [\n        {\n          \"type\": \"QUICK_REPLY\",\n          \"text\": \"Ok, estarei presente\"\n        },\n        {\n          \"type\": \"QUICK_REPLY\",\n          \"text\": \"Ok, não poderei receber\"\n        }\n      ]\n    }\n  ]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -2700,
+        1340
+      ],
+      "id": "4ca315eb-7629-4071-adc9-83f0b28683ee",
+      "name": "criar modelo"
+    },
+    {
+      "parameters": {
+        "url": "https://graph.facebook.com/v22.0/1582200205766068/message_templates",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer EACLqeVwE704BO3Gm4R1P8ZCEWclW2QeyGTunfeiiCFCvF3cCH7KkUTAEtsDBTO2vXJcbRZCEoubPFnZCSTl79gDbHSlaLrsHgGhZABYRMN6UDF3uZBTLsbhWyD4SJciXVOYqNQFQi1jclqRau5DRiH1N1ZCqF2ydvckZCLiqdUlZAQhsZAtI1Lw78UfcsuqQ4ZBgZDZD"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -2480,
+        1540
+      ],
+      "id": "47ba4444-1298-4156-bb9a-364cc84fc0ee",
+      "name": "pegar modelos"
+    },
+    {
+      "parameters": {
+        "path": "pegar-modelos",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -2720,
+        1540
+      ],
+      "id": "8756f49f-06d5-4557-94d8-c2a1e88af257",
+      "name": "Webhook",
+      "webhookId": "6668c12e-43b5-411c-b5b2-403e5fb367dd"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>\n  <title>Dashboard de Modelos WhatsApp</title>\n  <style>\n    body {\n      font-family: 'Segoe UI', sans-serif;\n      background-color: #f8f9fa;\n      color: #333;\n      padding: 20px;\n    }\n\n    h1 {\n      text-align: center;\n      margin-bottom: 30px;\n      color: #2c3e50;\n    }\n\n    #dashboard {\n      display: grid;\n      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));\n      gap: 20px;\n    }\n\n    .template-card {\n      background: #fff;\n      border: 1px solid #dee2e6;\n      border-radius: 8px;\n      padding: 20px;\n      box-shadow: 0 2px 5px rgba(0,0,0,0.05);\n      transition: transform 0.2s;\n    }\n\n    .template-card:hover {\n      transform: translateY(-5px);\n    }\n\n    .template-header {\n      margin-bottom: 10px;\n    }\n\n    .template-header h2 {\n      font-size: 1.1em;\n      margin-bottom: 5px;\n      color: #1e293b;\n    }\n\n    .tags {\n      margin-bottom: 10px;\n    }\n\n    .tag {\n      display: inline-block;\n      padding: 4px 8px;\n      margin-right: 5px;\n      font-size: 0.8em;\n      border-radius: 4px;\n      color: white;\n    }\n\n    .category-MARKETING { background-color: #10b981; }\n    .category-UTILITY { background-color: #3b82f6; }\n    .status-APPROVED { background-color: #16a34a; }\n    .status-REJECTED { background-color: #ef4444; }\n\n    .content-block {\n      margin-bottom: 10px;\n    }\n\n    .component-type {\n      font-weight: bold;\n      color: #6b7280;\n      margin-bottom: 3px;\n    }\n\n    .message-text {\n      background-color: #f1f5f9;\n      border-radius: 5px;\n      padding: 10px;\n      white-space: pre-wrap;\n      font-size: 0.95em;\n    }\n  </style>\n</head>\n<body>\n\n  <h1>Modelos de Mensagem - WhatsApp API</h1>\n  <section id=\"dashboard\"></section>\n\n  <script>\n    // JSON dinâmico injetado pelo N8N\n    const modelos = {{ JSON.stringify($json.data) }};\n\n    const dashboard = document.getElementById(\"dashboard\");\n\n    modelos.forEach(modelo => {\n      const card = document.createElement(\"div\");\n      card.className = \"template-card\";\n\n      // Cabeçalho\n      const header = document.createElement(\"div\");\n      header.className = \"template-header\";\n      header.innerHTML = `<h2>${modelo.name}</h2>`;\n      card.appendChild(header);\n\n      // Tags de categoria e status\n      const tags = document.createElement(\"div\");\n      tags.className = \"tags\";\n\n      const categoryTag = document.createElement(\"span\");\n      categoryTag.className = `tag category-${modelo.category}`;\n      categoryTag.textContent = modelo.category;\n      tags.appendChild(categoryTag);\n\n      const statusTag = document.createElement(\"span\");\n      statusTag.className = `tag status-${modelo.status}`;\n      statusTag.textContent = modelo.status;\n      tags.appendChild(statusTag);\n\n      card.appendChild(tags);\n\n      // Componentes do modelo\n      if (Array.isArray(modelo.components)) {\n        modelo.components.forEach(comp => {\n          const compBlock = document.createElement(\"div\");\n          compBlock.className = \"content-block\";\n\n          const type = document.createElement(\"div\");\n          type.className = \"component-type\";\n          type.textContent = comp.type;\n\n          const content = document.createElement(\"div\");\n          content.className = \"message-text\";\n\n          if (comp.text) {\n            content.textContent = comp.text;\n          } else if (comp.buttons) {\n            content.innerHTML = comp.buttons.map(btn => {\n              return `• ${btn.text}${btn.url ? \" - \" + btn.url : \"\"}${btn.phone_number ? \" - \" + btn.phone_number : \"\"}`;\n            }).join(\"\\n\");\n          } else {\n            content.textContent = \"[Sem conteúdo de texto]\";\n          }\n\n          compBlock.appendChild(type);\n          compBlock.appendChild(content);\n          card.appendChild(compBlock);\n        });\n      }\n\n      dashboard.appendChild(card);\n    });\n  </script>\n\n</body>\n</html>\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.2,
+      "position": [
+        -2240,
+        1540
+      ],
+      "id": "a468a600-833b-46b5-845d-1a16b67ba5dc",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "path": "interface-mensagens",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -2720,
+        1740
+      ],
+      "id": "0f7e782e-afb3-4468-9b94-7fb291c6168f",
+      "name": "Webhook1",
+      "webhookId": "6668c12e-43b5-411c-b5b2-403e5fb367dd"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>\n  <title>Interface WhatsApp</title>\n  <style>\n    * { box-sizing: border-box; margin: 0; padding: 0; }\n    body { font-family: 'Segoe UI', sans-serif; background: #111b21; color: #e9edef; height: 100vh; display: flex; overflow: hidden; }\n\n    #sidebar {\n      width: 300px;\n      background: #202c33;\n      border-right: 1px solid #2a2f32;\n      overflow-y: auto;\n    }\n\n    #sidebar h2 {\n      padding: 15px;\n      border-bottom: 1px solid #2a2f32;\n      font-size: 18px;\n      background: #111b21;\n    }\n\n    .user {\n      padding: 15px;\n      border-bottom: 1px solid #2a2f32;\n      cursor: pointer;\n    }\n\n    .user:hover {\n      background: #2a3942;\n    }\n\n    #chat {\n      flex: 1;\n      display: flex;\n      flex-direction: column;\n    }\n\n    #chatHeader {\n      background: #202c33;\n      padding: 15px;\n      display: flex;\n      justify-content: space-between;\n      align-items: center;\n      border-bottom: 1px solid #2a2f32;\n    }\n\n    #chatWindow {\n      flex: 1;\n      padding: 20px;\n      overflow-y: auto;\n      display: flex;\n      flex-direction: column;\n      gap: 10px;\n      background: #0b141a;\n    }\n\n    .msg {\n      max-width: 70%;\n      padding: 10px;\n      border-radius: 8px;\n      white-space: pre-wrap;\n    }\n\n    .msg.human {\n      align-self: flex-end;\n      background: #005c4b;\n    }\n\n    .msg.ai {\n      align-self: flex-start;\n      background: #2a3942;\n    }\n\n    #chatInput {\n      background: #202c33;\n      padding: 10px;\n      border-top: 1px solid #2a2f32;\n      display: flex;\n    }\n\n    #chatInput input {\n      flex: 1;\n      padding: 10px;\n      border: none;\n      background: #2a3942;\n      color: white;\n      border-radius: 5px;\n    }\n\n    #sendBtn {\n      margin-left: 10px;\n      background: none;\n      border: none;\n      font-size: 24px;\n      color: #8696a0;\n      cursor: pointer;\n    }\n\n    #drawer {\n      position: fixed;\n      top: 0;\n      right: -300px;\n      width: 300px;\n      height: 100%;\n      background: #202c33;\n      transition: right 0.3s ease;\n      padding: 20px;\n      box-shadow: -2px 0 5px rgba(0,0,0,0.3);\n    }\n\n    #drawer.open {\n      right: 0;\n    }\n\n    #drawer h3 {\n      margin-bottom: 10px;\n    }\n\n    #drawer p {\n      margin: 5px 0;\n    }\n\n    .menu-icon {\n      font-size: 24px;\n      cursor: pointer;\n    }\n  </style>\n</head>\n<body>\n\n  <div id=\"sidebar\">\n    <h2>Conversas</h2>\n    <div id=\"userList\"></div>\n  </div>\n\n  <div id=\"chat\">\n    <div id=\"chatHeader\">\n      <div id=\"chatTitle\">Selecione um usuário</div>\n      <div class=\"menu-icon\" onclick=\"toggleDrawer()\">☰</div>\n    </div>\n    <div id=\"chatWindow\"></div>\n    <div id=\"chatInput\">\n      <input id=\"messageInput\" placeholder=\"Digite uma mensagem...\" />\n      <button id=\"sendBtn\" onclick=\"sendMessage()\">&#9658;</button>\n    </div>\n  </div>\n\n  <div id=\"drawer\">\n    <h3>Informações do Usuário</h3>\n    <p><strong>Nome:</strong> <span id=\"infoNome\">-</span></p>\n    <p><strong>Número:</strong> <span id=\"infoNumero\">-</span></p>\n    <p><strong>Email:</strong> <span id=\"infoEmail\">-</span></p>\n    <p><strong>Informações:</strong> <span id=\"infoExtra\">-</span></p>\n    <p><strong>Data de criação:</strong> <span id=\"infoDataCriacao\">-</span></p>\n    <br />\n    <button onclick=\"toggleDrawer()\" style=\"padding: 10px; background: #2a3942; color: white; border: none; cursor: pointer;\">Fechar</button>\n  </div>\n\n  <script>\n    const usuarios = {{ JSON.stringify($json.usuarios) }};\n    let usuarioAtual = null;\n\n    const userList = document.getElementById(\"userList\");\n    const chatTitle = document.getElementById(\"chatTitle\");\n    const chatWindow = document.getElementById(\"chatWindow\");\n    const infoNome = document.getElementById(\"infoNome\");\n    const infoNumero = document.getElementById(\"infoNumero\");\n    const infoEmail = document.getElementById(\"infoEmail\");\n    const infoExtra = document.getElementById(\"infoExtra\");\n    const infoDataCriacao = document.getElementById(\"infoDataCriacao\");\n    const drawer = document.getElementById(\"drawer\");\n    const messageInput = document.getElementById(\"messageInput\");\n\n    function formatarData(iso) {\n      const d = new Date(iso);\n      return d.toLocaleDateString('pt-BR') + ' ' + d.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });\n    }\n\n    function renderUsers() {\n      userList.innerHTML = \"\";\n      usuarios.forEach((u, i) => {\n        const div = document.createElement(\"div\");\n        div.className = \"user\";\n        div.innerText = u.nome || u.numero;\n        div.onclick = () => openChat(u);\n        userList.appendChild(div);\n      });\n    }\n\n    function openChat(user) {\n      usuarioAtual = user;\n      chatTitle.innerText = user.nome || user.numero;\n      infoNome.innerText = user.nome || '-';\n      infoNumero.innerText = user.numero || '-';\n      infoEmail.innerText = user.email || '-';\n      infoExtra.innerText = user.informacoes || '-';\n      infoDataCriacao.innerText = user.created_at ? formatarData(user.created_at) : '-';\n\n      chatWindow.innerHTML = \"\";\n      if (Array.isArray(user.mensagens)) {\n        user.mensagens.forEach(msg => {\n          const div = document.createElement(\"div\");\n          div.className = \"msg \" + msg.from;\n          div.textContent = msg.content;\n          chatWindow.appendChild(div);\n        });\n      }\n      chatWindow.scrollTop = chatWindow.scrollHeight;\n    }\n\n    function toggleDrawer() {\n      drawer.classList.toggle(\"open\");\n    }\n\n    async function sendMessage() {\n      const mensagem = messageInput.value.trim();\n      if (!mensagem || !usuarioAtual) return;\n\n      const numero = usuarioAtual.numero;\n\n      try {\n        const res = await fetch(\"https://n8nwebhook.lucasevange.com/webhook/enviar-mensagens\", {\n          method: \"POST\",\n          headers: { \"Content-Type\": \"application/json\" },\n          body: JSON.stringify({ mensagem, numero })\n        });\n\n        const data = await res.json();\n        if (data.sucesso) {\n          alert(\"Mensagem enviada com sucesso!\");\n          messageInput.value = \"\";\n        } else {\n          alert(\"Erro ao enviar a mensagem.\");\n        }\n      } catch (e) {\n        alert(\"Erro ao enviar a mensagem.\");\n        console.error(e);\n      }\n    }\n\n    renderUsers();\n  </script>\n\n</body>\n</html>",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.2,
+      "position": [
+        -1260,
+        1740
+      ],
+      "id": "bec6a496-3d4e-47e5-a66d-93d6aafbdcb2",
+      "name": "Respond to Webhook1"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "tableId": "usuariosoficial",
+        "returnAll": true
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -2480,
+        1740
+      ],
+      "id": "fd637432-4e8c-4534-ab5b-6c2310a9a9e3",
+      "name": "Supabase3"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        -2280,
+        1740
+      ],
+      "id": "ab40a545-5c9a-4eff-9dbb-a9ef6ab76479",
+      "name": "Aggregate1"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "tableId": "conversas",
+        "returnAll": true
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -2080,
+        1740
+      ],
+      "id": "ae4ea0ba-422e-491a-8312-47229bb8aa91",
+      "name": "Supabase4"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        -1800,
+        1740
+      ],
+      "id": "61aa5bc1-3b82-45c4-bd6d-5122b9b69db9",
+      "name": "Aggregate2"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "6cdf3246-c890-4366-bff6-92e70c27f4bd",
+              "name": "usuarios",
+              "value": "={{\n  $('Aggregate1').item.json.data.map(\n    user => ({\n      ...user,\n      mensagens: $('Aggregate2').item.json.data.filter(\n        msg => parseInt(msg.userId) === user.id\n      )\n    })\n  )\n}}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1520,
+        1740
+      ],
+      "id": "97dfb887-5be6-4eff-9717-e13e92ade4b4",
+      "name": "Edit Fields4"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "enviar-mensagens",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -2740,
+        2060
+      ],
+      "id": "a29ed199-eac0-4e0a-b1d4-af1409bf02e3",
+      "name": "Webhook2",
+      "webhookId": "fcfe2ff7-1a2c-4669-919f-6f448add8eb7"
+    },
+    {
+      "parameters": {
+        "operation": "send",
+        "phoneNumberId": "578384715366205",
+        "recipientPhoneNumber": "={{ $json.body.numero }}",
+        "textBody": "={{ $json.body.mensagem }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.whatsApp",
+      "typeVersion": 1,
+      "position": [
+        -2520,
+        2060
+      ],
+      "id": "ec966342-f027-4226-83a7-18532f348ce1",
+      "name": "WhatsApp Business Cloud",
+      "webhookId": "cf08cec1-7d6f-4743-bcf6-ca85436d0674",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "1e254dd5-aec0-4469-b4b8-27e438f2adeb",
+              "leftValue": "={{ $json.messaging_product }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -2240,
+        2060
+      ],
+      "id": "7cde0e60-d471-48cb-89b3-d103a88cf225",
+      "name": "If2"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "{\n  \"sucesso\": true\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.2,
+      "position": [
+        -1980,
+        1960
+      ],
+      "id": "ee9c1c79-5666-40ae-a0be-bddab2c6039c",
+      "name": "Respond to Webhook2"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "{\n  \"sucesso\": false\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.2,
+      "position": [
+        -1980,
+        2140
+      ],
+      "id": "458697e6-8883-4cb4-833f-c2928201afd1",
+      "name": "Respond to Webhook3"
+    },
+    {
+      "parameters": {
+        "phoneNumberId": "578384715366205",
+        "recipientPhoneNumber": "5513981849794",
+        "template": "confirma_pedidos_098b|pt_BR",
+        "components": {
+          "component": [
+            {
+              "bodyParameters": {
+                "parameter": [
+                  {
+                    "text": "Lucas"
+                  },
+                  {
+                    "text": "980"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.whatsApp",
+      "typeVersion": 1,
+      "position": [
+        -2740,
+        2360
+      ],
+      "id": "8b5358cb-cd3b-4e03-a47d-827932309c0f",
+      "name": "WhatsApp Business Cloud4",
+      "webhookId": "71fb8778-a8c1-40ae-9440-3fb822816778"
+    }
+  ],
+  "pinData": {
+    "WhatsApp Trigger": [
+      {
+        "json": {
+          "messaging_product": "whatsapp",
+          "metadata": {
+            "display_phone_number": "15556452857",
+            "phone_number_id": "578384715366205"
+          },
+          "contacts": [
+            {
+              "profile": {
+                "name": "Lucas"
+              },
+              "wa_id": "5513981849794"
+            }
+          ],
+          "messages": [
+            {
+              "from": "5513981849794",
+              "id": "wamid.HBgNNTUxMzk4MTg0OTc5NBUCABIYFjNFQjBDNzYxODkwNzk2OTUzQTc1NDcA",
+              "timestamp": "1746883056",
+              "text": {
+                "body": "Quem é você?"
+              },
+              "type": "text"
+            }
+          ],
+          "field": "messages"
+        }
+      }
+    ],
+    "Webhook": [
+      {
+        "json": {
+          "name": "First item",
+          "code": 1
+        }
+      },
+      {
+        "json": {
+          "name": "Second item",
+          "code": 2
+        }
+      }
+    ],
+    "Webhook1": [
+      {
+        "json": {
+          "name": "First item",
+          "code": 1
+        }
+      }
+    ],
+    "Webhook2": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8nwebhook.lucasevange.com",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36",
+            "content-length": "53",
+            "accept": "*/*",
+            "accept-encoding": "gzip, deflate, br, zstd",
+            "accept-language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7",
+            "content-type": "application/json",
+            "origin": "https://n8nwebhook.lucasevange.com",
+            "priority": "u=1, i",
+            "referer": "https://n8nwebhook.lucasevange.com/webhook/interface-mensagens",
+            "sec-ch-ua": "\"Chromium\";v=\"136\", \"Google Chrome\";v=\"136\", \"Not.A/Brand\";v=\"99\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "sec-fetch-dest": "empty",
+            "sec-fetch-mode": "cors",
+            "sec-fetch-site": "same-origin",
+            "x-forwarded-for": "45.225.177.185",
+            "x-forwarded-host": "n8nwebhook.lucasevange.com",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "7e4b42672e79",
+            "x-real-ip": "45.225.177.185"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "mensagem": "Oi, tudo bem?",
+            "numero": "5513981849794"
+          },
+          "webhookUrl": "https://n8nwebhook.lucasevange.com/webhook/enviar-mensagens",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-06-15T14:35:07.952Z",
+      "createdAt": "2025-06-15T14:35:07.952Z",
+      "role": "workflow:owner",
+      "workflowId": "gHMm9ZZxLgTWwDZF",
+      "projectId": "o60HadikmqrvYZ9Z"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-06-15T14:35:07.952Z",
+  "versionId": "abca02c1-411e-42d4-a180-2588f5c45bc7"
+}

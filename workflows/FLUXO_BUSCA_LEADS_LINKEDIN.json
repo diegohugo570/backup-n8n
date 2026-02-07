@@ -1,0 +1,382 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "Extrai dados": {
+      "main": [
+        [
+          {
+            "node": "Inclui no Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Dados",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Busca na SerpAPI": {
+      "main": [
+        [
+          {
+            "node": "Extrai dados",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Dados": {
+      "main": [
+        [
+          {
+            "node": "Pagination",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pagination": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Busca na SerpAPI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-07-14T18:00:58.260Z",
+  "id": "6Pt5ALCerHWrqLgP",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "FLUXO_BUSCA_LEADS_LINKEDIN",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "1GCHFkQNW7KZBYZZga_y-cTcX79blwBaixFPSjZRRN3M"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Página1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1GCHFkQNW7KZBYZZga_y-cTcX79blwBaixFPSjZRRN3M/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Profissão": "={{ $('Dados').item.json['Profissão'] }}",
+            "Tipo": "={{ $('Dados').item.json['Tipo de Empresa'] }}",
+            "Nome": "={{ $json.title }}",
+            "Linkedin": "={{ $json.link }}"
+          },
+          "matchingColumns": [
+            "Linkedin"
+          ],
+          "schema": [
+            {
+              "id": "Profissão",
+              "displayName": "Profissão",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Tipo",
+              "displayName": "Tipo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Linkedin",
+              "displayName": "Linkedin",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "id": "64ce7ba2-95ac-4817-9d2e-d71d1f53ef1d",
+      "name": "Inclui no Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        944,
+        320
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "LOJgWrBsYdHTsczQ",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Assume que o JSON está no item[0].json\nconst results = items[0].json.organic_results;\n\nreturn results.map(result => {\n  return {\n    json: {\n      title: result.title,\n      link: result.link\n    }\n  };\n});"
+      },
+      "id": "dff882b2-b075-4f94-8e83-0c279a208c3e",
+      "name": "Extrai dados",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        672,
+        320
+      ]
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -528,
+        304
+      ],
+      "id": "fa5974e9-2881-42aa-adce-d3382b2c0f68",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "url": "https://serpapi.com/search",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "engine",
+              "value": "google"
+            },
+            {
+              "name": "q",
+              "value": "=site:br.linkedin.com/in/ \"{{ $('Dados').item.json['Profissão'] }}\" \"{{ $('Dados').item.json['Tipo de Empresa'] }}\""
+            },
+            {
+              "name": "api_key",
+              "value": "={{ $('Dados').item.json.Api_Key_SerpAPI }}"
+            },
+            {
+              "name": "hl",
+              "value": "pt-br"
+            },
+            {
+              "name": "start",
+              "value": "={{ $('Pagination').item.json.start }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "676b993e-f243-4e02-9ac2-ad7a3c1b3df5",
+      "name": "Busca na SerpAPI",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        448,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Alterar aqui",
+        "height": 380
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -304,
+        192
+      ],
+      "typeVersion": 1,
+      "id": "06327a9a-443a-4989-a78c-186afb95ffca",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "32de923e-44ed-4807-a252-b3ce0d2c8b28",
+              "name": "Profissão",
+              "value": "CEO",
+              "type": "string"
+            },
+            {
+              "id": "921fe30d-a98f-4738-998a-d620dc361390",
+              "name": "Tipo de Empresa",
+              "value": "Clínica de Estética",
+              "type": "string"
+            },
+            {
+              "id": "dffe3218-7f15-4f2b-a4a3-14a54227c71b",
+              "name": "Api_Key_SerpAPI",
+              "value": "17243d94931946614c2535929c368ff2d5d490c8b5eeea2684df19b77e92b7d9",
+              "type": "string"
+            },
+            {
+              "id": "0952701b-6066-4e99-9094-1b8fee109492",
+              "name": "Número de Buscas",
+              "value": 30,
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -240,
+        304
+      ],
+      "id": "6632d54a-b3b7-4664-bd71-4985b7434d62",
+      "name": "Dados"
+    },
+    {
+      "parameters": {
+        "content": "## Efetua a Busca no Google",
+        "height": 380,
+        "width": 420,
+        "color": 2
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        384,
+        208
+      ],
+      "typeVersion": 1,
+      "id": "26dd030a-0d52-447f-abed-5328fdbf5ca1",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "# FLUXO BUSCA LEADS LINKEDIN",
+        "height": 80,
+        "width": 600,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        0,
+        0
+      ],
+      "typeVersion": 1,
+      "id": "19a9e5f4-adf7-4c3e-90a5-2acd156f1ca4",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "content": "## Salva Lead Planilha",
+        "height": 380,
+        "color": 2
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        912,
+        208
+      ],
+      "typeVersion": 1,
+      "id": "7713d57e-b975-4a9d-a5ff-6cba0ec19401",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "jsCode": "let start = 0;  // Initial page\nconst limit = $input.first().json['Número de Buscas'];  // Limit to fetch 500 profiles (adjust as needed)\n\nconst batchSize = 10;  // Google Search returns 100 results per page\nconst output = [];\n// Loop through pages by increments of 100\nwhile (start < limit) {\n  output.push({ json: { start: start } });\n  start += batchSize;  // Increment by 100 for each page\n}\n\nreturn output;\n"
+      },
+      "id": "3b707dcd-958e-49ad-acfd-9c2238684e57",
+      "name": "Pagination",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -48,
+        304
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "46862e15-c94a-42a9-8115-ae2425be1293",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        160,
+        304
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-07-14T18:00:58.260Z",
+      "createdAt": "2025-07-14T18:00:58.260Z",
+      "role": "workflow:owner",
+      "workflowId": "6Pt5ALCerHWrqLgP",
+      "projectId": "o60HadikmqrvYZ9Z"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-10-13T19:47:53.154Z",
+  "versionId": "390ed44b-0001-44b7-a674-05bce3f59631"
+}

@@ -1,0 +1,445 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "If": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CamposIniciais": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "campo final": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "campo final",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "getbase64",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "getbase64": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "OpenAI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "CamposIniciais",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-06-25T13:27:29.432Z",
+  "id": "AAQNIxz999w1RP6C",
+  "isArchived": false,
+  "meta": null,
+  "name": "Evolution Mensagem Áudio",
+  "nodes": [
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "bd29410c-00dc-42df-a9d2-3f85b6917c47",
+              "leftValue": "={{ $json.fromMe }}",
+              "rightValue": "true",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "5980333f-a07b-430e-8c48-9978290900f6",
+      "name": "If",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.1,
+      "position": [
+        -480,
+        200
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "2557bc14-107e-40b3-a109-a435708b1e1c",
+      "name": "No Operation, do nothing",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        -100,
+        -40
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://evolutionv2-evolutionv2.vd3lzd.easypanel.host/message/sendText/{{ $(\"CamposIniciais\").item.json.nomeInstancia }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apiKey",
+              "value": "={{ $(\"CamposIniciais\").item.json.apiKey}}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $(\"CamposIniciais\").item.json.telefonecliente }}"
+            },
+            {
+              "name": "text",
+              "value": "={{ $json['resposta ia'] }}"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "adb46edd-7770-4488-948b-a3d1a5ec530e",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        760,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "0be85060-2697-469a-a35e-cda3b6a6b98f",
+              "name": "fromMe",
+              "value": "={{ $json.body.data.key.fromMe }}",
+              "type": "string"
+            },
+            {
+              "id": "4043ace3-90e5-451a-9cb0-d3c101246fb6",
+              "name": "nome cliente",
+              "value": "={{ $json.body.data.pushName }}",
+              "type": "string"
+            },
+            {
+              "id": "26896144-bde1-4475-b031-2e7136678e44",
+              "name": "mensagem",
+              "value": "={{ $json.body.data.message.conversation }}",
+              "type": "string"
+            },
+            {
+              "id": "4a441a0f-95ae-4872-b93e-4ff6b661627b",
+              "name": "telefonecliente",
+              "value": "={{ $json.body.data.key.remoteJid }}",
+              "type": "string"
+            },
+            {
+              "id": "65e61dc9-5227-4c30-8ca4-723678ef6c07",
+              "name": "mensagemTipo",
+              "value": "={{ $json.body.data.messageType }}",
+              "type": "string"
+            },
+            {
+              "id": "fd809de9-2cb9-4dec-963e-5c72c22e4aa9",
+              "name": "instanciaID",
+              "value": "={{ $json.body.data.instanceId }}",
+              "type": "string"
+            },
+            {
+              "id": "a6baed4f-8d58-4108-9311-e98d97c0e79d",
+              "name": "apiKey",
+              "value": "={{ $json.body.apikey }}",
+              "type": "string"
+            },
+            {
+              "id": "7b1cfa70-db7d-49e5-855d-2068f3826b72",
+              "name": "telefoneEmpresa",
+              "value": "={{ $json.body.sender }}",
+              "type": "string"
+            },
+            {
+              "id": "f9b69da3-fd51-44e3-a95c-2e008b7a35b9",
+              "name": "nomeInstancia",
+              "value": "={{ $json.body.instance }}",
+              "type": "string"
+            },
+            {
+              "id": "caffb063-d784-4e34-b0d0-72501e301368",
+              "name": "keyAudio",
+              "value": "={{ $json.body.data.key.id }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f3338984-f468-4b37-8312-b63a2e3b36af",
+      "name": "CamposIniciais",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -720,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a95ab21c-dacc-4153-9746-a05884bd13a9",
+              "name": "resposta ia",
+              "value": "teste 02",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5dbc709d-5eb6-4400-b664-93ecc6f027c2",
+      "name": "campo final",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        500,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.mensagemTipo }}",
+                    "rightValue": "conversation",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Texto"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "cb649114-26dd-4725-8633-e911c759d18f",
+                    "leftValue": "={{ $json.mensagemTipo }}",
+                    "rightValue": "audioMessage",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Audio"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "04752c63-ecbf-4142-aa65-b07efe90c07e",
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.1,
+      "position": [
+        -100,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://evolutionv2-evolutionv2.vd3lzd.easypanel.host/chat/getBase64FromMediaMessage/{{ $json.nomeInstancia }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apiKey",
+              "value": "={{ $json.apiKey }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"message\": {\n    \"key\": {\n      \"id\": \"{{ $json.keyAudio }}\"\n    }\n  },\n  \"convertToMp4\": false\n} ",
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "be53a6ca-b301-43bd-a92e-e026bdb830d2",
+      "name": "getbase64",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        80,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Decodificar Base64 OGG file\nconst base64Ogg = $json[\"base64\"];\nconst oggFilePath = '/tmp/audio.ogg';\n\n// Salvar o arquivo OGG\nreturn [\n  {\n    json: {\n      oggFilePath,\n    },\n    binary: {\n      data: {\n        data: Buffer.from(base64Ogg, 'base64'),\n        mimeType: 'audio/ogg',\n        fileName: 'audio.ogg',\n      }\n    }\n  }\n];\n"
+      },
+      "id": "0f7f0921-cc74-481a-885c-fe54f7b20145",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        300,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "b473a824-5c9d-4f51-b24e-a8754e5bb824",
+        "options": {}
+      },
+      "id": "7921045a-d41b-4d5a-aede-22f2a9456960",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -1020,
+        200
+      ],
+      "webhookId": "b473a824-5c9d-4f51-b24e-a8754e5bb824"
+    },
+    {
+      "parameters": {
+        "resource": "audio",
+        "operation": "transcribe",
+        "options": {}
+      },
+      "id": "7f5a1528-61b3-48c5-8b6b-9489ca047be9",
+      "name": "OpenAI",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.4,
+      "position": [
+        500,
+        580
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-06-25T13:27:29.432Z",
+      "createdAt": "2025-06-25T13:27:29.432Z",
+      "role": "workflow:owner",
+      "workflowId": "AAQNIxz999w1RP6C",
+      "projectId": "o60HadikmqrvYZ9Z"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-06-25T13:27:29.432Z",
+  "versionId": "7782de91-59fe-49ec-83ee-36d45b865281"
+}

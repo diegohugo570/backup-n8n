@@ -1,0 +1,1602 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Functions",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Supabase5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Outputs": {
+      "main": [
+        [
+          {
+            "node": "Supabase2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save AI Message": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Outputs",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Supabase4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [
+          {
+            "node": "Supabase",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "get_current_weather",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get_current_weather": {
+      "main": [
+        [
+          {
+            "node": "Salva tool call",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Salva tool call": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase1": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Salva Mensagem Usuário": {
+      "main": [
+        [
+          {
+            "node": "Supabase",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edita Mensagem usuário": {
+      "main": [
+        [
+          {
+            "node": "Save AI Message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Functions": {
+      "main": [
+        [
+          {
+            "node": "Tools",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tools": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase2": {
+      "main": [
+        [
+          {
+            "node": "Edita Mensagem usuário",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase3": {
+      "main": [
+        [
+          {
+            "node": "Supabase1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase4": {
+      "main": [
+        [
+          {
+            "node": "Supabase3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase5": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Salva Mensagem Usuário",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Supabase6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase6": {
+      "main": [
+        [
+          {
+            "node": "Salva Mensagem Usuário",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields3": {
+      "main": [
+        [
+          {
+            "node": "Supabase7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase7": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields4": {
+      "main": [
+        [
+          {
+            "node": "Salva tool call",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase8": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields5": {
+      "main": [
+        [
+          {
+            "node": "Supabase8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields6": {
+      "main": [
+        [
+          {
+            "node": "Salva tool call",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-07-16T11:47:37.623Z",
+  "id": "3m8tKX7M5wXm3D8B",
+  "isArchived": false,
+  "meta": null,
+  "name": "AI_Agent___HTTP_Request",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -144,
+        112
+      ],
+      "id": "f926681a-8b2e-4dac-ba38-32fddbd2f1d5",
+      "name": "When chat message received",
+      "webhookId": "d8657122-cc78-462b-8b7a-a6a291e0bbb7"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/chat/completions",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "openAiApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ ({\n  model: $('Edit Fields').item.json.model,\n  messages: $json.messages.map(m => \n    $if(m.tool_calls.isEmpty(),\n    $if(m.tool_call_id.isEmpty(), ({\n    role: m.role,\n    content: m.content\n  }), \n    ({\n    role: m.role,\n    name: m.name,\n    content: m.content,\n    tool_call_id: m.tool_call_id\n  })\n), \n    ({\n    role: m.role,\n    content: m.content,\n    tool_calls: m.tool_calls,\n  })\n)),\n  tools: $('Tools').item.json.data[0].values(),\n  tool_choice: 'auto',\n  logprobs: true\n}) }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2688,
+        112
+      ],
+      "id": "927aaecd-aea8-4be7-8478-c6dd3b7b8d57",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "619c8cce-eb46-43c3-83cd-12b77ca13081",
+              "name": "message",
+              "value": "={{ $('When chat message received').item.json.chatInput }}",
+              "type": "string"
+            },
+            {
+              "id": "2353fa84-4e87-4e97-afb2-4d8dfa1ff9ac",
+              "name": "sessionId",
+              "value": "={{ $('When chat message received').item.json.sessionId }}",
+              "type": "string"
+            },
+            {
+              "id": "3f94798d-405b-4a1e-8386-504500155d2d",
+              "name": "model",
+              "value": "gpt-4.1-mini",
+              "type": "string"
+            },
+            {
+              "id": "a931cf40-4d10-4281-a301-df178ab03182",
+              "name": "input_price_token",
+              "value": 0.4,
+              "type": "number"
+            },
+            {
+              "id": "d5830b8e-edbc-4313-a8c7-c53b8e7567bc",
+              "name": "cached_price_token",
+              "value": 0.1,
+              "type": "number"
+            },
+            {
+              "id": "a2780479-19b0-44ad-b776-b7dca23a7b92",
+              "name": "output_price_token",
+              "value": 1.6,
+              "type": "number"
+            },
+            {
+              "id": "4344a922-7416-4d4e-8dee-2b5430e49215",
+              "name": "system_prompt",
+              "value": "=<Cargo>\nVocê é a Susane, CS da Formação Arquiteto de IA. Você trabalha com atendimento ao cliente há 20 anos e é conhecida por ser simpática, carismática e quase uma amiga pessoal. Os alunos te chamam tradicionalmente de \"Su\".\n</Cargo>\n\n<Instruções>\nVocê deve tirar dúvidas sobre a Formação Arquiteto de IA. Além disso, você deve saber do aluno:\n- nome\n- dificuldades\n- o que está gostando\n</Instruções>",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        560,
+        112
+      ],
+      "id": "9043b8f8-45e9-404f-90b0-4d5aff74dca6",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "tableId": "n8n_chat_histories",
+        "returnAll": true,
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "session_id",
+              "condition": "eq",
+              "keyValue": "={{ $('Edit Fields').item.json.sessionId }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        1904,
+        112
+      ],
+      "id": "42e30daa-088e-461d-8a8b-59470ea4b096",
+      "name": "Supabase",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "message",
+              "renameField": true,
+              "outputFieldName": "messages"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        2144,
+        112
+      ],
+      "id": "08e5bc4e-81dd-499c-8c51-dfd581abf04f",
+      "name": "Aggregate"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "2b5f24cc-d319-4e53-9f4a-0db551ec816c",
+              "name": "answer",
+              "value": "={{ $json.choices[0].message.content }}",
+              "type": "string"
+            },
+            {
+              "id": "547d379a-5e5a-4c49-9036-62f56c7958ab",
+              "name": "perplexity",
+              "value": "={{ Math.exp((-1)*$json.choices[0].logprobs.content.map(c => c.logprob).sum()/($json.choices[0].logprobs.content.length)) }}",
+              "type": "number"
+            },
+            {
+              "id": "27981cbd-e763-4685-b25f-e6102b276bd7",
+              "name": "input_tokens",
+              "value": "={{ $json.usage.prompt_tokens }}",
+              "type": "string"
+            },
+            {
+              "id": "65e759ab-befd-4c1c-b8a0-6c1ee7344e70",
+              "name": "output_tokens",
+              "value": "={{ $json.usage.completion_tokens }}",
+              "type": "string"
+            },
+            {
+              "id": "c78e4014-6da1-4e21-86cf-2cedff8244b7",
+              "name": "cached_tokens",
+              "value": "={{ $json.usage.prompt_tokens_details.cached_tokens }}",
+              "type": "string"
+            },
+            {
+              "id": "436f06ad-43e4-4d01-a17f-70f01365d505",
+              "name": "input_cost",
+              "value": "={{ (\n      ( $json.usage.prompt_tokens\n        - ($json.usage.prompt_tokens_details?.cached_tokens || 0) ) * $('Edit Fields').item.json.input_price_token\n    + ( $json.usage.prompt_tokens_details?.cached_tokens || 0 ) * $('Edit Fields').item.json.cached_price_token\n   ) / 1e6 }}",
+              "type": "number"
+            },
+            {
+              "id": "aa7b28da-4716-49eb-aa3b-b1f65a628986",
+              "name": "output_cost",
+              "value": "={{ (\n    $json.usage.completion_tokens * $('Edit Fields').item.json.output_price_token\n   ) / 1e6 }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3184,
+        48
+      ],
+      "id": "a69a8daa-5d1c-4a83-938e-323ba37bf27d",
+      "name": "Outputs"
+    },
+    {
+      "parameters": {
+        "tableId": "n8n_chat_histories",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "session_id",
+              "fieldValue": "={{ $('Edit Fields').item.json.sessionId }}"
+            },
+            {
+              "fieldId": "message",
+              "fieldValue": "={{ ({role: 'assistant', content: $('Outputs').item.json.answer}) }}"
+            },
+            {
+              "fieldId": "tokens",
+              "fieldValue": "={{ $('Outputs').item.json.output_tokens }}"
+            },
+            {
+              "fieldId": "cost",
+              "fieldValue": "={{ $('Outputs').item.json.output_cost }}"
+            },
+            {
+              "fieldId": "perplexity",
+              "fieldValue": "={{ $('Outputs').item.json.perplexity }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        3872,
+        48
+      ],
+      "id": "8575a39a-c073-4341-9c21-78b778d5c07f",
+      "name": "Save AI Message"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "92ff6f83-6ebb-448c-9edc-834dfca2dc9d",
+              "name": "response",
+              "value": "={{ $json.message.content }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4080,
+        48
+      ],
+      "id": "f1e81841-d3dc-4ad2-bc48-15bd82e27c1e",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "ad60eb3e-dbd0-4fbd-b9fe-e35d79b99f68",
+              "leftValue": "={{ $json.choices[0].message.tool_calls }}",
+              "rightValue": "",
+              "operator": {
+                "type": "array",
+                "operation": "empty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2912,
+        112
+      ],
+      "id": "e130ee8b-559d-4516-8cf6-87ca30b70a43",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "message.tool_calls",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        3744,
+        208
+      ],
+      "id": "319242ae-6137-431e-ba16-e4928a52ed7d",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1728,
+        464
+      ],
+      "id": "132e3261-fead-47c9-983f-2b5d1306070c",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.function.name }}",
+                    "rightValue": "get_current_weather",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "fc0ffa28-f89a-4c84-8644-21229a31b139"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "get_current_weather"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "efa21fad-9b5a-4ac1-8be2-6c560cbef393",
+                    "leftValue": "={{ $json.function.name }}",
+                    "rightValue": "salva_informacoes",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "salva_informacoes"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "1142ca12-1ee7-43f3-b9b3-2de0f56264f1",
+                    "leftValue": "={{ $json.function.name }}",
+                    "rightValue": "desativa_ia",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "desativa_ia"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        1952,
+        480
+      ],
+      "id": "c95b8e72-05e9-46ca-9288-dd745823f018",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://n8nwebhook.agenciasiha.com.br/webhook/f9cb662c-7513-4cbd-9f94-7442315f983a",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "function_name",
+              "value": "={{ $json.name }}"
+            },
+            {
+              "name": "tool_call_id",
+              "value": "={{ $json.tool_call_id }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "location",
+              "value": "={{ $json.arguments.location }}"
+            },
+            {
+              "name": "unit",
+              "value": "={{ $json.arguments.unit }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3408,
+        544
+      ],
+      "id": "43a931ff-4540-44ba-b2d5-005586ecc946",
+      "name": "get_current_weather"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c16f31b9-bd5b-4dfb-b27b-abda10cab2bc",
+              "name": "name",
+              "value": "={{ $json.function.name }}",
+              "type": "string"
+            },
+            {
+              "id": "6ac63e20-0b0c-4851-9cca-25c06eb46067",
+              "name": "arguments",
+              "value": "={{ $json.function.arguments }}",
+              "type": "object"
+            },
+            {
+              "id": "cb27901a-1c42-4f1c-a201-7583399e98ec",
+              "name": "tool_call_id",
+              "value": "={{ $json.id }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2960,
+        544
+      ],
+      "id": "c83957cc-56ef-49e7-923f-6180f1b2710a",
+      "name": "Edit Fields2"
+    },
+    {
+      "parameters": {
+        "tableId": "n8n_chat_histories",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "session_id",
+              "fieldValue": "={{ $('Edit Fields').item.json.sessionId }}"
+            },
+            {
+              "fieldId": "tokens",
+              "fieldValue": "={{ $json.tokens }}"
+            },
+            {
+              "fieldId": "cost",
+              "fieldValue": "={{ $json.cost }}"
+            },
+            {
+              "fieldId": "message",
+              "fieldValue": "={{ ({role: 'tool', content: $json.content, name: $json.name, tool_call_id: $json.tool_call_id}) }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        3744,
+        1312
+      ],
+      "id": "7eee975b-771f-4335-8961-bf79c59dc955",
+      "name": "Salva tool call"
+    },
+    {
+      "parameters": {
+        "tableId": "n8n_chat_histories",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "session_id",
+              "fieldValue": "={{ $('Edit Fields').item.json.sessionId }}"
+            },
+            {
+              "fieldId": "tokens",
+              "fieldValue": "={{ $('If').item.json.usage.completion_tokens }}"
+            },
+            {
+              "fieldId": "cost",
+              "fieldValue": "={{ $('If').item.json.usage.completion_tokens*$('Edit Fields').item.json.output_price_token/1e6 }}"
+            },
+            {
+              "fieldId": "message",
+              "fieldValue": "={{ (\n{\nrole: 'assistant',\ncontent: '',\ntool_calls: $('If').item.json.choices[0].message.tool_calls\n}\n) }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        3568,
+        208
+      ],
+      "id": "41ac1468-6abd-4bc7-b2cf-eb25fddfda49",
+      "name": "Supabase1"
+    },
+    {
+      "parameters": {
+        "tableId": "n8n_chat_histories",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "session_id",
+              "fieldValue": "={{ $('Edit Fields').last().json.sessionId }}"
+            },
+            {
+              "fieldId": "message",
+              "fieldValue": "={{ ({role: 'user', content: $('Edit Fields').last().json.message}) }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        1648,
+        112
+      ],
+      "id": "95d09a6d-940a-4a9d-bcfd-ed9274094451",
+      "name": "Salva Mensagem Usuário"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "n8n_chat_histories",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "id",
+              "condition": "eq",
+              "keyValue": "={{ $('Salva Mensagem Usuário').item.json.id }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "tokens",
+              "fieldValue": "={{ $if($json.tokens, $('Outputs').item.json.input_tokens.toNumber() + $json.tokens, $('Outputs').item.json.input_tokens) }}"
+            },
+            {
+              "fieldId": "cost",
+              "fieldValue": "={{ $if($json.cost, $('Outputs').item.json.input_cost + $json.cost), $('Outputs').item.json.input_cost }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        3648,
+        48
+      ],
+      "id": "64d3f357-452c-41e0-be3b-6e0b14df84b9",
+      "name": "Edita Mensagem usuário"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c11f21a5-7033-46cd-9e63-b18392dbaa14",
+              "name": "get_current_weather",
+              "value": "={{(\n{\n  type: 'function',\n  function: {\n    name: 'get_current_weather',\n    description: 'Get the current weather in a given location',\n    parameters: {\n      type: 'object',\n      properties: {\n        location: {\n          type: 'string',\n          description: 'The city and country in lowercase separated by comma, e.g. barueri,br'\n        },\n        unit: {\n          type: 'string',\n          description: 'metric for celsius, imperial for fahrenheit and scientific for kelvin. You can determine if not given based on location.',\n          enum: ['metric', 'imperial', 'scientific']\n        }\n      },\n      required: ['location']\n    }\n  }\n}\n)}}",
+              "type": "object"
+            },
+            {
+              "id": "cdb15911-b961-4518-8e2e-393dbcf9c127",
+              "name": "salva_informacoes",
+              "value": "={{(\n{\n  type: 'function',\n  function: {\n    name: 'salva_informacoes',\n    description: \"Save user's name the moment he metion it\",\n    parameters: {\n      type: 'object',\n      properties: {\n        name: {\n          type: 'string',\n          description: \"User's name capitalized\"\n        }\n      },\n      required: ['name']\n    }\n  }\n}\n)}}",
+              "type": "object"
+            },
+            {
+              "id": "abf84c23-ef92-4e2a-a174-d6cce1f00009",
+              "name": "desativa_ia",
+              "value": "={{(\n{\n  type: 'function',\n  function: {\n    name: 'desativa_ia',\n    description: 'Útil quando o usuário solicitar atendimento humano'\n  }\n}\n)}}",
+              "type": "object"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        112,
+        112
+      ],
+      "id": "0478f089-6cea-47b2-a116-267626d0c813",
+      "name": "Functions"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        352,
+        112
+      ],
+      "id": "e557689f-ba57-4fbb-a3d8-9997ead67afb",
+      "name": "Tools"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "n8n_chat_histories",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "id",
+              "keyValue": "={{ $('Salva Mensagem Usuário').item.json.id }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        3424,
+        48
+      ],
+      "id": "e6e4bee1-e0d2-4757-bed4-6fa64d18cffa",
+      "name": "Supabase2",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "n8n_chat_histories",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "id",
+              "condition": "eq",
+              "keyValue": "={{ $('Salva Mensagem Usuário').item.json.id }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "tokens",
+              "fieldValue": "={{\n$if($json.tokens, $('If').item.json.usage.prompt_tokens + $json.tokens, $('If').item.json.usage.prompt_tokens)\n}}"
+            },
+            {
+              "fieldId": "cost",
+              "fieldValue": "={{\n$if($json.cost, (($('If').item.json.usage.prompt_tokens - $('If').item.json.usage.prompt_tokens_details.cached_tokens)*$('Edit Fields').item.json.input_price_token + $('If').item.json.usage.prompt_tokens_details.cached_tokens*$('Edit Fields').item.json.cached_price_token)/1e6 + $json.cost, (($('If').item.json.usage.prompt_tokens - $('If').item.json.usage.prompt_tokens_details.cached_tokens)*$('Edit Fields').item.json.input_price_token + $('If').item.json.usage.prompt_tokens_details.cached_tokens*$('Edit Fields').item.json.cached_price_token)/1e6\n)}}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        3360,
+        208
+      ],
+      "id": "b2336e86-9141-4ad3-84aa-264a17fd9158",
+      "name": "Supabase3"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "n8n_chat_histories",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "id",
+              "keyValue": "={{ $('Salva Mensagem Usuário').item.json.id }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        3184,
+        208
+      ],
+      "id": "d1935e9a-55fc-48db-bcd9-1b77783a2737",
+      "name": "Supabase4",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "users",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "remoteJid",
+              "keyValue": "={{ $json.sessionId }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        784,
+        112
+      ],
+      "id": "8e682a2b-ae0c-4558-a1bb-f1db2e40893b",
+      "name": "Supabase5",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "d638bd3e-c7f3-4fbf-a27d-fe6bac92414c",
+              "leftValue": "={{ $json.remoteJid }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        992,
+        112
+      ],
+      "id": "262a38bf-f146-47ad-8d30-c8d206904828",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "tableId": "users",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "remoteJid",
+              "fieldValue": "={{ $('Edit Fields').item.json.sessionId }}"
+            },
+            {
+              "fieldId": "ativo",
+              "fieldValue": "true"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        1264,
+        160
+      ],
+      "id": "dac2e74d-f1e0-446f-80f2-6d9158ec8f69",
+      "name": "Supabase6"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "users",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "remoteJid",
+              "condition": "eq",
+              "keyValue": "={{ $('Edit Fields').item.json.sessionId }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "nome",
+              "fieldValue": "={{ $json.arguments.name }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        3200,
+        880
+      ],
+      "id": "ba373556-3111-4c61-8afd-bfae051568ea",
+      "name": "Supabase7"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c16f31b9-bd5b-4dfb-b27b-abda10cab2bc",
+              "name": "name",
+              "value": "={{ $json.function.name }}",
+              "type": "string"
+            },
+            {
+              "id": "6ac63e20-0b0c-4851-9cca-25c06eb46067",
+              "name": "arguments",
+              "value": "={{ $json.function.arguments }}",
+              "type": "object"
+            },
+            {
+              "id": "cb27901a-1c42-4f1c-a201-7583399e98ec",
+              "name": "tool_call_id",
+              "value": "={{ $json.id }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2960,
+        880
+      ],
+      "id": "51f2e667-5b68-46e1-b250-eab75557439a",
+      "name": "Edit Fields3"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "69004e12-a613-4022-9a01-d3b5b394fba1",
+              "name": "tokens",
+              "value": 0,
+              "type": "number"
+            },
+            {
+              "id": "cc2ab98c-9ee2-414f-8da0-51f572e1e617",
+              "name": "cost",
+              "value": 0,
+              "type": "number"
+            },
+            {
+              "id": "5c2de07c-bd25-4b93-b8d0-f1986a92bcea",
+              "name": "tool_call_id",
+              "value": "={{ $('Edit Fields3').item.json.tool_call_id }}",
+              "type": "string"
+            },
+            {
+              "id": "d7fbb19e-759d-40c6-8d5d-05604eefa7bc",
+              "name": "name",
+              "value": "={{ $('Edit Fields3').item.json.name }}",
+              "type": "string"
+            },
+            {
+              "id": "60238e95-b361-40f4-9c4e-ed2f6d4f2ce4",
+              "name": "content",
+              "value": "Nome salvo com sucesso! DIGA obrigatoriamente para o usuário que o nome dele foi registrado com sucesso.",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3424,
+        880
+      ],
+      "id": "361d52be-2a09-4bfe-a212-791cc3724442",
+      "name": "Edit Fields4"
+    },
+    {
+      "parameters": {
+        "content": "## Define parâmetros",
+        "height": 320,
+        "width": 1160
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "7baa131d-03c9-4138-9dc5-bc108cd14ed7",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "## Cria usuário",
+        "height": 320,
+        "width": 340,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1184,
+        0
+      ],
+      "id": "5ae79f5d-981d-4e73-bb1e-e75b9c05a25a",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "## Manipula Mensagens",
+        "height": 320,
+        "width": 1060,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1552,
+        0
+      ],
+      "id": "b0ef8c86-aa2d-472c-a7d7-eae54215532a",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "## OpenAI",
+        "height": 320,
+        "width": 220,
+        "color": 2
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2624,
+        0
+      ],
+      "id": "15e5dcb1-9a0c-4c65-a1c8-03845bd0624d",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "content": "## Obtém Clima Atual",
+        "height": 320,
+        "width": 840,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2864,
+        448
+      ],
+      "id": "9f442a62-a9c7-46bd-8bb4-771b0052bbc2",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "content": "## Salva usuário no banco de dados",
+        "height": 320,
+        "width": 840,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2864,
+        784
+      ],
+      "id": "837f5763-1cfe-496a-ac17-3e40ce1c78ad",
+      "name": "Sticky Note5"
+    },
+    {
+      "parameters": {
+        "content": "## Manipula Mensagens",
+        "height": 420,
+        "width": 1460,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2864,
+        0
+      ],
+      "id": "502a5a22-9bdc-44a2-814c-0eadf606a770",
+      "name": "Sticky Note6"
+    },
+    {
+      "parameters": {
+        "content": "## Qual tool?",
+        "height": 300,
+        "width": 220,
+        "color": 2
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1888,
+        384
+      ],
+      "id": "09db79ed-f8f5-44ce-ad7f-3fe0c6a2600f",
+      "name": "Sticky Note7"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "users",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "remoteJid",
+              "condition": "eq",
+              "keyValue": "={{ $('Edit Fields').item.json.sessionId }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "ativo",
+              "fieldValue": "=false"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        3200,
+        1248
+      ],
+      "id": "ad138f5f-fac6-4003-9f57-ccb599377488",
+      "name": "Supabase8"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c16f31b9-bd5b-4dfb-b27b-abda10cab2bc",
+              "name": "name",
+              "value": "={{ $json.function.name }}",
+              "type": "string"
+            },
+            {
+              "id": "6ac63e20-0b0c-4851-9cca-25c06eb46067",
+              "name": "arguments",
+              "value": "={{ $json.function.arguments }}",
+              "type": "object"
+            },
+            {
+              "id": "cb27901a-1c42-4f1c-a201-7583399e98ec",
+              "name": "tool_call_id",
+              "value": "={{ $json.id }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2960,
+        1248
+      ],
+      "id": "e93dbbbc-4f3e-4ea4-a4f8-0617ada0041c",
+      "name": "Edit Fields5"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "69004e12-a613-4022-9a01-d3b5b394fba1",
+              "name": "tokens",
+              "value": 0,
+              "type": "number"
+            },
+            {
+              "id": "cc2ab98c-9ee2-414f-8da0-51f572e1e617",
+              "name": "cost",
+              "value": 0,
+              "type": "number"
+            },
+            {
+              "id": "5c2de07c-bd25-4b93-b8d0-f1986a92bcea",
+              "name": "tool_call_id",
+              "value": "={{ $('Edit Fields5').item.json.tool_call_id }}",
+              "type": "string"
+            },
+            {
+              "id": "d7fbb19e-759d-40c6-8d5d-05604eefa7bc",
+              "name": "name",
+              "value": "={{ $('Edit Fields5').item.json.name }}",
+              "type": "string"
+            },
+            {
+              "id": "60238e95-b361-40f4-9c4e-ed2f6d4f2ce4",
+              "name": "content",
+              "value": "O usuário solicitou atendimento humano, diga que um humano está vindo para atendê-lo.",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3424,
+        1248
+      ],
+      "id": "c455a470-5b96-49bc-83b2-ff9b8d477abe",
+      "name": "Edit Fields6"
+    },
+    {
+      "parameters": {
+        "content": "## Desativa IA\n",
+        "height": 320,
+        "width": 840,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2864,
+        1152
+      ],
+      "id": "fc020a5f-126b-49b1-a0e4-e39870b27ef0",
+      "name": "Sticky Note8"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-07-16T11:47:37.623Z",
+      "createdAt": "2025-07-16T11:47:37.623Z",
+      "role": "workflow:owner",
+      "workflowId": "3m8tKX7M5wXm3D8B",
+      "projectId": "o60HadikmqrvYZ9Z"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-07-16T11:47:37.623Z",
+  "versionId": "9cb42a5c-2d3c-4ddf-86d9-553893b7b2f3"
+}

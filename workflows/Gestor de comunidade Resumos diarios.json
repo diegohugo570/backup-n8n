@@ -1,0 +1,735 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Supabase",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Auto-fixing Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Auto-fixing Output Parser",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Auto-fixing Output Parser",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Envia resumo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Envia resumo": {
+      "main": [
+        [
+          {
+            "node": "Supabase1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger1": {
+      "main": [
+        [
+          {
+            "node": "Supabase2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase2": {
+      "main": [
+        [
+          {
+            "node": "Aggregate1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate1": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Auto-fixing Output Parser1": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Basic LLM Chain1",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Auto-fixing Output Parser1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser1": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Auto-fixing Output Parser1",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Envia resumo1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Envia resumo1": {
+      "main": [
+        [
+          {
+            "node": "Supabase3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-06-21T13:37:19.387Z",
+  "id": "VSwh4bwNXgkDPtOj",
+  "isArchived": false,
+  "meta": null,
+  "name": "Gestor de comunidade Resumos diarios",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 20
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "d64a0c6e-8ec7-43c5-b2f9-ada22e5f132c",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "tableId": "mensagens_grupo",
+        "returnAll": true,
+        "matchType": "allFilters",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "alerta",
+              "condition": "eq",
+              "keyValue": "false"
+            },
+            {
+              "keyName": "created_at",
+              "condition": "gte",
+              "keyValue": "={{ $now.minus(1, 'days') }}"
+            },
+            {
+              "keyName": "created_at",
+              "condition": "lte",
+              "keyValue": "={{ $now }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        240,
+        0
+      ],
+      "id": "5db4022d-96e0-4196-b58e-eefb74c9148f",
+      "name": "Supabase"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "include": "specifiedFields",
+        "fieldsToInclude": "nome, numero, mensagem, created_at",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        500,
+        0
+      ],
+      "id": "9a1380ce-2cc7-4731-92bd-417a1d326116",
+      "name": "Aggregate"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ \n  $json.data.map(item => {\n    const createdAt = item.created_at ? DateTime.fromISO(item.created_at).toFormat('HH:mm') : 'Hora não disponível';\n    return `Nome: ${item.nome}\\nNúmero: ${item.numero}\\nMensagem: ${item.mensagem}\\nHora: ${createdAt}`;\n  }).join('\\n\\n')\n}}",
+        "hasOutputParser": true,
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=Você é um analista especialista em comunidades digitais. Sua tarefa é gerar um resumo estruturado do dia com base em um conjunto de mensagens trocadas entre os membros de uma comunidade de empreendedorismo e tecnologia.\n\nAnalise o conteúdo e retorne as seguintes informações no formato JSON:\n\n1. **\"assuntos chaves do dia\"**: um parágrafo resumido destacando os principais tópicos abordados (ex: modelos de IA, bots de WhatsApp, marketing e estratégia, etc.).\n2. **\"links\"**: uma lista de todos os links mencionados nas mensagens (se possível, com título/contexto breve de cada um).\n3. **\"temas\"**: uma lista com blocos de temas discutidos, seguindo este formato:\n   - título do tema\n   - horário aproximado\n   - participantes (nomes)\n   - parágrafo de resumo explicando o que foi discutido\n4. **\"insights\"**: os principais aprendizados ou conselhos extraídos das conversas (podem ser insights de negócio, marketing, tecnologia, mindset, etc.)\n\n## Regras:\n- Use linguagem clara e objetiva\n- Não invente dados que não estavam nas mensagens\n- Inclua nomes de participantes apenas se mencionados no conteúdo\n- Identifique o sentimento geral da comunidade no dia e traga isso no campo \"assuntos chaves do dia\"\n- Use emojis nos títulos e busque formatar o texto de maneira fluída e com boa leitura, use *negrito* para colocar textos em negrito.\n\n## Exemplo de saída (estrutura desejada):\n```json\n{\n  \"assuntos chaves do dia\": \"As discussões se concentraram em micro-SaaS, marketing B2C com IA, viralização de produtos no TikTok, bots de WhatsApp, e estratégias de monetização e infraestrutura para startups em tração.\",\n  \"links\": [\n    \"https://manus.ai/\",\n    \"https://www.linkedin.com/posts/orenanmatos_tu-j%C3%A1-se-sentiu-um-macaco-bravo-na-frente-activity-7335278320885948420-_oYJ\",\n    ...\n  ],\n  \"temas\": [\n    {\n      \"tema\": \"🚀Viabilidade de Micro-SaaS e Impacto da IA\",\n      \"horario\": \"09h06\",\n      \"participantes\": \"Samuel Heinrichs, Eglon, Diego Cezimbra, Willian César\",\n      \"resumo\": \"O grupo discutiu se micro-SaaS baseados em IA ainda têm viabilidade, especialmente aqueles que dependem de wrappers simples. Concluíram que o futuro está em resolver nichos reais com produtos robustos.\"\n    },\n    ...\n  ],\n  \"insights\": [\n    \"A mina de ouro dos wrappers de IA pode ter passado, o diferencial agora é resolver problemas de nicho com profundidade.\",\n    \"A capacidade de execução pesa mais do que apenas ter uma boa ideia.\",\n    \"Fake freemium pode gerar tração inicial.\",\n    \"Marketing de influência e social selling funcionam muito bem em nichos.\",\n    \"Colaboração entre empreendedores acelera o crescimento de todos.\"\n  ]\n}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.6,
+      "position": [
+        760,
+        0
+      ],
+      "id": "acbd6aaf-d23f-4a25-8cb4-a6aee00dfae7",
+      "name": "Basic LLM Chain"
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-2.5-flash-preview-05-20",
+        "options": {
+          "temperature": 0.2
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        700,
+        180
+      ],
+      "id": "15f9b06c-1602-46a3-826e-52504928dbde",
+      "name": "Google Gemini Chat Model"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserAutofixing",
+      "typeVersion": 1,
+      "position": [
+        880,
+        180
+      ],
+      "id": "a8710a6c-4177-4247-8f79-c91338934080",
+      "name": "Auto-fixing Output Parser"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        840,
+        360
+      ],
+      "id": "9ee1cf36-13bc-4a3e-82c2-f7390f38fa8d",
+      "name": "OpenAI Chat Model"
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"assuntos_chaves_do_dia\": \"As discussões se concentraram em micro-SaaS, bots de WhatsApp, estratégias de marketing B2C com IA, viralização orgânica e monetização de produtos digitais. Houve forte participação da comunidade em temas como execução, segurança de apps e estratégias de tração orgânica.\",\n  \"links\": [\n    \"https://manus.ai/\",\n    \"https://www.linkedin.com/posts/orenanmatos_tu-j%C3%A1-se-sentiu-um-macaco-bravo-na-frente-activity-7335278320885948420-_oYJ\",\n    \"https://www.basedeclientes.com.br\",\n    \"https://apps.apple.com/us/app/zupah/id6736997036\",\n    \"https://www.linkedin.com/posts/marinarlemos_quase-foi-mais-um-caso-tipo-golpista-do-activity-7335326007458971648-YSYo\"\n  ],\n  \"temas\": [\n    {\n      \"tema\": \"Viabilidade de Micro-SaaS e Impacto da IA\",\n      \"horario\": \"09h06\",\n      \"participantes\": \"Samuel Heinrichs, Eglon, Diego Cezimbra, Willian César\",\n      \"resumo\": \"O grupo discutiu a sustentabilidade de micro-SaaS baseados em wrappers de IA e concluiu que o diferencial está em resolver dores específicas de nichos. Destacou-se a importância de criar produtos com proposta de valor clara, diante do avanço de IAs mais robustas.\"\n    },\n    {\n      \"tema\": \"Marketing de Influência e Viralização\",\n      \"horario\": \"15h06\",\n      \"participantes\": \"Sabrine, Marina Lemos, Guilherme M Beraldo\",\n      \"resumo\": \"O case do Plinq demonstrou como o marketing de influência e o social selling podem gerar tração e validação em curto prazo. Marina compartilhou a viralização do app, destacando o uso de conteúdo estratégico e a escalabilidade do backend.\"\n    }\n  ],\n  \"insights\": [\n    \"Focar em nichos com problemas reais aumenta a longevidade do produto.\",\n    \"Marketing de influência funciona bem para validar e escalar soluções B2C.\",\n    \"A execução consistente é mais importante que a ideia em si.\",\n    \"A segurança e estrutura de dados precisam acompanhar o crescimento do produto.\",\n    \"Colaboração entre membros acelera soluções e validações.\"\n  ]\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.2,
+      "position": [
+        1020,
+        360
+      ],
+      "id": "ff9db79b-d73f-40cc-abdc-b0d1156174ee",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d405bdad-6c74-4218-8723-97fcea23dba8",
+              "name": "assuntos_chaves_do_dia",
+              "value": "={{ $json.output.assuntos_chaves_do_dia }}",
+              "type": "string"
+            },
+            {
+              "id": "680e5604-a953-4f4c-adcf-59fb38da6d59",
+              "name": "mensagem",
+              "value": "=*Resumo - Conversa Fiada 📆 - {{ $now.format('dd/MM/yyyy') }}*\n\n📌 *Assunto(s) Chave do Dia*:\n{{ $json.output.assuntos_chaves_do_dia }}\n\n🔗 *Links Compartilhados*:\n\n{{ $json.output.temas.map(t => `*Tema da Discussão:* ${t.tema}\\n*Horário:* ${t.horario}\\n*Participantes:* ${t.participantes}\\n*Resumo:* ${t.resumo}`).join(\"\\n\\n\") }}\n\n💡 *Principais Insights*:\n{{ $json.output.insights.map(i => \"-\" + i).join(\"\\n\") }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1220,
+        0
+      ],
+      "id": "8524e9cf-fed2-4027-a9f1-dc85be9fdd94",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://evolutionapi.seu dominio.com/message/sendText/sua instancia",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "sua chave api"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "=120363399514150691@g.us"
+            },
+            {
+              "name": "text",
+              "value": "={{ $json.mensagem }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1440,
+        0
+      ],
+      "id": "f7ec6463-8193-45c1-a58d-ce27ec6ec02f",
+      "name": "Envia resumo"
+    },
+    {
+      "parameters": {
+        "tableId": "resumos",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "tipo",
+              "fieldValue": "diario"
+            },
+            {
+              "fieldId": "conteudo",
+              "fieldValue": "={{ $('Edit Fields').item.json.mensagem }}"
+            },
+            {
+              "fieldId": "created_at",
+              "fieldValue": "={{ $now }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        1660,
+        0
+      ],
+      "id": "cb0b0d3f-56a5-49c9-bdf6-0080f45f388c",
+      "name": "Supabase1"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 20
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -20,
+        680
+      ],
+      "id": "69728650-819e-4f94-8c3f-04263d906e05",
+      "name": "Schedule Trigger1"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "tableId": "mensagens_grupo",
+        "returnAll": true,
+        "matchType": "allFilters",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "created_at",
+              "condition": "lte",
+              "keyValue": "={{ $now }}"
+            },
+            {
+              "keyName": "created_at",
+              "condition": "gte",
+              "keyValue": "={{ $now.minus(1, 'days') }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        240,
+        680
+      ],
+      "id": "9852ff01-0d98-49ea-9f67-a41b5cf105d2",
+      "name": "Supabase2"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "include": "specifiedFields",
+        "fieldsToInclude": "nome, numero, mensagem, created_at",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        500,
+        680
+      ],
+      "id": "f74d4c2e-c988-479d-a497-310c5e0bb420",
+      "name": "Aggregate1"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ \n  $json.data.map(item => {\n    const createdAt = item.created_at ? DateTime.fromISO(item.created_at).toFormat('HH:mm') : 'Hora não disponível';\n    return `Nome: ${item.nome}\\nNúmero: ${item.numero}\\nMensagem: ${item.mensagem}\\nHora: ${createdAt}`;\n  }).join('\\n\\n')\n}}",
+        "hasOutputParser": true,
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=Você é um analista de Customer Success da Dascia Academy. Sua missão é gerar um resumo prático, objetivo e acionável com base nas mensagens trocadas hoje na comunidade.\n\nExtraia e classifique as informações mais relevantes para o time de CS entender:\n- Onde estão os problemas?\n- Quais oportunidades existem de melhorar a experiência dos alunos?\n- Quem merece atenção (positiva ou negativa)?\n\nRetorne no formato JSON estruturado:\n\n```json\n{\n  \"principais_reclamacoes\": [\n    \"Exemplo: Muitos alunos relataram travamento no painel de cursos.\",\n    ...\n  ],\n  \"demandas_urgentes\": [\n    \"Exemplo: Pergunta da aluna Mariana às 14h sobre acesso ao módulo 3 segue sem resposta.\",\n    ...\n  ],\n  \"sugestoes_de_melhoria\": [\n    \"Exemplo: Rafael sugeriu um botão direto para suporte dentro da plataforma.\",\n    ...\n  ],\n  \"elogios_relevantes\": [\n    \"Exemplo: João disse que o novo painel está 'bem mais intuitivo'.\",\n    ...\n  ],\n  \"usuarios_em_destaque\": {\n    \"positivos\": [\"João - Elogiou painel\", \"Sabrine - Ajudou outros membros\"],\n    \"negativos\": [\"Matheus - Muito frustrado com login\", \"Carla - Reclamou de bugs em 3 mensagens diferentes\"]\n  },\n  \"sentimento_geral_do_dia\": \"positivo / neutro / negativo\"\n}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.6,
+      "position": [
+        700,
+        680
+      ],
+      "id": "23b05c19-293e-43f5-8ff5-30e8ae746a7c",
+      "name": "Basic LLM Chain1"
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-2.5-flash-preview-05-20",
+        "options": {
+          "temperature": 0.2
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        640,
+        860
+      ],
+      "id": "56b97d02-c839-4efc-b597-26e63feaa7cf",
+      "name": "Google Gemini Chat Model1"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserAutofixing",
+      "typeVersion": 1,
+      "position": [
+        820,
+        860
+      ],
+      "id": "9316e9a6-4a52-41c6-9c6c-3d31be6e0a47",
+      "name": "Auto-fixing Output Parser1"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        760,
+        1060
+      ],
+      "id": "acbb6472-c4e0-46bf-b44a-63bbcf14618c",
+      "name": "OpenAI Chat Model1"
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"principais_reclamacoes\": [\n    \"Exemplo: Muitos alunos relataram travamento no painel de cursos.\"\n  ],\n  \"demandas_urgentes\": [\n    \"Exemplo: Pergunta da aluna Mariana às 14h sobre acesso ao módulo 3 segue sem resposta.\"\n  ],\n  \"sugestoes_de_melhoria\": [\n    \"Exemplo: Rafael sugeriu um botão direto para suporte dentro da plataforma.\"\n  ],\n  \"elogios_relevantes\": [\n    \"Exemplo: João disse que o novo painel está 'bem mais intuitivo'.\"\n  ],\n  \"usuarios_em_destaque\": {\n    \"positivos\": [\"João - Elogiou painel\", \"Sabrine - Ajudou outros membros\"],\n    \"negativos\": [\"Matheus - Muito frustrado com login\", \"Carla - Reclamou de bugs em 3 mensagens diferentes\"]\n  },\n  \"sentimento_geral_do_dia\": \"positivo / neutro / negativo\"\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.2,
+      "position": [
+        1000,
+        1040
+      ],
+      "id": "aa814985-aa72-494b-b74f-17b12890ab04",
+      "name": "Structured Output Parser1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "680e5604-a953-4f4c-adcf-59fb38da6d59",
+              "name": "mensagem",
+              "value": "=*Resumo - Conversa Fiada 📆 - {{ $now.format('dd/MM/yyyy') }} - CS*\n\n*Principais Reclamações:*\n{{ $json.output.principais_reclamacoes.map(i => \"-\" + i).join(\"\\n\") }}\n\n*Demandas Urgentes:*\n{{ $json.output.demandas_urgentes.map(i => \"-\" + i).join(\"\\n\") }}\n\n*Sugestões de melhorias:*\n{{ $json.output.sugestoes_de_melhoria.map(i => \"-\" + i).join(\"\\n\") }}\n\n*Elogios relevantes:*\n{{ $json.output.elogios_relevantes.map(i => \"-\" + i).join(\"\\n\") }}\n\n*Usuários em destaque:*\nPositivo:\n{{ $json.output.usuarios_em_destaque.positivos.map(i => \"-\" + i).join(\"\\n\") }}\n\nNegativo: \n{{ $json.output.usuarios_em_destaque.negativos.map(i => \"-\" + i).join(\"\\n\") }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1160,
+        680
+      ],
+      "id": "506d5587-174e-4a37-a3ae-433a6ed48b81",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://evolutionapi.seu dominio.com/message/sendText/sua instancia",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "sua chave api"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "=5511980203775"
+            },
+            {
+              "name": "text",
+              "value": "={{ $json.mensagem }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1380,
+        680
+      ],
+      "id": "b19f10a7-807c-4b19-9a5a-8c2bf8fb4581",
+      "name": "Envia resumo1"
+    },
+    {
+      "parameters": {
+        "tableId": "resumos",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "tipo",
+              "fieldValue": "diario-cs"
+            },
+            {
+              "fieldId": "conteudo",
+              "fieldValue": "={{ $('Edit Fields1').item.json.mensagem }}"
+            },
+            {
+              "fieldId": "created_at",
+              "fieldValue": "={{ $now }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        1600,
+        680
+      ],
+      "id": "3f988ef9-95f9-445f-bcbc-44692ba147a6",
+      "name": "Supabase3"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-06-21T13:37:19.387Z",
+      "createdAt": "2025-06-21T13:37:19.387Z",
+      "role": "workflow:owner",
+      "workflowId": "VSwh4bwNXgkDPtOj",
+      "projectId": "o60HadikmqrvYZ9Z"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-06-21T13:37:46.149Z",
+  "versionId": "e94558ac-b089-4007-813b-9004031824a8"
+}

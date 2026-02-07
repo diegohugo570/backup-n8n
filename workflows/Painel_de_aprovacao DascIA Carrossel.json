@@ -1,0 +1,276 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "Supabase": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "painel": {
+      "main": [
+        [
+          {
+            "node": "Supabase",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "feedback": {
+      "main": [
+        [
+          {
+            "node": "atualiza hitl",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "atualiza hitl": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-08-27T18:33:30.265Z",
+  "id": "mYKuHLc3DqEE2rvH",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Painel_de_aprovacao DascIA Carrossel",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "hitl",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "id",
+              "keyValue": "={{ $json.query.id }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        240,
+        240
+      ],
+      "id": "76078566-a06e-4fb3-882b-9371df2f7b78",
+      "name": "Supabase",
+      "credentials": {
+        "supabaseApi": {
+          "id": "IbOICFLx28vkTb6x",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!-- Seleção de Ideias | 5 cards, seleção única, botão continuar + botão reprovar -->\n<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <title>Selecionar Ideia</title>\n  <style>\n    :root {\n      --azul: #2c62f6;\n      --azul-claro: #74a7ff;\n      --vermelho: #f62c2c;\n      --vermelho-claro: #ff7474;\n      --cinza-fundo: #181924;\n      --cinza-card: #212436;\n      --cinza-borda: #232947;\n      --white: #fff;\n    }\n    body {\n      min-height: 100vh;\n      margin: 0;\n      background: #000;\n      background: radial-gradient(circle at 70% 60%, rgba(54,113,255,0.17) 0%, rgba(0,0,0,0.98) 64%) #000;\n      display: flex; justify-content: center; align-items: center;\n      font-family: 'Inter', Arial, sans-serif;\n      color: var(--white);\n    }\n    .container {\n      background: var(--cinza-fundo);\n      border-radius: 20px;\n      padding: 2.2rem 1.3rem 2.2rem 1.3rem;\n      max-width: 400px;\n      width: 95vw;\n      box-sizing: border-box;\n      display: flex; flex-direction: column; align-items: stretch;\n      gap: 1.2rem;\n      box-shadow: 0 2px 16px #000a;\n    }\n    .cards-list {\n      display: flex; flex-direction: column; gap: 1.1rem; width: 100%;\n    }\n    .idea-card {\n      background: var(--cinza-card);\n      border-radius: 17px;\n      border: 2px solid var(--cinza-borda);\n      padding: 1.1rem 1.2rem;\n      cursor: pointer;\n      transition: border-color 0.19s, background 0.19s, box-shadow 0.2s;\n      box-shadow: 0 1px 5px #2329471e;\n      position: relative;\n      user-select: none;\n    }\n    .idea-card:hover, .idea-card:focus {\n      border-color: var(--azul-claro);\n      background: #252a40;\n      z-index: 2;\n    }\n    .idea-card.selected {\n      border-color: var(--azul);\n      background: #23294a;\n      box-shadow: 0 2px 16px #295cff46;\n    }\n    .idea-title {\n      font-weight: 600; \n      color: var(--white); \n      font-size: 1.07rem;\n      margin-bottom: 0.17rem;\n      letter-spacing: 0.01em;\n    }\n    .idea-desc {\n      font-size: 0.98rem; color: #ccd3ff; letter-spacing: 0.01em;\n      margin-bottom: 0;\n    }\n    .buttons-container {\n      display: flex;\n      gap: 0.8rem;\n      margin-top: 1.6rem;\n    }\n    .continue-btn, .reject-btn {\n      flex: 1;\n      padding: 1rem 0;\n      border-radius: 11px;\n      border: none;\n      color: var(--white);\n      font-size: 1.07rem;\n      font-weight: 600;\n      letter-spacing: 0.03em;\n      cursor: pointer;\n      box-shadow: none;\n      transition: background 0.18s, transform 0.12s, opacity 0.19s;\n      filter: none;\n    }\n    .continue-btn {\n      opacity: 0.65;\n      pointer-events: none;\n    }\n    .reject-btn {\n      opacity: 1;\n      pointer-events: auto;\n    }\n    .continue-btn {\n      background: linear-gradient(90deg, var(--azul), var(--azul-claro) 96%);\n    }\n    .reject-btn {\n      background: linear-gradient(90deg, var(--vermelho), var(--vermelho-claro) 96%);\n    }\n    .continue-btn.enabled {\n      opacity: 1;\n      pointer-events: auto;\n    }\n    .continue-btn:hover {\n      background: linear-gradient(90deg, #2456d9, #6699ff 96%);\n    }\n    .reject-btn:hover {\n      background: linear-gradient(90deg, #d92424, #ff6666 96%);\n    }\n    .feedback-section {\n      display: none;\n      margin-top: 1.2rem;\n      padding: 1.2rem;\n      background: var(--cinza-card);\n      border-radius: 15px;\n      border: 2px solid var(--cinza-borda);\n    }\n    .feedback-section.show {\n      display: block;\n    }\n    .feedback-label {\n      font-weight: 600;\n      color: var(--white);\n      font-size: 1rem;\n      margin-bottom: 0.8rem;\n      display: block;\n    }\n    .feedback-textarea {\n      width: 100%;\n      min-height: 100px;\n      padding: 0.8rem;\n      border-radius: 8px;\n      border: 2px solid var(--cinza-borda);\n      background: var(--cinza-fundo);\n      color: var(--white);\n      font-family: 'Inter', Arial, sans-serif;\n      font-size: 0.95rem;\n      resize: vertical;\n      box-sizing: border-box;\n      transition: border-color 0.2s;\n    }\n    .feedback-textarea:focus {\n      outline: none;\n      border-color: var(--azul-claro);\n    }\n    .feedback-textarea::placeholder {\n      color: #8892b0;\n    }\n    .feedback-buttons {\n      display: flex;\n      gap: 0.8rem;\n      margin-top: 1rem;\n    }\n    .send-feedback-btn, .cancel-feedback-btn {\n      flex: 1;\n      padding: 0.8rem 0;\n      border-radius: 8px;\n      border: none;\n      font-size: 0.95rem;\n      font-weight: 600;\n      cursor: pointer;\n      transition: background 0.18s;\n    }\n    .send-feedback-btn {\n      background: linear-gradient(90deg, var(--azul), var(--azul-claro) 96%);\n      color: var(--white);\n    }\n    .cancel-feedback-btn {\n      background: var(--cinza-borda);\n      color: #ccd3ff;\n    }\n    .send-feedback-btn:hover {\n      background: linear-gradient(90deg, #2456d9, #6699ff 96%);\n    }\n    .cancel-feedback-btn:hover {\n      background: #2d3454;\n    }\n    @media (max-width: 480px) {\n      .container { padding: 1.1rem 0.4rem; }\n      .idea-card { padding: 0.85rem 0.7rem; }\n      .continue-btn, .reject-btn { font-size: 1rem; padding: 0.9rem 0;}\n      .buttons-container { flex-direction: column; gap: 0.6rem; }\n      .feedback-buttons { flex-direction: column; gap: 0.6rem; }\n    }\n  </style>\n</head>\n<body>\n  <div class=\"container\">\n    <div class=\"cards-list\" id=\"cardsList\">\n      <div class=\"idea-card\" tabindex=\"0\" data-id=\"1\">\n        <div class=\"idea-title\">{{ $json.content.ideas[0].idea }}</div>\n        <div class=\"idea-desc\">{{ $json.content.ideas[0].description }}</div>\n      </div>\n      <div class=\"idea-card\" tabindex=\"0\" data-id=\"2\">\n        <div class=\"idea-title\">{{ $json.content.ideas[1].idea }}</div>\n        <div class=\"idea-desc\">{{ $json.content.ideas[1].description }}</div>\n      </div>\n      <div class=\"idea-card\" tabindex=\"0\" data-id=\"3\">\n        <div class=\"idea-title\">{{ $json.content.ideas[2].idea }}</div>\n        <div class=\"idea-desc\">{{ $json.content.ideas[2].description }}</div>\n      </div>\n      <div class=\"idea-card\" tabindex=\"0\" data-id=\"4\">\n        <div class=\"idea-title\">{{ $json.content.ideas[3].idea }}</div>\n        <div class=\"idea-desc\">{{ $json.content.ideas[3].description }}</div>\n      </div>\n      <div class=\"idea-card\" tabindex=\"0\" data-id=\"5\">\n        <div class=\"idea-title\">{{ $json.content.ideas[4].idea }}</div>\n        <div class=\"idea-desc\">{{ $json.content.ideas[4].description }}</div>\n      </div>\n    </div>\n    \n    <div class=\"buttons-container\">\n      <button class=\"continue-btn\" id=\"continueBtn\" disabled>Continuar</button>\n      <button class=\"reject-btn\" id=\"rejectBtn\">Reprovar Ideias</button>\n    </div>\n\n    <div class=\"feedback-section\" id=\"feedbackSection\">\n      <label class=\"feedback-label\" for=\"feedbackText\">\n        Por que essas ideias não atenderam suas expectativas?\n      </label>\n      <textarea \n        class=\"feedback-textarea\" \n        id=\"feedbackText\" \n        placeholder=\"Descreva o que você esperava das ideias e como elas poderiam ser melhoradas...\"\n      ></textarea>\n      <div class=\"feedback-buttons\">\n        <button class=\"send-feedback-btn\" id=\"sendFeedbackBtn\">Enviar Feedback</button>\n        <button class=\"cancel-feedback-btn\" id=\"cancelFeedbackBtn\">Cancelar</button>\n      </div>\n    </div>\n  </div>\n  \n  <script>\n    // Seleção única\n    const cards = document.querySelectorAll('.idea-card');\n    const continueBtn = document.getElementById('continueBtn');\n    const rejectBtn = document.getElementById('rejectBtn');\n    const feedbackSection = document.getElementById('feedbackSection');\n    const feedbackText = document.getElementById('feedbackText');\n    const sendFeedbackBtn = document.getElementById('sendFeedbackBtn');\n    const cancelFeedbackBtn = document.getElementById('cancelFeedbackBtn');\n    let selectedId = null;\n\n    cards.forEach(card => {\n      card.addEventListener('click', () => selectCard(card));\n      card.addEventListener('keydown', (e) => {\n        if(e.key === 'Enter' || e.key === ' ') {\n          e.preventDefault();\n          selectCard(card);\n        }\n      });\n    });\n\n    function selectCard(card) {\n      cards.forEach(c => c.classList.remove('selected'));\n      card.classList.add('selected');\n      selectedId = card.getAttribute('data-id');\n      continueBtn.classList.add('enabled');\n      continueBtn.disabled = false;\n    }\n\n    continueBtn.addEventListener('click', async () => {\n      if(selectedId) {\n        try {\n          await fetch('seu webhook', {\n            method: 'POST',\n            headers: {\n              'Content-Type': 'application/json',\n            },\n            body: JSON.stringify({\n              \"status\": \"aprovada\",\n              \"idea\": parseInt(selectedId),\n              \"id\": \"{{ $json.id }}\",\n              \"feedback\": \"\"\n            })\n          });\n          alert('Ideia aprovada com sucesso!');\n        } catch (error) {\n          console.error('Erro ao enviar aprovação:', error);\n          alert('Erro ao enviar aprovação. Tente novamente.');\n        }\n      }\n    });\n\n    rejectBtn.addEventListener('click', () => {\n      feedbackSection.classList.add('show');\n      feedbackText.focus();\n    });\n\n    sendFeedbackBtn.addEventListener('click', async () => {\n      const feedback = feedbackText.value.trim();\n      if(feedback) {\n        try {\n          await fetch('seu webhook', {\n            method: 'POST',\n            headers: {\n              'Content-Type': 'application/json',\n            },\n            body: JSON.stringify({\n              \"status\": \"reprovada\",\n              \"idea\": selectedId ? parseInt(selectedId) : null,\n              \"id\": \"{{ $json.id }}\",\n              \"feedback\": feedback\n            })\n          });\n          alert('Feedback enviado com sucesso!');\n          feedbackSection.classList.remove('show');\n          feedbackText.value = '';\n        } catch (error) {\n          console.error('Erro ao enviar feedback:', error);\n          alert('Erro ao enviar feedback. Tente novamente.');\n        }\n      } else {\n        alert('Por favor, digite seu feedback antes de enviar.');\n      }\n    });\n\n    cancelFeedbackBtn.addEventListener('click', () => {\n      feedbackSection.classList.remove('show');\n      feedbackText.value = '';\n    });\n\n    // Fechar feedback ao pressionar Escape\n    document.addEventListener('keydown', (e) => {\n      if(e.key === 'Escape' && feedbackSection.classList.contains('show')) {\n        feedbackSection.classList.remove('show');\n        feedbackText.value = '';\n      }\n    });\n  </script>\n</body>\n</html>",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.2,
+      "position": [
+        464,
+        240
+      ],
+      "id": "ca50b380-c470-4c92-9847-99a8d8784dc9",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "path": "876ddb3b-7493-4ae3-9dd5-606da8836692",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -16,
+        240
+      ],
+      "id": "27d3b926-8ed3-49e4-af5f-efdadc522057",
+      "name": "painel",
+      "webhookId": "876ddb3b-7493-4ae3-9dd5-606da8836692"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "b480e153-241f-4bb1-add6-54248b41fd08",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "53688753-90eb-4cc0-90e5-18448b45d1c3",
+      "name": "feedback",
+      "webhookId": "b480e153-241f-4bb1-add6-54248b41fd08",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "hitl",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "id",
+              "condition": "eq",
+              "keyValue": "={{ $json.body.id }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "status",
+              "fieldValue": "={{ $json.body.status }}"
+            },
+            {
+              "fieldId": "ideia",
+              "fieldValue": "={{ $json.body.idea }}"
+            },
+            {
+              "fieldId": "feedback",
+              "fieldValue": "={{ $json.body.feedback }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        240,
+        0
+      ],
+      "id": "ab3ca30b-d4c4-482c-8b6b-c7c2c46d9dfb",
+      "name": "atualiza hitl",
+      "credentials": {
+        "supabaseApi": {
+          "id": "IbOICFLx28vkTb6x",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://dominio do seu n8n/webhook-waiting/{{ $json.id_execucao }}",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "status",
+              "value": "={{ $json.status }}"
+            },
+            {
+              "name": "feedback",
+              "value": "={{ $json.feedback }}"
+            },
+            {
+              "name": "ideia",
+              "value": "={{ $json.content.ideas[$json.ideia - 1].idea }}"
+            },
+            {
+              "name": "descricao",
+              "value": "={{ $json.content.ideas[$json.ideia - 1].description }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        464,
+        0
+      ],
+      "id": "e3ed833b-5b31-48c6-8535-a58272841d8d",
+      "name": "HTTP Request"
+    }
+  ],
+  "pinData": {
+    "feedback": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8nwebhook.lucasevange.com",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+            "content-length": "110",
+            "accept": "*/*",
+            "accept-encoding": "gzip, deflate, br, zstd",
+            "accept-language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7",
+            "content-type": "application/json",
+            "origin": "https://n8neditor.lucasevange.com",
+            "priority": "u=1, i",
+            "referer": "https://n8neditor.lucasevange.com/",
+            "sec-ch-ua": "\"Google Chrome\";v=\"137\", \"Chromium\";v=\"137\", \"Not/A)Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "sec-fetch-dest": "empty",
+            "sec-fetch-mode": "cors",
+            "sec-fetch-site": "same-site",
+            "x-forwarded-for": "45.225.178.238",
+            "x-forwarded-host": "n8nwebhook.lucasevange.com",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "0a0c6ab64272",
+            "x-real-ip": "45.225.178.238"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "status": "reprovada",
+            "idea": 5,
+            "id": "307510d9-5f0f-466e-8bc7-a1b558ad7089",
+            "feedback": "São muito genéricas"
+          },
+          "webhookUrl": "https://n8nwebhook.lucasevange.com/webhook/b480e153-241f-4bb1-add6-54248b41fd08",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-08-27T18:33:30.265Z",
+      "createdAt": "2025-08-27T18:33:30.265Z",
+      "role": "workflow:owner",
+      "workflowId": "mYKuHLc3DqEE2rvH",
+      "projectId": "o60HadikmqrvYZ9Z"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-08-27T18:34:12.683Z",
+  "versionId": "8fe3a032-73f4-4fcd-ac49-2179f50f2e83"
+}

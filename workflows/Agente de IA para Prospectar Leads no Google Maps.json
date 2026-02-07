@@ -1,0 +1,144 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SerpAPI": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-11-24T20:30:10.337Z",
+  "id": "Ag6pPZ7o62U7uT3p",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Agente de IA para Prospectar Leads no Google Maps",
+  "nodes": [
+    {
+      "parameters": {
+        "public": true,
+        "initialMessages": "",
+        "options": {
+          "subtitle": "",
+          "title": ""
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        -384,
+        -16
+      ],
+      "id": "572a49b1-5729-4771-a145-bebb82b2a94d",
+      "name": "When chat message received",
+      "webhookId": "c3fc1052-06e6-4c78-baf5-c80549b7d5b3"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "Você é um agente de IA que captura leads para o meu negócio conforme as informações pedidas.\n\nBusque somente o nome da empresa e o telefone de contato de preferência que seja WhatsApp celular.\n\nQuando utilizar a ferramenta SerpAPI, envie exatamente:\n{\"q\": \"termo de busca\"}\n\nNunca envie \"query\", \"search\", ou JSON vazio.\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        -176,
+        -16
+      ],
+      "id": "97ec4e3f-e586-40a2-9dce-9a708b2664c4",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "options": {
+          "gl": "br",
+          "device": "desktop",
+          "google_domain": "google.com",
+          "hl": "pt-br"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolSerpApi",
+      "typeVersion": 1,
+      "position": [
+        128,
+        192
+      ],
+      "id": "44c2e530-1ac5-47ff-8028-57c1b984feff",
+      "name": "SerpAPI",
+      "credentials": {
+        "serpApi": {
+          "id": "SWgl2sBAJMywop5V",
+          "name": "SerpAPI account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        -320,
+        192
+      ],
+      "id": "802c6026-5896-4418-869d-7d5f286066c5",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "Q7CBkXMMZRTOoyA5",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-11-24T20:30:10.337Z",
+      "createdAt": "2025-11-24T20:30:10.337Z",
+      "role": "workflow:owner",
+      "workflowId": "Ag6pPZ7o62U7uT3p",
+      "projectId": "o60HadikmqrvYZ9Z"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-12-10T20:59:02.910Z",
+  "versionId": "2a10b754-7cf6-4788-b99a-701a71565cc6"
+}

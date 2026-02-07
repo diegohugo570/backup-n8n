@@ -1,0 +1,426 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "loop": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Agente de Triagem",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Busca no Feed",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Busca no Feed",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Agente de Triagem",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Agente - Gerador de Titulo",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Agente - Gerador de Conteúdo",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Busca no Feed": {
+      "main": [
+        [
+          {
+            "node": "loop",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Agente de Triagem": {
+      "main": [
+        [
+          {
+            "node": "Valida se a noticia vai pro Blog",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Valida se a noticia vai pro Blog": {
+      "main": [
+        [
+          {
+            "node": "Agente - Gerador de Titulo",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Busca no Feed",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Agente - Gerador de Titulo": {
+      "main": [
+        [
+          {
+            "node": "Agente - Gerador de Conteúdo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Agente - Gerador de Conteúdo": {
+      "main": [
+        [
+          {
+            "node": "Ajusta Texto do Conteúdo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ajusta Texto do Conteúdo": {
+      "main": [
+        [
+          {
+            "node": "Posta no WordPress",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Draf por Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-06-25T20:07:36.973Z",
+  "id": "zjpSr4QcrR6kRUCJ",
+  "isArchived": false,
+  "meta": null,
+  "name": "Gerador de Blog Post",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        580,
+        320
+      ],
+      "id": "c26142c1-2c51-4c2b-8b63-8e4793cfa803",
+      "name": "loop"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        80,
+        180
+      ],
+      "id": "1af185ac-c81d-49ad-bc05-9f41f8d418ca",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {}
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        80,
+        400
+      ],
+      "id": "901f32da-b762-42fd-bbab-ab125eaa56d7",
+      "name": "Schedule Trigger",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "model": "x-ai/grok-2-1212",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        760,
+        560
+      ],
+      "id": "e46d80bf-9a96-491f-a3c3-c562f2715624",
+      "name": "OpenRouter Chat Model"
+    },
+    {
+      "parameters": {
+        "model": "x-ai/grok-2-1212",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        1420,
+        600
+      ],
+      "id": "0032e067-9799-4d68-aac8-b71a296398e1",
+      "name": "OpenRouter Chat Model1"
+    },
+    {
+      "parameters": {
+        "model": "x-ai/grok-2-1212",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        1780,
+        620
+      ],
+      "id": "0d9d239c-665d-4991-8370-377b8f0ebd63",
+      "name": "OpenRouter Chat Model2"
+    },
+    {
+      "parameters": {
+        "url": "https://www.google.com.br/alerts/feeds/03023372274796455561/5385457023978133414",
+        "options": {
+          "ignoreSSL": false
+        }
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.1,
+      "position": [
+        360,
+        320
+      ],
+      "id": "04e3c889-d8d4-4b16-8c87-c8d68edb40bb",
+      "name": "Busca no Feed"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Você é um especialista em blogs e SEO. Avalie a seguinte notícia e decida se ela deve ser publicada em um blog sobre TECNOLOGIA.\n\nTítulo: {{$json[\"title\"]}}\nConteúdo: {{$json[\"content\"]}}\n\nCritérios:\n- O tema é relevante para tecnologia?\n- A notícia é recente e útil para leitores?\n- Evita ser apenas um anúncio comercial?\n\nResponda apenas com \"APROVADO\" ou \"REJEITADO\".\n",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "{\n  \"status\": \"APROVADO\" | \"REJEITADO\"\n}\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        840,
+        320
+      ],
+      "id": "efae7b96-fc76-4bfb-8632-56c37893c079",
+      "name": "Agente de Triagem"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "bf2162ef-9c6c-441c-8840-f3760d632346",
+              "leftValue": "={{ $json.output }}",
+              "rightValue": "APROVADO",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1220,
+        340
+      ],
+      "id": "f81135d6-219c-48f0-9530-a43d27b1b4b1",
+      "name": "Valida se a noticia vai pro Blog"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Você é um redator de um importante blog, especializado em SEO, quero que leia a notícia abaixo e gere um título para ela.\n\nGere apenas o título da notícia e nada mais. Não coloque esse título entre aspas\n\n {{ $('loop').item.json.title }}",
+        "options": {
+          "systemMessage": "{\n  \"Título\": \"Um título chamativo para o post do blog sobre IA\"\n}\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        1500,
+        320
+      ],
+      "id": "2dbcaf41-3abe-4e33-b850-5a29594b9fbd",
+      "name": "Agente - Gerador de Titulo"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Gere um artigo para blog com base na seguinte notícia: {{ $('loop').item.json.link }}.\n\n📌 **Regras de Formatação:**\n- Não apresente título no começo, a materia já receberá um título separado.\n- O texto deve começar diretamente com a introdução\n- Retorne apenas o conteúdo formatado em HTML\n- Use linguagem técnica do setor de telecomunicações, focada em público B2B\n- Inclua um CTA forte ao final direcionando para contato comercial, nosso contato comercial é: educa@nextest.com.br, mencione nesse CTA soluções em treinamentos e capacitações para empresas de telecomunicações. Coloque esse email como um link onde a pessoa só vai clicar.\n\n🎯 **Foco do Artigo:**\n- Transforme a notícia em um artigo técnico bem estruturado\n- Use H2 e H3 com palavras-chave relevantes para SEO\n- Utilize <b>negrito</b> para termos técnicos importantes\n- Use listas <ul><li></li></ul> para destacar dados e especificações\n- Mantenha o conteúdo fluido, técnico e direcionado ao setor de telecom\n\n🚀 **Retorne apenas o conteúdo formatado em HTML e nada mais.**",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        1880,
+        320
+      ],
+      "id": "b66020d0-61f0-4f71-9681-13720e66a385",
+      "name": "Agente - Gerador de Conteúdo"
+    },
+    {
+      "parameters": {
+        "jsCode": "return items.map(item => {\n    let content = item.json.output;\n\n    // Remove ```html no início\n    content = content.replace(/^```html\\s*/, \"\");\n\n    // Remove ``` no final\n    content = content.replace(/```$/, \"\");\n\n    // Atualiza o JSON\n    return { json: { content: content } };\n});\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2280,
+        320
+      ],
+      "id": "421188d7-a17b-4856-8d82-18a0f4f078df",
+      "name": "Ajusta Texto do Conteúdo"
+    },
+    {
+      "parameters": {
+        "sendTo": "r.nevesbraga@gmail.com",
+        "subject": "={{ $('Agente - Gerador de Titulo').item.json.output }}",
+        "message": "={{ $json.content }}",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        2560,
+        480
+      ],
+      "id": "b553c42c-e85e-447e-a5cb-a255fdd16a63",
+      "name": "Draf por Email",
+      "webhookId": "ef1891d8-0e18-4a02-abcd-b5691eac9c1a"
+    },
+    {
+      "parameters": {
+        "title": "={{ $('Agente - Gerador de Titulo').item.json.output }}",
+        "additionalFields": {
+          "content": "={{ $json.content }}",
+          "status": "publish"
+        }
+      },
+      "type": "n8n-nodes-base.wordpress",
+      "typeVersion": 1,
+      "position": [
+        2560,
+        160
+      ],
+      "id": "4154635b-e6d6-4d69-993e-4030b26ee0ac",
+      "name": "Posta no WordPress",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "content": "## BLOG POST - Agente gerador de conteúdo para BLOG",
+        "height": 860,
+        "width": 2840
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "3bb2eed0-d71d-4458-9241-cd80d34a9b37",
+      "name": "Sticky Note"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-06-25T20:07:36.973Z",
+      "createdAt": "2025-06-25T20:07:36.973Z",
+      "role": "workflow:owner",
+      "workflowId": "zjpSr4QcrR6kRUCJ",
+      "projectId": "o60HadikmqrvYZ9Z"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-07-02T13:47:42.039Z",
+  "versionId": "5a702335-717b-4c23-87b1-3364fa6396b0"
+}

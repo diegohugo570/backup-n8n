@@ -1,0 +1,1222 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "Recebe mensagem usuario": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verifica se usuario tem cadastro": {
+      "main": [
+        [
+          {
+            "node": "Valida se usuario esta cadastrado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Valida se usuario esta cadastrado": {
+      "main": [
+        [
+          {
+            "node": "verifica atendimento",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Casastra usuario no banco de dados",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Casastra usuario no banco de dados": {
+      "main": [
+        [
+          {
+            "node": "Verifica se tem thread criada",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verifica se tem thread criada": {
+      "main": [
+        [
+          {
+            "node": "Cria a thread",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Verifica tipo de mensagem",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cria a thread": {
+      "main": [
+        [
+          {
+            "node": "Salva thread no banco de dados",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Salva thread no banco de dados": {
+      "main": [
+        [
+          {
+            "node": "Verifica tipo de mensagem",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "verifica atendimento": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Verifica se tem thread criada",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Verifica se usuario tem cadastro",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "salva mensagem": {
+      "main": [
+        [
+          {
+            "node": "pega mensagens",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "pega mensagens": {
+      "main": [
+        [
+          {
+            "node": "Verifica se é primeira mensagem",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verifica se é primeira mensagem": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No Operation, do nothing1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "pega mensagens1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "pega mensagens1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verifica tipo de mensagem": {
+      "main": [
+        [
+          {
+            "node": "Junta tudo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Junta tudo": {
+      "main": [
+        [
+          {
+            "node": "salva mensagem",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Transcreve audio": {
+      "main": [
+        [
+          {
+            "node": "Junta tudo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Analisa imagem": {
+      "main": [
+        [
+          {
+            "node": "Junta tudo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Converte audio": {
+      "main": [
+        [
+          {
+            "node": "Transcreve audio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Converte imagem": {
+      "main": [
+        [
+          {
+            "node": "Analisa imagem",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File": {
+      "main": [
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File": {
+      "main": [
+        [
+          {
+            "node": "Junta tudo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Bella AI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-06-14T13:49:02.232Z",
+  "id": "57L8LyTV8NALnSqi",
+  "isArchived": false,
+  "meta": null,
+  "name": "ASSSITENTE VIRTUAL 2.0",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-evolution-api.evolutionApi",
+      "typeVersion": 1,
+      "position": [
+        3200,
+        1520
+      ],
+      "id": "a54f212a-2718-484c-9bc1-02b8053aeaff",
+      "name": "Evolution API",
+      "credentials": {}
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "d45affc8-9367-4bd6-afa9-0dd587871298",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        120,
+        500
+      ],
+      "id": "c08f728e-16ab-4e17-96f0-a9e6d6fbe965",
+      "name": "Recebe mensagem usuario",
+      "webhookId": "d45affc8-9367-4bd6-afa9-0dd587871298"
+    },
+    {
+      "parameters": {
+        "databaseId": 186413,
+        "tableId": 453287,
+        "additionalOptions": {
+          "filters": {
+            "fields": [
+              {
+                "field": 3526214,
+                "operator": "contains",
+                "value": "={{ $json.telefone_limpo }}"
+              }
+            ]
+          }
+        }
+      },
+      "type": "n8n-nodes-base.baserow",
+      "typeVersion": 1,
+      "position": [
+        720,
+        520
+      ],
+      "id": "cc90d870-6daf-43dd-931a-4f27b90ab9b4",
+      "name": "Verifica se usuario tem cadastro",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.Numero }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notEmpty",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Cadastrado"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "1fb1915e-576b-4729-a204-61718f51a0ce",
+                    "leftValue": "={{ $json.Numero }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "empty",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Sem cadastro"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        1020,
+        520
+      ],
+      "id": "9e7c9e07-aad2-4146-9aff-d13a675d53df",
+      "name": "Valida se usuario esta cadastrado"
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "databaseId": 186413,
+        "tableId": 453287,
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": 3526205,
+              "fieldValue": "={{ $('Recebe mensagem usuario').item.json.body.data.pushName }}"
+            },
+            {
+              "fieldId": 3526214,
+              "fieldValue": "={{ $('If').item.json.body.data.key.remoteJid }}"
+            },
+            {
+              "fieldId": 3526849,
+              "fieldValue": "Aberto"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.baserow",
+      "typeVersion": 1,
+      "position": [
+        1240,
+        800
+      ],
+      "id": "5aa99093-7d78-4867-8a74-f276676923d1",
+      "name": "Casastra usuario no banco de dados"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "e8df05c6-f0d2-46d6-987f-d6ed0f429116",
+              "leftValue": "={{ $json.Thread_id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "empty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1520,
+        580
+      ],
+      "id": "f46803ab-d3b1-4bd1-b9fa-af06ae75c8c5",
+      "name": "Verifica se tem thread criada"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/threads",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "openAiApi",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "OpenAI-Beta",
+              "value": "assistants=v2"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1660,
+        340
+      ],
+      "id": "d6bab74a-bb77-4969-a192-30bd952ed39f",
+      "name": "Cria a thread"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "databaseId": 186413,
+        "tableId": 453287,
+        "rowId": "={{ $('Verifica se tem thread criada').item.json.id }}",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": 3526215,
+              "fieldValue": "={{ $json.id }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.baserow",
+      "typeVersion": 1,
+      "position": [
+        1920,
+        340
+      ],
+      "id": "1257faee-0c1e-4da4-a36f-cba150900587",
+      "name": "Salva thread no banco de dados"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "f1790a98-1cc0-4569-be53-4998defd4d1e",
+              "leftValue": "={{ $('Verifica se usuario tem cadastro').item.json.Atendimento }}",
+              "rightValue": "Fechado",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1260,
+        300
+      ],
+      "id": "b6aa6419-1885-463f-bb0b-42f474bb3d4f",
+      "name": "verifica atendimento"
+    },
+    {
+      "parameters": {
+        "resource": "assistant",
+        "assistantId": {
+          "__rl": true,
+          "value": "asst_YPtLsfgWO37nmyrnrYxzxsSv",
+          "mode": "list",
+          "cachedResultName": "ASSISTENTE VIRTUAL"
+        },
+        "prompt": "define",
+        "text": "={{ $json.conversa }}",
+        "memory": "threadId",
+        "threadId": "={{ $('Verifica se usuario tem cadastro').all()[0].json.Thread_id }}",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        2820,
+        1520
+      ],
+      "id": "61581917-7d98-4e96-91b3-0d9a07f2885a",
+      "name": "Bella AI"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "43cddc4b-9229-4b13-8403-97e90c10d234",
+              "leftValue": "={{ $json.body.data.key.fromMe.toString() }}",
+              "rightValue": "true",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        320,
+        500
+      ],
+      "id": "7861154f-858d-4414-9758-3f882b3c8327",
+      "name": "If"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        500,
+        180
+      ],
+      "id": "94baf1a0-d97a-403a-b1a7-9cb0d0aa3067",
+      "name": "No Operation, do nothing"
+    },
+    {
+      "parameters": {
+        "operation": "push",
+        "list": "={{ $('Recebe mensagem usuario').all()[0].json.body.data.key.remoteJid }}",
+        "messageData": "={{ $json.texto }}{{ $json.Audio }}{{ $json.Imagem }}{{ $json.Documento }}",
+        "tail": true
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        2520,
+        500
+      ],
+      "id": "0495f233-eecc-49b0-a804-3a42277015ee",
+      "name": "salva mensagem"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "conversa",
+        "key": "={{ $('Recebe mensagem usuario').all()[0].json.body.data.key.remoteJid }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        2880,
+        500
+      ],
+      "id": "329cc699-300c-4c09-8b36-35ac00ca1cf8",
+      "name": "pega mensagens"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "42c27651-5b9e-45a0-b797-7d76f6e196ac",
+              "leftValue": "={{ $json.conversa.length }}",
+              "rightValue": 1,
+              "operator": {
+                "type": "number",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3100,
+        620
+      ],
+      "id": "4cb78007-10fd-4d94-a4ef-b4d073f8dc60",
+      "name": "Verifica se é primeira mensagem"
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "={{ $('Recebe mensagem usuario').all()[0].json.body.data.key.remoteJid }}"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        3460,
+        1520
+      ],
+      "id": "4c57786d-1a28-418c-9835-120dfc3b0823",
+      "name": "apaga mensagens"
+    },
+    {
+      "parameters": {
+        "amount": 10
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        3420,
+        360
+      ],
+      "id": "7b432fa0-9e01-4ff0-89ad-1306a0bbd078",
+      "name": "Wait",
+      "webhookId": "49a49f1a-22e3-4466-9188-797f4c0fc1cb"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "conversa",
+        "key": "={{ $('Recebe mensagem usuario').all()[0].json.body.data.key.remoteJid }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        3660,
+        360
+      ],
+      "id": "99223768-3f49-43ae-bbe2-49cfa4b459ad",
+      "name": "pega mensagens1"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        3260,
+        820
+      ],
+      "id": "e54c1043-1b03-44b4-a583-3744c50537a8",
+      "name": "No Operation, do nothing1"
+    },
+    {
+      "parameters": {
+        "content": "cadastro no banco de dados e criação de memoria\n",
+        "height": 1140,
+        "width": 2160
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "96a00364-f741-473f-8dc5-36d52f90a5e1",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "trata as mensagens e envia",
+        "height": 1140,
+        "width": 2840,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2180,
+        0
+      ],
+      "id": "88702d67-7982-43df-8301-108cfe466980",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('Recebe mensagem usuario').item.json.body.data.messageType }}",
+                    "rightValue": "conversation",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Texto"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "a38a3f9b-984f-4a94-a3e8-99466bfabe3e",
+                    "leftValue": "={{ $('Recebe mensagem usuario').item.json.body.data.messageType }}",
+                    "rightValue": "audioMessage",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Audio"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "2d2e4206-265f-4846-a087-13bc937971e9",
+                    "leftValue": "={{ $('Recebe mensagem usuario').item.json.body.data.messageType }}",
+                    "rightValue": "imageMessage",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Imagem"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "c9e8b78b-c24f-49f6-9cb9-6cccab0a9c4b",
+                    "leftValue": "={{ $('Recebe mensagem usuario').item.json.body.data.messageType }}",
+                    "rightValue": "documentMessage",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Documento"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        100,
+        1280
+      ],
+      "id": "80a7a3a5-d1b4-42d3-96ba-7554b8c6ecd7",
+      "name": "Verifica tipo de mensagem"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b4561309-835a-4737-97c4-eda6ce2b5bfe",
+              "name": "texto",
+              "value": "={{ $('Recebe mensagem usuario').all()[0].json.body.data.message.conversation }}",
+              "type": "string"
+            },
+            {
+              "id": "c0ba34e3-9cd8-43ed-bcd1-c8b63c07b708",
+              "name": "Audio",
+              "value": "={{ $json.text }}",
+              "type": "string"
+            },
+            {
+              "id": "3ff167f4-b5cf-4715-b382-cda74bd790e8",
+              "name": "Imagem",
+              "value": "={{ $json.content }}",
+              "type": "string"
+            },
+            {
+              "id": "655359d6-a585-493b-913e-9c5c5bc149e9",
+              "name": "Documento",
+              "value": "={{ $json.data }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1940,
+        1260
+      ],
+      "id": "3cea8e0c-3799-4a42-8408-0a6fd99a9055",
+      "name": "Junta tudo"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-evolution-api.evolutionApi",
+      "typeVersion": 1,
+      "position": [
+        820,
+        1380
+      ],
+      "id": "638d777a-e58e-4db8-ae63-393d5805b7ed",
+      "name": "Pega audio base64",
+      "credentials": {}
+    },
+    {
+      "parameters": {
+        "resource": "audio",
+        "operation": "transcribe",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        1360,
+        1380
+      ],
+      "id": "885b946a-fc37-457f-8964-5721b2590941",
+      "name": "Transcreve audio"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-evolution-api.evolutionApi",
+      "typeVersion": 1,
+      "position": [
+        820,
+        1640
+      ],
+      "id": "a62e9a0d-37c2-4324-a9c8-83a21e2c9519",
+      "name": "Pega imagem",
+      "credentials": {}
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini-2024-07-18",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI-2024-07-18"
+        },
+        "text": "O que tem nessa imagem?",
+        "inputType": "base64",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        1360,
+        1640
+      ],
+      "id": "d5ec1329-23da-48c5-8324-0d96ab0d140a",
+      "name": "Analisa imagem"
+    },
+    {
+      "parameters": {
+        "operation": "toBinary",
+        "sourceProperty": "data.base64",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        1100,
+        1380
+      ],
+      "id": "a5696958-b780-4f00-9f57-31e9ab90aa9e",
+      "name": "Converte audio"
+    },
+    {
+      "parameters": {
+        "operation": "toBinary",
+        "sourceProperty": "data.base64",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        1120,
+        1640
+      ],
+      "id": "2d0ba6c3-1f61-4b1d-9dae-4a20038298b5",
+      "name": "Converte imagem"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-evolution-api.evolutionApi",
+      "typeVersion": 1,
+      "position": [
+        820,
+        1900
+      ],
+      "id": "cf197174-b53e-454b-9a02-1876b08c40fc",
+      "name": "Pega documento",
+      "credentials": {}
+    },
+    {
+      "parameters": {
+        "operation": "toBinary",
+        "sourceProperty": "data.base64",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        1120,
+        1900
+      ],
+      "id": "53098759-16f8-4083-94c7-b646ebbccc7e",
+      "name": "Convert to File"
+    },
+    {
+      "parameters": {
+        "operation": "text",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        1400,
+        1900
+      ],
+      "id": "c38b6e61-0309-4f7b-bea6-9d1c93b0812a",
+      "name": "Extract from File"
+    },
+    {
+      "parameters": {
+        "content": "cadastro no banco de dados e criação de memoria\n",
+        "height": 1140,
+        "width": 2160,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        0,
+        1160
+      ],
+      "id": "eda1c35f-2816-46df-baa2-40a038091105",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "={{ $('Recebe mensagem usuario').all()[0].json.body.data.key.remoteJid }}"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        3560,
+        780
+      ],
+      "id": "87c45f38-6502-44c8-9bfa-d10dd36acfb8",
+      "name": "apaga mensagens1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "6bf3dcd9-cc21-4cd9-bdfe-c6377d3936ad",
+              "name": "conversa",
+              "value": "={{ $json.conversa }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2520,
+        1440
+      ],
+      "id": "c316e950-ce0b-423b-aac7-f3d3cacf11e4",
+      "name": "Edit Fields"
+    }
+  ],
+  "pinData": {
+    "Recebe mensagem usuario": [
+      {
+        "json": {
+          "headers": {
+            "host": "primary-production-b5c5.up.railway.app",
+            "user-agent": "axios/1.7.9",
+            "content-length": "1707",
+            "accept-encoding": "gzip, compress, deflate, br",
+            "content-type": "application/json",
+            "x-forwarded-for": "162.220.232.29",
+            "x-forwarded-host": "primary-production-b5c5.up.railway.app",
+            "x-forwarded-proto": "https",
+            "x-railway-edge": "railway/us-west1",
+            "x-railway-request-id": "IG3kjTwPTx2Dn7ivbXukcg_603909319",
+            "x-real-ip": "162.220.232.29",
+            "x-request-start": "1741031417439"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "event": "messages.upsert",
+            "instance": "BOT",
+            "data": {
+              "key": {
+                "remoteJid": "5511981370549@s.whatsapp.net",
+                "fromMe": false,
+                "id": "5C8361F4FFC0B014EEF8AFB2BA175CC4"
+              },
+              "pushName": "DSR Marketing",
+              "status": "DELIVERY_ACK",
+              "message": {
+                "audioMessage": {
+                  "url": "https://mmg.whatsapp.net/v/t62.7117-24/26572507_939202355042995_7766185876100681563_n.enc?ccb=11-4&oh=01_Q5AaIKx9vKdBuPaX2MsITw9_urPvFveLyRnOm4mi1SUq79wj&oe=67ED8FC3&_nc_sid=5e03e0&mms3=true",
+                  "mimetype": "audio/ogg; codecs=opus",
+                  "fileSha256": "XyMBo/EGqBEWnxK+vF2kduLzY1Rn6zhklcEYn77Ldbo=",
+                  "fileLength": "6229",
+                  "seconds": 2,
+                  "ptt": true,
+                  "mediaKey": "56ILyPwMzlYMVIkQTUwkppKNV2g8nnMOGT8GK1JFRbE=",
+                  "fileEncSha256": "QFvsDlGqXGl1jD5NMUrJjw7iXnHn55xZB7m2WDYNLxE=",
+                  "directPath": "/v/t62.7117-24/26572507_939202355042995_7766185876100681563_n.enc?ccb=11-4&oh=01_Q5AaIKx9vKdBuPaX2MsITw9_urPvFveLyRnOm4mi1SUq79wj&oe=67ED8FC3&_nc_sid=5e03e0",
+                  "mediaKeyTimestamp": "1741031415",
+                  "waveform": "AAAACg4AACMSCBQoW2JjYV5bST1QYlk4WmJjTC5gYmNgWlVfYltVV2NjVi4nPT5ISklNTTtBOTxBPzcoKConIw=="
+                },
+                "messageContextInfo": {
+                  "deviceListMetadata": {
+                    "senderKeyHash": "pWp4D+Bh3lcK6Q==",
+                    "senderTimestamp": "1740269616",
+                    "recipientKeyHash": "0WDtKy4wdlvXpQ==",
+                    "recipientTimestamp": "1740317852"
+                  },
+                  "deviceListMetadataVersion": 2,
+                  "messageSecret": "r9GmOKR10Eburv5eWxNnZPefZWXrzvKpGR8ysp/k3Ng="
+                }
+              },
+              "contextInfo": null,
+              "messageType": "audioMessage",
+              "messageTimestamp": 1741031417,
+              "instanceId": "668372c2-c67f-402d-8336-02ca0c95b27d",
+              "source": "android"
+            },
+            "destination": "https://primary-production-b5c5.up.railway.app/webhook-test/d45affc8-9367-4bd6-afa9-0dd587871298",
+            "date_time": "2025-03-03T16:50:17.310Z",
+            "sender": "5511943825525@s.whatsapp.net",
+            "server_url": "http://localhost:8080",
+            "apikey": "3A0167A6C7A0-47C7-93B7-B9BF05E43205"
+          },
+          "webhookUrl": "https://primary-production-b5c5.up.railway.app/webhook-test/d45affc8-9367-4bd6-afa9-0dd587871298",
+          "executionMode": "test"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-06-14T13:49:02.232Z",
+      "createdAt": "2025-06-14T13:49:02.232Z",
+      "role": "workflow:owner",
+      "workflowId": "57L8LyTV8NALnSqi",
+      "projectId": "o60HadikmqrvYZ9Z"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-06-14T13:49:02.232Z",
+  "versionId": "95dd7d50-3f1c-4938-bfec-81d41a45b84e"
+}

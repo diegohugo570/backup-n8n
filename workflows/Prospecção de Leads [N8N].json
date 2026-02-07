@@ -1,0 +1,915 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "Memória": {
+      "ai_memory": [
+        [
+          {
+            "node": "Agente IA",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ChatInput": {
+      "main": [
+        [
+          {
+            "node": "Agente IA",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Agente IA",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Rapid_API": {
+      "main": [
+        [
+          {
+            "node": "Separador",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Planilhamento_Dados": {
+      "main": [
+        [
+          {
+            "node": "Resposta",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Separador": {
+      "main": [
+        [
+          {
+            "node": "Planilhamento_Dados",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Colher_Dados": {
+      "ai_tool": [
+        [
+          {
+            "node": "Agente IA",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Rapid_API",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-11-07T14:25:35.928Z",
+  "id": "drEKS3zYtPPVCvR6",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Prospecção de Leads [N8N]",
+  "nodes": [
+    {
+      "parameters": {
+        "contextWindowLength": 30
+      },
+      "id": "7cf498bf-caa3-4b2d-b625-8e3ebee55060",
+      "name": "Memória",
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "position": [
+        80,
+        544
+      ],
+      "typeVersion": 1.3
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "fd483cce-b5d5-4335-830b-3c27ebb5e413",
+      "name": "ChatInput",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "position": [
+        -352,
+        144
+      ],
+      "webhookId": "44c8d075-59d0-431c-9f70-8d428d2dbecb",
+      "typeVersion": 1.1
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "=Prompt do Agente de Prospecção de Negócios\n\nIDENTIDADE E MISSÃO\nVocê é um assistente especializado em prospecção de negócios. Sua função principal é interpretar solicitações de usuários sobre informações de empresas e negócios e acionar a ferramenta Colher\\_Dados para coletar esses dados automaticamente em uma planilha.\n\nFERRAMENTA DISPONÍVEL\nNome: Colher\\_Dados\nParâmetro obrigatório: termo\\_de\\_busca\nDescrição: string no formato \"\\[O que você busca] em \\[Cidade], \\[País/Estado]\". O termo pode ser escrito em português ou em inglês.\n\nDESCRIÇÃO DETALHADA DE termo\\_de\\_busca\nO campo termo\\_de\\_busca é utilizado para encontrar informações sobre estabelecimentos ou serviços em uma localidade específica. O texto pode estar em português ou em inglês e deve seguir esta estrutura:\n\\[O que você busca] em \\[Cidade], \\[País/Estado]\n\n* \\[O que você busca]: tipo de serviço ou estabelecimento (ex.: Hotéis, Restaurantes, Museus).\n* em: palavra fixa \"em\" (ou \"in\", se preferir inglês).\n* \\[Cidade], \\[País/Estado]: nome da cidade e do país ou estado.\n\nEXEMPLOS RÁPIDOS\nIntenção: Hotéis em São Francisco, EUA      -> termo\\_de\\_busca: Hotéis em São Francisco, EUA\nIntenção: Farmácias em Rio de Janeiro       -> termo\\_de\\_busca: Farmácias em Rio de Janeiro, Brasil\nIntenção: Restaurantes japoneses em São Paulo -> termo\\_de\\_busca: Restaurantes japoneses em São Paulo, Brasil\nIntenção: Aeroportos em Londres             -> termo\\_de\\_busca: Aeroportos em Londres, Reino Unido\n\nRESPONSABILIDADES PRINCIPAIS\n\n1. Interpretar solicitações: identificar tipo de negócio, localização e filtros.\n2. Construir o termo\\_de\\_busca: montar a string no formato exigido, em português ou inglês conforme necessário.\n3. Acionar a ferramenta:\n   Colher\\_Dados({ \"termo\\_de\\_busca\": \"\\[consulta]\" })\n4. Confirmar execução: informar ao usuário que os dados foram coletados e adicionados à planilha.\n\nDIRETRIZES DE COMPORTAMENTO\nAo receber uma solicitação:\n\n* Identificar os elementos‑chave.\n* Normalizar os termos e montar o termo\\_de\\_busca no formato correto.\n* Chamar a ferramenta e responder de forma concisa ao usuário.\n\nFORMATO DA RESPOSTA AO USUÁRIO\n\n* Confirmar o que foi solicitado.\n* Informar que a busca foi realizada e que os dados estão na planilha.\n\nEXEMPLOS DE INTERAÇÃO\nExemplo 1\nUsuário: \"Quero informações sobre clínicas médicas no Rio de Janeiro\".\nAgente:\ntermo\\_de\\_busca: Clínicas médicas em Rio de Janeiro, Brasil\nChamada: Colher\\_Dados({ \"termo\\_de\\_busca\": \"Clínicas médicas em Rio de Janeiro, Brasil\" })\nResposta: Busquei e coletei informações sobre clínicas médicas no Rio de Janeiro. Os dados já estão na planilha de prospecção.\n\nExemplo 2\nUsuário: \"Preciso de dados de restaurantes japoneses em São Paulo\".\nAgente:\ntermo\\_de\\_busca: Restaurantes japoneses em São Paulo, Brasil\nChamada: Colher\\_Dados({ \"termo\\_de\\_busca\": \"Restaurantes japoneses em São Paulo, Brasil\" })\nResposta: Coletei informações sobre restaurantes japoneses em São Paulo. Todos os dados estão na planilha.\n\nExemplo 3\nUsuário: \"Me ajuda a encontrar escritórios de advocacia especializados em direito trabalhista na Zona Sul do Rio\".\nAgente:\ntermo\\_de\\_busca: Escritórios de advocacia trabalhista em Zona Sul Rio de Janeiro, Brasil\nChamada: Colher\\_Dados({ \"termo\\_de\\_busca\": \"Escritórios de advocacia trabalhista em Zona Sul Rio de Janeiro, Brasil\" })\nResposta: Busquei escritórios de advocacia especializados em direito trabalhista na Zona Sul do Rio de Janeiro. As informações já estão na sua planilha.\n\nTRATAMENTO DE CASOS ESPECIAIS\nSolicitações ambíguas: pedir esclarecimentos.\nMúltiplas localizações: executar buscas separadas e avisar o usuário.\nSegmentos amplos: sugerir refinamentos.\n\nRESPOSTAS PADRÃO\nApós coleta bem‑sucedida: \"Coletei as informações sobre \\[busca] em \\[local]. Os dados já estão na sua planilha de prospecção.\"\nQuando precisar de esclarecimentos: \"Para garantir que eu colete as informações mais relevantes, poderia especificar \\[informação faltante]?\"\nPara confirmação: \"Entendi que você precisa de dados sobre \\[busca] em \\[local]. Vou coletar essas informações agora.\"\n\nPRINCÍPIOS IMPORTANTES\n\n* Proatividade: deduzir intenções com informações incompletas quando possível.\n* Precisão: usar o formato exato de termo\\_de\\_busca.\n* Concisão: confirmar a ação sem explicações desnecessárias.\n* Confiabilidade: sempre confirmar quando os dados forem adicionados.\n\nLIMITAÇÕES\n\n* Não fornecer os dados diretamente na conversa.\n* Não analisar nem interpretar os dados coletados.\n* Não sugerir estratégias de prospecção.\n* Focar apenas em coletar e confirmar a inserção dos dados na planilha.\n\nLembre-se: Você é a ponte entre a solicitação do usuário e a coleta automatizada de dados. Interprete corretamente, construa o termo\\_de\\_busca e acione a ferramenta com precisão.\n"
+        }
+      },
+      "id": "daeb43f2-7a0b-49b7-a5db-7363a7ae88bc",
+      "name": "Agente IA",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "position": [
+        32,
+        144
+      ],
+      "typeVersion": 1.8
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        -256,
+        544
+      ],
+      "id": "c81ff08f-0b2c-420f-9898-a17fe7520d3d",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "Q7CBkXMMZRTOoyA5",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "https://local-business-search.p.rapidapi.com/search?query=Hotels%20in%20San%20Francisco%2C%20USA&limit=20&lat=37.359428&lng=-121.925337&zoom=13&language=en&region=us&extract_emails_and_contacts=false",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "query",
+              "value": "={{ $('Webhook').item.json.body.termo_de_busca }}"
+            },
+            {
+              "name": "limit",
+              "value": "30"
+            },
+            {
+              "name": "language",
+              "value": "PT"
+            },
+            {
+              "name": "region",
+              "value": "br"
+            },
+            {
+              "name": "extract_emails_and_contacts",
+              "value": "true"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "x-rapidapi-host",
+              "value": "local-business-search.p.rapidapi.com"
+            },
+            {
+              "name": "x-rapidapi-key",
+              "value": "dd298ac001mshc8f1d9d01f680acp1e3ed4jsnbcb01e1b048d"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1344,
+        240
+      ],
+      "id": "3fe65f66-8ae4-4d76-b3ec-e956e323cf9b",
+      "name": "Rapid_API"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1Uu1C-2VaHaVkzG5h2fxE0trRhhBrnDz4j12hnxzJ5CY",
+          "mode": "list",
+          "cachedResultName": "Prospecção Clientes [N8N]",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Uu1C-2VaHaVkzG5h2fxE0trRhhBrnDz4j12hnxzJ5CY/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Página1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1UazuMy1WIt39SeRlToHkCvEbmhydzGD-WjBy3fdpg8c/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "business_id": "={{ $json.data.business_id }}",
+            "google_id": "={{ $json.data.google_id }}",
+            "place_id": "={{ $json.data.place_id }}",
+            "google_mid": "={{ $json.data.google_mid }}",
+            "phone_number": "={{ $json.data.phone_number }}",
+            "name": "={{ $json.data.name }}",
+            "latitude": "={{ $json.data.latitude }}",
+            "longitude": "={{ $json.data.longitude }}",
+            "full_address": "={{ $json.data.full_address }}",
+            "opening_status": "={{ $json.data.opening_status }}",
+            "timezone": "={{ $json.data.timezone }}",
+            "rating": "={{ $json.data.rating }}",
+            "review_count": "={{ $json.data.review_count }}",
+            "working_hours": "={{ $json.data.working_hours }}",
+            "website": "={{ $json.data.website }}",
+            "verified": "={{ $json.data.verified }}",
+            "place_link": "={{ $json.data.place_link }}",
+            "cid": "={{ $json.data.cid }}",
+            "reviews_link": "={{ $json.data.reviews_link }}",
+            "owner_id": "={{ $json.data.owner_id }}",
+            "owner_link": "={{ $json.data.owner_link }}",
+            "owner_name": "={{ $json.data.owner_name }}",
+            "booking_link": "={{ $json.data.booking_link }}",
+            "reservations_link": "={{ $json.data.reservations_link }}",
+            "business_status": "={{ $json.data.business_status }}",
+            "type": "={{ $json.data.type }}",
+            "subtypes": "={{ $json.data.subtypes }}",
+            "subtype_gcids": "={{ $json.data.subtype_gcids }}",
+            "photos_sample": "={{ $json.data.photos_sample }}",
+            "reviews_per_rating": "={{ $json.data.reviews_per_rating }}",
+            "photo_count": "={{ $json.data.photo_count }}",
+            "about": "={{ $json.data.about }}",
+            "address": "={{ $json.data.address }}",
+            "order_link": "={{ $json.data.order_link }}",
+            "price_level": "={{ $json.data.price_level }}",
+            "district": "={{ $json.data.district }}",
+            "street_address": "={{ $json.data.street_address }}",
+            "city": "={{ $json.data.city }}",
+            "zipcode": "={{ $json.data.zipcode }}",
+            "state": "={{ $json.data.state }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "business_id",
+              "displayName": "business_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "google_id",
+              "displayName": "google_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "place_id",
+              "displayName": "place_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "google_mid",
+              "displayName": "google_mid",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "phone_number",
+              "displayName": "phone_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "name",
+              "displayName": "name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "latitude",
+              "displayName": "latitude",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "longitude",
+              "displayName": "longitude",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "full_address",
+              "displayName": "full_address",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "review_count",
+              "displayName": "review_count",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "rating",
+              "displayName": "rating",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "timezone",
+              "displayName": "timezone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "opening_status",
+              "displayName": "opening_status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "working_hours",
+              "displayName": "working_hours",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "website",
+              "displayName": "website",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "verified",
+              "displayName": "verified",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "place_link",
+              "displayName": "place_link",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "cid",
+              "displayName": "cid",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "reviews_link",
+              "displayName": "reviews_link",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "owner_id",
+              "displayName": "owner_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "owner_link",
+              "displayName": "owner_link",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "owner_name",
+              "displayName": "owner_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "booking_link",
+              "displayName": "booking_link",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "reservations_link",
+              "displayName": "reservations_link",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "business_status",
+              "displayName": "business_status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "type",
+              "displayName": "type",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "subtypes",
+              "displayName": "subtypes",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "subtype_gcids",
+              "displayName": "subtype_gcids",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "photos_sample",
+              "displayName": "photos_sample",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "reviews_per_rating",
+              "displayName": "reviews_per_rating",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "photo_count",
+              "displayName": "photo_count",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "about",
+              "displayName": "about",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "address",
+              "displayName": "address",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "order_link",
+              "displayName": "order_link",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "price_level",
+              "displayName": "price_level",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "district",
+              "displayName": "district",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "street_address",
+              "displayName": "street_address",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "city",
+              "displayName": "city",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "zipcode",
+              "displayName": "zipcode",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "state",
+              "displayName": "state",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "position": [
+        1904,
+        240
+      ],
+      "id": "201959aa-6311-4b29-ac1a-5dd4227a1174",
+      "name": "Planilhamento_Dados",
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "LOJgWrBsYdHTsczQ",
+          "name": "Google Sheets account"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "26b63941-4d20-43ff-af60-6b148ce28706",
+              "name": "response",
+              "value": "Preenchi lá na planilha os dados que eu encontrei",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2176,
+        240
+      ],
+      "id": "a58ed7af-ef6e-4557-baf2-c72dc9fe44aa",
+      "name": "Resposta"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "data",
+        "include": "allOtherFields",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        1616,
+        240
+      ],
+      "id": "f804ca52-0a84-4c86-b89f-5174100b3a9b",
+      "name": "Separador"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Busca dados de estabelecimentos, empresas e serviços a partir de um termo de busca",
+        "method": "POST",
+        "url": "https://n8n.hiperautomacoes.shop/webhook-test/scraping-google-maps",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "termo_de_busca",
+              "value": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('parameters0_Value', ``, 'string') }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequestTool",
+      "typeVersion": 4.2,
+      "position": [
+        384,
+        544
+      ],
+      "id": "e7d62824-ac82-46b4-b717-6d2aee4e6cc3",
+      "name": "Colher_Dados"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "scraping-google-maps",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        976,
+        240
+      ],
+      "id": "0fe83898-c36d-43ff-806d-cb059c9b61e9",
+      "name": "Webhook",
+      "webhookId": "01c34195-3b2f-4617-98d2-48664ccd3b8b"
+    },
+    {
+      "parameters": {
+        "content": "## Vincular Sheets\n\nConfigurar sua conta pessoal para acessar o sheets e qual planilha você usará...",
+        "height": 352,
+        "width": 288,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1808,
+        96
+      ],
+      "typeVersion": 1,
+      "id": "bd90c550-4398-4a37-8fc8-78a583c4cc35",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "## Criar sua conta\n\nCom a conta gratuita da Rapid, alterar a API KEY neste node...",
+        "height": 352,
+        "width": 288,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1248,
+        96
+      ],
+      "typeVersion": 1,
+      "id": "f15fa580-a1bd-4157-a022-d1edce50ad08",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "## Google Studio\n\nGerar a sua propria API Key e usar as credenciais...",
+        "height": 352,
+        "width": 288,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -352,
+        400
+      ],
+      "typeVersion": 1,
+      "id": "166a25d1-c407-4c9e-86e3-7fb00f3f6d82",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "## Prompt\n\nMelhorar o prompt caso necessário, mas de preferencia não alterar...",
+        "height": 352,
+        "width": 288,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        0,
+        0
+      ],
+      "typeVersion": 1,
+      "id": "5817102c-770e-45fa-8724-f01f429974e3",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "content": "## Ajustar Host\n\nCoinfigurar weebhook para casar dados da sua conta...",
+        "height": 352,
+        "width": 288,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        880,
+        96
+      ],
+      "typeVersion": 1,
+      "id": "09f295b7-69c7-4ae1-afb4-b978f692d750",
+      "name": "Sticky Note4"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n.hiperautomacoes.shop",
+            "user-agent": "axios/1.12.0",
+            "content-length": "67",
+            "accept": "application/json,text/html,application/xhtml+xml,application/xml,text/*;q=0.9, image/*;q=0.8, */*;q=0.7",
+            "accept-encoding": "gzip, br",
+            "cdn-loop": "cloudflare; loops=1; subreqs=1",
+            "cf-connecting-ip": "4.184.78.247",
+            "cf-ew-via": "15",
+            "cf-ipcountry": "DE",
+            "cf-ray": "98f09784211bdbcb-FRA",
+            "cf-visitor": "{\"scheme\":\"https\"}",
+            "cf-worker": "n8n.cloud",
+            "content-type": "application/json",
+            "x-forwarded-for": "4.184.78.247, 172.71.144.19",
+            "x-forwarded-host": "n8n.hiperautomacoes.shop",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "traefik-prod-users-gwc-89-8567ddc79c-phv8x",
+            "x-is-trusted": "yes",
+            "x-real-ip": "4.184.78.247"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "termo_de_busca": "Escritórios de Advocacia em São Paulo, Brasil"
+          },
+          "webhookUrl": "https://n8n.hiperautomacoes.shop/webhook-test/scraping-google-maps"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-11-07T14:25:35.928Z",
+      "createdAt": "2025-11-07T14:25:35.928Z",
+      "role": "workflow:owner",
+      "workflowId": "drEKS3zYtPPVCvR6",
+      "projectId": "o60HadikmqrvYZ9Z"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-11-07T17:59:33.051Z",
+  "versionId": "1a0ff1ad-bb43-4324-9261-4b298cd07d5a"
+}

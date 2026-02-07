@@ -1,0 +1,226 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "Cron": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets - Buscar propostas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets - Buscar propostas": {
+      "main": [
+        [
+          {
+            "node": "Gmail - Verificar resposta",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gmail - Verificar resposta": {
+      "main": [
+        [
+          {
+            "node": "IF - Resposta recebida?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF - Resposta recebida?": {
+      "main": [
+        [
+          {
+            "node": "OpenAI - Gerar Follow-up1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Google Sheets - Atualizar Status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Slack - Alerta vendedor": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets - Atualizar Status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI - Gerar Follow-up1": {
+      "main": [
+        [
+          {
+            "node": "Slack - Alerta vendedor",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-07-21T20:02:09.244Z",
+  "id": "sktJpFpcAClMZ8WN",
+  "isArchived": false,
+  "meta": null,
+  "name": "Gerador de Alertas de Propostas Não Respondidas",
+  "nodes": [
+    {
+      "parameters": {
+        "triggerTimes": {
+          "item": [
+            {
+              "hour": 8
+            }
+          ]
+        }
+      },
+      "name": "Cron",
+      "type": "n8n-nodes-base.cron",
+      "typeVersion": 1,
+      "position": [
+        -304,
+        304
+      ],
+      "id": "df53b191-ba35-4371-892d-68013e869a44"
+    },
+    {
+      "parameters": {
+        "sheetId": "SUA_PLANILHA_ID_AQUI",
+        "range": "Propostas!A:D",
+        "options": {}
+      },
+      "name": "Google Sheets - Buscar propostas",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 1,
+      "position": [
+        -112,
+        304
+      ],
+      "id": "e3648024-9dcc-449f-9460-785ecd215ca1"
+    },
+    {
+      "parameters": {
+        "operation": "searchEmails"
+      },
+      "name": "Gmail - Verificar resposta",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 1,
+      "position": [
+        96,
+        304
+      ],
+      "id": "ff0818b1-58ec-4c15-8696-072606841b35"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [],
+          "number": [
+            {
+              "value1": "={{ Object.keys($json).length }}",
+              "operation": "equal"
+            }
+          ],
+          "string": []
+        }
+      },
+      "name": "IF - Resposta recebida?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        304,
+        304
+      ],
+      "id": "74c79aba-6eb5-4424-803e-1b2c67d90e47"
+    },
+    {
+      "parameters": {
+        "channel": "#vendas",
+        "text": "Follow-up pendente para cliente {{ $json[\"nome_cliente\"] }}: {{ $json[\"choices\"][0][\"message\"][\"content\"] }}",
+        "otherOptions": {},
+        "attachments": []
+      },
+      "name": "Slack - Alerta vendedor",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 1,
+      "position": [
+        768,
+        80
+      ],
+      "id": "f73638c3-2bcc-4740-9cf0-c6795be5b5ab"
+    },
+    {
+      "parameters": {
+        "sheetId": "SUA_PLANILHA_ID_AQUI",
+        "range": "Propostas!D:D",
+        "options": {}
+      },
+      "name": "Google Sheets - Atualizar Status",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 1,
+      "position": [
+        976,
+        320
+      ],
+      "id": "324649b9-fcf0-4069-a20d-5bcadfcb8600"
+    },
+    {
+      "parameters": {
+        "model": "gpt-4",
+        "options": {},
+        "requestOptions": {}
+      },
+      "id": "7fd8c4ed-ae17-4fce-919f-135282f17828",
+      "name": "OpenAI - Gerar Follow-up1",
+      "type": "n8n-nodes-base.openAi",
+      "typeVersion": 1,
+      "position": [
+        304,
+        80
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "58nXg6cOh7QVFFh8",
+          "name": "OpenAi account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-07-21T20:02:09.244Z",
+      "createdAt": "2025-07-21T20:02:09.244Z",
+      "role": "workflow:owner",
+      "workflowId": "sktJpFpcAClMZ8WN",
+      "projectId": "o60HadikmqrvYZ9Z"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-07-21T20:33:56.714Z",
+  "versionId": "9b9265c7-b407-44ba-836a-c04b10989e2c"
+}

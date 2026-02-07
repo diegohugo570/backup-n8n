@@ -1,0 +1,410 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "If": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "campo final",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "CamposIniciais",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CamposIniciais": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "campo final": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-06-25T13:24:41.576Z",
+  "id": "rZpifI7RGhUIu73Y",
+  "isArchived": false,
+  "meta": null,
+  "name": "Evolution Conexão e Mensagem Texto",
+  "nodes": [
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "bd29410c-00dc-42df-a9d2-3f85b6917c47",
+              "leftValue": "={{ $json.fromMe }}",
+              "rightValue": "true",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "4351a97b-c4ab-4bad-b326-01f0ef52b015",
+      "name": "If",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.1,
+      "position": [
+        -380,
+        240
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "5cdf0487-2043-452c-a4ad-07ef273d9bad",
+      "name": "No Operation, do nothing",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.mensagemTipo }}",
+                    "rightValue": "conversation",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Texto"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "cb649114-26dd-4725-8633-e911c759d18f",
+                    "leftValue": "={{ $json.mensagemTipo }}",
+                    "rightValue": "audioMessage",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Audio"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "30078205-09ee-45ff-bf56-23c2356bcd53",
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.1,
+      "position": [
+        0,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://evolutionv2-evolutionv2.vd3lzd.easypanel.host/message/sendText/{{ $(\"CamposIniciais\").item.json.nomeInstancia }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apiKey",
+              "value": "={{ $(\"CamposIniciais\").item.json.apiKey}}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $(\"CamposIniciais\").item.json.telefonecliente }}"
+            },
+            {
+              "name": "text",
+              "value": "={{ $json['resposta ia'] }}"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "9ea6e8a8-7db9-46fd-a035-3ea70664b78a",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        560,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "6c1c9798-b379-4cb3-9d4a-19fc2724e3f3",
+        "options": {}
+      },
+      "id": "99e4cfbd-1a86-4cea-bec4-acc72a74058d",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -920,
+        240
+      ],
+      "webhookId": "6c1c9798-b379-4cb3-9d4a-19fc2724e3f3"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "0be85060-2697-469a-a35e-cda3b6a6b98f",
+              "name": "fromMe",
+              "value": "={{ $json.body.data.key.fromMe }}",
+              "type": "string"
+            },
+            {
+              "id": "4043ace3-90e5-451a-9cb0-d3c101246fb6",
+              "name": "nome cliente",
+              "value": "={{ $json.body.data.pushName }}",
+              "type": "string"
+            },
+            {
+              "id": "26896144-bde1-4475-b031-2e7136678e44",
+              "name": "mensagem",
+              "value": "={{ $json.body.data.message.conversation }}",
+              "type": "string"
+            },
+            {
+              "id": "4a441a0f-95ae-4872-b93e-4ff6b661627b",
+              "name": "telefonecliente",
+              "value": "={{ $json.body.data.key.remoteJid }}",
+              "type": "string"
+            },
+            {
+              "id": "65e61dc9-5227-4c30-8ca4-723678ef6c07",
+              "name": "mensagemTipo",
+              "value": "={{ $json.body.data.messageType }}",
+              "type": "string"
+            },
+            {
+              "id": "fd809de9-2cb9-4dec-963e-5c72c22e4aa9",
+              "name": "instanciaID",
+              "value": "={{ $json.body.data.instanceId }}",
+              "type": "string"
+            },
+            {
+              "id": "a6baed4f-8d58-4108-9311-e98d97c0e79d",
+              "name": "apiKey",
+              "value": "={{ $json.body.apikey }}",
+              "type": "string"
+            },
+            {
+              "id": "7b1cfa70-db7d-49e5-855d-2068f3826b72",
+              "name": "telefoneEmpresa",
+              "value": "={{ $json.body.sender }}",
+              "type": "string"
+            },
+            {
+              "id": "f9b69da3-fd51-44e3-a95c-2e008b7a35b9",
+              "name": "nomeInstancia",
+              "value": "={{ $json.body.instance }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5a1df4d1-e981-4077-91ea-75244dad858f",
+      "name": "CamposIniciais",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -620,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a95ab21c-dacc-4153-9746-a05884bd13a9",
+              "name": "resposta ia",
+              "value": "teste 02",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f1ec6f7f-e12c-40ba-bfb6-f7ef10de90d5",
+      "name": "campo final",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        340,
+        240
+      ]
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "primary-production-317a.up.railway.app",
+            "user-agent": "axios/1.7.5",
+            "content-length": "915",
+            "accept": "application/json, text/plain, */*",
+            "accept-encoding": "gzip, compress, deflate, br",
+            "content-type": "application/json",
+            "x-forwarded-for": "137.184.141.147",
+            "x-forwarded-host": "primary-production-317a.up.railway.app",
+            "x-forwarded-proto": "https",
+            "x-railway-request-id": "3jJ0LcDXTjO4nEt072cn8Q_3118653284",
+            "x-real-ip": "137.184.141.147"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "event": "messages.upsert",
+            "instance": "evo01 jp",
+            "data": {
+              "key": {
+                "remoteJid": "5519982642702@s.whatsapp.net",
+                "fromMe": false,
+                "id": "3EB039B40E6586CF63455C"
+              },
+              "pushName": "João Paulo",
+              "message": {
+                "conversation": "oi",
+                "messageContextInfo": {
+                  "deviceListMetadata": {
+                    "senderKeyHash": "zeZNkSYga/jNLA==",
+                    "senderTimestamp": "1725455265",
+                    "senderAccountType": "E2EE",
+                    "receiverAccountType": "E2EE",
+                    "recipientKeyHash": "iqzMNnD1twGZeA==",
+                    "recipientTimestamp": "1724697944"
+                  },
+                  "deviceListMetadataVersion": 2
+                }
+              },
+              "messageType": "conversation",
+              "messageTimestamp": 1725883096,
+              "instanceId": "d9a19537-2e0e-4d66-8679-95c8854b884f",
+              "source": "web"
+            },
+            "destination": "https://primary-production-317a.up.railway.app/webhook-test/6c1c9798-b379-4cb3-9d4a-19fc2724e3f3",
+            "date_time": "2024-09-09T08:58:17.037Z",
+            "sender": "5519971453289@s.whatsapp.net",
+            "server_url": "https://evolutionv2-evolutionv2.vd3lzd.easypanel.host",
+            "apikey": "0507AB41C00A-460E-A20C-562E2B4259CE"
+          },
+          "webhookUrl": "https://primary-production-317a.up.railway.app/webhook-test/6c1c9798-b379-4cb3-9d4a-19fc2724e3f3",
+          "executionMode": "test"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-06-25T13:24:41.576Z",
+      "createdAt": "2025-06-25T13:24:41.576Z",
+      "role": "workflow:owner",
+      "workflowId": "rZpifI7RGhUIu73Y",
+      "projectId": "o60HadikmqrvYZ9Z"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-06-25T13:25:10.969Z",
+  "versionId": "8ac89420-058d-4d19-b1e9-07d152a9e4c1"
+}

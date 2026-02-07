@@ -1,0 +1,580 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "simplificação de dados",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "simplificação de dados": {
+      "main": [
+        [
+          {
+            "node": "Switch2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mensagem Texto": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mensagem Audio": {
+      "main": [
+        [
+          {
+            "node": "Convert to File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch2": {
+      "main": [
+        [
+          {
+            "node": "Mensagem Texto",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Mensagem Texto",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Mensagem Audio",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Evolution API",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Convert to File": {
+      "main": [
+        [
+          {
+            "node": "OpenAI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Evolution API1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MCP Google Calendar": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-12-17T12:28:32.806Z",
+  "id": "zejLgg4cm3DuTDDO",
+  "isArchived": false,
+  "meta": null,
+  "name": "Fluxo de Agendamento MCP - Potto Flow",
+  "nodes": [
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('Merge').item.json.message }}",
+        "options": {
+          "systemMessage": "=- Today is {{ $now.setLocale('en').weekdayLong }}, {{ $now.format('yyyy/MM/dd') }} - {{ $now.hour.toString().padStart(2, '0') }}:{{ $now.minute.toString().padStart(2, '0') }}\n\n    - Tomorrow is {{ $now.setLocale('en').plus(1, 'days').weekdayLong }}, {{ $now.plus(1, 'days').format('yyyy/MM/dd') }}\n\n    - The day after tomorrow is {{ $now.setLocale('en').plus(2, 'days').weekdayLong }}, {{ $now.plus(2, 'days').format('yyyy/MM/dd') }}\n\n    - {{ $now.setLocale('en').plus(3, 'days').weekdayLong }} is {{ $now.plus(3, 'days').format('yyyy/MM/dd') }}\n\n    - {{ $now.setLocale('en').plus(4, 'days').weekdayLong }} is {{ $now.plus(4, 'days').format('yyyy/MM/dd') }}\n\n    - {{ $now.setLocale('en').plus(5, 'days').weekdayLong }} is {{ $now.plus(5, 'days').format('yyyy/MM/dd') }}\n\n    - {{ $now.setLocale('en').plus(6, 'days').weekdayLong }} is {{ $now.plus(6, 'days').format('yyyy/MM/dd') }}\n\nINSTRUÇÕES AO AGENTE:\n\nVocê é uma atendente da Clínica Médica Feliz, especializada em atendimento via WhatsApp. Seu objetivo é **agendar, reagendar ou cancelar compromissos** no Google Calendar, sempre com gentileza e eficiência.\n\n---\n\n🧭 FLUXO DE ATENDIMENTO:\n\n1. **Identifique a intenção do paciente** (agendar, remarcar ou cancelar):\n   - Se não estiver claro, pergunte gentilmente:\n     > Posso te ajudar com um novo agendamento, remarcar um horário já marcado, ou cancelar algum compromisso?  \n\n\n---\n\n### 📅 AGENDAR:\n\n1. Cumprimente com simpatia:\n   > Olá! Fico feliz que você tenha entrado em contato com a Clínica Médica Feliz!  \n   > Podemos agendar diretamente por aqui mesmo — por mensagem ou áudio, como preferir.  \n   > Qual data e horário você gostaria de agendar?\n\n2. Valide funcionamento (segunda a sexta, 08h–17h):\n   - Se estiver fora do horário, oriente a escolher outra data.\n\n3. Antes de gerar qualquer resposta ao paciente sobre a disponibilidade do horário, você **deve obrigatoriamente usar a tool MCP Google Calendar** para consultar a agenda.  \n- Não responda com suposições.  \n- Aguarde a resposta da tool para então gerar a próxima mensagem.  \n- A verificação deve ser feita com base na data e horário solicitados.  \n- Sempre busque usando o telefone do paciente como chave, se disponível.\n\n\n4. **Se disponível:**\n   - Peça **nome completo**.\n   - Confirme o telefone:\n     > É esse número mesmo para contato: `{{ $('simplificação de dados').item.json.whatsapp.slice(0,13) }}`?\n   - Agende e confirme.\n\n5. **Se indisponível:**\n   - Informe que o horário está ocupado.\n   - Sugira **3 horários próximos** disponíveis:\n     > Para esse dia, os horários disponíveis são:  \n     > 📅 [data] 08:00  \n     > 📅 [data] 09:00  \n     > 📅 [data] 10:00  \n     > Qual desses funciona melhor pra você?\n\n---\n\n### 🔁 REAGENDAR:\n\n1. Solicite o telefone para buscar o agendamento mais recente:\n   > Para te ajudar a remarcar, me informe o número que foi usado no agendamento anterior, por favor.\n\n2. Busque o último evento na agenda com esse telefone.\n\n3. Confirme com o paciente se é esse o compromisso que deseja mudar (data/hora/procedimento).\n\n4. Siga o mesmo processo de **verificação e nova sugestão de horários** como em \"Agendar\".\n\n5. Após novo horário escolhido:\n   - Exclua o evento antigo.\n   - Crie o novo evento com os dados atualizados.\n   - Confirme com o paciente:\n     > Prontinho, sua consulta foi remarcada com sucesso!\n\n---\n\n### ❌ CANCELAR:\n\n1. Peça o telefone para localizar o evento:\n   > Me diga o número que foi usado no agendamento para que eu localize e cancele o compromisso.\n\n2. Liste os eventos encontrados e confirme qual cancelar:\n   > Encontrei este agendamento: [data e horário].  \n   > Você confirma que deseja cancelar esse?\n\n3. Após confirmação, exclua o evento e responda:\n   > Agendamento cancelado com sucesso.  \n   > Quando quiser marcar novamente, estarei por aqui!\n\n---\n\n📝 DADOS DO AGENDAMENTO:\n\n- Nome completo no título\n- Telefone e informações adicionais na descrição\n- Nunca agendar datas passadas ou fora do horário de funcionamento\n- Confirmar sempre com o MCP antes de responder\n- Não usar emojis\n- Sempre manter tom humano e acolhedor\n\n---\n\n📌 DADOS DA CLÍNICA:\n\n- Horário de atendimento: Segunda a Sexta, 08h–17h\n- Endereço: Av. Maria 100, São Paulo – SP\n- WhatsApp: (11) 99999-6666\n- E-mail: contato@clinicamedicafeliz.com.br\n- Valor: R$ 240,00/hora\n- Pagamentos: PIX, dinheiro ou cartão\n- Especialidades:\n  - Feliz 1 | Estética\n  - Feliz 2 | Depilação\n\n---\n\nREGRAS GERAIS:\n- Nunca diga que é um robô ou assistente virtual.\n- Encaminhe para humano em caso de dúvida, falha ou reclamação.\n- Sempre consulte o MCP Google Calendar antes de confirmar.\n- Nunca use o ID de link — apenas o ID que retorna na tool MCP.\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.9,
+      "position": [
+        1120,
+        32
+      ],
+      "id": "ece713a1-6182-44ee-99fa-9d5e89802e03",
+      "name": "AI Agent",
+      "notes": "Desenvolvido por Potto Flow"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "f1a9b755-2a0b-44c8-9eab-794df892256d",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -800,
+        112
+      ],
+      "id": "e33a5bb5-2073-41e5-b46b-07c8c0a401ab",
+      "name": "Webhook",
+      "webhookId": "f1a9b755-2a0b-44c8-9eab-794df892256d"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "9f488c5c-0b3b-48e9-87b1-5a22d513d1ec",
+              "name": "whatsapp",
+              "value": "={{ $json.body.data.key.remoteJid }}",
+              "type": "string"
+            },
+            {
+              "id": "55a0d9e4-7943-4a75-9423-3cdcf67fbfb8",
+              "name": "nome",
+              "value": "={{ $json.body.data.pushName }}",
+              "type": "string"
+            },
+            {
+              "id": "54c195b0-42a1-4b7d-acf5-531410b1b20b",
+              "name": "message_text",
+              "value": "={{ $json.body.data.message.conversation }}",
+              "type": "string"
+            },
+            {
+              "id": "62bc3a95-720a-4cad-b580-2f66a415ca5d",
+              "name": "message_audio",
+              "value": "={{ $('Webhook').item.json.body.data.message.base64 }}",
+              "type": "string"
+            },
+            {
+              "id": "893a8685-36f7-4d55-b0c2-6bd924754f4b",
+              "name": "message_PDF",
+              "value": "={{ $json.body.data.message.base64 }}",
+              "type": "string"
+            },
+            {
+              "id": "f104a777-686a-4067-bdb0-576fed68e16a",
+              "name": "message_imagem",
+              "value": "={{ $json.body.data.message.base64 }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "3558084e-040c-48c0-92bf-bcea6d11bd12",
+      "name": "simplificação de dados",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -576,
+        112
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c1ce011b-bd95-468e-863e-f2076f644cf9",
+              "name": "message",
+              "value": "={{ $json.message_text }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        0,
+        0
+      ],
+      "id": "550dc998-5282-4f1d-9693-517189af82ec",
+      "name": "Mensagem Texto"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "5efc6961-1ff7-4ef2-a772-7e9761592a3e",
+              "name": "Audio",
+              "value": "={{ $('Webhook').item.json.body.data.message.base64 }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        0,
+        192
+      ],
+      "id": "a3342d4b-b205-460f-9ca4-fc2ec33bdc2a",
+      "name": "Mensagem Audio"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "bc64f125-d93c-4d1d-97ae-65c0adb08b79",
+                    "leftValue": "={{ $('Webhook').item.json.body.data.messageType }}",
+                    "rightValue": "conversation",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "texto"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "137aec3f-e95e-4d59-b9ba-1140f9fc4fb4",
+                    "leftValue": "={{ $('Webhook').item.json.body.data.messageType }}",
+                    "rightValue": "extendedTextMessage",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "texto"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "137aec3f-e95e-4d59-b9ba-1140f9fc4fb4",
+                    "leftValue": "={{ $('Webhook').item.json.body.data.messageType }}",
+                    "rightValue": "audioMessage",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "audio"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra",
+          "renameFallbackOutput": "Outro"
+        }
+      },
+      "id": "fcbe7858-fd65-48e8-a8c9-24b9c3aa6316",
+      "name": "Switch2",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.1,
+      "position": [
+        -368,
+        80
+      ],
+      "notesInFlow": false,
+      "notes": "Desenvolvido por Potto Flow"
+    },
+    {
+      "parameters": {
+        "resource": "audio",
+        "operation": "transcribe",
+        "options": {
+          "language": "pt"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        400,
+        192
+      ],
+      "id": "ce0c638d-0efb-4d66-8924-4dd21e0d554a",
+      "name": "OpenAI"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.1,
+      "position": [
+        848,
+        32
+      ],
+      "id": "85614e82-341b-40eb-bee1-cc1a3f2ae461",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "0ef3cc0c-78ff-42c0-ad2a-934618b7c8ae",
+              "name": "message",
+              "value": "={{ $json.text }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        592,
+        192
+      ],
+      "id": "76f10165-da0e-4862-b159-a7f58854f69d",
+      "name": "Edit Fields",
+      "notes": "Desenvolvido por Potto Flow"
+    },
+    {
+      "parameters": {
+        "operation": "toBinary",
+        "sourceProperty": "Audio",
+        "options": {
+          "mimeType": "audio/mp4"
+        }
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        224,
+        192
+      ],
+      "id": "65f51c83-2dcd-4491-b370-5794ab3f72cf",
+      "name": "Convert to File"
+    },
+    {
+      "parameters": {
+        "resource": "messages-api",
+        "instanceName": "potto-evo",
+        "remoteJid": "={{ $('simplificação de dados').item.json.whatsapp }}",
+        "messageText": "=Olá, não recebemos esse tipo de formato",
+        "options_message": {}
+      },
+      "type": "n8n-nodes-evolution-api.evolutionApi",
+      "typeVersion": 1,
+      "position": [
+        0,
+        400
+      ],
+      "id": "f2be1b3a-e7e4-4018-82af-cec584038ee5",
+      "name": "Evolution API"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4.1-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4.1-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        1072,
+        272
+      ],
+      "id": "fff2baff-5419-4ddc-87c8-61219929d2e1",
+      "name": "OpenAI Chat Model"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('simplificação de dados').item.json.whatsapp }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        1232,
+        272
+      ],
+      "id": "0e603025-7558-4ffa-a5cb-eaa192ca95c7",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "resource": "messages-api",
+        "instanceName": "potto-evo",
+        "remoteJid": "={{ $('simplificação de dados').item.json.whatsapp }}",
+        "messageText": "={{ $json.output }}",
+        "options_message": {}
+      },
+      "type": "n8n-nodes-evolution-api.evolutionApi",
+      "typeVersion": 1,
+      "position": [
+        1520,
+        32
+      ],
+      "id": "b3128867-2143-42c6-b336-0dce2c45a5ab",
+      "name": "Evolution API1"
+    },
+    {
+      "parameters": {
+        "sseEndpoint": "https://primary-production-d2ab1.up.railway.app/mcp/25f6c68e-21db-441b-97b8-8e74fcc73b1b/sse",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.mcpClientTool",
+      "typeVersion": 1,
+      "position": [
+        1392,
+        272
+      ],
+      "id": "6dae6208-5d50-420c-898f-3233e164385a",
+      "name": "MCP Google Calendar"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-12-17T12:28:32.806Z",
+      "createdAt": "2025-12-17T12:28:32.806Z",
+      "role": "workflow:owner",
+      "workflowId": "zejLgg4cm3DuTDDO",
+      "projectId": "o60HadikmqrvYZ9Z"
+    }
+  ],
+  "staticData": null,
+  "tags": [
+    {
+      "updatedAt": "2025-12-11T21:49:57.103Z",
+      "createdAt": "2025-12-11T21:49:57.103Z",
+      "id": "jVJBpv1Zg5iwH5ja",
+      "name": "Potto Flow - Aula"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-12-17T12:28:32.806Z",
+  "versionId": "597a4670-c2a4-4ee7-9078-0444d0660cf5"
+}

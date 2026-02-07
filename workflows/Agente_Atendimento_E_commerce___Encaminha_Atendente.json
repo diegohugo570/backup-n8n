@@ -1,0 +1,983 @@
+{
+  "active": true,
+  "activeVersion": {
+    "updatedAt": "2025-12-11T22:04:59.725Z",
+    "createdAt": "2025-12-11T22:04:59.725Z",
+    "versionId": "c0c7b2b5-0eb8-4e2d-8307-85e5acb3721f",
+    "workflowId": "aiBxxp66IytQcvWw",
+    "nodes": [
+      {
+        "parameters": {
+          "httpMethod": "POST",
+          "path": "6cbb9f45-9ff9-4d31-8bed-6235b82aecda",
+          "responseMode": "responseNode",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.webhook",
+        "typeVersion": 2,
+        "position": [
+          0,
+          0
+        ],
+        "id": "2982877c-d1f7-4240-9c2c-b7cb973f0594",
+        "name": "Webhook1",
+        "webhookId": "6cbb9f45-9ff9-4d31-8bed-6235b82aecda"
+      },
+      {
+        "parameters": {
+          "promptType": "define",
+          "text": "=Motivo do usuário para passar para atendente:  {{ $('Webhook1').item.json.body.motivo }}",
+          "options": {
+            "systemMessage": "=Você é um agente assistente do Pinc Suporte, um assistente de atendimento com IA da pincbar.\n\n⚠️ REGRAS CRÍTICAS (SIGA EXATAMENTE):\n\nVocê receberá duas variáveis:\n- `isHorarioComercial`: {{ $json.isHorarioComercial }}\n- `isFeriado`: {{ $json.isFeriado }}\n\n### 🔒 Você só pode chamar a ferramenta `encaminhar_atendente` se:\n- isHorarioComercial for **true**, **e**\n- isFeriado for **false**\n\n🚫 EM TODOS OS OUTROS CASOS, VOCÊ **NÃO DEVE CHAMAR QUALQUER TOOL**.\n\n❌ Se você chamar a tool `encaminhar_atendente` fora dessas condições, isso causará um erro grave no atendimento. NÃO FAÇA ISSO.\n\n---\n\n📅 Data e hora atual: {{ $('Hora atual').item.json.Data_Hora_Atual }}\n\n📆 Lista de feriados:\n- 2025-04-21 (Tiradentes)\n\n---\n\n### ✅ INSTRUÇÕES FINAIS\n\n**Se `isFeriado` for true:**\nResponda APENAS com a seguinte frase:\n> \"No momento estamos fora do horário de atendimento (9h‑17h). Envie sua solicitação para **contato@pincbar.com.br** que responderemos o mais breve possível! ✨ (Obs: hoje é feriado, não estamos trabalhando.)\"\n\n**Se `isHorarioComercial` for false:**\nResponda:\n> \"No momento estamos fora do horário de atendimento (9h‑17h). Envie sua solicitação para **contato@pincbar.com.br** que responderemos o mais breve possível! ✨\"\n\n**Se estiver tudo certo (dentro do horário e não for feriado):**\nChame a ferramenta `encaminhar_atendente`.\n\n---\n\n❗LEMBRE-SE:\nSó chame a tool `encaminhar_atendente` se **isHorarioComercial = true** **e** **isFeriado = false**."
+          }
+        },
+        "type": "@n8n/n8n-nodes-langchain.agent",
+        "typeVersion": 1.9,
+        "position": [
+          820,
+          0
+        ],
+        "id": "508996a7-6d3f-4a39-87b8-5b4f0fea9217",
+        "name": "AI Agent"
+      },
+      {
+        "parameters": {
+          "model": {
+            "__rl": true,
+            "value": "gpt-4.1-mini-2025-04-14",
+            "mode": "list",
+            "cachedResultName": "gpt-4.1-mini-2025-04-14"
+          },
+          "options": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+        "typeVersion": 1.2,
+        "position": [
+          740,
+          220
+        ],
+        "id": "9a3b97e6-0407-490b-b37d-c1a8ac45aed3",
+        "name": "OpenAI Chat Model",
+        "credentials": {
+          "openAiApi": {
+            "id": "58nXg6cOh7QVFFh8",
+            "name": "OpenAi account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "respondWith": "text",
+          "responseBody": "={{ $json.output }}",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.respondToWebhook",
+        "typeVersion": 1.1,
+        "position": [
+          1420,
+          0
+        ],
+        "id": "071f72c7-8459-46b3-a319-83394909a635",
+        "name": "Respond to Webhook"
+      },
+      {
+        "parameters": {
+          "jsCode": "const dataStr = $json.Data_Hora_Atual;\n\n// Exemplo do formato: \"Agora é 16:23 e o dia é 21-04-2025 no horário de Brasília\"\n// Vamos extrair hora e data com regex\nconst match = dataStr.match(/(\\d{2}):(\\d{2}).*?(\\d{2})-(\\d{2})-(\\d{4})/);\n\nif (!match) {\n  return [{\n    json: {\n      erro: \"Formato inválido de Data_Hora_Atual\",\n      isHorarioComercial: false,\n      isFeriado: false\n    }\n  }];\n}\n\n// Extração da hora e data\nconst hora = parseInt(match[1]);\nconst minuto = parseInt(match[2]);\nconst dia = parseInt(match[3]);\nconst mes = parseInt(match[4]) - 1; // JS conta meses de 0 a 11\nconst ano = parseInt(match[5]);\n\n// Criação do objeto Date\nconst data = new Date(ano, mes, dia, hora, minuto);\nconst diaSemana = data.getDay(); // 0 = domingo ... 6 = sábado\n\n// Verificação de horário comercial\nconst dentroDoHorario = hora >= 9 && hora < 17;\nconst diaUtil = diaSemana >= 1 && diaSemana <= 5;\nconst isHorarioComercial = dentroDoHorario && diaUtil;\n\n// Verificação de feriado\nconst dataFormatada = `${ano}-${(mes+1).toString().padStart(2, '0')}-${dia.toString().padStart(2, '0')}`;\nconst feriados = ['2025-04-21']; // Adicione mais aqui se quiser\nconst isFeriado = feriados.includes(dataFormatada);\n\n// Resultado final\nreturn [{\n  json: {\n    isHorarioComercial,\n    isFeriado\n  }\n}];"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          460,
+          0
+        ],
+        "id": "7acd2c2e-a50e-4a7a-91be-9a0d04c69a59",
+        "name": "Verifica Horário Comercial e Feriado"
+      },
+      {
+        "parameters": {
+          "workflowInputs": {
+            "values": [
+              {
+                "name": "sessionId"
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.executeWorkflowTrigger",
+        "typeVersion": 1.1,
+        "position": [
+          280,
+          600
+        ],
+        "id": "388d5163-2be2-41ae-a92e-e4a4bbdc623f",
+        "name": "When Executed by Another Workflow"
+      },
+      {
+        "parameters": {
+          "jsCode": "const dataStr = $json.Data_Hora_Atual;\n\n// Exemplo do formato: \"Agora é 16:23 e o dia é 21-04-2025 no horário de Brasília\"\n// Vamos extrair hora e data com regex\nconst match = dataStr.match(/(\\d{2}):(\\d{2}).*?(\\d{2})-(\\d{2})-(\\d{4})/);\n\nif (!match) {\n  return [{\n    json: {\n      erro: \"Formato inválido de Data_Hora_Atual\",\n      isHorarioComercial: false,\n      isFeriado: false\n    }\n  }];\n}\n\n// Extração da hora e data\nconst hora = parseInt(match[1]);\nconst minuto = parseInt(match[2]);\nconst dia = parseInt(match[3]);\nconst mes = parseInt(match[4]) - 1; // JS conta meses de 0 a 11\nconst ano = parseInt(match[5]);\n\n// Criação do objeto Date\nconst data = new Date(ano, mes, dia, hora, minuto);\nconst diaSemana = data.getDay(); // 0 = domingo ... 6 = sábado\n\n// Verificação de horário comercial\nconst dentroDoHorario = hora >= 9 && hora < 17;\nconst diaUtil = diaSemana >= 1 && diaSemana <= 5;\nconst isHorarioComercial = dentroDoHorario && diaUtil;\n\n// Verificação de feriado\nconst dataFormatada = `${ano}-${(mes+1).toString().padStart(2, '0')}-${dia.toString().padStart(2, '0')}`;\nconst feriados = ['2025-04-21']; // Adicione mais aqui se quiser\nconst isFeriado = feriados.includes(dataFormatada);\n\n// Resultado final\nreturn [{\n  json: {\n    isHorarioComercial,\n    isFeriado\n  }\n}];"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          780,
+          600
+        ],
+        "id": "05bc195d-b115-42e8-8ff4-6e8f91d306d7",
+        "name": "Verifica Horário Comercial e Feriado1"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            },
+            "conditions": [
+              {
+                "id": "09757bc2-3f96-439a-bc77-a22927f73ffd",
+                "leftValue": "={{ $json.isHorarioComercial }}",
+                "rightValue": "",
+                "operator": {
+                  "type": "boolean",
+                  "operation": "true",
+                  "singleValue": true
+                }
+              },
+              {
+                "id": "03d90203-1033-45c6-9d58-a1c50e0c5bbf",
+                "leftValue": "={{ $json.isFeriado }}",
+                "rightValue": "",
+                "operator": {
+                  "type": "boolean",
+                  "operation": "false",
+                  "singleValue": true
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2,
+        "position": [
+          1000,
+          600
+        ],
+        "id": "76229362-af4d-4c6f-9322-d311c06dca75",
+        "name": "If"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "3f4cb3e8-3f9f-4e80-8110-7357c3a6a503",
+                "name": "Resposta",
+                "value": "Avise o cliente que estamos fora do Horário de Atendimento",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          1220,
+          700
+        ],
+        "id": "5c25de5a-9f53-4d6f-b1ef-6c6dec89b2c7",
+        "name": "ForaHorario"
+      },
+      {
+        "parameters": {
+          "method": "POST",
+          "url": "=URL CHATWOOT",
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "api_access_token",
+                "value": "TOKEN AQUI"
+              }
+            ]
+          },
+          "sendBody": true,
+          "specifyBody": "json",
+          "jsonBody": "{\n  \"assignee_id\": 5,\n  \"team_id\": 1\n}",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          1220,
+          500
+        ],
+        "id": "caf3af08-cfd1-4f9c-87dc-1f7b2c8c93f7",
+        "name": "EncaminhaAtendente"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "404e5df2-2819-4ad5-94e5-66d3e5af799f",
+                "name": "AtendenteEncaminhado",
+                "value": "Encaminhado para atendente",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          1440,
+          500
+        ],
+        "id": "71449311-00ed-48e2-88cc-ef3511a35402",
+        "name": "AtendenteEncaminhado"
+      },
+      {
+        "parameters": {
+          "name": "encaminhar_atendente",
+          "description": "útil para encaminhar para atendente.",
+          "workflowId": {
+            "__rl": true,
+            "mode": "id",
+            "value": "SXNh0TNuG6wU5BeK"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "sessionId": "={{ $('Webhook1').item.json.body.sessionId }}"
+            },
+            "matchingColumns": [],
+            "schema": [
+              {
+                "id": "sessionId",
+                "displayName": "sessionId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          }
+        },
+        "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+        "typeVersion": 2.1,
+        "position": [
+          1100,
+          260
+        ],
+        "id": "d032a05e-47c7-4cba-bb3d-56fae1743d13",
+        "name": "encaminhar_atendente"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "5d7bc2d4-17ae-4b4d-b866-c9f70f9db0e1",
+                "name": "Data_Hora_Atual",
+                "value": "=Agora é {{ $now.setLocale('pt-BR').format('HH:mm') }} e o dia é {{ $now.setLocale('pt-BR').format('dd-MM-yyyy') }} no horário de Brasília",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          220,
+          0
+        ],
+        "id": "12650eac-7221-4993-8c26-d8281f62d065",
+        "name": "Hora atual"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "5d7bc2d4-17ae-4b4d-b866-c9f70f9db0e1",
+                "name": "Data_Hora_Atual",
+                "value": "=Agora é {{ $now.setLocale('pt-BR').format('HH:mm') }} e o dia é {{ $now.setLocale('pt-BR').format('dd-MM-yyyy') }} no horário de Brasília",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          520,
+          600
+        ],
+        "id": "13985210-cb15-4caf-90c2-5399333afff9",
+        "name": "Hora_atual"
+      }
+    ],
+    "connections": {
+      "Webhook1": {
+        "main": [
+          [
+            {
+              "node": "Hora atual",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "AI Agent": {
+        "main": [
+          [
+            {
+              "node": "Respond to Webhook",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "OpenAI Chat Model": {
+        "ai_languageModel": [
+          [
+            {
+              "node": "AI Agent",
+              "type": "ai_languageModel",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Verifica Horário Comercial e Feriado": {
+        "main": [
+          [
+            {
+              "node": "AI Agent",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "When Executed by Another Workflow": {
+        "main": [
+          [
+            {
+              "node": "Hora_atual",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Verifica Horário Comercial e Feriado1": {
+        "main": [
+          [
+            {
+              "node": "If",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "If": {
+        "main": [
+          [
+            {
+              "node": "EncaminhaAtendente",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "ForaHorario",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "EncaminhaAtendente": {
+        "main": [
+          [
+            {
+              "node": "AtendenteEncaminhado",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "encaminhar_atendente": {
+        "ai_tool": [
+          [
+            {
+              "node": "AI Agent",
+              "type": "ai_tool",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Hora atual": {
+        "main": [
+          [
+            {
+              "node": "Verifica Horário Comercial e Feriado",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Hora_atual": {
+        "main": [
+          [
+            {
+              "node": "Verifica Horário Comercial e Feriado1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "authors": "system migration",
+    "name": null,
+    "description": null,
+    "autosaved": false
+  },
+  "activeVersionId": "c0c7b2b5-0eb8-4e2d-8307-85e5acb3721f",
+  "connections": {
+    "Webhook1": {
+      "main": [
+        [
+          {
+            "node": "Hora atual",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verifica Horário Comercial e Feriado": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Hora_atual",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verifica Horário Comercial e Feriado1": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "EncaminhaAtendente",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "ForaHorario",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "EncaminhaAtendente": {
+      "main": [
+        [
+          {
+            "node": "AtendenteEncaminhado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "encaminhar_atendente": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Hora atual": {
+      "main": [
+        [
+          {
+            "node": "Verifica Horário Comercial e Feriado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Hora_atual": {
+      "main": [
+        [
+          {
+            "node": "Verifica Horário Comercial e Feriado1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-07-08T18:58:52.329Z",
+  "id": "aiBxxp66IytQcvWw",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Agente_Atendimento_E_commerce___Encaminha_Atendente",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "6cbb9f45-9ff9-4d31-8bed-6235b82aecda",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "2982877c-d1f7-4240-9c2c-b7cb973f0594",
+      "name": "Webhook1",
+      "webhookId": "6cbb9f45-9ff9-4d31-8bed-6235b82aecda"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Motivo do usuário para passar para atendente:  {{ $('Webhook1').item.json.body.motivo }}",
+        "options": {
+          "systemMessage": "=Você é um agente assistente do Pinc Suporte, um assistente de atendimento com IA da pincbar.\n\n⚠️ REGRAS CRÍTICAS (SIGA EXATAMENTE):\n\nVocê receberá duas variáveis:\n- `isHorarioComercial`: {{ $json.isHorarioComercial }}\n- `isFeriado`: {{ $json.isFeriado }}\n\n### 🔒 Você só pode chamar a ferramenta `encaminhar_atendente` se:\n- isHorarioComercial for **true**, **e**\n- isFeriado for **false**\n\n🚫 EM TODOS OS OUTROS CASOS, VOCÊ **NÃO DEVE CHAMAR QUALQUER TOOL**.\n\n❌ Se você chamar a tool `encaminhar_atendente` fora dessas condições, isso causará um erro grave no atendimento. NÃO FAÇA ISSO.\n\n---\n\n📅 Data e hora atual: {{ $('Hora atual').item.json.Data_Hora_Atual }}\n\n📆 Lista de feriados:\n- 2025-04-21 (Tiradentes)\n\n---\n\n### ✅ INSTRUÇÕES FINAIS\n\n**Se `isFeriado` for true:**\nResponda APENAS com a seguinte frase:\n> \"No momento estamos fora do horário de atendimento (9h‑17h). Envie sua solicitação para **contato@pincbar.com.br** que responderemos o mais breve possível! ✨ (Obs: hoje é feriado, não estamos trabalhando.)\"\n\n**Se `isHorarioComercial` for false:**\nResponda:\n> \"No momento estamos fora do horário de atendimento (9h‑17h). Envie sua solicitação para **contato@pincbar.com.br** que responderemos o mais breve possível! ✨\"\n\n**Se estiver tudo certo (dentro do horário e não for feriado):**\nChame a ferramenta `encaminhar_atendente`.\n\n---\n\n❗LEMBRE-SE:\nSó chame a tool `encaminhar_atendente` se **isHorarioComercial = true** **e** **isFeriado = false**."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.9,
+      "position": [
+        820,
+        0
+      ],
+      "id": "508996a7-6d3f-4a39-87b8-5b4f0fea9217",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4.1-mini-2025-04-14",
+          "mode": "list",
+          "cachedResultName": "gpt-4.1-mini-2025-04-14"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        740,
+        220
+      ],
+      "id": "9a3b97e6-0407-490b-b37d-c1a8ac45aed3",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "58nXg6cOh7QVFFh8",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ $json.output }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1420,
+        0
+      ],
+      "id": "071f72c7-8459-46b3-a319-83394909a635",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "jsCode": "const dataStr = $json.Data_Hora_Atual;\n\n// Exemplo do formato: \"Agora é 16:23 e o dia é 21-04-2025 no horário de Brasília\"\n// Vamos extrair hora e data com regex\nconst match = dataStr.match(/(\\d{2}):(\\d{2}).*?(\\d{2})-(\\d{2})-(\\d{4})/);\n\nif (!match) {\n  return [{\n    json: {\n      erro: \"Formato inválido de Data_Hora_Atual\",\n      isHorarioComercial: false,\n      isFeriado: false\n    }\n  }];\n}\n\n// Extração da hora e data\nconst hora = parseInt(match[1]);\nconst minuto = parseInt(match[2]);\nconst dia = parseInt(match[3]);\nconst mes = parseInt(match[4]) - 1; // JS conta meses de 0 a 11\nconst ano = parseInt(match[5]);\n\n// Criação do objeto Date\nconst data = new Date(ano, mes, dia, hora, minuto);\nconst diaSemana = data.getDay(); // 0 = domingo ... 6 = sábado\n\n// Verificação de horário comercial\nconst dentroDoHorario = hora >= 9 && hora < 17;\nconst diaUtil = diaSemana >= 1 && diaSemana <= 5;\nconst isHorarioComercial = dentroDoHorario && diaUtil;\n\n// Verificação de feriado\nconst dataFormatada = `${ano}-${(mes+1).toString().padStart(2, '0')}-${dia.toString().padStart(2, '0')}`;\nconst feriados = ['2025-04-21']; // Adicione mais aqui se quiser\nconst isFeriado = feriados.includes(dataFormatada);\n\n// Resultado final\nreturn [{\n  json: {\n    isHorarioComercial,\n    isFeriado\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        460,
+        0
+      ],
+      "id": "7acd2c2e-a50e-4a7a-91be-9a0d04c69a59",
+      "name": "Verifica Horário Comercial e Feriado"
+    },
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "sessionId"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        280,
+        600
+      ],
+      "id": "388d5163-2be2-41ae-a92e-e4a4bbdc623f",
+      "name": "When Executed by Another Workflow"
+    },
+    {
+      "parameters": {
+        "jsCode": "const dataStr = $json.Data_Hora_Atual;\n\n// Exemplo do formato: \"Agora é 16:23 e o dia é 21-04-2025 no horário de Brasília\"\n// Vamos extrair hora e data com regex\nconst match = dataStr.match(/(\\d{2}):(\\d{2}).*?(\\d{2})-(\\d{2})-(\\d{4})/);\n\nif (!match) {\n  return [{\n    json: {\n      erro: \"Formato inválido de Data_Hora_Atual\",\n      isHorarioComercial: false,\n      isFeriado: false\n    }\n  }];\n}\n\n// Extração da hora e data\nconst hora = parseInt(match[1]);\nconst minuto = parseInt(match[2]);\nconst dia = parseInt(match[3]);\nconst mes = parseInt(match[4]) - 1; // JS conta meses de 0 a 11\nconst ano = parseInt(match[5]);\n\n// Criação do objeto Date\nconst data = new Date(ano, mes, dia, hora, minuto);\nconst diaSemana = data.getDay(); // 0 = domingo ... 6 = sábado\n\n// Verificação de horário comercial\nconst dentroDoHorario = hora >= 9 && hora < 17;\nconst diaUtil = diaSemana >= 1 && diaSemana <= 5;\nconst isHorarioComercial = dentroDoHorario && diaUtil;\n\n// Verificação de feriado\nconst dataFormatada = `${ano}-${(mes+1).toString().padStart(2, '0')}-${dia.toString().padStart(2, '0')}`;\nconst feriados = ['2025-04-21']; // Adicione mais aqui se quiser\nconst isFeriado = feriados.includes(dataFormatada);\n\n// Resultado final\nreturn [{\n  json: {\n    isHorarioComercial,\n    isFeriado\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        780,
+        600
+      ],
+      "id": "05bc195d-b115-42e8-8ff4-6e8f91d306d7",
+      "name": "Verifica Horário Comercial e Feriado1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "09757bc2-3f96-439a-bc77-a22927f73ffd",
+              "leftValue": "={{ $json.isHorarioComercial }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "03d90203-1033-45c6-9d58-a1c50e0c5bbf",
+              "leftValue": "={{ $json.isFeriado }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "false",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1000,
+        600
+      ],
+      "id": "76229362-af4d-4c6f-9322-d311c06dca75",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "3f4cb3e8-3f9f-4e80-8110-7357c3a6a503",
+              "name": "Resposta",
+              "value": "Avise o cliente que estamos fora do Horário de Atendimento",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1220,
+        700
+      ],
+      "id": "5c25de5a-9f53-4d6f-b1ef-6c6dec89b2c7",
+      "name": "ForaHorario"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=URL CHATWOOT",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "api_access_token",
+              "value": "TOKEN AQUI"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"assignee_id\": 5,\n  \"team_id\": 1\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1220,
+        500
+      ],
+      "id": "caf3af08-cfd1-4f9c-87dc-1f7b2c8c93f7",
+      "name": "EncaminhaAtendente"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "404e5df2-2819-4ad5-94e5-66d3e5af799f",
+              "name": "AtendenteEncaminhado",
+              "value": "Encaminhado para atendente",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1440,
+        500
+      ],
+      "id": "71449311-00ed-48e2-88cc-ef3511a35402",
+      "name": "AtendenteEncaminhado"
+    },
+    {
+      "parameters": {
+        "name": "encaminhar_atendente",
+        "description": "útil para encaminhar para atendente.",
+        "workflowId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "SXNh0TNuG6wU5BeK"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "sessionId": "={{ $('Webhook1').item.json.body.sessionId }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "sessionId",
+              "displayName": "sessionId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.1,
+      "position": [
+        1100,
+        260
+      ],
+      "id": "d032a05e-47c7-4cba-bb3d-56fae1743d13",
+      "name": "encaminhar_atendente"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "5d7bc2d4-17ae-4b4d-b866-c9f70f9db0e1",
+              "name": "Data_Hora_Atual",
+              "value": "=Agora é {{ $now.setLocale('pt-BR').format('HH:mm') }} e o dia é {{ $now.setLocale('pt-BR').format('dd-MM-yyyy') }} no horário de Brasília",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        220,
+        0
+      ],
+      "id": "12650eac-7221-4993-8c26-d8281f62d065",
+      "name": "Hora atual"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "5d7bc2d4-17ae-4b4d-b866-c9f70f9db0e1",
+              "name": "Data_Hora_Atual",
+              "value": "=Agora é {{ $now.setLocale('pt-BR').format('HH:mm') }} e o dia é {{ $now.setLocale('pt-BR').format('dd-MM-yyyy') }} no horário de Brasília",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        520,
+        600
+      ],
+      "id": "13985210-cb15-4caf-90c2-5399333afff9",
+      "name": "Hora_atual"
+    }
+  ],
+  "pinData": {
+    "Webhook1": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n.outoflow.online",
+            "user-agent": "axios/1.8.2",
+            "content-length": "96",
+            "accept": "application/json, text/plain, */*",
+            "accept-encoding": "gzip, compress, deflate, br",
+            "content-type": "application/json",
+            "x-forwarded-for": "172.18.0.1",
+            "x-forwarded-host": "n8n.outoflow.online",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "134a11703900",
+            "x-real-ip": "172.18.0.1"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "sessionId": 358,
+            "motivo": "chamar atendente"
+          },
+          "webhookUrl": "https://webhook.outoflow.online/webhook/6cbb9f45-9ff9-4d31-8bed-6235b82aecda",
+          "executionMode": "production"
+        }
+      }
+    ],
+    "When Executed by Another Workflow": [
+      {
+        "json": {
+          "sessionId": 1455
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-07-08T18:58:52.329Z",
+      "createdAt": "2025-07-08T18:58:52.329Z",
+      "role": "workflow:owner",
+      "workflowId": "aiBxxp66IytQcvWw",
+      "projectId": "o60HadikmqrvYZ9Z"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-07-08T18:59:04.590Z",
+  "versionId": "c0c7b2b5-0eb8-4e2d-8307-85e5acb3721f"
+}

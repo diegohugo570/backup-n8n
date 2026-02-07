@@ -1,0 +1,740 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Google Drive1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Drive": {
+      "main": [
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Supabase Vector Store",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Default Data Loader": {
+      "ai_document": [
+        [
+          {
+            "node": "Supabase Vector Store",
+            "type": "ai_document",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Recursive Character Text Splitter": {
+      "ai_textSplitter": [
+        [
+          {
+            "node": "Default Data Loader",
+            "type": "ai_textSplitter",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Split Out1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI1": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Supabase Vector Store1",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Default Data Loader1": {
+      "ai_document": [
+        [
+          {
+            "node": "Supabase Vector Store1",
+            "type": "ai_document",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Recursive Character Text Splitter1": {
+      "ai_textSplitter": [
+        [
+          {
+            "node": "Default Data Loader1",
+            "type": "ai_textSplitter",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "Supabase Vector Store1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI2": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Supabase Vector Store2",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Drive1": {
+      "main": [
+        [
+          {
+            "node": "Extract from File1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File1": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI3": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Supabase Vector Store3",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Default Data Loader2": {
+      "ai_document": [
+        [
+          {
+            "node": "Supabase Vector Store3",
+            "type": "ai_document",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Recursive Character Text Splitter2": {
+      "ai_textSplitter": [
+        [
+          {
+            "node": "Default Data Loader2",
+            "type": "ai_textSplitter",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Supabase Vector Store3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out1": {
+      "main": [
+        [
+          {
+            "node": "Supabase Vector Store",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-06-14T17:09:29.952Z",
+  "id": "lXLrqTJiSukCdANI",
+  "isArchived": false,
+  "meta": null,
+  "name": "Indexação com N8N usando Planilhas",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        120,
+        2080
+      ],
+      "id": "d46f175c-e44d-43d9-8740-6c25b1dfdf35",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "operation": "download",
+        "fileId": {
+          "__rl": true,
+          "value": "https://docs.google.com/document/d/1_TwenP_MGM4bJ6xe_BjIlLfXCu4Mqi8Hg2sffIVlQPg/edit?pli=1&tab=t.0",
+          "mode": "url"
+        },
+        "options": {
+          "googleFileConversion": {
+            "conversion": {
+              "docsToFormat": "text/plain",
+              "slidesToFormat": "application/pdf"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        140,
+        320
+      ],
+      "id": "a1b726e6-f0cc-43f6-8a27-840b1ec8b7b7",
+      "name": "Google Drive"
+    },
+    {
+      "parameters": {
+        "operation": "text",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        440,
+        320
+      ],
+      "id": "8ed58463-f8e7-42ff-b892-f4a9b06d5743",
+      "name": "Extract from File"
+    },
+    {
+      "parameters": {
+        "mode": "insert",
+        "tableName": {
+          "__rl": true,
+          "value": "documents",
+          "mode": "list",
+          "cachedResultName": "documents"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
+      "typeVersion": 1.1,
+      "position": [
+        1220,
+        320
+      ],
+      "id": "8d724e05-0672-4f37-bc02-10e85f973786",
+      "name": "Supabase Vector Store"
+    },
+    {
+      "parameters": {
+        "model": "text-embedding-3-large",
+        "options": {
+          "dimensions": 1536
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        1000,
+        560
+      ],
+      "id": "f81b8c92-4753-4c24-b388-5290862942ad",
+      "name": "Embeddings OpenAI"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
+      "typeVersion": 1,
+      "position": [
+        1260,
+        520
+      ],
+      "id": "e3683e4b-bce6-4521-9ffb-8c480d66428b",
+      "name": "Default Data Loader"
+    },
+    {
+      "parameters": {
+        "chunkSize": 4000,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.textSplitterRecursiveCharacterTextSplitter",
+      "typeVersion": 1,
+      "position": [
+        1500,
+        700
+      ],
+      "id": "c60874c1-5c16-4094-961d-a96074c2f889",
+      "name": "Recursive Character Text Splitter"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "012786aa-8174-4718-931b-825730335377",
+              "name": "data",
+              "value": "={{ $json.data.split('\\n\\n') }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        440,
+        140
+      ],
+      "id": "1b86b69c-3002-4c44-9677-2f2f3490a6f6",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Força desescape real (transforma \\\\n em \\n real)\nconst raw = $json.data.replace(/\\\\\\\\n/g, '\\n').replace(/\\\\\\\\r/g, '');\n\nconst chunks = raw\n  .split(/\\n\\s*\\n/)             // quebra por parágrafos reais\n  .map(chunk => chunk.trim())   // limpa espaços em branco\n  .filter(chunk => chunk.length > 0); // remove vazios\n\nreturn [{ json: { chunks } }];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        680,
+        320
+      ],
+      "id": "9302e262-48b7-43e0-93ea-2f85a531f27e",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "mode": "insert",
+        "tableName": {
+          "__rl": true,
+          "value": "documents",
+          "mode": "list",
+          "cachedResultName": "documents"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
+      "typeVersion": 1.1,
+      "position": [
+        540,
+        1200
+      ],
+      "id": "46c24fe6-3764-430d-9bca-1a87642288db",
+      "name": "Supabase Vector Store1",
+      "executeOnce": false
+    },
+    {
+      "parameters": {
+        "model": "text-embedding-3-large",
+        "options": {
+          "dimensions": 1536
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        420,
+        1380
+      ],
+      "id": "d1729475-887e-4b82-92ac-0f274345057a",
+      "name": "Embeddings OpenAI1"
+    },
+    {
+      "parameters": {
+        "jsonMode": "expressionData",
+        "jsonData": "=modelo: {{ $json['Modelo do Carro'] }}\nFiltros de ar: {{ $json['Conteúdo'] }}",
+        "options": {
+          "metadata": {
+            "metadataValues": [
+              {
+                "name": "modelo",
+                "value": "={{ $json['Modelo do Carro'].split(' ')[1] }}"
+              },
+              {
+                "name": "marca",
+                "value": "={{ $json['Modelo do Carro'].split(' ')[0] }}"
+              }
+            ]
+          }
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
+      "typeVersion": 1,
+      "position": [
+        620,
+        1420
+      ],
+      "id": "edd7379c-99ed-4608-a672-6d34aa8620be",
+      "name": "Default Data Loader1"
+    },
+    {
+      "parameters": {
+        "chunkSize": 4000,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.textSplitterRecursiveCharacterTextSplitter",
+      "typeVersion": 1,
+      "position": [
+        640,
+        1580
+      ],
+      "id": "edde2c58-8a99-4af2-867c-d6985e4161c2",
+      "name": "Recursive Character Text Splitter1"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1mFGKTe5cEJDCpbqBBzDlgUKkNbamgiogy82w9QTZAK4/edit?gid=0#gid=0",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Página1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1mFGKTe5cEJDCpbqBBzDlgUKkNbamgiogy82w9QTZAK4/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        320,
+        1200
+      ],
+      "id": "36c6544e-979d-46ae-be97-44d2c4ff3212",
+      "name": "Google Sheets",
+      "executeOnce": false
+    },
+    {
+      "parameters": {
+        "mode": "load",
+        "tableName": {
+          "__rl": true,
+          "value": "documents",
+          "mode": "list",
+          "cachedResultName": "documents"
+        },
+        "prompt": "filtros de ar",
+        "options": {
+          "metadata": {
+            "metadataValues": [
+              {
+                "name": "marca",
+                "value": "Hyundai"
+              }
+            ]
+          }
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
+      "typeVersion": 1.1,
+      "position": [
+        1140,
+        1200
+      ],
+      "id": "a99126f2-f5ec-469f-bde3-21769fe30f14",
+      "name": "Supabase Vector Store2"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        1160,
+        1420
+      ],
+      "id": "acb4fc47-e545-4fb0-bd41-d7d5756053ad",
+      "name": "Embeddings OpenAI2"
+    },
+    {
+      "parameters": {
+        "operation": "download",
+        "fileId": {
+          "__rl": true,
+          "value": "https://drive.google.com/file/d/1tcEZkP-szhsywDtqyCV5G90HMHqPOucL/view?pli=1",
+          "mode": "url"
+        },
+        "options": {
+          "googleFileConversion": {
+            "conversion": {
+              "docsToFormat": "text/plain",
+              "slidesToFormat": "application/pdf"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        340,
+        2080
+      ],
+      "id": "aa2b21cd-cae2-4e88-a997-0244f3bb115c",
+      "name": "Google Drive1"
+    },
+    {
+      "parameters": {
+        "operation": "pdf",
+        "options": {
+          "joinPages": false
+        }
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        560,
+        2080
+      ],
+      "id": "699bfb7c-1006-46eb-a080-5ed2f4b773fc",
+      "name": "Extract from File1"
+    },
+    {
+      "parameters": {
+        "mode": "insert",
+        "tableName": {
+          "__rl": true,
+          "value": "documents",
+          "mode": "list",
+          "cachedResultName": "documents"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
+      "typeVersion": 1.1,
+      "position": [
+        1180,
+        2080
+      ],
+      "id": "79baf9a4-a4ba-4cdd-b52c-309e6f1ecade",
+      "name": "Supabase Vector Store3"
+    },
+    {
+      "parameters": {
+        "model": "text-embedding-3-large",
+        "options": {
+          "dimensions": 1536
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        1040,
+        2300
+      ],
+      "id": "7fa2f9c3-9c80-4a7d-a2a8-183b1063e5f7",
+      "name": "Embeddings OpenAI3"
+    },
+    {
+      "parameters": {
+        "jsonMode": "expressionData",
+        "jsonData": "={{ $json.text }}",
+        "options": {
+          "metadata": {
+            "metadataValues": [
+              {
+                "name": "autor",
+                "value": "={{ $('Extract from File1').item.json.info.Author }}"
+              },
+              {
+                "name": "titulo",
+                "value": "={{ $('Extract from File1').item.json.info.Title }}"
+              },
+              {
+                "name": "pagina",
+                "value": "={{ $itemIndex + 1 }}"
+              }
+            ]
+          }
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
+      "typeVersion": 1,
+      "position": [
+        1260,
+        2320
+      ],
+      "id": "76bca82c-049c-477e-82ce-3f783e8b07fb",
+      "name": "Default Data Loader2"
+    },
+    {
+      "parameters": {
+        "chunkSize": 400,
+        "chunkOverlap": 80,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.textSplitterRecursiveCharacterTextSplitter",
+      "typeVersion": 1,
+      "position": [
+        1400,
+        2520
+      ],
+      "id": "ef3a3322-1546-494a-9aaf-0a993252145a",
+      "name": "Recursive Character Text Splitter2"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "text",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        860,
+        2080
+      ],
+      "id": "36322834-cd07-447d-bed9-6a2dd17b75e3",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "chunks",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        920,
+        320
+      ],
+      "id": "62ccaa24-e773-443a-8f8f-016d88c25875",
+      "name": "Split Out1"
+    },
+    {
+      "parameters": {
+        "content": "# Indexação com Google Docs\n",
+        "height": 880,
+        "width": 1760,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        0,
+        0
+      ],
+      "typeVersion": 1,
+      "id": "a03f185c-6b41-4cc3-999e-f008d17b705d",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "# Indexação com Google Sheets\n",
+        "height": 880,
+        "width": 1760,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        0,
+        940
+      ],
+      "typeVersion": 1,
+      "id": "8377b8c5-03b4-412c-8ae5-4e52ca30744a",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "# Indexação com PDF",
+        "height": 880,
+        "width": 1760,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        0,
+        1860
+      ],
+      "typeVersion": 1,
+      "id": "3ee12aa9-af21-4707-b8ec-85fc2d170837",
+      "name": "Sticky Note2"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-06-14T17:09:29.952Z",
+      "createdAt": "2025-06-14T17:09:29.952Z",
+      "role": "workflow:owner",
+      "workflowId": "lXLrqTJiSukCdANI",
+      "projectId": "o60HadikmqrvYZ9Z"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-06-14T17:09:29.952Z",
+  "versionId": "fef7ea50-f6db-43a5-bc46-c4359481a9f6"
+}
