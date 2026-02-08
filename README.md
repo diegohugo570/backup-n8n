@@ -132,6 +132,40 @@ Este projeto simula um **assistente humano**, com **memória de conversa, entend
 
 ---
 
+### 📄 Potto Flow – Geração Automática de Contratos com IA (WhatsApp)
+
+![Potto Flow – Gerar Contrato](assets/fluxo-gerar-contrato.png)
+
+**Descrição:**  
+Workflow de **geração automática de contratos**, desenvolvido no **n8n**, que transforma dados enviados via **Webhook** em um **contrato personalizado em PDF**, utilizando **Google Docs como template**, e envia o documento final diretamente ao cliente via **WhatsApp**.
+
+Este fluxo é ideal para **prestadores de serviço, consultorias, agências e empresas**, eliminando processos manuais de criação de contratos, reduzindo erros e acelerando o fechamento com o cliente.
+
+**O que esse workflow faz na prática:**
+- Recebe dados do cliente via **Webhook (POST)**:
+  - Nome
+  - CPF/CNPJ
+  - Endereço
+  - Telefone
+  - E-mail
+- Normaliza e organiza os dados automaticamente
+- Cria uma **cópia de um contrato modelo** no **Google Drive**
+- Substitui campos dinâmicos no **Google Docs**:
+  - `{nome-cliente}`
+  - `{cpf-cnpj}`
+  - `{endereco-cliente}`
+  - `{telefone-cliente}`
+  - `{email-cliente}`
+- Converte o contrato automaticamente para **PDF**
+- Transforma o arquivo em **Base64**
+- Envia o contrato final via **WhatsApp**, utilizando **Evolution API**
+- Mensagem automática de entrega para aprovação do cliente
+
+📁 **Workflow incluso:**  
+`Gerar contrato - Potto Flow.json`
+
+---
+
 ## 👤 Autor
 **Diego Hugo**  
 Especialista em Inteligência Artificial com foco em **Automações Inteligentes, Agentes Autônomos e Python**
