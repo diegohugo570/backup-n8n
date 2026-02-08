@@ -63,6 +63,43 @@ Este repositório tem como finalidade:
 
 ## 📂 Projetos em Destaque
 
+### 🤖 Potto Flow – Agente de Atendimento Inteligente (WhatsApp)
+
+![Potto Flow – Agente de Atendimento](assets/agente-de-atendimento.png)
+
+**Descrição:**  
+Workflow completo de **Agente de Atendimento com IA**, desenvolvido no **n8n**, projetado para **responder clientes automaticamente via WhatsApp**, simulando o comportamento de uma **secretária humana**, com contexto, memória e integração com sistemas externos.
+
+Este agente é ideal para **clínicas, consultórios, empresas de serviços e atendimento comercial**, realizando triagem inicial, respostas inteligentes e direcionamento correto das solicitações.
+
+**O que esse agente faz na prática:**
+- Recebe mensagens via **Webhook (WhatsApp API)**
+- Filtra mensagens inválidas:
+  - Grupos
+  - Newsletters
+  - Mensagens editadas
+  - Mensagens enviadas pelo próprio número
+- Normaliza e simplifica dados do usuário:
+  - Nome
+  - WhatsApp
+  - Conteúdo da mensagem
+- Busca ou cria automaticamente o cliente no **Supabase**
+- Identifica o tipo de mensagem recebida:
+  - 💬 Texto
+  - 🎙️ Áudio (com transcrição automática via IA)
+  - 🖼️ Imagem (resposta contextual orientando o usuário)
+- Utiliza **Agente de IA (LLM)** com:
+  - Prompt estruturado
+  - Memória por usuário (histórico da conversa)
+  - Tool Calling (Google Docs como base de conhecimento)
+- Responde de forma **educada, natural e contextual**
+- Envia mensagens automaticamente via **WhatsApp (Z-API)**
+
+📁 **Workflow incluso:**  
+`Potto_Flow___Agente_de_atendimento.json`
+
+---
+
 ### 🤖 Potto Flow – Agente com Follow Up Inteligente (WhatsApp)
 
 ![Potto Flow – Agente com Follow Up](assets/potto-flow-agente-follow-up.png)
