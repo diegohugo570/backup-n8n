@@ -166,6 +166,37 @@ Este fluxo é ideal para **prestadores de serviço, consultorias, agências e em
 
 ---
 
+### 📧 Potto Flow – Resumo Inteligente de E-mails com IA (Gmail)
+
+![Potto Flow – Resumo de E-mail](assets/fluxo-resumo-email.png)
+
+**Descrição:**  
+Workflow de **resumo automático de e-mails**, desenvolvido no **n8n**, que coleta mensagens recebidas no **Gmail**, analisa o conteúdo com **Inteligência Artificial** e envia diariamente um **resumo estruturado com pontos-chave e ações recomendadas**.
+
+Este projeto é ideal para **gestores, executivos, equipes comerciais e operações**, reduzindo tempo de leitura, evitando perda de informações importantes e facilitando a tomada de decisão diária.
+
+**O que esse workflow faz na prática:**
+- Executa automaticamente via **Schedule Trigger** (horário programado)
+- Busca e-mails recebidos no **Gmail** dentro de um intervalo de tempo definido
+- Agrega e normaliza os dados das mensagens:
+  - Remetente
+  - Destinatários
+  - Conteúdo resumido
+- Envia os dados para um **Agente de IA (OpenAI / LLM)** que:
+  - Identifica os **principais pontos dos e-mails**
+  - Extrai **problemas, decisões e informações relevantes**
+  - Gera uma lista clara de **itens de ação**, associados a pessoas quando possível
+- Retorna o resultado em **JSON estruturado**
+- Envia automaticamente um **e-mail formatado em HTML**, contendo:
+  - 📌 Resumo dos e-mails
+  - ✅ Lista de ações recomendadas
+- Facilita acompanhamento diário sem necessidade de leitura manual de múltiplos e-mails
+
+📁 **Workflow incluso:**  
+`Potto_Flow___Resumo_de_e_mail.json`
+
+---
+
 ## 👤 Autor
 **Diego Hugo**  
 Especialista em Inteligência Artificial com foco em **Automações Inteligentes, Agentes Autônomos e Python**
