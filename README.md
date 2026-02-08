@@ -102,7 +102,7 @@ Este agente é ideal para **clínicas, consultórios, empresas de serviços e at
 
 ### 🤖 Potto Flow – Agente com Follow Up Inteligente (WhatsApp)
 
-![Potto Flow – Agente com Follow Up](assets/potto-flow-agente-follow-up.png)
+
 
 **Descrição:**  
 Workflow avançado de **Agente de IA com Follow Up automático**, desenvolvido no **n8n**, focado em **atendimento, qualificação e reengajamento de leads via WhatsApp**.
