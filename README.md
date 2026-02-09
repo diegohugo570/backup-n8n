@@ -408,6 +408,39 @@ Este fluxo cria uma **pipeline completa de ingestão e indexação RAG**, totalm
 
 ---
 
+## 🧩 Potto Flow – Buscar ID de Grupos em Massa (Evolution API → Google Sheets)
+
+![Potto Flow – Buscar ID de Grupos em Massa](assets/buscar-id-grupo-em-massa.png)
+
+**Descrição:**  
+Workflow utilitário desenvolvido no **n8n** para **listar e extrair automaticamente os IDs de todos os grupos** vinculados a uma instância da **Evolution API (WhatsApp)**, salvando essas informações de forma organizada em uma **planilha do Google Sheets**.
+
+Este projeto é ideal para **operações de WhatsApp em escala**, times de automação, suporte técnico e desenvolvedores que precisam **mapear grupos ativos**, realizar auditorias, integrações posteriores ou preparar automações em massa baseadas em grupos.
+
+**O que esse workflow faz na prática:**
+- Inicia manualmente via **Manual Trigger** (modo teste ou execução controlada)
+- Conecta-se à **Evolution API** utilizando credenciais configuradas
+- Executa a operação **Fetch Groups** para buscar todos os grupos disponíveis na instância
+- Retorna dados estruturados dos grupos, como:
+  - 🆔 ID do grupo
+  - 👥 Nome / assunto do grupo
+- Realiza a separação dos registros com **Split Out**
+- Processa os itens em lote com **Loop Over Items**
+- Aplica controle de ritmo com **Wait Node** para evitar:
+  - Limites de API
+  - Bloqueios por excesso de requisições
+- Registra automaticamente os dados em uma **planilha do Google Sheets**, com colunas:
+  - `ID`
+  - `Grupo`
+- Fluxo seguro, simples e reutilizável para diferentes instâncias e contas
+
+Este fluxo funciona como uma **ferramenta base de infraestrutura para automações com WhatsApp**, facilitando o gerenciamento, controle e uso estratégico de grupos em outros workflows.
+
+📁 **Workflow incluso:**  
+`Buscar_ID_grupo_em_massa_EVO___Potto_Flow.json`
+
+---
+
 ## 👤 Autor
 **Diego Hugo**  
 Especialista em Inteligência Artificial com foco em **Automações Inteligentes, Agentes Autônomos e Python**
