@@ -328,6 +328,46 @@ Este fluxo cria um **sistema financeiro conversacional completo**, combinando **
 📁 **Workflow incluso:**  
 `Potto_Flow___Agente_financeiro__supabase.json`
 
+## 📈 Potto Flow – Agente Automatizado para Geração de Leads (Google Maps → Planilha)
+
+![Potto Flow – Agente para Gerar Leads](assets/agente-para-gerar-leads.png)
+
+**Descrição:**  
+Workflow de **geração automática de leads**, desenvolvido no **n8n**, que realiza **prospecção ativa de empresas no Google Maps**, extrai dados relevantes via **Outscraper API**, trata e normaliza as informações e salva os leads de forma estruturada em uma **planilha do Google Sheets**.
+
+Este projeto é ideal para **times comerciais, SDRs, agências de marketing, pré-vendas e outbound**, permitindo criar listas qualificadas de leads com rapidez, escala e baixo esforço manual.
+
+**O que esse workflow faz na prática:**
+- Inicia manualmente via **Manual Trigger**
+- Define parâmetros de busca dinamicamente:
+  - 🔍 Tipo de negócio (ex: clínica de estética)
+  - 📍 Localização (cidade/região)
+- Executa requisição **HTTP POST** para a **Outscraper API (Google Maps Search)**
+- Coleta dados enriquecidos das empresas, como:
+  - Nome da empresa
+  - Endereço completo
+  - Telefone
+  - Website
+  - E-mails (principal e secundário, quando disponíveis)
+  - Avaliação (rating)
+  - Número de reviews
+  - Categoria
+  - Horário de funcionamento
+- Processa e normaliza os dados via **Code Node (JavaScript)**:
+  - Remove caracteres inválidos
+  - Ajusta formatos de telefone
+  - Garante consistência dos campos
+- Registra automaticamente os leads em uma **planilha do Google Sheets**, com colunas bem definidas
+- Estrutura pronta para:
+  - Enriquecimento adicional
+  - Integração com CRM
+  - Automação de contato (WhatsApp, e-mail, etc.)
+
+Este fluxo cria uma **máquina de geração de leads B2B**, escalável, reutilizável e facilmente adaptável para diferentes nichos e regiões.
+
+📁 **Workflow incluso:**  
+`Potto_Flow___Agente_para_gerar_leads.json`
+
 ---
 
 ## 👤 Autor
