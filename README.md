@@ -283,6 +283,53 @@ Este fluxo cria um **funil automatizado de vendas via WhatsApp**, focado em **co
 
 ---
 
+### 💰 Potto Flow – Agente Financeiro Inteligente com Supabase (Chat + IA)
+
+![Potto Flow – Agente Financeiro Supabase](assets/agente-financeiro-supabase.png)
+
+**Descrição:**  
+Workflow de **Agente Financeiro Inteligente**, desenvolvido no **n8n**, que permite ao usuário **gerenciar gastos financeiros por chat**, utilizando **Inteligência Artificial, memória de contexto e Supabase como banco de dados**.
+
+Este agente funciona como um **assistente financeiro conversacional**, capaz de registrar, consultar, atualizar, excluir e somar despesas de forma natural, segura e auditável, sendo ideal para **controle financeiro pessoal, familiar ou de pequenas empresas**.
+
+**O que esse agente faz na prática:**
+- Recebe mensagens via **Chat Trigger do n8n**
+- Atua como **Assistente Financeiro Inteligente**, orientado por prompt estruturado
+- Utiliza **LLM (OpenAI)** para entender comandos em linguagem natural
+- Mantém **memória de conversa** para continuidade do atendimento
+- Integra-se diretamente ao **Supabase** para persistência de dados
+- Permite executar ações financeiras via chat:
+  - 📊 **Visualizar gastos**
+    - Lista nome, tipo e valor
+    - Permite filtros por categoria ou período
+  - ➕ **Adicionar novos gastos**
+    - Classifica automaticamente o tipo se não informado
+    - Categorias suportadas:
+      - Mercado
+      - Diversão
+      - Comida
+      - Educação
+      - Assinatura
+      - Transporte
+  - ✏️ **Atualizar gastos existentes**
+    - Confirma o registro antes de editar
+    - Permite alterar nome, valor ou tipo
+  - 🗑️ **Deletar gastos**
+    - Confirmação obrigatória antes da exclusão
+  - 🧮 **Somar gastos**
+    - Total geral ou filtrado por tipo/período
+- Evita ações incorretas com:
+  - Confirmação de comandos críticos
+  - Validação de registros existentes
+- Retorna respostas **claras, organizadas e amigáveis**
+
+Este fluxo cria um **sistema financeiro conversacional completo**, combinando **IA + banco de dados + automação**, pronto para uso real e escalável.
+
+📁 **Workflow incluso:**  
+`Potto_Flow___Agente_financeiro__supabase.json`
+
+---
+
 ## 👤 Autor
 **Diego Hugo**  
 Especialista em Inteligência Artificial com foco em **Automações Inteligentes, Agentes Autônomos e Python**
