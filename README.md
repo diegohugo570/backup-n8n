@@ -236,6 +236,8 @@ Este fluxo cria um **pipeline de recrutamento inteligente**, escalável e audit�
 
 ---
 
+### 🛒 Potto Flow – Infoproduto com Recuperação de Checkout (WhatsApp)
+
 ![Potto Flow – Infoproduto e Recuperação de Checkout](assets/fluxo-infoproduto-e-recuperacao-checkout.png)
 
 **Descrição:**  
