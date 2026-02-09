@@ -197,6 +197,45 @@ Este projeto é ideal para **gestores, executivos, equipes comerciais e operaç�
 
 ---
 
+### 🧑‍💼 Potto Flow – Triagem Inteligente de Currículos com IA (RH)
+
+![Potto Flow – Triagem de Currículo RH](assets/triagem-curriculo-rh.png)
+
+**Descrição:**  
+Workflow completo de **triagem automatizada de currículos**, desenvolvido no **n8n**, que utiliza **Inteligência Artificial** para analisar currículos em **PDF**, comparar com uma **descrição de vaga específica** e gerar uma **avaliação estruturada do candidato**, pronta para decisão de RH.
+
+Este projeto é ideal para **times de Recursos Humanos, recrutadores, consultorias de RH e empresas**, reduzindo drasticamente o tempo de análise manual e aumentando a consistência e qualidade das decisões de contratação.
+
+**O que esse workflow faz na prática:**
+- Monitora automaticamente uma **pasta no Google Drive**
+- Detecta quando um **novo currículo em PDF** é adicionado
+- Faz o **download automático do arquivo**
+- Extrai o texto completo do currículo (**PDF → texto**)
+- Injeta dinamicamente:
+  - 📄 Descrição detalhada da vaga  
+  - 🎯 Prompt de avaliação rigoroso de recrutador  
+- Utiliza um **Agente de IA (OpenAI / LLM)** para:
+  - Avaliar aderência do candidato à vaga
+  - Identificar pontos fortes e fracos
+  - Detectar possíveis **job hoppers**
+  - Gerar um **percentual de compatibilidade**
+- Retorna a análise em **formato estruturado**
+- Normaliza os dados via **Code Node**
+- Registra automaticamente os resultados em uma **planilha do Google Sheets**, incluindo:
+  - Nome do candidato
+  - Contato
+  - Percentual de compatibilidade
+  - Resumo do perfil
+  - Razões para contratar
+  - Razões para não contratar
+
+Este fluxo cria um **pipeline de recrutamento inteligente**, escalável e auditável, pronto para uso em ambientes reais de RH.
+
+📁 **Workflow incluso:**  
+`Triagem de Currículo RH - Potto Flow.json`
+
+---
+
 ## 👤 Autor
 **Diego Hugo**  
 Especialista em Inteligência Artificial com foco em **Automações Inteligentes, Agentes Autônomos e Python**
