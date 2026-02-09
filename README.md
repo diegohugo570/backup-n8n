@@ -370,6 +370,44 @@ Este fluxo cria uma **máquina de geração de leads B2B**, escalável, reutiliz
 
 ---
 
+### 📚 Potto Flow – RAG Automático com Google Drive + Supabase (IA)
+
+![Potto Flow – RAG](assets/fluxo-rag.png)
+
+**Descrição:**  
+Workflow completo de **RAG (Retrieval-Augmented Generation)** desenvolvido no **n8n**, responsável por **ingerir documentos automaticamente**, gerar **embeddings com IA** e armazená-los em um **Vector Store no Supabase**, criando uma **base de conhecimento consultável por agentes de IA**.
+
+Este projeto é ideal para **chatbots inteligentes, assistentes corporativos, bases de conhecimento internas, suporte técnico e aplicações educacionais**, permitindo que a IA responda com base em documentos reais e atualizados.
+
+**O que esse workflow faz na prática:**
+- Monitora automaticamente uma **pasta específica no Google Drive**
+- Detecta quando um **novo arquivo é adicionado** (ex: PDFs)
+- Normaliza os metadados do arquivo:
+  - ID do arquivo
+  - Tipo (MIME)
+  - Data de criação
+- Faz o **download automático do documento**
+- Extrai o texto do arquivo (**PDF → texto**)
+- Prepara o conteúdo para indexação:
+  - Limpeza
+  - Padronização de campos
+- Fragmenta o texto com **Recursive Character Text Splitter**
+  - Controle de chunk size para melhor recuperação semântica
+- Gera **embeddings utilizando OpenAI**
+- Armazena documentos e vetores no **Supabase Vector Store**
+  - Com metadados para rastreabilidade
+- Estrutura pronta para:
+  - Consulta via agentes de IA
+  - Chatbots com contexto documental
+  - Sistemas RAG escaláveis e auditáveis
+
+Este fluxo cria uma **pipeline completa de ingestão e indexação RAG**, totalmente automatizada, robusta e pronta para uso em produção.
+
+📁 **Workflow incluso:**  
+`Potto_Flow___RAG.json`
+
+---
+
 ## 👤 Autor
 **Diego Hugo**  
 Especialista em Inteligência Artificial com foco em **Automações Inteligentes, Agentes Autônomos e Python**
