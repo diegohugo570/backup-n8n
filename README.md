@@ -236,6 +236,51 @@ Este fluxo cria um **pipeline de recrutamento inteligente**, escalável e audit�
 
 ---
 
+![Potto Flow – Infoproduto e Recuperação de Checkout](assets/fluxo-infoproduto-e-recuperacao-checkout.png)
+
+**Descrição:**  
+Workflow avançado de **automação de vendas de infoprodutos**, desenvolvido no **n8n**, focado em **atendimento automatizado, recuperação de checkout abandonado e follow up inteligente via WhatsApp**.
+
+Este projeto foi desenhado para **produtores digitais, lançadores, afiliados e infoprodutores**, automatizando o contato com leads, aumentando taxa de conversão e reduzindo esforço manual no pós-clique.
+
+**O que esse workflow faz na prática:**
+- Recebe eventos via **Webhook** (ex: lead, checkout iniciado, checkout abandonado)
+- Normaliza e simplifica os dados do lead:
+  - Nome
+  - WhatsApp
+  - Produto de interesse
+  - Status do funil
+- Identifica automaticamente o **estágio do lead**:
+  - Novo lead
+  - Checkout iniciado
+  - Checkout abandonado
+  - Compra finalizada
+- Executa **fluxos condicionais** com **Switch + Regras**
+- Envia mensagens personalizadas via **WhatsApp**, como:
+  - Boas-vindas ao infoproduto
+  - Lembrete de checkout abandonado
+  - Reforço de benefícios do produto
+  - Gatilhos de urgência e escassez
+- Implementa **timers estratégicos** com **Wait Node**:
+  - ⏱️ minutos após abandono
+  - ⏱️ horas depois
+  - ⏱️ novo follow up se não houver resposta
+- Evita mensagens duplicadas ou spam com controle de fluxo
+- Possui ramificação para:
+  - Compra concluída → encerra automação
+  - Sem resposta → encerra fluxo com segurança
+- Estrutura preparada para integração com:
+  - Plataformas de checkout
+  - CRM
+  - Banco de dados de leads
+
+Este fluxo cria um **funil automatizado de vendas via WhatsApp**, focado em **conversão, escala e experiência do usuário**, pronto para ambientes reais de infoprodutos.
+
+📁 **Workflow incluso:**  
+`Infoproduto_Potto_Flow.json`
+
+---
+
 ## 👤 Autor
 **Diego Hugo**  
 Especialista em Inteligência Artificial com foco em **Automações Inteligentes, Agentes Autônomos e Python**
