@@ -622,6 +622,48 @@ Este template é ideal para **criadores de conteúdo, empresas, social medias e 
 
 ---
 
+## 💬 Potto Flow – Template de Resposta Automática a Comentários no Instagram com IA
+
+![Potto Flow – Resposta Automática a Comentários Instagram](assets/template-fluxo-resposta-comentarios-instagram.png)
+
+**Descrição:**  
+Workflow template de **resposta automática a comentários no Instagram**, desenvolvido no **n8n**, projetado para **monitorar comentários em posts**, interpretar o conteúdo com **Inteligência Artificial** e **responder automaticamente de forma contextual**, mantendo engajamento ativo e imediato.
+
+Este projeto é ideal para **marcas, criadores de conteúdo, infoprodutores, social medias e equipes de marketing**, permitindo escalar interações públicas no Instagram sem perder personalização ou timing.
+
+**O que esse workflow faz na prática:**
+- Recebe eventos do **Instagram Webhook** relacionados a novos comentários
+- Realiza validações iniciais de segurança e origem do evento
+- Normaliza os dados do comentário:
+  - ID do post
+  - ID do comentário
+  - Texto do comentário
+  - ID do usuário
+- Aplica filtros para:
+  - Evitar respostas duplicadas
+  - Ignorar comentários da própria conta
+- Utiliza **regras condicionais (Switch / If)** para classificar o tipo de comentário:
+  - Dúvidas
+  - Interesse em produto/serviço
+  - Comentários genéricos
+  - Engajamento simples (ex: “🔥”, “top”, “amei”)
+- Gera respostas automáticas via **Agente de IA (LLM)**:
+  - Linguagem natural
+  - Alinhada ao posicionamento da marca
+  - Personalizada conforme o contexto do comentário
+- Envia a resposta diretamente como **reply ao comentário** via **Instagram Graph API**
+- Estrutura pronta para:
+  - CTA em comentários
+  - Direcionamento para DM
+  - Estratégias de engajamento e conversão
+
+Este template cria uma **máquina de engajamento automático no Instagram**, aumentando alcance, relevância e velocidade de resposta, com **IA aplicada de forma estratégica e segura**.
+
+📁 **Workflow incluso:**  
+`Template Fluxo de resposta comentários no Instagram - Potto Flow copy.json`
+
+---
+
 ## 👤 Autor
 **Diego Hugo**  
 Especialista em Inteligência Artificial com foco em **Automações Inteligentes, Agentes Autônomos e Python**
