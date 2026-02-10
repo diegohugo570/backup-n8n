@@ -441,6 +441,73 @@ Este fluxo funciona como uma **ferramenta base de infraestrutura para automaçõ
 
 ---
 
+## 🤖 Potto Flow – Agente SDR Inteligente com CRM (Notion + Supabase)
+
+![Potto Flow – Agente SDR CRM](assets/Agente_SDR_CRM.png)
+
+**Descrição:**  
+Workflow de **Agente SDR Inteligente**, desenvolvido no **n8n**, responsável por **auxiliar o processo de pré-vendas e atendimento comercial**, integrando **Notion (CRM)** e **Supabase (banco de dados operacional)**.
+
+Este agente atua como um **assistente de SDR**, organizando leads, atualizando status e mantendo os dados sincronizados entre CRM e banco de dados, garantindo **continuidade de atendimento e rastreabilidade das interações**.
+
+**O que esse workflow faz na prática:**
+- Centraliza a gestão de leads em um **CRM no Notion**
+- Busca automaticamente todos os leads cadastrados:
+  - Nome  
+  - WhatsApp  
+  - Status  
+  - Resumo do atendimento
+- Permite **qualificar leads**:
+  - Atualiza status para **Atendimento Humano**
+  - Registra resumo completo da conversa
+  - Salva e-mail do lead
+- Permite **encerrar leads perdidos**:
+  - Atualiza status para **Perdido**
+  - Registra resumo final da conversa
+- Sincroniza informações críticas com o **Supabase**:
+  - Status do lead
+  - E-mail
+- Mantém o histórico organizado para continuidade do processo comercial
+
+Este fluxo é ideal para **times de SDR, pré-vendas, atendimento comercial e automações de CRM**, garantindo **processos claros, organizados e escaláveis**.
+
+📁 **Workflow incluso:**  
+`Agente SDR - CRM.json`
+
+---
+
+## 🧠 Potto Flow – Agente SDR com MCP (CRM Inteligente via Tools)
+
+![Potto Flow – Agente SDR MCP CRM](assets/Agente_SDR_MCP_CRM.png)
+
+**Descrição:**  
+Workflow avançado de **Agente SDR com MCP (Model Context Protocol)**, desenvolvido no **n8n**, que expõe o CRM como **ferramentas (Tools)** para um **Agente de IA**, permitindo que o próprio agente **decida quando buscar, atualizar ou encerrar leads automaticamente**.
+
+Este projeto representa uma **arquitetura moderna de automação orientada a agentes**, onde a IA possui **controle ativo sobre o CRM**, simulando o comportamento de um **SDR humano experiente**, com autonomia e lógica contextual.
+
+**O que esse workflow faz na prática:**
+- Expõe o CRM como **Tools via MCP Server Trigger**
+- Permite que o **Agente de IA** execute ações como:
+  - 🔍 Buscar todos os leads no CRM (Notion)
+  - ✅ Qualificar leads automaticamente
+  - ❌ Marcar leads como perdidos
+  - ✏️ Atualizar e-mails e status no Supabase
+- Mantém **sincronização bidirecional** entre:
+  - Notion (CRM)
+  - Supabase (banco operacional)
+- Garante consistência dos dados em tempo real
+- Facilita integração com:
+  - Chatbots
+  - Assistentes comerciais
+  - Fluxos de atendimento automatizado
+
+Este fluxo é ideal para **operações comerciais inteligentes**, **SDRs automatizados**, **assistentes de vendas com IA** e arquiteturas baseadas em **Agentic AI + MCP**, prontas para escala e produção.
+
+📁 **Workflow incluso:**  
+`Agende SDR MCP - CRM.json`
+
+---
+
 ## 👤 Autor
 **Diego Hugo**  
 Especialista em Inteligência Artificial com foco em **Automações Inteligentes, Agentes Autônomos e Python**
