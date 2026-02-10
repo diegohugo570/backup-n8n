@@ -508,6 +508,80 @@ Este fluxo é ideal para **operações comerciais inteligentes**, **SDRs automat
 
 ---
 
+## 🚗 Potto Flow – Agente de Concessionária de Automóveis com IA (WhatsApp)
+
+![Potto Flow – Agente de Concessionária Automóveis](assets/Agente_de_Concessionaria_Automoveis.png)
+
+**Descrição:**  
+Workflow completo de **Agente de Atendimento Inteligente para Concessionárias**, desenvolvido no **n8n**, projetado para **atender clientes interessados na compra de veículos via WhatsApp**, utilizando **Inteligência Artificial, banco de dados estruturado e envio automático de imagens**.
+
+Este agente simula o comportamento de um **vendedor humano**, entendendo as necessidades do cliente, buscando veículos disponíveis e apresentando opções de forma clara, educada e contextual.
+
+**O que esse workflow faz na prática:**
+- Recebe mensagens via **Webhook (WhatsApp – Evolution API)**
+- Normaliza dados do cliente:
+  - Nome
+  - WhatsApp
+  - Mensagem enviada
+- Busca ou cria automaticamente o cliente no **Supabase (CRM)**
+- Identifica o tipo de mensagem recebida:
+  - 💬 Texto
+  - 🎙️ Áudio (com transcrição automática via IA)
+- Utiliza **Agente de IA (LLM)** com:
+  - Prompt especializado para vendas de automóveis
+  - Memória por usuário (histórico de conversa)
+  - Integração com **Tools MCP**
+- Consulta veículos disponíveis conforme critérios do cliente:
+  - Preço máximo
+  - Modelo / marca
+  - Ano
+- Retorna lista de veículos disponíveis de forma clara
+- Quando solicitado, envia **imagens reais dos veículos** automaticamente
+- Responde via **WhatsApp**, com texto ou mídia, conforme o contexto
+
+Este fluxo é ideal para **concessionárias, lojas de veículos e operações comerciais automotivas**, oferecendo **atendimento escalável, inteligente e orientado à conversão**.
+
+📁 **Workflow incluso:**  
+`Agente de Concessionária - Automóveis.json`
+
+---
+
+## 🧠 Potto Flow – MCP Concessionária (CRM Automotivo via Tools)
+
+![Potto Flow – MCP Concessionária](assets/MCP_Concessionaria.png)
+
+**Descrição:**  
+Workflow de **MCP Server (Model Context Protocol)** para Concessionárias, desenvolvido no **n8n**, responsável por **expor o banco de dados automotivo como ferramentas (Tools)** para Agentes de IA.
+
+Este projeto transforma o **CRM da concessionária em uma API inteligente**, permitindo que agentes tomem decisões autônomas sobre **busca de veículos e envio de imagens**, com base em critérios definidos pelo cliente.
+
+**O que esse workflow faz na prática:**
+- Cria um **MCP Server Trigger** no n8n
+- Expõe o banco de dados de veículos no **Supabase** como Tools:
+  - 🔍 **tool_buscar_carros**
+    - Pesquisa veículos disponíveis por:
+      - Valor
+      - Modelo
+      - Marca
+      - Ano
+  - 🖼️ **tool_imagens_carros**
+    - Retorna **URLs diretas das imagens** dos veículos
+- Garante que o agente:
+  - Nunca invente preços ou modelos
+  - Utilize apenas dados reais do banco
+- Retorna **somente a URL da imagem** quando solicitado
+- Estrutura preparada para integração com:
+  - Agentes de IA conversacionais
+  - Chatbots de vendas
+  - Fluxos comerciais automatizados
+
+Este fluxo representa uma **arquitetura moderna baseada em Agentic AI + MCP**, ideal para **operações comerciais avançadas**, CRM inteligente e automações orientadas a contexto.
+
+📁 **Workflow incluso:**  
+`MCP Concessionária.json`
+
+---
+
 ## 👤 Autor
 **Diego Hugo**  
 Especialista em Inteligência Artificial com foco em **Automações Inteligentes, Agentes Autônomos e Python**
