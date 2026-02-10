@@ -582,6 +582,46 @@ Este fluxo representa uma **arquitetura moderna baseada em Agentic AI + MCP**, i
 
 ---
 
+## 📸 Potto Flow – Template de Atendimento Automático para Instagram com IA
+
+![Potto Flow – Template Instagram](assets/Template_Fluxo_Instagram.png)
+
+**Descrição:**  
+Workflow template de **atendimento automatizado para Instagram**, desenvolvido no **n8n**, projetado para **receber, interpretar e responder mensagens diretas (DMs) automaticamente**, utilizando **Inteligência Artificial, memória de conversa e integração direta com a API do Instagram**.
+
+Este projeto serve como **base reutilizável** para criação de **assistentes de atendimento, vendas ou engajamento em redes sociais**, permitindo rápida adaptação para diferentes nichos e estratégias.
+
+**O que esse workflow faz na prática:**
+- Recebe eventos do **Instagram Webhook** (mensagens diretas)
+- Realiza validação inicial do webhook (GET + hub.challenge)
+- Processa mensagens recebidas via **POST**
+- Normaliza os dados da conversa:
+  - ID do remetente
+  - ID da conta do Instagram
+  - Conteúdo da mensagem
+- Filtra mensagens inválidas:
+  - Mensagens enviadas pela própria conta
+- Utiliza **Agente de IA (LLM)** com:
+  - Prompt configurável por negócio
+  - Memória por usuário (continuidade de conversa)
+- Gera respostas automáticas:
+  - Contextuais
+  - Naturais
+  - Alinhadas à estratégia definida no prompt
+- Envia respostas diretamente para o **Instagram DM** via **HTTP Request**
+- Estrutura modular pronta para:
+  - Atendimento
+  - Pré-vendas
+  - Engajamento automático
+  - Social Media com IA
+
+Este template é ideal para **criadores de conteúdo, empresas, social medias e agências**, servindo como **ponto de partida profissional** para automações avançadas no Instagram com IA.
+
+📁 **Workflow incluso:**  
+`Template_Instagram___Potto_Flow.json`
+
+---
+
 ## 👤 Autor
 **Diego Hugo**  
 Especialista em Inteligência Artificial com foco em **Automações Inteligentes, Agentes Autônomos e Python**
