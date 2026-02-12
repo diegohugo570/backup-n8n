@@ -824,6 +824,85 @@ Essa arquitetura pode ser aplicada em:
 
 ---
 
+## 📞 Potto Flow – Análise Inteligente de Ligações Comerciais com IA (VoIP + Transcrição + E-mail)
+
+![Potto Flow – Análise de Ligação](assets/Agente_Analise_de_Ligacao.png)
+
+**Descrição:**  
+Workflow completo de **análise automática de ligações comerciais**, desenvolvido no **n8n**, que recebe gravações via **Webhook (VoIP)**, realiza **transcrição com IA**, aplica **análise inteligente da conversa** e envia um **resumo estruturado por e-mail para o diretor comercial e responsável pela venda**.
+
+Este fluxo é ideal para **equipes de vendas, gestores comerciais, operações de call center e pré-vendas**, permitindo auditoria, acompanhamento de performance e melhoria contínua da abordagem comercial.
+
+---
+
+### 🔎 O que esse workflow faz na prática:
+
+- Recebe dados da ligação via **Webhook (POST)**:
+  - ID da chamada  
+  - Número do caller  
+  - Número chamado  
+  - Duração  
+  - URL da gravação  
+- Normaliza os dados automaticamente via **Set Node**
+- Faz download da gravação utilizando **HTTP Request**
+- Salva automaticamente o áudio no **Google Drive** (organização e auditoria)
+- Realiza **transcrição automática do áudio** com OpenAI
+- Utiliza **Agente de IA (LLM)** com:
+  - Prompt estruturado para análise comercial
+  - Classificação de sentimento
+  - Interpretação da intenção do lead
+- Mantém memória contextual por número de telefone
+- Gera um **resumo estruturado da ligação**
+- Envia automaticamente um **e-mail formatado em HTML**, contendo:
+  - 📄 Transcrição completa
+  - 📊 Análise da conversa
+  - 🔎 Indícios de interesse do lead
+  - 📌 Espaço para definição de próximas ações
+- Dispara notificação para o **diretor comercial e vendedor responsável**
+
+---
+
+### 🧠 Inteligência Aplicada
+
+Este workflow permite:
+
+- Monitoramento de qualidade de atendimento  
+- Identificação de oportunidades perdidas  
+- Classificação de leads por sentimento  
+- Registro estruturado de interações comerciais  
+- Base para métricas futuras (conversão por vendedor, tom da conversa, objeções recorrentes)
+
+---
+
+### 🏗️ Arquitetura Técnica
+
+- Webhook (VoIP)  
+- HTTP Request (download da gravação)  
+- Google Drive (armazenamento)  
+- OpenAI (Transcrição de Áudio)  
+- AI Agent (análise comercial)  
+- OpenAI Chat Model  
+- Memory Buffer  
+- Gmail (envio automático estruturado)
+
+---
+
+### 🎯 Aplicações Reais
+
+- Call centers  
+- Operações de SDR  
+- Vendas consultivas  
+- Auditoria comercial  
+- Gestão de equipes de pré-vendas  
+- Monitoramento de performance comercial  
+
+---
+
+📁 **Workflow incluso:**  
+`Potto_Flow___Analise_de_ligação_comercial.json`
+
+---
+
 ## 👤 Autor
 **Diego Hugo**  
 Especialista em Inteligência Artificial com foco em **Automações Inteligentes, Agentes Autônomos e Python**
