@@ -662,6 +662,166 @@ Este template cria uma **máquina de engajamento automático no Instagram**, aum
 📁 **Workflow incluso:**  
 `Template Fluxo de resposta comentários no Instagram - Potto Flow copy.json`
 
+## 🚀 Potto Flow – Agente de Vendas Inteligente (Arquitetura Modular)
+
+Este conjunto de projetos representa uma **arquitetura modular de Agente de Vendas com IA**, construída no **n8n**, utilizando:
+
+- Supabase (base de produtos)
+- Evolution API (WhatsApp)
+- LLM (OpenAI)
+- Memória contextual
+- Orquestração entre workflows
+
+A estrutura foi dividida em **3 workflows especializados**, permitindo escalabilidade, clareza arquitetural e reaproveitamento em múltiplos cenários comerciais.
+
+---
+
+# 🧠 Potto Flow – Agente de Vendas 01 (Orquestrador Inteligente)
+
+![Potto Flow – Agente de Vendas 01](assets/Agente_de_Vendas_01.png)
+
+**Descrição:**  
+Workflow principal responsável por atuar como **Agente de IA Orquestrador**, interpretando a intenção do usuário e decidindo qual subfluxo deve ser acionado (imagem ou URL do produto).
+
+Este fluxo centraliza a lógica conversacional e a tomada de decisão estratégica.
+
+### 🔎 O que esse workflow faz na prática:
+
+- Recebe dados via execução por outro workflow
+- Normaliza:
+  - Nome
+  - WhatsApp
+  - Mensagem
+- Utiliza **Agente de IA (LLM)** com:
+  - Prompt estruturado
+  - Memória por usuário
+  - Tool Calling
+- Identifica a intenção do cliente:
+  - Solicitação de imagens do produto
+  - Solicitação de link/URL do produto
+- Aciona automaticamente:
+  - Workflow de envio de imagens
+  - Workflow de envio de URL
+- Retorna resposta contextual ao fluxo principal
+
+Este workflow funciona como o **cérebro da operação comercial automatizada**, garantindo coerência e inteligência na experiência do cliente.
+
+📁 **Workflow incluso:**  
+`Potto_Flow___Agente_de_vendas_1.json`
+
+---
+
+# 🖼️ Potto Flow – Agente de Vendas 02 (Envio Inteligente de Imagens)
+
+![Potto Flow – Agente de Vendas 02](assets/Agente_de_Vendas_02_Imagem.png)
+
+**Descrição:**  
+Workflow especializado em **envio automático de imagens de produtos via WhatsApp**, com controle de ritmo, limite de envios e retorno estruturado ao agente principal.
+
+Ideal para operações comerciais que precisam apresentar **catálogos visuais de forma automatizada**.
+
+### 🔎 O que esse workflow faz na prática:
+
+- Recebe dados do workflow principal
+- Busca todos os produtos na tabela **Produtos (Supabase)**
+- Processa itens com:
+  - `Loop Over Items`
+  - Controle de envio sequencial
+- Envia imagens via **Evolution API (WhatsApp)**:
+  - Imagem do produto
+  - Nome
+  - Preço na legenda
+- Aplica:
+  - `Wait Node` para evitar bloqueios
+  - `Limit Node` para controle de quantidade
+- Retorna ao agente principal mensagem solicitando:
+  - Qual modelo o cliente mais gostou
+
+Esse fluxo cria uma **experiência de vitrine automatizada via WhatsApp**, mantendo fluidez e profissionalismo.
+
+📁 **Workflow incluso:**  
+`Potto_Flow___Agente_de_vendas_2_imagem (1).json`
+
+---
+
+# 🔗 Potto Flow – Agente de Vendas 03 (Envio Inteligente de URL)
+
+![Potto Flow – Agente de Vendas 03](assets/Agente_de_Vendas_03_url_site.png)
+
+**Descrição:**  
+Workflow responsável por **buscar e enviar automaticamente a URL do produto solicitado**, utilizando **Agente de IA + Tool Calling + Supabase**.
+
+Este fluxo permite que o agente entregue **links de pagamento ou páginas de produto de forma 100% contextual e automatizada**.
+
+### 🔎 O que esse workflow faz na prática:
+
+- Recebe dados do workflow principal
+- Normaliza informações do usuário
+- Utiliza **Agente de IA (LLM)** com:
+  - Memória por WhatsApp
+  - Tool integrada ao Supabase
+- Ativa tool `procurar_url` para:
+  - Buscar produto correspondente
+  - Recuperar campo URL
+- Retorna **apenas o link do produto**
+- Envia automaticamente via **Evolution API (WhatsApp)**
+- Controla fluxo com:
+  - Loop
+  - Wait
+  - Limit
+
+Esse workflow garante que:
+
+- O agente nunca invente links
+- O link seja sempre real e vindo do banco
+- O envio seja rápido e contextual
+
+Ideal para:
+
+- Checkout automatizado
+- Envio de links de pagamento
+- Vendas diretas via WhatsApp
+- Operações de infoproduto e e-commerce
+
+📁 **Workflow incluso:**  
+`Potto_Flow___Agente_de_vendas_3_url_site.json`
+
+---
+
+## 🏗️ Arquitetura do Agente de Vendas
+
+Essa estrutura modular permite:
+
+- Separação clara de responsabilidades
+- Escalabilidade
+- Fácil manutenção
+- Reaproveitamento de subfluxos
+- Arquitetura orientada a agentes
+
+### 🔄 Fluxo macro:
+
+Cliente → Agente Orquestrador (IA)
+↓
+Decide intenção
+↙ ↘
+Envio de Imagens Envio de URL
+↘ ↙
+Resposta contextual
+
+---
+
+## 🎯 Aplicações Reais
+
+Essa arquitetura pode ser aplicada em:
+
+- E-commerce via WhatsApp
+- Lojas de roupas
+- Concessionárias
+- Infoprodutores
+- Catálogos digitais
+- Vendas consultivas automatizadas
+- Operações B2C e B2B
+
 ---
 
 ## 👤 Autor
